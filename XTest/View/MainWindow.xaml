@@ -12,7 +12,7 @@
         <Label Content="Цыклические коды" HorizontalAlignment="Left" Margin="24,198,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF8995AC"/>
         <Label Content="Недвоичные коды" HorizontalAlignment="Left" Margin="24,372,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF8995AC"/>
 
-        <TabControl HorizontalAlignment="Left" Width="950" TabStripPlacement="Left" Margin="2,0,0,0" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl HorizontalAlignment="Left" Width="950" TabStripPlacement="Left" Margin="2,0,0,0" >
             <TabItem  Header="Код Варшамова" Height="35" Width="255" Margin="-5,0,1,-70"
                       Background="#FFF5F7F9" BorderBrush="#FFF5F7F9" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
                       <Grid>
