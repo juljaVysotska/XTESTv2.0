@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XTest.Model.Services
+namespace XTest.Model.Models
 {
-    class Class1
+    class EllaesCode
     {
+        public int[][] Array { get; set; }
     }
 }
