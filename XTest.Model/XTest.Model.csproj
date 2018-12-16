@@ -42,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\GreyaCode.cs" />
     <Compile Include="Models\IterativeCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Class1.cs" />
+    <Compile Include="Services\GreyaCodeService.cs" />
     <Compile Include="Services\IterativeCodeService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
