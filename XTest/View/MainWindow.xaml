@@ -9,15 +9,15 @@
     <Grid>
         <Rectangle Fill="#FFF5F7F9" Margin="0,0,690,0" Width="260"/>
 
-        <TabControl HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="950" TabStripPlacement="Left" >
+        <TabControl HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="950" TabStripPlacement="Right" Margin="2,0,0,0" >
             <TabControl.Template>
                 <ControlTemplate TargetType="TabControl">
                     <StackPanel>
-                        <ScrollViewer HorizontalScrollBarVisibility="Hidden"  VerticalScrollBarVisibility="Visible" MaxHeight="800" Height="618" Margin="0,0,676,0" >
+                        <ScrollViewer HorizontalScrollBarVisibility="Hidden"  VerticalScrollBarVisibility="Visible" MaxHeight="800" Height="622" Margin="0,0,0,0" HorizontalAlignment="Left">
                             <TabPanel x:Name="HeaderPanel"
                               Panel.ZIndex ="1" 
                               KeyboardNavigation.TabIndex="1"
-                              Grid.Column="0"
+                              Grid.Column="1"
                               Grid.Row="0"
                           
                               IsItemsHost="true"/>
@@ -25,28 +25,25 @@
                         <ContentPresenter x:Name="PART_SelectedContentHost"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           Margin="{TemplateBinding Padding}"
-                                          ContentSource="SelectedContent"/>
+                                          ContentSource="SelectedContent" Height="136" RenderTransformOrigin="0.5,0.5">
+                           
+                        </ContentPresenter>
                     </StackPanel>
                 </ControlTemplate>
             </TabControl.Template>
 
-
+            
             <TabItem  Header="Код Варшамова" Height="35" Width="260"  Margin="0,0,0,0" Padding="30,0,0,0"
                       Background="#FFF5F7F9" BorderBrush="#FFF5F7F9" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
-                <Grid Margin="298,0,-10,0" Height="196">
-                    <Label Content="Пример1" HorizontalAlignment="Left" Margin="300,195,0,0" VerticalAlignment="Top" Foreground="#FF090F93" FontSize="24" />
+
+                <Grid Margin="280,-621,0,138">
+                    <Label  Content="Писька" Margin="142,99,446,399"  />
+                    <Label Content="Говно" Margin="142,146,416,365"/>
                 </Grid>
             </TabItem>
+            
 
-            <TabItem Name  ="ElayesItem" Header="Код Еллаеса" Height="35" Width="260"  Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
-                <Grid Height="237" Margin="272,0,0,0">
-
-                    <Label Content="Закодируйте сообщение:" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="14" RenderTransformOrigin="0.512,-0.736"/>
-                    <WrapPanel Name="panel"  Width="120" Margin="54,102,136,252" Orientation="Horizontal">
-
-                    </WrapPanel>
-                </Grid>
-            </TabItem>
+            <TabItem Name  ="ElayesItem" Header="Код Еллаеса" Height="35" Width="260"  Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
 
             <TabItem Header="Код Рида-Маллера" Height="35" Width="260"  Padding="30,0,0,0" BorderBrush="#FFF5F7F9" Background="#FFF5F7F9" VerticalAlignment="Bottom"/>
             <TabItem Header="Код Хемминга" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
