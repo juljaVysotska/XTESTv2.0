@@ -35,5 +35,14 @@ namespace XTest
         {
 
         }
+
+        private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TabControl tabControl = (TabControl)sender;
+            if (tabControl.SelectedIndex == 2)
+            {
+                MessageBox.Show("Hurray");
+            }
+        }
     }
 }
