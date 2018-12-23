@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XTest.ViewModel;
 
 namespace XTest
 {
@@ -20,19 +21,32 @@ namespace XTest
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        
         public MainWindow()
         {
             InitializeComponent();
+            EllayesViewModel evm = new EllayesViewModel();
+            DataContext = evm;          
+        }
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
-        private void TabControl_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            TabControl tabControl = (TabControl)sender;
+            if (tabControl.SelectedIndex == 2)
+            {
+                MessageBox.Show("Hurray");
+            }
         }
     }
 }
