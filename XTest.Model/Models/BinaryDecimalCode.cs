@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Models
 {
-    class BinaryDecimalCode : INotifyPropertyChanged
+    public class BinaryDecimalCode : INotifyPropertyChanged
     {
         private string code;
         private int number;

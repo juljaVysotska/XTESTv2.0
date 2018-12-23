@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Services
 {
-    class BinaryDecimalCodeService
+    public class BinaryDecimalCodeService
     {
         public string generateCode()
         {

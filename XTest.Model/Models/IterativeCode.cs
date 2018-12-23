@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 
 namespace XTest.Model.Models
 {
-    class IterativeCode : INotifyPropertyChanged
+    public class IterativeCode : INotifyPropertyChanged
     {
         public int q;
         public int[][] array;

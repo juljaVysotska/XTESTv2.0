@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Services
 {
-    class IterativeCodeService
+    public class IterativeCodeService
     {
 
         public int getRandomQ()

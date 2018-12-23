@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Services
 {
-    class GreyaCodeService
+    public class GreyaCodeService
     {
 
         public string generateLine(int length)

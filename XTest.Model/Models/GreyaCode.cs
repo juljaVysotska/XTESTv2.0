@@ -8,22 +8,34 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Models
 {
-    class GreyaCode : INotifyPropertyChanged
+    public class GreyaCode : INotifyPropertyChanged
     {
-        private string x;
+        private string message;
+        private string result;
 
-        public GreyaCode(string x)
+        public GreyaCode()
         {
-            this.x = x;
+            this.message = "";
+            this.result = "";
         }
 
-        public string X
+        public string Message
         {
-            get { return x; }
+            get { return message; }
             set
             {
-                x = value;
-                OnPropertyChanged("X");
+                message = value;
+                OnPropertyChanged("Message");
+            }
+        }
+
+        public string Result
+        {
+            get { return result; }
+            set
+            {
+                result = value;
+                OnPropertyChanged("Result");
             }
         }
 

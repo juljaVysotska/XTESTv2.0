@@ -25,7 +25,9 @@ namespace XTest
         {
             InitializeComponent();
             EllayesViewModel evm = new EllayesViewModel();
-            DataContext = evm;
+            GreyaViewModel greyavm = new GreyaViewModel();
+            //DataContext = evm;
+            DataContext = greyavm;
 
         }
 
