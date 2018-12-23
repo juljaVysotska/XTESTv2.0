@@ -14,6 +14,7 @@ namespace XTest.ViewModel
     class EllayesViewModel
 
     {
-        
-       
+
+
+    }
 }
