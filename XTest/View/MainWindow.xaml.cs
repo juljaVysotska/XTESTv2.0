@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using XTest.ViewModel;
+using XTest.Model.Services;
 
 namespace XTest
 {
@@ -21,7 +22,8 @@ namespace XTest
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
+        Dictionary<string, int> marks = new Dictionary<string, int>();
         
         public MainWindow()
         {
@@ -45,7 +47,19 @@ namespace XTest
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
             {
-                MessageBox.Show("Hurray");
+                lblTask.Content = Berger.generateEncode();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Berger.isEncodedCorrectly(lblTask.Content.ToString(), txbBergerResult.Text))
+            {
+                MessageBox.Show("Congrats!");
+            }
+            else
+            {
+                MessageBox.Show("Game over");
             }
         }
     }

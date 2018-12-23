@@ -404,8 +404,8 @@
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
                                 <Label  Content="Результат:"  Margin="30,165,436.4,383.6"  FontSize="14"  />
-                                <TextBox Margin="30,198,416.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <TextBox x:Name="txbBergerResult" Margin="30,198,416.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Click"/>
                                 <Label x:Name="lblTask"  Content="Закодируйте сообщение"  Margin="29,112,287.4,437.6"  FontSize="14"  />
                             </Grid>
                         </TabItem>

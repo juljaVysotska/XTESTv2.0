@@ -18,9 +18,9 @@ namespace XTest.Model.Services
         public static string generateEncode()
         {
             string result = "";
-            for (int i = 0; i < rnd.Next(6, 15); i++)
+            for (int i = 0; i < rnd.Next(6, 150); i++)
             {
-                result += rnd.Next(1);
+                result += rnd.Next(2);
             }
             return result;
         }
