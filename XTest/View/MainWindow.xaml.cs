@@ -27,9 +27,12 @@ namespace XTest
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
 
-        
+        private void TabControl_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
