@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -101,6 +102,39 @@
       <Project>{7207361e-b8e3-4ab3-9f36-5a8caa86180e}</Project>
       <Name>XTest.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF11.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF4.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF5.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF6.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF7.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF8.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF9.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\VF10.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
