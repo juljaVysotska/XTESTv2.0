@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XTest.ViewModel;
 
 namespace XTest
 {
@@ -23,6 +24,14 @@ namespace XTest
         public MainWindow()
         {
             InitializeComponent();
+            EllayesViewModel evm = new EllayesViewModel();
+            DataContext = evm;
+
+        }
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
