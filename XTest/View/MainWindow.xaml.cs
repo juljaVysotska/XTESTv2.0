@@ -26,15 +26,8 @@ namespace XTest
         public MainWindow()
         {
             InitializeComponent();
-<<<<<<< HEAD
-
-
-            
-=======
             EllayesViewModel evm = new EllayesViewModel();
-            DataContext = evm;
-
->>>>>>> master
+            DataContext = evm;          
         }
         
     }

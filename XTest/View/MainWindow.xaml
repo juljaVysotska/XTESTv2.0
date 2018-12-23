@@ -62,53 +62,51 @@
                 </Setter.Value>
             </Setter>
         </Style>
-<<<<<<< HEAD
-=======
+
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
-        <Style x:Key="RoundConer" TargetType="{x:Type TextBox}">
-            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-            <Setter Property="HorizontalContentAlignment" Value="Left"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="AllowDrop" Value="true"/>
-            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
-            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
-                            </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
-                        <Condition Property="IsSelectionActive" Value="false"/>
-                    </MultiTrigger.Conditions>
-                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
-                </MultiTrigger>
-            </Style.Triggers>
-        </Style>
->>>>>>> master
+            <Style x:Key="RoundConer" TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="AllowDrop" Value="true"/>
+                <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border x:Name="border" CornerRadius="5" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="true">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                            <Condition Property="IsSelectionActive" Value="false"/>
+                        </MultiTrigger.Conditions>
+                        <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                    </MultiTrigger>
+                </Style.Triggers>
+            </Style>
     </Window.Resources>
     <Grid>
         <Rectangle Fill="#FFF5F7F9" Margin="0,0,690,0" Width="260"/>
@@ -137,16 +135,7 @@
             </TabControl.Template>
 
 
-<<<<<<< HEAD
-            <TabItem  Header="Код Варшамова" Height="35" Width="260"  Margin="0,0,0,0" Padding="30,0,0,0"
-                      Background="#FFF5F7F9" BorderBrush="#FFF5F7F9" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
 
-                <Grid Margin="280,-621,0,138">
-                    <Label  Content="Код Варшамова"  Margin="32,11,436,558"  FontSize="24"/>
-                    <Button Content="Теория"  Height="30" Width="90" HorizontalAlignment="Left" Margin="566,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Практика" Height="30"  Width="90" HorizontalAlignment="Left" Margin="432,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Тест" Height="30" Width="90"  HorizontalAlignment="Left" Margin="300,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB"  Style="{DynamicResource CornerRound_btn}" />
-=======
             <TabItem Name ="VarshamCode" Header="Код Варшамова" Height="35" Width="260"   Padding="30,0,0,0"
                       Background="#FFF5F7F9" BorderBrush="#FFF5F7F9" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
 
@@ -206,20 +195,11 @@
                     <Button Content="Теория"  Height="30" Width="90" HorizontalAlignment="Left" Margin="566,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                     <Button Content="Практика" Height="30"  Width="90" HorizontalAlignment="Left" Margin="432,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                     <Button Content="Тест" Height="30" Width="90"  HorizontalAlignment="Left" Margin="300,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB"  Style="{DynamicResource CornerRound_btn}" />-->
->>>>>>> master
                 </Grid>
             </TabItem>
 
 
-<<<<<<< HEAD
-            <TabItem Name  ="ElayesItem" Header="Код Эллаеса" Height="35" Width="260"  Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
 
-                <Grid Margin="280,-621,0,138">
-                    <Label  Content="Код Эллаеса"  Margin="32,11,436,558"  FontSize="24"/>
-                    <Button Content="Теория"  Height="30" Width="90" HorizontalAlignment="Left" Margin="566,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Практика" Height="30"  Width="90" HorizontalAlignment="Left" Margin="432,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Тест" Height="30" Width="90"  HorizontalAlignment="Left" Margin="300,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB"  Style="{DynamicResource CornerRound_btn}" />
-=======
             <TabItem Name  ="EllayesItem" Header="Код Эллаеса" Height="35" Width="260"  Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
 
                 <Grid Margin="275,-620,0,130">
@@ -325,25 +305,10 @@
 
 
 
-
-
->>>>>>> master
                 </Grid>
 
             </TabItem>
 
-<<<<<<< HEAD
-            <TabItem Header="Код Рида-Маллера" Height="35" Width="260"  Padding="30,0,0,0" BorderBrush="#FFF5F7F9" Background="#FFF5F7F9" VerticalAlignment="Bottom">
-                <Grid Margin="280,-621,0,138">
-                    <Label  Content="Код Рида-Маллера"  Margin="32,11,415,558"  FontSize="24"/>
-                    <Button Content="Теория"  Height="30" Width="90" HorizontalAlignment="Left" Margin="566,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Практика" Height="30"  Width="90" HorizontalAlignment="Left" Margin="432,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Тест" Height="30" Width="90"  HorizontalAlignment="Left" Margin="300,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB"  Style="{DynamicResource CornerRound_btn}" />
-                </Grid>
-
-            </TabItem>
-            
-=======
             <TabItem Name ="RidMallerCode" Header="Код Рида-Маллера" Height="35" Width="260"  Padding="30,0,0,0" BorderBrush="#FFF5F7F9" Background="#FFF5F7F9" VerticalAlignment="Bottom">
 
                 <Grid Margin="275,-620,0,130">
@@ -388,7 +353,6 @@
                 </Grid>
             </TabItem>
 
->>>>>>> master
             <TabItem Header="Код Хемминга" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код Абрамсона" Height="35" Width="260"  Padding="30,0,0,0"  BorderBrush="#FFF5F7F9" Background="#FFF5F7F9"/>
             <TabItem Header="Код Файра" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
@@ -410,10 +374,6 @@
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
         </TabControl>
 
         <!--<Label Content="Систематические коды" HorizontalAlignment="Left" Margin="24,16,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF8995AC"/>
