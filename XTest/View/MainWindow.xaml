@@ -332,11 +332,11 @@
                                 <Label  Content="Количество столбцов произвощяцей матрицы:"  Margin="30,210,287,339"  FontSize="14"  />
                                 <Label  Content="При данных d и n вычислите:"  Margin="30,165,287,384"  FontSize="14"  />
                                 <Label  Content="Минимальное кодовое состояние d = 5"  Margin="30,112,287,437"  FontSize="14"  />
-                                <TextBox Margin="445,210,88,339" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <TextBox Margin="445,210,88,339" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <TextBox Margin="445,250,88,299" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <TextBox Margin="445,330,88,219" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <TextBox Margin="445,290,88,259" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <TextBox Margin="445,250,88,299" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <TextBox Margin="445,330,88,219" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <TextBox Margin="445,290,88,259" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
@@ -350,11 +350,11 @@
                                 <Label  Content="Количество столбцов произвощяцей матрицы:"  Margin="30,210,287,339"  FontSize="14"  />
                                 <Label  Content="При данных d и n вычислите:"  Margin="30,165,287,384"  FontSize="14"  />
                                 <Label  Content="Минимальное кодовое состояние d = 5"  Margin="30,112,287,437"  FontSize="14"  />
-                                <TextBox Margin="445,210,88,339" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <TextBox Margin="445,210,88,339" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <TextBox Margin="445,250,88,299" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <TextBox Margin="445,330,88,219" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <TextBox Margin="445,290,88,259" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <TextBox Margin="445,250,88,299" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <TextBox Margin="445,330,88,219" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <TextBox Margin="445,290,88,259" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                             </Grid>
                         </TabItem>
 
