@@ -139,5 +139,26 @@
   <ItemGroup>
     <Resource Include="Resources\EF1.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RMF1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RMF2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RMF3.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RMF4.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RMF5.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RMF6.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RMF3_1.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

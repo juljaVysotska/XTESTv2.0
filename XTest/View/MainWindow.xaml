@@ -493,17 +493,124 @@
                             <Grid Background="White" Margin="0,0,-15,0">
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
-                                    <RichTextBox BorderBrush="White">
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True">
 
                                         <FlowDocument>
-                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Код Рида-Маллера
+                                            <Paragraph TextAlignment="Center" FontStyle="Italic" Padding="0 30 0 0 " FontSize="24" >Коды Рида-Маллера
                                             </Paragraph>
-
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
+                                            <Paragraph TextAlignment="Center" FontStyle="Italic" FontSize="24" >Краткие теоретические сведения
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Коды Рида-Маллера образуют класс двоичных систематическихкодов, имеющих различные значения избыточности R = r / n и значения минимальных кодовых расстояний dmin. Эти коды характеризуются следующими значениями параметров: длина кода n = 2m; количество информационных разрядов:                                                
                                             </Paragraph>
-
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="110"  Height="45" Source="..\Resources\RMF1.gif"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >минимальное кодовое расстояние d = 2m-b, где m &gt;= 3 – любое целое положительное число; b&gt;m – порядок кода.                                               
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Построение кодов Рида-Маллера сводится к следующему. Вначале строится производящая матрица G, первая строка которой содержит n единиц. Далее следует m строк, совокупность которых удобно рассматривать как (m x n) – матрицу, в качестве столбцов которой выбраны двоичные числа (начиная с нуля). Номера разрядов двоичных чисел удобно считать сверху вниз. Эти m строк составляют векторы первого порядка b. Далее идут строки векторов второго порядка, которые получаются из всех произведений двух строк первого порядка, затем – строки третьего порядка, являющиеся всеми произведениями трех строк первого порядка, и т.д.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Таким образом, если строится матрица G для кода порядка b, то она содержит одну строку со всеми единицами, m строк первого порядка, C2m строк второго порядка, C2mстрок третьего порядка и т.д. В общем случае количество строк:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="250"  Height="50" Source="..\Resources\RMF2.gif"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >и совпадает с количеством информационных разрядов k.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Декодирование кодов Рида-Маллера проводится очень просто. В этих кодах каждый из информационных символов uki  может быть описан не менее чем d = 2m-b независимыми проверочными уравнениями, аргументами которых являются символы ui кодового слова. Анализ результатов решения этих уравнений по принципу большинства позволяет определить значение информационных символов. Тем самым при исправлении ошибок исключается этап определения места ошибок.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Простота структуры производящей матрицы этих кодов позволяет установить связь между информационными символами uki и символами кодового слова ui. Каждый из информационных символов может быть описан уравнениями d = 2m-b.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >В общем случае для каждого uki должно быть не менее 2 независимых уравнений. Суммы каких именно символов кодового слова должны быть равны информационнлому символу uki, можно определить следующим образом. Назовем компоненту, соответствующую j-му нулю в векторе xi, и компоненту, соответствующую j-й единице в векторе xi, парными компонентами.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center"  FontWeight="Bold" >Пример построения матрицы
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14" Padding="30,0,30,0" >Построить матрицу для кода Рида - Маллера второго порядка ( b = 2 ) и m = 3 ( b&lt;m ). Первая строка содержит n = 23 единиц (11111111). Строим матрицу первого порядка (3 x 8):
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="250"  Height="80" Source="..\Resources\RMF3.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Для дальнейшего построения строк необходимо иметь в виду, что если перемножаются строки, например 01010101 и 00110011, результат получается путем поразрядного перемножения строк:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="300"  Height="90" Source="..\Resources\RMF3_1.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Далее построение матрицы сводится к получению строк второго порядка. Для этого перемножим первую и вторую строки, первую и третью, затем вторую и третью. В результате получим последующие три строки:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="250"  Height="80" Source="..\Resources\RMF4.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Полностью построенная матрица для кода Рида - Маллера второго порядка и m = 3, одинадцать информационных символов которого uk1, uk2, uk3, uk4, uk5, ... uk11 имеет вид:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="500"  Height="200" Source="..\Resources\RMF5.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16"  FontWeight="Bold" >Пpимеp кодиpования
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Koдовый вектор (закодированные информационные символы) имеет вид: V = uk1x0 + uk2x1 + uk3x2 + uk4x3 + uk5x4 + uk6x1x2 + uk7x1x3 + uk8x1x4 + uk9x2x3 + uk10x2x4 + uk11x3x4 =  f(u1, u2, u3, ..., u16).
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Из приведенной матрицы следует, что:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="600"  Height="150" Source="..\Resources\RMF6.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Предположим, что исходное сообщение имеет вид 10001011011. Тогда закодированное сообщение (кодовый вектор) выглядит как 1111101001101100.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Пример декодирования
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Пусть наш код характеризуется следующими параметрами: m = 4, b = 2. Из них считаем остальные показатели: n = 2m = 24 = 8; d = 2m-b = 22 = 4.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Закодированное кодом Рида - Мллера сообщение имеет вид: 1111101001101100. Определим исходное сообщение. Воспользовавшись любым из соотношений, определим uki для векторов второго порядка:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">uk11	= u1 + u5 + u9 + u13	= u2 + u6 + u10 + u14	= u3 + u7 + u11 + u15	= u4 + u8 + u12 + u16	= 1 + 1 + 0 + 1	= 1 ;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">uk10	= u1 + u3 + u9 + u11	= u2 + u4 + u10 + u12	= u5 + u7 + u13 + u15 	= u6 + u8 + u14 + u16	= 1 + 1 + 1 + 0	= 1;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">uk9	= u1 + u3 + u5 + u7	= u2 + u4 + u6 + u8	= u9 + u11 + u14 + u16	= u10 + u12 + u14 + u16	= 0 + 1 + 1 + 0 	= 1 ;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">uk8	= u1 + u2 + u9 + u10 	= u3 + u4 + u11 + u12	= u5 + u6 + u13 + u14	= u7 + u8 + u15 + u16	= 1 + 1 + 0 + 1	= 1;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">uk7	= u1 + u2 + u5 + u6	= u3 + u4 + u7 + u8	= u9 + u10 + u13 + u14	= u11 + u12 + u15 + 16 	= 1 + 1 + 1 + 0 	= 1 ;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">uk6	= u1 + u2 + u3 + u4 	= u5 + u6 + u7 + u8	= u9 + u10 + u11 + u12	= u13 + u14 + u15 + u16	= 1 + 1 + 1 + 1	= 0 ;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Нами найдены информационные символы uk6 ... uk11 (коэффициенты, соответствующие векторам второго порядка xi xj ).
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Определим uk5 ... uk2:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">uk5 	= u1 + u9	= u2 + u10	= u3 + u11	= u4 + u12 	= u5 + u15 	= u6 + u14 	= u7 + u15	= u8 + u16 	= 1 + 0 	= 1;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">uk4 	= u1 + u5 	= u2 + u6 	= u3 + u7 	= u4 + u8 	= u9 + u13 	= u10 + u14 	= u11 + u15 	= u12 + u16 	= 1 + 1 	= 0;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">uk3 	= u1 + u3 	= u2 + u4 	= u5 + u7 	= u6 + u8 	= u9 + u11 	=  u10 + u12 	= u13 + u15 	= u14 + u16 	= 1 + 1 	= 0;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">uk2 	= u1 + u2 	= u3 + u4 	= u5 + u6 	= u7 + u8 	= u9 + u10 	= u11 + u12	= u13 + u14	= u15 + u16	= 1 + 1	= 0;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Для нахождения uk1 необходимо снова вычислить uki и xi и сложить их с преобразованным сообщением. Если в результате сложения получим вектор, содержащий все единицы, uk1 = 1 , если полученный вектор содержит все нули, uk1 = 0. Так как uk4 = uk3 = uk2 = 0, то
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">0000000011111111 - uk5x4
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">1111111100000000 - преобразованное сообщение
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">_____________________
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">1111111111111111, т.е. uk1 = 1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Таким образом, исходное сообщение, выделенное из кодового слова, имеет вид 10001011011.
+                                            </Paragraph>                                           
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
@@ -605,6 +712,7 @@
 
 
         </TabControl>
+        <Frame Content="Frame" HorizontalAlignment="Left" Height="100" Margin="978,358,-124,0" VerticalAlignment="Top" Width="100"/>
 
         <!--<Label Content="Систематические коды" HorizontalAlignment="Left" Margin="24,16,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF8995AC"/>
         <Label Content="Цыклические коды" HorizontalAlignment="Left" Margin="24,198,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF8995AC"/>
