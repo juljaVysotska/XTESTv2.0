@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Models\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Berger.cs" />
     <Compile Include="Services\Class1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
