@@ -29,6 +29,24 @@ namespace XTest
             EllayesViewModel evm = new EllayesViewModel();
             DataContext = evm;          
         }
-        
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TabControl tabControl = (TabControl)sender;
+            if (tabControl.SelectedIndex == 2)
+            {
+
+            }
+        }
     }
 }
