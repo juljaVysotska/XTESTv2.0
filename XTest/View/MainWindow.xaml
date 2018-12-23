@@ -178,22 +178,18 @@
                                 <Label  Content="Количество столбцов произвощяцей матрицы:"  Margin="30,210,287,339"  FontSize="14"  />
                                 <Label  Content="При данных d и n вычислите:"  Margin="30,165,287,384"  FontSize="14"  />
                                 <Label  Content="Минимальное кодовое состояние d = 5"  Margin="30,112,287,437"  FontSize="14"  />
-                                <TextBox Margin="445,210,88,339" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <TextBox Margin="445,210,88,339" Padding="5,0,5,0" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <TextBox Margin="445,250,88,299" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
-                                <TextBox Margin="445,330,88,219" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
-                                <TextBox Margin="445,290,88,259" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <TextBox Margin="445,250,88,299" Padding="5,0,5,0" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <TextBox Margin="445,330,88,219" Padding="5,0,5,0" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <TextBox Margin="445,290,88,259" Padding="5,0,5,0" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
                             </Grid>
                         </TabItem>
 
                     </TabControl>
 
 
-                    <!--<Label  Content="Код Варшамова"  Margin="32,11,436,558"  FontSize="24"/>
-                    <Button Content="Теория"  Height="30" Width="90" HorizontalAlignment="Left" Margin="566,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Практика" Height="30"  Width="90" HorizontalAlignment="Left" Margin="432,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Тест" Height="30" Width="90"  HorizontalAlignment="Left" Margin="300,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB"  Style="{DynamicResource CornerRound_btn}" />-->
-                </Grid>
+                    </Grid>
             </TabItem>
 
 
@@ -293,17 +289,6 @@
                         </TabItem>
 
                     </TabControl>
-
-                    <!--<Label  Content="Код Эллаеса"  Margin="32,11,461,571"  FontSize="24"/>
-                    <Button Content="Теория" Command="{Binding  AddTheory}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="566,21,-359,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Практика" Height="30"  Width="90" HorizontalAlignment="Left" Margin="432,21,-225,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Тест" Height="30" Width="90"  HorizontalAlignment="Left" Margin="300,21,-93,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB"  Style="{DynamicResource CornerRound_btn}" />
-                    <Button Content="Далее" Height="30" Width="90"  HorizontalAlignment="Left" Margin="531,582,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB"  Style="{DynamicResource CornerRound_btn}" />-->
-
-
-
-
-
                 </Grid>
 
             </TabItem>
@@ -355,12 +340,65 @@
             <TabItem Header="Код Хемминга" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код Абрамсона" Height="35" Width="260"  Padding="30,0,0,0"  BorderBrush="#FFF5F7F9" Background="#FFF5F7F9"/>
             <TabItem Header="Код Файра" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
-            <TabItem Header="Код Хемминга" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код БЧХ" Height="35" Width="260"   Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Первичные недвоичные коды" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код с проверкой по |p|" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код с простым повторением" Height="35" Width="260"  Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
-            <TabItem Header="Итеративный код" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
+            <TabItem Header="Итеративный код" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+                <Grid Margin="275,-620,0,130">
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
+                        <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+                                    <RichTextBox BorderBrush="White" TextChanged="RichTextBox_TextChanged" IsReadOnly="True" IsUndoEnabled="False" Cursor="Arrow">
+
+                                        <FlowDocument>
+                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Итеративный код
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
+                                            </Paragraph>
+
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label  Content="Итеративный код"  Margin="30,30,323,506"  FontSize="24"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
+
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label  Content="Итеративный код"  Margin="30,30,288,506"  FontSize="24"/>
+                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
+                                <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
+
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+
+                            </Grid>
+                        </TabItem>
+
+                    </TabControl>
+
+
+                </Grid>
+            </TabItem>
             <TabItem Header="Код Грея" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
@@ -390,13 +428,11 @@
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Label  Content="Код Грея"  Margin="30,30,323,506"  FontSize="24"/>
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                
-                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
                                 <Label x:Name="labGrayNumbPractice" Content="11110001"  Margin="30,112,287,437"  FontSize="14"  />
 
                                 <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
-                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
 
                             </Grid>
                         </TabItem>
@@ -408,7 +444,8 @@
                                 <Label x:Name="labGrayNumb" Content="11110001"  Margin="30,112,287,437"  FontSize="14"  />
 
                                 <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
-                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
 
 
                             </Grid>
@@ -449,14 +486,13 @@
                                 <Label  Content="Двоично-десятичный код"  Margin="30,30,323,506"  FontSize="24"/>
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                 <Label  Content="Двоично-десятичный код"  Margin="30,30,288,506"  FontSize="24"/>
-                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
                                 <Label x:Name="labBinDecNumberPractice" Content="246"  Margin="30,112,287,437"  FontSize="14"  />
                                 <Label  Content="Код:"  Margin="30,149,287,400"  FontSize="14"  />
                                 <Label x:Name="labBinDecCodePractice" Content="5-2-1-1"  Margin="70,149,287,400"  FontSize="14"  />
 
                                 <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
-                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
 
                             </Grid>
                         </TabItem>
@@ -470,8 +506,9 @@
                                 <Label x:Name="labBinDecCode" Content="5-2-1-1"  Margin="70,149,287,400"  FontSize="14"  />
 
                                 <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
-                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" Padding="5,0,5,0" VerticalContentAlignment="Center"/>
 
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
 
                             </Grid>
                         </TabItem>
