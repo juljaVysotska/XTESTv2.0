@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using XTest.ViewModel;
+using XTest.Model.Models;
 using XTest.Model.Services;
 
 namespace XTest
@@ -23,7 +24,7 @@ namespace XTest
     public partial class MainWindow : Window
     {
 
-        Dictionary<string, int> marks = new Dictionary<string, int>();
+        Dictionary<string, Result> marks = new Dictionary<string, Result>();
         
         public MainWindow()
         {
@@ -44,23 +45,51 @@ namespace XTest
 
         private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!marks.ContainsKey("Berger"))
+            {
+                marks.Add("Berger", new Result("Berger", 6));
+            }
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
             {
+                GenerateBerger();
+            }
+        }
+
+        private void GenerateBerger()
+        {
+            Result result = marks["Berger"];
+            if (result.currentTestNumber <= 3)
+            {
+                lblBergerTaskExplanation.Content = "Encode this:";
                 lblTask.Content = Berger.generateEncode();
+            }
+            else if (result.currentTestNumber > 3 && result.currentTestNumber < 7)
+            {
+                lblBergerTaskExplanation.Content = "Decode this:";
+                lblTask.Content = Berger.generateDecode();
+            }
+            else
+            {
+                MessageBox.Show("You've already completed this test!");
             }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Result result = marks["Berger"];
             if (Berger.isEncodedCorrectly(lblTask.Content.ToString(), txbBergerResult.Text))
             {
                 MessageBox.Show("Congrats!");
+                result.correctTests += 1;
+                result.currentTestNumber += 1;
             }
             else
             {
-                MessageBox.Show("Game over");
+                MessageBox.Show("Game over. Correct answer: " + Berger.encode(lblTask.Content.ToString()));
+                result.currentTestNumber += 1;
             }
+            GenerateBerger();
         }
     }
 }
