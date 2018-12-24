@@ -35,11 +35,12 @@ namespace XTest.Model.Services
             return result.Equals(decode(task));
         }
 
-        private static string encode(string input)
+        public static string encode(string input)
         {
-            double r = Math.Ceiling(Math.Log(input.Length, 2));
-            int count = ~input.Count(c => c.Equals("1"));
-            string addition = count.ToString();
+            int r = (int) Math.Ceiling(Math.Log(input.Length, 2));
+            int count = ~input.Count(c => c == '1');
+            string addition = Convert.ToString(count, 2);
+            addition = addition.Substring(addition.Length - r);
             while (addition.Length < r)
             {
                 addition = "1" + addition;
@@ -47,7 +48,7 @@ namespace XTest.Model.Services
             return input + addition;
         }
 
-        private static string decode(string input)
+        public static string decode(string input)
         {
             return "";
         }

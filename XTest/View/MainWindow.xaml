@@ -402,7 +402,7 @@
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Label  Content="Код Бергера"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
+                                <Label x:Name="lblBergerTaskExplanation"  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
                                 <Label  Content="Результат:"  Margin="30,165,436.4,383.6"  FontSize="14"  />
                                 <TextBox x:Name="txbBergerResult" Margin="30,198,416.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Click"/>
