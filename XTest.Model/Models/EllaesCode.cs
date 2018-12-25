@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Models
 {
-    class Class1
+    public class EllaesCode
     {
+        public int[][] Array { get; set; }
     }
 }
