@@ -25,11 +25,7 @@ namespace XTest
         {
             InitializeComponent();
             EllayesViewModel evm = new EllayesViewModel();
-            GreyaViewModel greyavm = new GreyaViewModel();
-			BinaryDecimalViewModel bdvm = new BinaryDecimalViewModel();
-            //DataContext = evm;
-            DataContext = greyavm;
-			DataContext = bdvm;
+			DataContext = evm;
 
         }
 

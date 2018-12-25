@@ -10,7 +10,7 @@ using XTest.Model.Services;
 
 namespace XTest.ViewModel
 {
-    class BinaryDecimalViewModel : INotifyPropertyChanged
+    public class BinaryDecimalViewModel : INotifyPropertyChanged
     {
         private BinaryDecimalCodeService codeService = new BinaryDecimalCodeService();
 
@@ -147,7 +147,7 @@ namespace XTest.ViewModel
             }
         }
 
-        public BinaryDecimalViewModel()
+		public BinaryDecimalViewModel()
         {
             Random random = new Random();
             TestTaskBinaryDecimal = "Закодируйте сообщение";

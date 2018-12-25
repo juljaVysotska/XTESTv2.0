@@ -3,10 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:XTest"
+        xmlns:local="clr-namespace:XTest.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="660" Width="960" FontSize="14">
     <Window.Resources>
+        <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
+        <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -411,7 +413,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Код Грея" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
-                <Grid Margin="275,-620,0,130">
+                <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource greyaVM}}">
                     <TabControl SelectedIndex="{Binding GreyaSelectedTabIndex}" HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
@@ -473,8 +475,8 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Двоично-десятичные коды" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
-                <Grid Margin="275,-620,0,130">
-                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
+                <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource binarydecimalVM}}">
+                    <TabControl SelectedIndex="{Binding BinaryDecimalSelectedTabIndex}" HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
 

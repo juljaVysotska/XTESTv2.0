@@ -10,7 +10,7 @@ using XTest.Model.Services;
 
 namespace XTest.ViewModel
 {
-    class GreyaViewModel : INotifyPropertyChanged
+    public class GreyaViewModel : INotifyPropertyChanged
     {
         private GreyaCodeService codeService = new GreyaCodeService();
 
