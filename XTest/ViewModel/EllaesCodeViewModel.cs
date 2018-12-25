@@ -11,7 +11,7 @@ using XTest.Model.Services;
 
 namespace XTest.ViewModel
 {
-    public class EllaesCodeViewModel
+    public class EllaesCodeViewModel : INotifyPropertyChanged
     {
         private RelayCommand next;
         private int check { get; set; }
@@ -58,17 +58,17 @@ namespace XTest.ViewModel
 
                           OldArray = _service.GenerateArray(4, 4);
                           Array = _service.ResizeArray(OldArray);
-
+                          
                       }
                       else if (check == 4)
                       {
-                          MessageBox.Show("decode");
+                          MessageBox.Show("Исправьте ошибки в сообщении:");
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
                               mark += 1;
 
                           Array = _service.GenerateArrayWithException(4, 4);
-                          OldArray = _service.FuckenCSharp(Array);
+                          OldArray = _service.FuckingCSharp(Array);
                       }
                       else
                       {
@@ -76,12 +76,12 @@ namespace XTest.ViewModel
                           if (_service.Equals(OldArray, Array))
                               mark += 1;
                           Array = _service.GenerateArrayWithException(4, 4);
-                          OldArray = _service.FuckenCSharp(Array);
+                          OldArray = _service.FuckingCSharp(Array);
                       }
                       check += 1;
                       if (check == 9)
                       {
-                          MessageBox.Show(mark.ToString());
+                          MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8");
                       }
                   }));
             }

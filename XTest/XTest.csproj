@@ -160,5 +160,8 @@
   <ItemGroup>
     <Resource Include="Resources\RMF3_1.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Matrix.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

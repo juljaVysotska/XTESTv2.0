@@ -76,7 +76,7 @@ namespace XTest.Model.Services
             return array;
         }
 
-        public int[][] FuckenCSharp(int[][] arr)
+        public int[][] FuckingCSharp(int[][] arr)
         {
             int[][] array = new int[arr.Length][];
             for (int i = 0; i < arr.Length; i++)

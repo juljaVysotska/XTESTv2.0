@@ -455,7 +455,7 @@
                                         <Grid>
                                             <Label Content="Закодируйте число:"  Margin="30,20,487,419"></Label>
                                             <TextBox Margin="192,18,392,426" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                            
+
                                         </Grid>
                                     </TabItem>
                                     <TabItem Header="4" Visibility="Collapsed">
@@ -614,8 +614,8 @@
                                 <Button Content="Далее" Command="{Binding Next}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                 <Label Content="Закодируйте сообщение:" Margin="30,70,459,479"/>
                                 <WrapPanel Width="200" Height="200" Margin="30,90,440,264" DataContext="{Binding Array}">
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Name="tb00" Width="40" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Name="tb01" Width="40" Height="40" Text="{Binding Path=[0][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
                                     <TextBox Width="40" Height="40" Text="{Binding Path=[0][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
                                     <TextBox Width="40" Height="40" Text="{Binding Path=[0][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
                                     <TextBox Width="40" Height="40" Text="{Binding Path=[0][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
@@ -819,6 +819,38 @@
                                 <Label  Content="Код Рида-Маллера"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <WrapPanel Width="30" Height="330" Margin="540,134,95,117">
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </WrapPanel>
+                                <WrapPanel Width="480" Height="30" Margin="90,464,95,87">
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBox Width="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </WrapPanel>
+                                <Image Source="..\Resources\Matrix.png" HorizontalAlignment="Left" Height="218" Margin="30,208,0,0" VerticalAlignment="Top" Width="505"/>
                             </Grid>
                         </TabItem>
                     </TabControl>
@@ -902,7 +934,6 @@
 
 
         </TabControl>
-        <Frame Content="Frame" HorizontalAlignment="Left" Height="100" Margin="978,358,-124,0" VerticalAlignment="Top" Width="100"/>
 
         <!--<Label Content="Систематические коды" HorizontalAlignment="Left" Margin="24,16,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF8995AC"/>
         <Label Content="Цыклические коды" HorizontalAlignment="Left" Margin="24,198,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF8995AC"/>
