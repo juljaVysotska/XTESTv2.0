@@ -107,6 +107,7 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
+       
     </Window.Resources>
     <Grid>
 
