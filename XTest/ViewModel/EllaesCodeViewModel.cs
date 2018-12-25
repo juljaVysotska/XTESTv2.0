@@ -1,39 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using XTest.Model.Services;
 using XTest.Model.Models;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using XTest.Model.Services;
 
-namespace XTest.View
+namespace XTest.ViewModel
 {
-    /// <summary>
-    /// Логика взаимодействия для Test.xaml
-    /// </summary>
-    public partial class Test : Window
-    {
-
-
-        public Test()
-        {
-            var a = new TestVm(new EllaesCodeService(), new EllaesCode());
-            InitializeComponent();
-            DataContext = a;
-        }
-    }
-
-    public class TestVm : INotifyPropertyChanged
+    public class EllaesCodeViewModel
     {
         private RelayCommand next;
         private int check { get; set; }
@@ -43,7 +21,8 @@ namespace XTest.View
         public int[][] array;
         private int[][] OldArray { get; set; }
 
-        public int[][] Array {
+        public int[][] Array
+        {
             get { return array; }
             set
             {
@@ -53,15 +32,14 @@ namespace XTest.View
         }
 
 
-        public TestVm(EllaesCodeService ellaesCodeService, EllaesCode ellaesCode)
+        public EllaesCodeViewModel(EllaesCodeService ellaesCodeService, EllaesCode ellaesCode)
         {
             check = 1;
             mark = 0;
             this.EllaesCode = ellaesCode;
             this._service = ellaesCodeService;
-            Array = _service.GenerateTestArray(3, 3);
-            OldArray = Array;
-            
+            OldArray = _service.GenerateArray(4, 4);
+            Array = _service.ResizeArray(OldArray);
         }
 
         public RelayCommand Next
@@ -71,31 +49,38 @@ namespace XTest.View
                 return next ??
                   (next = new RelayCommand(obj =>
                   {
-                      if(check < 5)
+                      if (check < 4)
                       {
-                          if (Array == _service.Code(OldArray))
+                          OldArray = _service.Code(OldArray);
+                          if (_service.Equals(OldArray, Array))
                               mark += 1;
-                          Array = _service.GenerateTestArray(3, 3);
-                          OldArray = Array;
+
+                          OldArray = _service.GenerateArray(4, 4);
+                          Array = _service.ResizeArray(OldArray);
+
                       }
-                      else if(check == 5)
+                      else if (check == 4)
                       {
-                          if (Array == _service.Decode(OldArray))
+                          MessageBox.Show("decode");
+                          OldArray = _service.Code(OldArray);
+                          if (_service.Equals(OldArray, Array))
                               mark += 1;
-                          Array = _service.GenerateArrayWithException(3, 3);
-                          OldArray = Array;
+
+                          Array = _service.GenerateArrayWithException(4, 4);
+                          OldArray = _service.FuckenCSharp(Array);
                       }
                       else
                       {
-                      if (Array == _service.Decode(OldArray))
+                          OldArray = _service.Decode(OldArray);
+                          if (_service.Equals(OldArray, Array))
                               mark += 1;
-                          Array = _service.GenerateArrayWithException(3, 3);
-                          OldArray = Array;
+                          Array = _service.GenerateArrayWithException(4, 4);
+                          OldArray = _service.FuckenCSharp(Array);
                       }
                       check += 1;
-                      if(check == 9)
+                      if (check == 9)
                       {
-                          MessageBox.Show("Your mark {0}", mark.ToString());
+                          MessageBox.Show(mark.ToString());
                       }
                   }));
             }

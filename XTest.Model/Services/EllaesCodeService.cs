@@ -19,8 +19,22 @@ namespace XTest.Model.Services
                 arr[i][arr[i].Length - 1] = Sum(arr[i]) % 2;
             }
             arr[arr.Length - 1] = SumForColumn(arr);
-
+            arr[arr.Length - 1][arr.Length - 1] = 0;
             return arr;
+        }
+
+        public bool Equals(int[][] a1, int[][] a2)
+        {
+            var a = true;
+            for (int i = 0; i < a1.Length; i++)
+            {
+                for (int j = 0; j < a2.Length; j++)
+                {
+                    if (a)
+                        a = a1[i][j] == a2[i][j];
+                }
+            }
+            return a;
         }
 
         public int[][] GenerateArray(int x, int y)
@@ -59,6 +73,20 @@ namespace XTest.Model.Services
                 }
             }
 
+            return array;
+        }
+
+        public int[][] FuckenCSharp(int [][] arr)
+        {
+            int[][] array = new int[arr.Length][];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                array[i] = new int[arr.Length];
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    array[i][j] = arr[i][j];
+                }
+            }
             return array;
         }
 
@@ -108,6 +136,20 @@ namespace XTest.Model.Services
                 }
             }
             return sum;
+        }
+
+        public int[][] ResizeArray(int[][] arr)
+        {
+            Array.Resize(ref arr, arr.Length + 1);
+            arr[arr.Length - 1] = new int[arr[0].Length];
+            arr[arr.Length - 1].Initialize();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Array.Resize(ref arr[i], arr[i].Length + 1);
+                arr[i][arr[i].Length - 1] = 0;
+            }
+
+            return arr;
         }
 
         public int[][] Decode(int[][] array)
