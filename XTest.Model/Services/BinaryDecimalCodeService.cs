@@ -23,7 +23,7 @@ namespace XTest.Model.Services
             }
             result = result.Insert(0, "-" + second.ToString());
             result = result.Insert(0, "-" + third.ToString());
-            result = result.Insert(fourth < third ? 1 : 0, fourth.ToString());
+            result = result.Insert(0, fourth.ToString());
             return result;
         }
 
