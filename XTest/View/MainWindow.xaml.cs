@@ -23,8 +23,9 @@ namespace XTest
         
         public MainWindow()
         {
+            
             InitializeComponent();
-            EllayesViewModel evm = new EllayesViewModel();
+            EllaesCodeViewModel evm = new EllaesCodeViewModel(new Model.Services.EllaesCodeService(), new Model.Models.EllaesCode());
             DataContext = evm;          
         }
 

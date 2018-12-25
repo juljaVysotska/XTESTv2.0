@@ -42,6 +42,7 @@ namespace XTest.ViewModel
             Array = _service.ResizeArray(OldArray);
         }
 
+
         public RelayCommand Next
         {
             get

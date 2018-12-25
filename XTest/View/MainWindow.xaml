@@ -611,33 +611,33 @@
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Label  Content="Код Эллаеса"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Button Content="Далее" Command="{Binding Next}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                 <Label Content="Закодируйте сообщение:" Margin="30,70,459,479"/>
-                                <WrapPanel Width="200" Height="200" Margin="30,90,440,264">
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                <WrapPanel Width="200" Height="200" Margin="30,90,440,264" DataContext="{Binding Array}">
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
                                 </WrapPanel>
                             </Grid>
                         </TabItem>
