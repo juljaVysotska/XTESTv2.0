@@ -489,9 +489,31 @@
                                             <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Двоично-десятичный код
                                             </Paragraph>
 
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >
+                                                В двоично-десятичном коде каждая десятичная цифра представляется группой цифр, состоящей из 4-х двухпозиционных символов. Данная группа позволяет сформировать N = 2&#8308;= 4 = 16 кодовых комбинаций. Так как в десятичной системе используется лишь десять цифр, шесть комбинаций являются избыточными. Поэтому выбор десяти используемых для построения ДДК комбинаций имеет 16! · 6!=2.9 · 10 &#185;&#8304; вариантов. Использование, например, первых четырех степеней цифры 2 ( 2&#8304; = 1; 2&#185; = 2; 2&#178; = 4; 2&#179; = 8 ) приводит к одному из возможных кодов 8-4-2-1.
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                Каждый разряд ДДК имеет постоянный вес. ДДК строятся с учетом следующих условий:
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                1.	Вес наименьшей значащей цифры q1 равен 1.  
+                                             </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" >
+                                                2.	Вес второй по минимальному значению цифры q2 составляет 1 или 2.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50, 0,30,0" >
+                                                3.	Веса, соответствующие двум оставшимся цифрам кода, подбирают так, чтобы их сумма была больше или равна 6 ( если q2=2 ), или 7 ( если q2 = 1 ).
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                В соответсвии с этим можно получить 17 видов кодов:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,290,0" >
+                                                8-4-2-1,	7-4-2-1,	6-4-2-1,	5-4-2-1,	4-4-2-1,
+                                                7-3-2-1,	6-3-2-1,	5-3-2-1,	4-3-2-1,	3-3-2-1,
+                                                6-2-2-1,	5-2-2-1,	4-2-2-1,	6-3-1-1,	5-3-1-1,
+                                                4-3-1-1,	5-2-1-1.
+
                                             </Paragraph>
 
                                         </FlowDocument>
