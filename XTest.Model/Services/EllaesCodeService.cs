@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Services
 {
-    class EllaesCodeService
+    public class EllaesCodeService
     {
         public int[][] Code(int[][] arr)
         {
@@ -33,6 +33,29 @@ namespace XTest.Model.Services
                 for (int j = 0; j < y; j++)
                 {
                     array[i][j] = rand.Next(0, 2);
+                }
+            }
+
+            return array;
+        }
+
+        public int[][] GenerateTestArray(int x, int y)
+        {
+            Random rand = new Random();
+            int[][] array = new int[x + 1][];
+            for (int i = 0; i < x + 1; i++)
+            {
+                array[i] = new int[y + 1];
+                for (int j = 0; j < y + 1; j++)
+                {
+                    if (i == x || j == y)
+                    {
+                        array[i][j] = 0;
+                    }
+                    else
+                    {
+                        array[i][j] = rand.Next(0, 2);
+                    }
                 }
             }
 
