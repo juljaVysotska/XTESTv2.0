@@ -6,21 +6,18 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using XTest.Model.Models;
 using XTest.Model.Services;
 
 namespace XTest.ViewModel
 {
-    public class EllaesCodeViewModel : INotifyPropertyChanged
+    public class RidMallerViewModel : INotifyPropertyChanged
     {
-        private RelayCommand next;
+        public RidMaller _service { get; set; }
+        public int[][] array;
         private int check { get; set; }
         private int mark { get; set; }
-        private EllaesCodeService _service { get; set; }
-        public EllaesCode EllaesCode { get; set; }
-        public int[][] array;
         private int[][] OldArray { get; set; }
-
+       
         public int[][] Array
         {
             get { return array; }
@@ -31,16 +28,28 @@ namespace XTest.ViewModel
             }
         }
 
-
-        public EllaesCodeViewModel(EllaesCodeService ellaesCodeService, EllaesCode ellaesCode)
+        private string output;
+        public string Output
         {
+            get { return output; }
+            set
+            {
+                output = value;
+                OnPropertyChanged("Output");
+            }
+        }
+
+        public RidMallerViewModel(RidMaller ridMaller)
+        {
+            this._service = ridMaller;
+            Array = ridMaller.RandomMessage(ridMaller.GenerateArray());
+            OldArray = ridMaller.FuckenCSharp(Array);
             check = 1;
             mark = 0;
-            this.EllaesCode = ellaesCode;
-            this._service = ellaesCodeService;
-            OldArray = _service.GenerateArray(4, 4);
-            Array = _service.ResizeArray(OldArray);
+
         }
+
+        private RelayCommand next;
 
         public RelayCommand Next
         {
@@ -49,24 +58,24 @@ namespace XTest.ViewModel
                 return next ??
                   (next = new RelayCommand(obj =>
                   {
-                      if (check < 4)
+                      if (check < 3)
                       {
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
                               mark += 1;
 
-                          OldArray = _service.GenerateArray(4, 4);
-                          Array = _service.ResizeArray(OldArray);
+                          Array = _service.RandomMessage(_service.GenerateArray());
+                          OldArray = _service.FuckenCSharp(Array);
 
                       }
-                      else if (check == 4)
+                      else if (check == 3)
                       {
                           MessageBox.Show("decode");
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
                               mark += 1;
 
-                          Array = _service.GenerateArrayWithException(4, 4);
+                          Array = _service.RandomMessageDecode(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                       }
                       else
@@ -74,11 +83,11 @@ namespace XTest.ViewModel
                           OldArray = _service.Decode(OldArray);
                           if (_service.Equals(OldArray, Array))
                               mark += 1;
-                          Array = _service.GenerateArrayWithException(4, 4);
+                          Array = _service.RandomMessageDecode(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                       }
                       check += 1;
-                      if (check == 9)
+                      if (check == 7)
                       {
                           MessageBox.Show(mark.ToString());
                       }
@@ -86,6 +95,7 @@ namespace XTest.ViewModel
             }
 
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
