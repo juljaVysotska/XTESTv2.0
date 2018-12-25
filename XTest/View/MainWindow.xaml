@@ -109,7 +109,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        
+
 
         <TabControl HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="950" TabStripPlacement="Right" Margin="2,0,0,0" >
             <TabControl.Template>
@@ -163,7 +163,7 @@
                                             <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">2. Сумма любых j-строк должно иметь не менее d-j единиц;
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">3. Число столбцов в подматрице (r – число проверочных элементов)
-                                            </Paragraph>                                                                             
+                                            </Paragraph>
                                             <Paragraph TextAlignment="Center" >
                                                 <InlineUIContainer>
                                                     <Image Width="110"  Height="45" Source="..\Resources\VF1.gif"/>
@@ -313,7 +313,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">3. Используя эту таблицу, можно по полученному коду, вычислив синдромы, определить номер искаженного разряда.
                                             </Paragraph>
-                                           
+
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
@@ -323,25 +323,155 @@
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код Варшамова"  Margin="30,30,417,506"  FontSize="24"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <Label  Content="Длина кода n = 18 элементов"  Margin="30,80,287,469"  FontSize="14"  />
-                                <Label  Content="Количество строк производящей матрицы:"  Margin="29,290,288,259"  FontSize="14"  />
-                                <Label  Content="Количество проверочных разрядов:"  Margin="30,330,287,219"  FontSize="14"  />
-                                <Label  Content="Количество исправляемых ошибок:"  Margin="30,250,287,299"  FontSize="14"  />
-                                <Label  Content="Количество столбцов произвощяцей матрицы:"  Margin="30,210,287,339"  FontSize="14"  />
-                                <Label  Content="При данных d и n вычислите:"  Margin="30,165,287,384"  FontSize="14"  />
-                                <Label  Content="Минимальное кодовое состояние d = 5"  Margin="30,112,287,437"  FontSize="14"  />
-                                <TextBox Margin="445,210,88,339" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <TextBox Margin="445,250,88,299" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <TextBox Margin="445,330,88,219" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <TextBox Margin="445,290,88,259" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <Button Name ="codeVAR_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="code_btn_Click"/>
+                                <Button Name="decodeVAR_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decode_btn_Click"/>
+                                <TabControl Name="codeVAR_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
+                                    <TabItem Name ="codeVAR_item"  Header="Code" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение:"  Margin="30,30,417,440"  FontSize="14"/>
+                                            <Label  Content="Длина кода n = 18 элементов"  Margin="30,80,287,393"  FontSize="14"  />
+                                            <Label  Content="Количество строк производящей матрицы:"  Margin="29,290,288,175"  FontSize="14"  />
+                                            <Label  Content="Количество проверочных разрядов:"  Margin="30,330,287,136"  FontSize="14"  />
+                                            <Label  Content="Количество исправляемых ошибок:"  Margin="30,250,287,215"  FontSize="14"  />
+                                            <Label  Content="Количество столбцов произвощяцей матрицы:"  Margin="30,210,287,255"  FontSize="14"  />
+                                            <Label  Content="При данных d и n вычислите:"  Margin="30,165,287,295"  FontSize="14"  />
+                                            <Label  Content="Минимальное кодовое состояние d = 5"  Margin="30,112,287,354"  FontSize="14"  />
+                                            <TextBox   Margin="461,200,59,280" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Margin="461,350,59,130" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Margin="461,300,59,180" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Margin="461,250,59,230" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+                                            <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Name ="decodeVAR_item" Header="Decode" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
+
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код Варшамова"  Margin="30,30,417,506"  FontSize="24"/>
+                                <Button Name ="nextVAR_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="nextVAR_btn_Click" />
+                                <TabControl Margin="0,10,10,80" Name="TestVAR_control"  >
+                                    <TabItem Header="1" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение:"  Margin="30,30,417,385"  FontSize="14"/>
+                                            <Label  Content="Длина кода n = 18 элементов"  Margin="30,80,287,348"  FontSize="14"  />
+                                            <Label  Content="Количество строк производящей матрицы:"  Margin="29,290,288,130"  FontSize="14"  />
+                                            <Label  Content="Количество проверочных разрядов:"  Margin="30,330,287,88"  FontSize="14"  />
+                                            <Label  Content="Количество исправляемых ошибок:"  Margin="30,250,287,175"  FontSize="14"  />
+                                            <Label  Content="Количество столбцов произвощяцей матрицы:"  Margin="30,210,287,215"  FontSize="14"  />
+                                            <Label  Content="При данных d и n вычислите:"  Margin="30,165,287,260"  FontSize="14"  />
+                                            <Label  Content="Минимальное кодовое состояние d = 5"  Margin="30,112,287,300"  FontSize="14"  />
+                                            <TextBox   Margin="460,190,60,250" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Margin="460,340,60,100" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Margin="460,290,60,150" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Margin="460,240,60,200" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="2"  Visibility="Collapsed">
+                                        <Grid>
+                                            <Label Content="Постройте производящую матрицу G при tu = "  Margin="30,30,300,408"/>
+                                            <TextBox Margin="349,28,235,416" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <Label Content="и d = "  Margin="431,30,176,408"/>
+                                            <TextBox Margin="478,28,106,416" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <WrapPanel Width="240" Height="240" HorizontalAlignment="Left" Margin="30 0 0 0 ">
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+
+
+                                            </WrapPanel>
+                                            <WrapPanel Width="160" Height="240" HorizontalAlignment="Left" Margin="300 0 0 0 ">
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                            </WrapPanel>
+                                            <Rectangle Fill="Gray" HorizontalAlignment="Left" Height="240" Margin="285,122,0,0" VerticalAlignment="Top" Width="1"/>
+
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="3" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label Content="Закодируйте число:"  Margin="30,20,487,419"></Label>
+                                            <TextBox Margin="192,18,392,426" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="4" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label Content="4"  Margin="304,204,326,234"></Label>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="5" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label Content="5"  Margin="304,204,326,234"></Label>
+                                        </Grid>
+                                    </TabItem>
+                                </TabControl>
+
+
+                                <!--<Label  Content="Код Варшамова"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Label  Content="Длина кода n = 18 элементов"  Margin="30,80,287,469"  FontSize="14"  />
                                 <Label  Content="Количество строк производящей матрицы:"  Margin="29,290,288,259"  FontSize="14"  />
@@ -354,7 +484,7 @@
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                 <TextBox Margin="445,250,88,299" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                 <TextBox Margin="445,330,88,219" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <TextBox Margin="445,290,88,259" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <TextBox Margin="445,290,88,259" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>-->
                             </Grid>
                         </TabItem>
 
@@ -404,35 +534,77 @@
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код Эллаеса"  Margin="30,30,417,506"  FontSize="24"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <Label Content="Закодируйте сообщение:" Margin="30,70,459,469"/>
-                                <WrapPanel Width="200" Height="200" Margin="30,90,440,264">
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                </WrapPanel>
+                                <Button Name ="codeEL_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeEL_btn_Click" />
+                                <Button Name="decodeEL_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeEL_btn_Click" />
+                                <TabControl Name="codeEL_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
+                                    <TabItem Name ="codeEL_item"  Header="Code" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение:"  Margin="30,30,417,440"  FontSize="14"/>
+                                            <WrapPanel Width="200" Height="200" HorizontalAlignment="Left" Margin="30 -150 0 0 ">
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                            </WrapPanel>
+
+                                            <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Name ="decodeEL_item" Header="Decode" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Раскодируйте сообщение:"  Margin="30,30,417,440"  FontSize="14"/>
+                                            <WrapPanel Width="200" Height="200" HorizontalAlignment="Left" Margin="30 -150 0 0 ">
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                            </WrapPanel>
+                                            <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
+
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест"  Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
@@ -500,14 +672,14 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Center" FontStyle="Italic" FontSize="24" >Краткие теоретические сведения
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Коды Рида-Маллера образуют класс двоичных систематическихкодов, имеющих различные значения избыточности R = r / n и значения минимальных кодовых расстояний dmin. Эти коды характеризуются следующими значениями параметров: длина кода n = 2m; количество информационных разрядов:                                                
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Коды Рида-Маллера образуют класс двоичных систематическихкодов, имеющих различные значения избыточности R = r / n и значения минимальных кодовых расстояний dmin. Эти коды характеризуются следующими значениями параметров: длина кода n = 2m; количество информационных разрядов:
                                             </Paragraph>
                                             <Paragraph TextAlignment="Center" >
                                                 <InlineUIContainer>
                                                     <Image Width="110"  Height="45" Source="..\Resources\RMF1.gif"/>
                                                 </InlineUIContainer>
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >минимальное кодовое расстояние d = 2m-b, где m &gt;= 3 – любое целое положительное число; b&gt;m – порядок кода.                                               
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >минимальное кодовое расстояние d = 2m-b, где m &gt;= 3 – любое целое положительное число; b&gt;m – порядок кода.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Построение кодов Рида-Маллера сводится к следующему. Вначале строится производящая матрица G, первая строка которой содержит n единиц. Далее следует m строк, совокупность которых удобно рассматривать как (m x n) – матрицу, в качестве столбцов которой выбраны двоичные числа (начиная с нуля). Номера разрядов двоичных чисел удобно считать сверху вниз. Эти m строк составляют векторы первого порядка b. Далее идут строки векторов второго порядка, которые получаются из всех произведений двух строк первого порядка, затем – строки третьего порядка, являющиеся всеми произведениями трех строк первого порядка, и т.д.
                                             </Paragraph>
@@ -610,7 +782,7 @@
                                             <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">1111111111111111, т.е. uk1 = 1.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="14"  Padding="30,0,30,0">Таким образом, исходное сообщение, выделенное из кодового слова, имеет вид 10001011011.
-                                            </Paragraph>                                           
+                                            </Paragraph>
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
@@ -620,8 +792,26 @@
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код Рида-Маллера"  Margin="30,30,399,506"  FontSize="24"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Button Name ="codeRM_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeRM_btn_Click" />
+                                <Button Name="decodeRM_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeRM_btn_Click" />
+                                <TabControl Name="codeRM_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
+                                    <TabItem Name ="codeRM_item"  Header="Code" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение:"  Margin="30,30,417,440"  FontSize="14"/>
+
+
+                                            <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Name ="decodeRM_item" Header="Decode" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Раскодируйте сообщение:"  Margin="30,30,417,440"  FontSize="14"/>
+
+                                            <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
@@ -635,10 +825,10 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Код Хемминга" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
+            <TabItem Header="Код Хемминга(Систематический)" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код Абрамсона" Height="35" Width="260"  Padding="30,0,0,0"  BorderBrush="#FFF5F7F9" Background="#FFF5F7F9"/>
             <TabItem Header="Код Файра" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
-            <TabItem Header="Код Хемминга" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
+            <TabItem Header="Код Хемминга(Циклический)" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код БЧХ" Height="35" Width="260"   Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Первичные недвоичные коды" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код с проверкой по |p|" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>

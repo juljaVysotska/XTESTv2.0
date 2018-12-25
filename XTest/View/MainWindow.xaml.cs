@@ -16,9 +16,7 @@ using XTest.ViewModel;
 
 namespace XTest
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+   
     public partial class MainWindow : Window
     {
         
@@ -30,15 +28,7 @@ namespace XTest
             DataContext = evm;          
         }
 
-        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
 
         private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -47,6 +37,45 @@ namespace XTest
             {
 
             }
+        }
+      
+        private void code_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeVAR_control.SelectedIndex = 0;
+        }
+
+       
+        private void decode_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeVAR_control.SelectedIndex = 1;
+        }
+
+        
+
+        private void codeRM_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeRM_control.SelectedIndex = 0;
+        }
+
+        private void decodeRM_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeRM_control.SelectedIndex = 1;
+        }
+
+        private void codeEL_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeEL_control.SelectedIndex = 0;
+        }
+
+        private void decodeEL_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeEL_control.SelectedIndex = 1;
+        }
+
+        private void nextVAR_btn_Click(object sender, RoutedEventArgs e)
+        {
+            
+                TestVAR_control.SelectedIndex++;
         }
     }
 }
