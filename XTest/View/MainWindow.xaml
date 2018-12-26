@@ -422,11 +422,90 @@
                                             <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Код Грея
                                             </Paragraph>
 
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0">
+                                                Отражённые ( рефлексные ) коды строятся таким образом, что соседние кодовые комбинации, в отличии от простых двоичных кодов, различаются цифрой только в одном разряде, т.е. кодовое расстояние между соседними кодовыми комбинациями такого кода равно единице. Из отражённых кодов наибольшее распространение получил код Грея.
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0">
+                                                Преобразование простого двоичного кода в код Грея производится по алгоритму: Yn = Xn; Yi = Xi xor Xi+1 , (xor – суммирование по модулю 2), где Yi – значение i-го разряда кода Грея; Xi, Xi+1 – соответствующие значения разрядов двоичного числа ( i = 1, 2, ..., n, считая, разряд с i = 1 – младший, i = n – старший ). Т.е., для всех разрядов, кроме младшего, значение кода Грея равно сумме по модулю 2 соответствующего и следующего более старшего разрядов двоичного кода. Самый старший разряд сохраняется.
                                             </Paragraph>
 
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0">
+                                                Декодирование ( обратное преобразование ) кода Грея в двоичный код осуществляют по следующей формуле: Xn = Yn; Xi = Xi + 1 xor Yi, где Xn и Yn – значения старшего разряда двоичного кода и кода Грея соответственно ( i = n-1, n-2, ..., 1, считая, разряд с i = 1 – младший, i = n – старший ).
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                1.	Старший разряд переносится в декодированную последовательность без изменений.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                2.	Следующий разряды получаются суммированием по модулю 2 соответствующий и всех более старший разрядов закодированного сообщения – при 8-ми разрядном сообщении для декодирования 4-го рязряда необходимо сложить по модулю 2 разряды 4, 5, 6, 7 и 8 кодовой комбинации.
+                                            </Paragraph>
+
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" FontSize="16">
+                                                Примеры кодирования
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                1.	Закодировать число 10111101011 кодом Грея.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,400,0">
+                                                Y11 = X11 = 1
+                                                <LineBreak/>
+
+                                                Y10 = X10 xor X11 = 1
+                                                <LineBreak/>
+
+                                                Y9 = X9 xor X10 = 1
+                                                <LineBreak/>
+                                                Y8 = X8 xor X9 = 0
+                                                <LineBreak/>
+                                                Y7 = X7 xor X8 = 0
+                                                <LineBreak/>
+                                                Y6 = X6 xor X7 = 0
+                                                <LineBreak/>
+                                                Y5 = X5 xor X6 = 1
+                                                <LineBreak/>
+                                                Y4 = X4 xor X5 = 1
+                                                <LineBreak/>
+                                                Y3 = X3 xor X4 = 1
+                                                <LineBreak/>
+                                                Y2 = X2 xor X3 = 1
+                                                <LineBreak/>
+                                                Y1 = X1 xor X2 = 0
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                Результат кодирования: 11100011110.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" FontSize="16">
+                                                Примеры декодирования
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                2.	Декодировать число 1110101, закодированное кодом Грея.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0">
+                                                X7 = Y7 = 1
+                                                <LineBreak/>
+                                                X6 = Y7 xor Y6 = 0
+                                                <LineBreak/>
+                                                X5 = Y7 xor Y6 xor Y5 = 1
+                                                <LineBreak/>
+                                                X4 = Y7 xor Y6 xor Y5 xor Y4 = 1
+                                                <LineBreak/>
+                                                X3 = Y7 xor Y6 xor Y5 xor Y4 xor Y3 = 0
+                                                <LineBreak/>
+                                                X2 = Y7 xor Y6 xor Y5 xor Y4 xor Y3 xor Y2 = 0
+                                                <LineBreak/>
+                                                X1 = Y7 xor Y6 xor Y5 xor Y4 xor Y3 xor Y2 xor Y2 = 1
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                Результат декодирования: 1011001.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" FontSize="16">
+                                               
+                                            </Paragraph>
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
