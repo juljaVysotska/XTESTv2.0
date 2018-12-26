@@ -515,7 +515,115 @@
                                                 4-3-1-1,	5-2-1-1.
 
                                             </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                Для перевода одной десятичной цифры в двоично-десятичный код необходимо начиная со старшего двоичного разряда проверить, не больше ли вес текущей (двоичной) цифры остатка числа; если меньше или равен – то в выходной код записать 1 и вычесть вес двоичной цифры из остатка числа, иначе в выходной код записать 0
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" >
+                                                Например, необходимо закодировать цифру 5 кодом 6-4-2-1.
+                                            </Paragraph>
 
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" >
+                                                1.	Вес самого старшего бита – 6, что больше текущего остатка (начальное значение которого совпадает с числом). Таким образом, первая цифра двоично-десятичного кода – 0.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" >
+                                                2.	Вес 2-го бита – 4 > 5. Значит, следующий бит выходного кода равен 1 и остаток равен 5 - 4 = 1.</Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" >
+                                                3.	Вес 3-го бита – 2, что больше, чем остаток (1). В выходной код помещается 0.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" >
+                                                4.	Вес 4-го бита – 1 равен остатку числа. Последняя цифра выходного кода – 1. Окончательный остаток 1 - 1 = 0. Его равенство 0 говорит о правильности кодирования.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                Результат кодирования – 0101
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                Для получения значения тетрады (4 бит), записанной в двоично-десятичном коде, необходимо просуммировать значения весов разрядов, значения которых равны 1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                Раскодируем число 0101 из 6-4-2-1 двоичного-десятичного кода. Результат: 0 · 6 + 1 · 4 + 0 · 2 + 1 · 1 = 5.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                ДДК не имеют однозначности в изображении десятичных чисел ( кроме кода 8-4-2-1 ). Так, код 4-3-2-1 позволяет записать число 64 как 1010 1000 или 0111 0101.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" FontSize="16" >
+                                               Примеры кодрования    
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                1.	Закодировать число 8701 двоично-десятичным кодом 5-2-1-1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,230,0" Margin="Auto,1,Auto,Auto" >
+                                                Так как:
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,390,0" Margin="Auto,1,Auto,Auto" >
+                                                8 = 5 · 1 + 2 · 1 + 1 · 1 + 1 · 0;
+                                                7 = 5 · 1 + 2 · 1 + 1 · 0 + 1 · 0;
+                                                0 = 5 · 0 + 2 · 0 + 1 · 0 + 1 · 0;
+                                                1 = 5 · 0 + 2 · 0 + 1 · 1 + 1 · 0,
+
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                закодированное число будет иметь вид: 1110 1100 0000 0010.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                2.	Закодировать число 927 двоично-десятичным кодом 7-4-2-1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,230,0" Margin="Auto,1,Auto,Auto" >
+                                                Так как:
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,390,0" Margin="Auto,1,Auto,Auto" >
+                                                9 = 7 · 1 + 4 · 0 + 2 · 1 + 1 · 0;
+                                                2 = 7 · 0 + 4 · 0 + 2 · 1 + 1 · 0;
+                                                7 = 7 · 1 + 4 · 0 + 2 · 0 + 1 · 0,
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                закодированное число будет иметь вид 1010 0010 1000.
+                                            </Paragraph>
+                                            
+                                            
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" FontSize="16" >
+                                                Примеры декодрования
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                1.	Декодировать число 001001011100, если известно, что оно закодировано в двоично-десятичном коде 6-3-2-1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,230,0" Margin="Auto,1,Auto,Auto" >
+                                                Так как:
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,390,0" Margin="Auto,1,Auto,Auto" >
+                                                6 · 0 + 3 · 0 + 2 · 1 + 1 · 0 = 2;
+                                                6 · 0 + 3 · 1 + 2 · 0 + 1 · 1 = 4;
+                                                6 · 1 + 3 · 1 + 2 · 0 + 1 · 0 = 9,
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                то декодированным числом будет 249.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                2.	Декодировать число 100101110010, если известно, что оно закодировано в двоично-десятичном коде 8-4-2-1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,230,0" Margin="Auto,1,Auto,Auto" >
+                                                Так как:
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,390,0" Margin="Auto,1,Auto,Auto" >
+                                                8 · 1 + 4 · 0 + 2 · 0 + 1 · 1 = 9
+                                                8 · 1 + 4 · 1 + 2 · 1 + 1 · 1 = 7
+                                                8 · 0 + 4 · 0 + 2 · 1 + 1 · 0 = 2
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                то декодированным числом будет 972.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                
+                                            </Paragraph>
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
