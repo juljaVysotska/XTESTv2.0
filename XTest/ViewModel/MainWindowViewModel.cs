@@ -11,6 +11,7 @@ namespace XTest.ViewModel
 {
     public class MainWindowViewModel
     {
-       
+        EllaesCodeViewModel viewModel { get; set; }
+        RidMallerViewModel mallerViewModel { get; set; }
     }
 }

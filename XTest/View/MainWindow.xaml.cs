@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using XTest.Model.Models;
 using XTest.ViewModel;
 
 namespace XTest
@@ -20,13 +21,12 @@ namespace XTest
     public partial class MainWindow : Window
     {
         
-        
+        public static Dictionary<string, Result> results = new Dictionary<string, Result>();
+
         public MainWindow()
         {
-            
             InitializeComponent();
-            EllaesCodeViewModel evm = new EllaesCodeViewModel(new Model.Services.EllaesCodeService(), new Model.Models.EllaesCode());
-            DataContext = evm;          
+          
         }
 
         

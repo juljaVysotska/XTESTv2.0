@@ -66,7 +66,7 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\EllaesCodeViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\RidMallerViewModelcs.cs" />
+    <Compile Include="ViewModel\RidMallerViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -162,7 +162,7 @@
     <Resource Include="Resources\RMF3_1.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Matrix.PNG" />
+    <Resource Include="Resources\matrix.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

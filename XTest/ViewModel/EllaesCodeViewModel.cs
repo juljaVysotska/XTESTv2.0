@@ -14,12 +14,34 @@ namespace XTest.ViewModel
     public class EllaesCodeViewModel : INotifyPropertyChanged
     {
         private RelayCommand next;
+        private RelayCommand nextCode;
+        private RelayCommand nextDecode;
+        private string result;
         private int check { get; set; }
         private int mark { get; set; }
         private EllaesCodeService _service { get; set; }
-        public EllaesCode EllaesCode { get; set; }
         public int[][] array;
         private int[][] OldArray { get; set; }
+        private int[][] OldArrayCode { get; set; }
+        private int[][] OldArrayDecode { get; set; }
+        public int[][] arrayCode;
+        public int[][] arrayDecode;
+
+        public string Result
+        {
+            get { return Output(MainWindow.results); }
+            set { result = value; }
+        }
+
+        private string Output(Dictionary<string, Result> dictionary)
+        {
+            var str = "";
+            foreach (var item in dictionary)
+            {
+                str += item.Value.ToString();
+            }
+            return str;
+        }
 
         public int[][] Array
         {
@@ -31,15 +53,40 @@ namespace XTest.ViewModel
             }
         }
 
-
-        public EllaesCodeViewModel(EllaesCodeService ellaesCodeService, EllaesCode ellaesCode)
+        public int[][] ArrayCode
         {
+            get { return array; }
+            set
+            {
+                array = value;
+                OnPropertyChanged("ArrayCode");
+            }
+        }
+
+        public int[][] ArrayDecode
+        {
+            get { return array; }
+            set
+            {
+                array = value;
+                OnPropertyChanged("ArrayDecode");
+            }
+        }
+
+
+
+        public EllaesCodeViewModel()
+        {
+            EllaesCodeService ellaesCodeService = new EllaesCodeService();
             check = 1;
             mark = 0;
-            this.EllaesCode = ellaesCode;
             this._service = ellaesCodeService;
             OldArray = _service.GenerateArray(4, 4);
             Array = _service.ResizeArray(OldArray);
+            OldArrayCode = _service.GenerateArray(4, 4);
+            ArrayCode = _service.ResizeArray(OldArrayCode);
+            ArrayDecode = _service.GenerateArrayWithException(4, 4);
+            OldArrayDecode = _service.FuckingCSharp(ArrayDecode);
         }
 
 
@@ -82,7 +129,54 @@ namespace XTest.ViewModel
                       if (check == 9)
                       {
                           MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8");
+                          OldArray = _service.GenerateArray(4, 4);
+                          Array = _service.ResizeArray(OldArray);
+                          MainWindow.results.Add("Ellaes", new Result("Код Эллаеса ", mark));
+                          check = 1;
+                          mark = 0;
                       }
+                  }));
+            }
+
+        }
+
+
+        public RelayCommand NextCode
+        {
+            get
+            {
+                return nextCode ??
+                  (nextCode = new RelayCommand(obj =>
+                  {
+                      OldArrayCode = _service.Code(OldArrayCode);
+                      if (_service.Equals(OldArrayCode, ArrayCode))
+                          MessageBox.Show("Правильно!");
+                      else
+                          MessageBox.Show("Не правильно!");
+
+                      OldArrayCode = _service.GenerateArray(4, 4);
+                      ArrayCode = _service.ResizeArray(OldArrayCode);
+                  }));
+            }
+
+        }
+
+
+        public RelayCommand NextDecode
+        {
+            get
+            {
+                return nextDecode ??
+                  (nextDecode = new RelayCommand(obj =>
+                  {
+                      OldArrayDecode = _service.Decode(OldArrayDecode);
+                      if (_service.Equals(OldArrayDecode, ArrayDecode))
+                          MessageBox.Show("Правильно!");
+                      else
+                          MessageBox.Show("Не правильно!");
+
+                      ArrayDecode = _service.GenerateArrayWithException(4, 4);
+                      OldArrayDecode = _service.FuckingCSharp(ArrayDecode);
                   }));
             }
 

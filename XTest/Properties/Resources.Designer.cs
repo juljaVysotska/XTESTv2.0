@@ -73,9 +73,9 @@ namespace XTest.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Matrix {
+        internal static System.Drawing.Bitmap matrix {
             get {
-                object obj = ResourceManager.GetObject("Matrix", resourceCulture);
+                object obj = ResourceManager.GetObject("matrix", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

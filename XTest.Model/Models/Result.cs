@@ -18,5 +18,10 @@ namespace XTest.Model.Models
             this.testName = testName;
             this.testsTotal = testsTotal;
         }
+
+        public override string ToString()
+        {
+            return testName + " - " + testsTotal;
+        }
     }
 }
