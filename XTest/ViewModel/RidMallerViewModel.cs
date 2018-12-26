@@ -104,7 +104,7 @@ namespace XTest.ViewModel
                       }
                       else if (check == 3)
                       {
-                          MessageBox.Show("decode");
+                          MessageBox.Show("А теперь раскодируйте сообщение!");
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
                               mark += 1;
