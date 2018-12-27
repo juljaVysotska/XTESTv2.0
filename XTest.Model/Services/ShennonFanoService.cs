@@ -8,9 +8,22 @@ namespace XTest.Model.Services
 {
     public class ShennonFanoService
     {
+        Random rnd = new Random();
+
         public Dictionary<int, double> generateMessages()
         {
-            return null;
+            Dictionary<int, double> result = new Dictionary<int, double>();
+            double message = 1.0;
+            int i = 0;
+            while (message > 0)
+            {
+                double minus = rnd.Next((int)(message * 100))/100;
+                message -= minus;
+                result.Add(i, minus);
+                i++;
+            }
+            
+            return result;
         }
 
         public bool isCalculatedCorrectly()
