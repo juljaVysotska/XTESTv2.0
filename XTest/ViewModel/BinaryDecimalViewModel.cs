@@ -142,7 +142,9 @@ namespace XTest.ViewModel
                             CorrectAnsverBinaryDecimal = 0;
                             testMode = TestMode.Encoding;
                             TestTaskBinaryDecimal = "Закодируйте сообщение";
-                        }
+							BinaryDecimalCodeTest.Message = random.Next(100, 10000).ToString();
+
+						}
                     }));
             }
         }
