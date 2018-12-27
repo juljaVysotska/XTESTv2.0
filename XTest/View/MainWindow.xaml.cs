@@ -78,5 +78,10 @@ namespace XTest
             
                 TestVAR_control.SelectedIndex++;
         }
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
