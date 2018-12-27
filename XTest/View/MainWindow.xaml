@@ -4,11 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XTest.ViewModel"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="660" Width="960" FontSize="14" ResizeMode="CanMinimize">
+        mc:Ignorable="d" Icon="..\Resources\key.ico"
+        Title="CryptTest" Height="660" Width="960" FontSize="14" ResizeMode="CanMinimize">
     <Window.Resources>
         <local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
         <local:EllaesCodeViewModel x:Key="ellaesVM"></local:EllaesCodeViewModel>
+        <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
+        <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -137,7 +139,16 @@
                 </ControlTemplate>
             </TabControl.Template>
 
+            <TabItem  Visibility="Collapsed" Header="Главная" Height="35" Width="260"   Padding="30,0,0,0"
+                      Background="#B2CAF2" BorderBrush="#B2CAF2" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
 
+                <Grid Margin="275,-620,0,130">
+                    <Image HorizontalAlignment="Center" Width="300" Source="..\Resources\logo.png" Margin="132,142,119,289"/>
+                    <Label HorizontalAlignment="Center"  FontSize="26" Content="Добро пожаловать в CryptTest!" Height="57" VerticalAlignment="Bottom" Margin="148,0,139,226" Width="384"/>
+                    <Label  FontSize="20
+                            " HorizontalAlignment="Center" Content="Для начала работы с программой выберите тест" Margin="116,393,95,201" Width="460"/>
+                </Grid>
+            </TabItem>
             <TabItem  Header="Отчеты" Height="35" Width="260"   Padding="30,0,0,0"
                       Background="#B2CAF2" BorderBrush="#B2CAF2" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
                 <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource ellaesVM}}">
@@ -4534,28 +4545,22 @@
             <TabItem Header="Первичные недвоичные коды" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код с проверкой по |p|" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код с простым повторением" Height="35" Width="260"  Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
-            <TabItem Header="Итеративный код" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
-            <TabItem Header="Код Грея" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
-            <TabItem Header="Двоично-десятичные коды" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
-
-            <TabItem Header="Код Бергера" Height="35" Width="260" Padding="30,0,0,0"  
-                     Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+            <TabItem Header="Итеративный код" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
-                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656" SelectionChanged="TabControl_Berger_SelectionChanged">
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
-                                    <RichTextBox BorderBrush="White">
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" IsUndoEnabled="False" Cursor="Arrow">
 
                                         <FlowDocument>
-                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Код Бергера
+                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Итеративный код
                                             </Paragraph>
 
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0"  >Коды Бергера относятся к разряду несистематических кодов. Существует несколько вариантов построения кодов Бергера. В наиболее простом варианте кодирование происходит следующим образом: в информационной части кода подсчитывается число единиц, после чего формируются проверочные разряды, представляющие инвертированную запись этого числа в двоичной форме.Таким образом, число проверочных разрядов R равно наименьшему целому числу, превышающему Log2( k ), т.е R >= Log2( k ). Например, сообщение 011010, закодированное кодом Бергера, выглядит как 011010100.
-                                            Коды Бергера предназначены для использования в асиметричных каналах связи, где возможно либо только преобразование нулей в единицы, либо наоборот.
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >Преимущество кодов Бергера по сравнению с кодами с постоянным весом заключается в том, что они являются разделимыми кодами с очень простым алгоритмом построения проверочной части. В симметричных канал такие коды обнаруживают все одиночные ошибки и некоторую часть многократных. Можно построить коды с лучшими обнаруживающими свойствами для симметричных каналов. В таких кодах каждой информационной позиции приписывают различный вес, причем ни один вес не является степенью двух ( 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 17 и т.д ). Проверочные знаки этого образуются путем суммирования весов, соответствующих тем информационным разрядам, в которых расположены единицы, затем происходит инверсия полученного числа. Такой код обнаруживает в симметричном канале все двойные ошибки и обнаруживает и исправляет одиночные ошибки.
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
                                             </Paragraph>
 
                                         </FlowDocument>
@@ -4567,33 +4572,440 @@
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код Бергера"  Margin="30,30,417,506"  FontSize="24"/>
+                                <Label  Content="Итеративный код"  Margin="30,30,323,506"  FontSize="24"/>
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
+                                <Label Content="5" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="/ 10" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="3" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" Margin="0,-1,0,1.4" VerticalAlignment="Bottom">
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код Бергера"  Margin="30,30,417,506"  FontSize="24"/>
+                                <Label  Content="Итеративный код"  Margin="30,30,288,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
-                                <Label  Content="Результат:"  Margin="30,165,436.4,383.6"  FontSize="14"  />
-                                <TextBox Margin="30,198,416.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
                                 <Label x:Name="Lbl_Task"  Content="Закодируйте сообщение"  Margin="29,112,287.4,437.6"  FontSize="14"  />
+
+
+                                <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
+                                <Label Content="5" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="/ 10" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="3" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+
                             </Grid>
                         </TabItem>
 
                     </TabControl>
 
 
-                    <!--<Label  Content="Код Варшамова"  Margin="32,11,436,558"  FontSize="24"/>
-                    <Button Content="Теория"  Height="30" Width="90" HorizontalAlignment="Left" Margin="566,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Практика" Height="30"  Width="90" HorizontalAlignment="Left" Margin="432,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                    <Button Content="Тест" Height="30" Width="90"  HorizontalAlignment="Left" Margin="300,21,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB"  Style="{DynamicResource CornerRound_btn}" />-->
                 </Grid>
             </TabItem>
+            <TabItem Header="Код Грея" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+                <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource greyaVM}}">
+                    <TabControl SelectedIndex="{Binding GreyaSelectedTabIndex}" HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
+                        <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
 
-            <TabItem Header="Код Шеннона-Фано" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" IsUndoEnabled="False" Cursor="Arrow">
+
+                                        <FlowDocument>
+                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Код Грея
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0">
+                                                Отражённые ( рефлексные ) коды строятся таким образом, что соседние кодовые комбинации, в отличии от простых двоичных кодов, различаются цифрой только в одном разряде, т.е. кодовое расстояние между соседними кодовыми комбинациями такого кода равно единице. Из отражённых кодов наибольшее распространение получил код Грея.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0">
+                                                Преобразование простого двоичного кода в код Грея производится по алгоритму: Yn = Xn; Yi = Xi xor Xi+1 , (xor – суммирование по модулю 2), где Yi – значение i-го разряда кода Грея; Xi, Xi+1 – соответствующие значения разрядов двоичного числа ( i = 1, 2, ..., n, считая, разряд с i = 1 – младший, i = n – старший ). Т.е., для всех разрядов, кроме младшего, значение кода Грея равно сумме по модулю 2 соответствующего и следующего более старшего разрядов двоичного кода. Самый старший разряд сохраняется.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0">
+                                                Декодирование ( обратное преобразование ) кода Грея в двоичный код осуществляют по следующей формуле: Xn = Yn; Xi = Xi + 1 xor Yi, где Xn и Yn – значения старшего разряда двоичного кода и кода Грея соответственно ( i = n-1, n-2, ..., 1, считая, разряд с i = 1 – младший, i = n – старший ).
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                1.	Старший разряд переносится в декодированную последовательность без изменений.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                2.	Следующий разряды получаются суммированием по модулю 2 соответствующий и всех более старший разрядов закодированного сообщения – при 8-ми разрядном сообщении для декодирования 4-го рязряда необходимо сложить по модулю 2 разряды 4, 5, 6, 7 и 8 кодовой комбинации.
+                                            </Paragraph>
+
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" FontSize="16">
+                                                Примеры кодирования
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                1.	Закодировать число 10111101011 кодом Грея.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,400,0">
+                                                Y11 = X11 = 1
+                                                <LineBreak/>
+
+                                                Y10 = X10 xor X11 = 1
+                                                <LineBreak/>
+
+                                                Y9 = X9 xor X10 = 1
+                                                <LineBreak/>
+                                                Y8 = X8 xor X9 = 0
+                                                <LineBreak/>
+                                                Y7 = X7 xor X8 = 0
+                                                <LineBreak/>
+                                                Y6 = X6 xor X7 = 0
+                                                <LineBreak/>
+                                                Y5 = X5 xor X6 = 1
+                                                <LineBreak/>
+                                                Y4 = X4 xor X5 = 1
+                                                <LineBreak/>
+                                                Y3 = X3 xor X4 = 1
+                                                <LineBreak/>
+                                                Y2 = X2 xor X3 = 1
+                                                <LineBreak/>
+                                                Y1 = X1 xor X2 = 0
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                Результат кодирования: 11100011110.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" FontSize="16">
+                                                Примеры декодирования
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                2.	Декодировать число 1110101, закодированное кодом Грея.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0">
+                                                X7 = Y7 = 1
+                                                <LineBreak/>
+                                                X6 = Y7 xor Y6 = 0
+                                                <LineBreak/>
+                                                X5 = Y7 xor Y6 xor Y5 = 1
+                                                <LineBreak/>
+                                                X4 = Y7 xor Y6 xor Y5 xor Y4 = 1
+                                                <LineBreak/>
+                                                X3 = Y7 xor Y6 xor Y5 xor Y4 xor Y3 = 0
+                                                <LineBreak/>
+                                                X2 = Y7 xor Y6 xor Y5 xor Y4 xor Y3 xor Y2 = 0
+                                                <LineBreak/>
+                                                X1 = Y7 xor Y6 xor Y5 xor Y4 xor Y3 xor Y2 xor Y2 = 1
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0">
+                                                Результат декодирования: 1011001.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" FontSize="16">
+                                               
+                                            </Paragraph>
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Button Name ="codeVAR_btn2" Command="{Binding SetEncoding}" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" />
+                                <Button Name="decodeVAR_btn2" Command="{Binding SetDecoding}" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                <Label  Content="Код Грея"  Margin="30,30,323,506"  FontSize="24"/>
+                                <Button Command="{Binding CheckPractice}" Content="Проверить"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Label  Content="{Binding PracticeTask}"  Margin="30,80,287,469"  FontSize="14"  />
+                                <Label x:Name="labGrayNumbPractice" Content="{Binding GreyaCodePractice.Message, UpdateSourceTrigger=PropertyChanged}"  Margin="30,112,287,437"  FontSize="14" />
+
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Text="{Binding GreyaCodePractice.Result, UpdateSourceTrigger=PropertyChanged}" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                               
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label  Content="Код Грея"  Margin="30,30,288,506"  FontSize="24"/>
+                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
+                                <Label  Content="{Binding TestTask, UpdateSourceTrigger=PropertyChanged}"  Margin="30,80,287,469"  FontSize="14"  />
+                                <Label x:Name="labGrayNumb" Content="{Binding GreyaCodeTest.Message, UpdateSourceTrigger=PropertyChanged}"  Margin="30,112,287,437"  FontSize="14"  />
+
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Text="{Binding GreyaCodeTest.Result, UpdateSourceTrigger=PropertyChanged}" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <Button Command="{Binding NextTest}" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
+                                <Label Content="{Binding TestNumber, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="/ 10" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="{Binding CorrectAnsver, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+
+
+                            </Grid>
+                        </TabItem>
+
+                    </TabControl>
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Двоично-десятичные коды" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+                <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource binarydecimalVM}}">
+                    <TabControl SelectedIndex="{Binding BinaryDecimalSelectedTabIndex}" HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
+                        <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+                                    <RichTextBox BorderBrush="White" IsUndoEnabled="False" IsReadOnly="True" Cursor="Arrow">
+
+                                        <FlowDocument>
+                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Двоично-десятичный код
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >
+                                                В двоично-десятичном коде каждая десятичная цифра представляется группой цифр, состоящей из 4-х двухпозиционных символов. Данная группа позволяет сформировать N = 2&#8308;= 4 = 16 кодовых комбинаций. Так как в десятичной системе используется лишь десять цифр, шесть комбинаций являются избыточными. Поэтому выбор десяти используемых для построения ДДК комбинаций имеет 16! · 6!=2.9 · 10 &#185;&#8304; вариантов. Использование, например, первых четырех степеней цифры 2 ( 2&#8304; = 1; 2&#185; = 2; 2&#178; = 4; 2&#179; = 8 ) приводит к одному из возможных кодов 8-4-2-1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                Каждый разряд ДДК имеет постоянный вес. ДДК строятся с учетом следующих условий:
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                1.	Вес наименьшей значащей цифры q1 равен 1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" >
+                                                2.	Вес второй по минимальному значению цифры q2 составляет 1 или 2.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50, 0,30,0" >
+                                                3.	Веса, соответствующие двум оставшимся цифрам кода, подбирают так, чтобы их сумма была больше или равна 6 ( если q2=2 ), или 7 ( если q2 = 1 ).
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                В соответсвии с этим можно получить 17 видов кодов:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,290,0" >
+                                                8-4-2-1,	7-4-2-1,	6-4-2-1,	5-4-2-1,	4-4-2-1,
+                                                7-3-2-1,	6-3-2-1,	5-3-2-1,	4-3-2-1,	3-3-2-1,
+                                                6-2-2-1,	5-2-2-1,	4-2-2-1,	6-3-1-1,	5-3-1-1,
+                                                4-3-1-1,	5-2-1-1.
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                Для перевода одной десятичной цифры в двоично-десятичный код необходимо начиная со старшего двоичного разряда проверить, не больше ли вес текущей (двоичной) цифры остатка числа; если меньше или равен – то в выходной код записать 1 и вычесть вес двоичной цифры из остатка числа, иначе в выходной код записать 0
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" >
+                                                Например, необходимо закодировать цифру 5 кодом 6-4-2-1.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" >
+                                                1.	Вес самого старшего бита – 6, что больше текущего остатка (начальное значение которого совпадает с числом). Таким образом, первая цифра двоично-десятичного кода – 0.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" >
+                                                2.	Вес 2-го бита – 4 > 5. Значит, следующий бит выходного кода равен 1 и остаток равен 5 - 4 = 1.</Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" >
+                                                3.	Вес 3-го бита – 2, что больше, чем остаток (1). В выходной код помещается 0.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" >
+                                                4.	Вес 4-го бита – 1 равен остатку числа. Последняя цифра выходного кода – 1. Окончательный остаток 1 - 1 = 0. Его равенство 0 говорит о правильности кодирования.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                Результат кодирования – 0101
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                Для получения значения тетрады (4 бит), записанной в двоично-десятичном коде, необходимо просуммировать значения весов разрядов, значения которых равны 1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                Раскодируем число 0101 из 6-4-2-1 двоичного-десятичного кода. Результат: 0 · 6 + 1 · 4 + 0 · 2 + 1 · 1 = 5.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                ДДК не имеют однозначности в изображении десятичных чисел ( кроме кода 8-4-2-1 ). Так, код 4-3-2-1 позволяет записать число 64 как 1010 1000 или 0111 0101.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" FontSize="16" >
+                                                Примеры кодрования
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                1.	Закодировать число 8701 двоично-десятичным кодом 5-2-1-1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,230,0" Margin="Auto,1,Auto,Auto" >
+                                                Так как:
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,390,0" Margin="Auto,1,Auto,Auto" >
+                                                8 = 5 · 1 + 2 · 1 + 1 · 1 + 1 · 0;
+                                                7 = 5 · 1 + 2 · 1 + 1 · 0 + 1 · 0;
+                                                0 = 5 · 0 + 2 · 0 + 1 · 0 + 1 · 0;
+                                                1 = 5 · 0 + 2 · 0 + 1 · 1 + 1 · 0,
+
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                закодированное число будет иметь вид: 1110 1100 0000 0010.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                2.	Закодировать число 927 двоично-десятичным кодом 7-4-2-1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,230,0" Margin="Auto,1,Auto,Auto" >
+                                                Так как:
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,390,0" Margin="Auto,1,Auto,Auto" >
+                                                9 = 7 · 1 + 4 · 0 + 2 · 1 + 1 · 0;
+                                                2 = 7 · 0 + 4 · 0 + 2 · 1 + 1 · 0;
+                                                7 = 7 · 1 + 4 · 0 + 2 · 0 + 1 · 0,
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                закодированное число будет иметь вид 1010 0010 1000.
+                                            </Paragraph>
+
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" FontSize="16" >
+                                                Примеры декодрования
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                1.	Декодировать число 001001011100, если известно, что оно закодировано в двоично-десятичном коде 6-3-2-1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,230,0" Margin="Auto,1,Auto,Auto" >
+                                                Так как:
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,390,0" Margin="Auto,1,Auto,Auto" >
+                                                6 · 0 + 3 · 0 + 2 · 1 + 1 · 0 = 2;
+                                                6 · 0 + 3 · 1 + 2 · 0 + 1 · 1 = 4;
+                                                6 · 1 + 3 · 1 + 2 · 0 + 1 · 0 = 9,
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                то декодированным числом будет 249.
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                2.	Декодировать число 100101110010, если известно, что оно закодировано в двоично-десятичном коде 8-4-2-1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,230,0" Margin="Auto,1,Auto,Auto" >
+                                                Так как:
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,390,0" Margin="Auto,1,Auto,Auto" >
+                                                8 · 1 + 4 · 0 + 2 · 0 + 1 · 1 = 9
+                                                8 · 1 + 4 · 1 + 2 · 1 + 1 · 1 = 7
+                                                8 · 0 + 4 · 0 + 2 · 1 + 1 · 0 = 2
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+                                                то декодированным числом будет 972.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
+
+                                            </Paragraph>
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Button Command="{Binding SetEncoding}" Name ="practiceCodeVAR_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" />
+                                <Button Command="{Binding SetDecoding}" Name="practiceDecodeVAR_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                <Label  Content="Двоично-десятичный код"  Margin="30,30,323,506"  FontSize="24"/>
+                                <Button Command="{Binding CheckPractice}" Content="Проверить"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Label  Content="Двоично-десятичный код"  Margin="30,30,288,506"  FontSize="24"/>
+                                <Label  Content="{Binding PracticeTaskBinaryDecimal,UpdateSourceTrigger=PropertyChanged}"  Margin="30,80,287,469"  FontSize="14"  />
+                                <Label x:Name="labBinDecNumberPractice" Content="{Binding BinaryDecimalCodePractice.Message, UpdateSourceTrigger=PropertyChanged}"  Margin="30,112,287,437"  FontSize="14"  />
+                                <Label  Content="Код:"  Margin="30,149,287,400"  FontSize="14"  />
+                                <Label x:Name="labBinDecCodePractice" Content="{Binding BinaryDecimalCodePractice.Code, UpdateSourceTrigger=PropertyChanged}"  Margin="70,149,287,400"  FontSize="14"  />
+
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Text="{Binding BinaryDecimalCodePractice.Result, UpdateSourceTrigger=PropertyChanged}" Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+
+
+                            </Grid>
+                            <!--<Grid Background="White" Margin="0,0,-15,0">
+                                   <TabControl Name="codeVAR_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
+                                        <TabItem Name ="codeVAR_item"  Header="Code" Visibility="Collapsed">
+                                            <Grid>
+
+                                                <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                            </Grid>
+                                        </TabItem>
+                                        <TabItem Name ="decodeVAR_item" Header="Decode" Visibility="Collapsed" >
+                                            <Grid>
+                                                <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                            </Grid>
+                                        </TabItem>
+
+                                    </TabControl>
+
+                                </Grid>-->
+  
+                        </TabItem>
+            <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label  Content="Двоично-десятичный код"  Margin="30,30,288,506"  FontSize="24"/>
+                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
+                                <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
+                                <Label x:Name="labBinDecNumber" Content="246"  Margin="30,112,287,437"  FontSize="14"  />
+                                <Label  Content="Код:"  Margin="30,149,287,400"  FontSize="14"  />
+                                <Label x:Name="labBinDecCode" Content="5-2-1-1"  Margin="70,149,287,400"  FontSize="14"  />
+
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" Padding="5,0,5,0" VerticalContentAlignment="Center"/>
+
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Grid Background="White">
+                                    <Label  Content="Двоично-десятичный код"  Margin="30,30,323,506"  FontSize="24"/>
+                                    <Button Command="{Binding NextBinaryDecimalTest}"  Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                    <Label  Content="Двоично-десятичный код"  Margin="30,30,288,506"  FontSize="24"/>
+                                    <Label  Content="{Binding TestTaskBinaryDecimal,UpdateSourceTrigger=PropertyChanged}"  Margin="30,80,287,469"  FontSize="14"  />
+                                    <Label x:Name="labBinDecNumberPractice1" Content="{Binding BinaryDecimalCodeTest.Message,UpdateSourceTrigger=PropertyChanged}"  Margin="30,112,287,437"  FontSize="14"  />
+                                    <Label  Content="Код:"  Margin="30,149,287,400"  FontSize="14"  />
+                                    <Label x:Name="labBinDecCodePractice1" Content="{Binding BinaryDecimalCodeTest.Code,UpdateSourceTrigger=PropertyChanged}"  Margin="70,149,287,400"  FontSize="14"  />
+
+                                    <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                    <TextBox Text="{Binding BinaryDecimalCodeTest.Result, UpdateSourceTrigger=PropertyChanged}" Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                    <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
+                                    <Label Content="{Binding TestNumberBinaryDecimal,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                    <Label Content="/ 10" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                    <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                    <Label Content="{Binding CorrectAnsverBinaryDecimal,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+
+
+                                </Grid>
+
+                            </Grid>
+                        </TabItem>
+
+                    </TabControl>
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Код Бергера" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
+            <TabItem Header="Код шеннона-Фано" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код Хаффмена" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Коды спутники" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Энтропия" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>

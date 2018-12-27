@@ -123,7 +123,7 @@ namespace XTest.ViewModel
                       check += 1;
                       if (check == 7)
                       {
-                          MessageBox.Show(mark.ToString());
+                          MessageBox.Show("Правильных ответов"+ mark.ToString() + " из 6");
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                           check = 1;
