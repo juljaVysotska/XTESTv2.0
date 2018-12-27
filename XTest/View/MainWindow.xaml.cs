@@ -93,7 +93,10 @@ namespace XTest
 
         int cheat;
         string correctAnswer;
+        string dcorrectAnswer;
+        bool isCodingEnabled;
         private void hemmingCoding() {
+            isCodingEnabled = true;
             string taskNumber = "";
             Random rnd = new Random();
             int a = rnd.Next(6) + 9;
@@ -111,16 +114,21 @@ namespace XTest
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (tbHem.Text == correctAnswer)
+            if (tbHem.Text == correctAnswer && isCodingEnabled)
             {
-             MessageBox.Show("Правильно");
+                MessageBox.Show("Правильно");
                 cheat = 0;
 
                 hemmingCoding();
-               
-                
+
+
             }
-            else {
+            else if (tbHem.Text == dcorrectAnswer && !isCodingEnabled) {
+                MessageBox.Show("Правильно");
+                cheat = 0;
+            }
+            else
+            {
                 MessageBox.Show("Неправильно");
                 cheat = 0;
             }
@@ -133,9 +141,12 @@ namespace XTest
 
         private void BtnHemNext_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (cheat == 5)
+            if (cheat == 5 && isCodingEnabled)
             {
                 tbHem.Text = correctAnswer;
+            }
+            else if (cheat == 5 && !isCodingEnabled) {
+                tbHem.Text = dcorrectAnswer;
             }
             else { cheat++; }
 
@@ -148,6 +159,16 @@ namespace XTest
 
         private void BtnHemDecoding_Click(object sender, RoutedEventArgs e)
         {
+            hemDecoding();
+        }
+
+        private void BtnHemCoding_Click(object sender, RoutedEventArgs e)
+        {
+            hemmingCoding();
+        }
+        private void hemDecoding() {
+
+            isCodingEnabled = false;
             string taskNumber = "";
             Random rnd = new Random();
             int a = rnd.Next(6) + 9;
@@ -160,12 +181,7 @@ namespace XTest
             }
             lblHemtask.Content = "Раскодируйте сообщение: " + Model.Services.HemmingCodeService.Main(taskNumber);
             //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
-            correctAnswer = taskNumber;
-        }
-
-        private void BtnHemCoding_Click(object sender, RoutedEventArgs e)
-        {
-            hemmingCoding();
+            dcorrectAnswer = taskNumber;
         }
     }
 }
