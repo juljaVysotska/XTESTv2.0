@@ -5,15 +5,16 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace XTest.ViewModel
 {
-    public class MainWindowViewModel
+    class EllayesViewModel
+
     {
-		public GreyaViewModel greyavm { get; set; }
-		public BinaryDecimalViewModel bdvm { get; set; }
-        EllaesCodeViewModel viewModel { get; set; }
-        RidMallerViewModel mallerViewModel { get; set; }
+
+
     }
 }
