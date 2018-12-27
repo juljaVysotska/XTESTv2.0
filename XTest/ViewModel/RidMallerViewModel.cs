@@ -104,7 +104,7 @@ namespace XTest.ViewModel
                       }
                       else if (check == 3)
                       {
-                          MessageBox.Show("decode");
+                          MessageBox.Show("Декодирование.");
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
                               mark += 1;
@@ -123,7 +123,7 @@ namespace XTest.ViewModel
                       check += 1;
                       if (check == 7)
                       {
-                          MessageBox.Show(mark.ToString());
+                          MessageBox.Show("Правильных ответов"+ mark.ToString() + " из 6");
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                           check = 1;

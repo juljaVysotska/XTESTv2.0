@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XTest.ViewModel"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="660" Width="960" FontSize="14" ResizeMode="CanMinimize">
+        mc:Ignorable="d" Icon="..\Resources\key.ico"
+        Title="CryptTest" Height="660" Width="960" FontSize="14" ResizeMode="CanMinimize">
     <Window.Resources>
         <local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
         <local:EllaesCodeViewModel x:Key="ellaesVM"></local:EllaesCodeViewModel>
@@ -137,7 +137,16 @@
                 </ControlTemplate>
             </TabControl.Template>
 
+            <TabItem  Visibility="Collapsed" Header="Главная" Height="35" Width="260"   Padding="30,0,0,0"
+                      Background="#B2CAF2" BorderBrush="#B2CAF2" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
 
+                <Grid Margin="275,-620,0,130">
+                    <Image HorizontalAlignment="Center" Width="300" Source="..\Resources\logo.png" Margin="132,142,119,289"/>
+                    <Label HorizontalAlignment="Center"  FontSize="26" Content="Добро пожаловать в CryptTest!" Height="57" VerticalAlignment="Bottom" Margin="148,0,139,226" Width="384"/>
+                    <Label  FontSize="20
+                            " HorizontalAlignment="Center" Content="Для начала работы с программой выберите тест" Margin="116,393,95,201" Width="460"/>
+                </Grid>
+            </TabItem>
             <TabItem  Header="Отчеты" Height="35" Width="260"   Padding="30,0,0,0"
                       Background="#B2CAF2" BorderBrush="#B2CAF2" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
                 <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource ellaesVM}}">
