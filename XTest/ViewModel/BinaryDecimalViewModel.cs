@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
 
@@ -21,12 +22,16 @@ namespace XTest.ViewModel
         private int testNumber;
         private int correctAnsver;
         private TestMode testMode;
-        private string testTask;
+		private TestMode practiceMode;
+		private string testTask;
         private string practiceTask;
 
         private RelayCommand nextTest;
+		private RelayCommand setEncoding;
+		private RelayCommand setDecoding;
+		private RelayCommand checkPractice;
 
-        public int TestNumberBinaryDecimal
+		public int TestNumberBinaryDecimal
         {
             get { return testNumber; }
             set
@@ -137,7 +142,8 @@ namespace XTest.ViewModel
 						TestNumberBinaryDecimal++;
                         if (testNumber >= 11)
                         {
-                            BinaryDecimalCodeTest.Message = codeService.enncodeNumber(random.Next(100, 10000), BinaryDecimalCodeTest.Code);
+							MessageBox.Show("Правильных ответов " + CorrectAnsverBinaryDecimal.ToString() + " из 10");
+							BinaryDecimalCodeTest.Message = codeService.enncodeNumber(random.Next(100, 10000), BinaryDecimalCodeTest.Code);
                             TestNumberBinaryDecimal = 1;
                             CorrectAnsverBinaryDecimal = 0;
                             testMode = TestMode.Encoding;
@@ -148,6 +154,62 @@ namespace XTest.ViewModel
                     }));
             }
         }
+
+		public RelayCommand SetEncoding
+		{
+			get
+			{
+				return setEncoding ??
+					(setEncoding = new RelayCommand(obj =>
+					{
+						Random random = new Random();
+						practiceMode = TestMode.Encoding;
+						PracticeTaskBinaryDecimal = "Закодируйте сообщение";
+						BinaryDecimalCodePractice.Code = codeService.generateCode();
+						BinaryDecimalCodePractice.Message = random.Next(100, 10000).ToString();
+					}));
+			}
+		}
+
+		public RelayCommand SetDecoding
+		{
+			get
+			{
+				return setDecoding ??
+					(setDecoding = new RelayCommand(obj =>
+					{
+						Random random = new Random();
+						practiceMode = TestMode.Decoding;
+						PracticeTaskBinaryDecimal = "Декодируйте сообщение";
+						BinaryDecimalCodePractice.Code = codeService.generateCode();
+						BinaryDecimalCodePractice.Message = codeService.enncodeNumber(random.Next(100, 10000), BinaryDecimalCodePractice.Code);
+					}));
+			}
+		}
+
+		public RelayCommand CheckPractice
+		{
+			get
+			{
+				return checkPractice ??
+					(checkPractice = new RelayCommand(obj =>
+					{
+						string ansver;
+						if (practiceMode == TestMode.Encoding)
+						{
+							string encode = codeService.enncodeNumber(Convert.ToInt32(BinaryDecimalCodeTest.Message), BinaryDecimalCodeTest.Code);
+							ansver = BinaryDecimalCodeTest.Result.Equals(encode) ? "Правильно!" : "Неправильно!";
+							MessageBox.Show(ansver);
+						}
+						else if (practiceMode == TestMode.Decoding)
+						{
+							string decode = Convert.ToString(codeService.decodeNumber(BinaryDecimalCodeTest.Message, BinaryDecimalCodeTest.Code));
+							ansver = BinaryDecimalCodeTest.Result.Equals(decode) ? "Правильно!" : "Неправильно!";
+							MessageBox.Show(ansver);
+						}
+					}));
+			}
+		}
 
 		public BinaryDecimalViewModel()
         {

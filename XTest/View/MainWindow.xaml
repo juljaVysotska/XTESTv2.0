@@ -523,40 +523,17 @@
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Button Name ="codeVAR_btn2" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" />
-                                <Button Name="decodeVAR_btn2" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Button Name ="codeVAR_btn2" Command="{Binding SetEncoding}" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" />
+                                <Button Name="decodeVAR_btn2" Command="{Binding SetDecoding}" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
 
                                 <Label  Content="Код Грея"  Margin="30,30,323,506"  FontSize="24"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Button Command="{Binding CheckPractice}" Content="Проверить"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                 <Label  Content="{Binding PracticeTask}"  Margin="30,80,287,469"  FontSize="14"  />
                                 <Label x:Name="labGrayNumbPractice" Content="{Binding GreyaCodePractice.Message, UpdateSourceTrigger=PropertyChanged}"  Margin="30,112,287,437"  FontSize="14" />
 
-                                    <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
-                                    <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Text="{Binding GreyaCodePractice.Result, UpdateSourceTrigger=PropertyChanged}" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
-                                    <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
-                                    <Label Content="5" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                    <Label Content="/ 10" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                    <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                    <Label Content="3" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                </Grid>
-
-                                <!--<Grid Background="White" Margin="0,0,-15,0">
-                                    <TabControl Name="codeVAR_control2" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
-                                        <TabItem Name ="codeVAR_item2"  Header="Code" Visibility="Collapsed">
-                                            <Grid>
-
-                                                <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                            </Grid>
-                                        </TabItem>
-                                        <TabItem Name ="decodeVAR_item2" Header="Decode" Visibility="Collapsed" >
-                                            <Grid>
-                                                <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                            </Grid>
-                                        </TabItem>
-
-                                    </TabControl>
-
-                                </Grid>-->
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Text="{Binding GreyaCodePractice.Result, UpdateSourceTrigger=PropertyChanged}" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                               
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
@@ -610,8 +587,8 @@
                                             </Paragraph>
 
                                             <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
-                                                1.	Вес наименьшей значащей цифры q1 равен 1.  
-                                             </Paragraph>
+                                                1.	Вес наименьшей значащей цифры q1 равен 1.
+                                            </Paragraph>
                                             <Paragraph TextAlignment="Left" Padding="50,0,30,0" >
                                                 2.	Вес второй по минимальному значению цифры q2 составляет 1 или 2.
                                             </Paragraph>
@@ -661,7 +638,7 @@
                                             </Paragraph>
 
                                             <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" FontSize="16" >
-                                               Примеры кодрования    
+                                                Примеры кодрования
                                             </Paragraph>
 
                                             <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" >
@@ -698,8 +675,8 @@
                                             <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
                                                 закодированное число будет иметь вид 1010 0010 1000.
                                             </Paragraph>
-                                            
-                                            
+
+
                                             <Paragraph TextAlignment="Left" Padding="30,0,30,0" Margin="Auto,1,Auto,Auto" FontSize="16" >
                                                 Примеры декодрования
                                             </Paragraph>
@@ -735,7 +712,7 @@
                                                 то декодированным числом будет 972.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" Padding="50,0,30,0" Margin="Auto,1,Auto,Auto" >
-                                                
+
                                             </Paragraph>
                                         </FlowDocument>
                                     </RichTextBox>
@@ -746,30 +723,25 @@
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Button Name ="codeVAR_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" />
-                                <Button Name="decodeVAR_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Button Command="{Binding SetEncoding}" Name ="codeVAR_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" />
+                                <Button Command="{Binding SetDecoding}" Name="decodeVAR_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
 
                                 <Label  Content="Двоично-десятичный код"  Margin="30,30,323,506"  FontSize="24"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Button Command="{Binding CheckPractice}" Content="Проверить"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                 <Label  Content="Двоично-десятичный код"  Margin="30,30,288,506"  FontSize="24"/>
                                 <Label  Content="{Binding PracticeTaskBinaryDecimal,UpdateSourceTrigger=PropertyChanged}"  Margin="30,80,287,469"  FontSize="14"  />
                                 <Label x:Name="labBinDecNumberPractice" Content="{Binding BinaryDecimalCodePractice.Message, UpdateSourceTrigger=PropertyChanged}"  Margin="30,112,287,437"  FontSize="14"  />
                                 <Label  Content="Код:"  Margin="30,149,287,400"  FontSize="14"  />
                                 <Label x:Name="labBinDecCodePractice" Content="{Binding BinaryDecimalCodePractice.Code, UpdateSourceTrigger=PropertyChanged}"  Margin="70,149,287,400"  FontSize="14"  />
 
-                                    <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
-                                    <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
-                                    <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="20"/>
-                                    <Label Content="5" HorizontalAlignment="Left" Margin="90,476,0,0" VerticalAlignment="Top" FontSize="20"/>
-                                    <Label Content="/ 10" HorizontalAlignment="Left" Margin="110,476,0,0" VerticalAlignment="Top" FontSize="20"/>
-                                    <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="20"/>
-                                    <Label Content="3" HorizontalAlignment="Left" Margin="170,511,0,0" VerticalAlignment="Top" FontSize="20"/>
-                                    <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
-                                    <TextBox Text="{Binding BinaryDecimalCodePractice.Result, UpdateSourceTrigger=PropertyChanged}" Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
-                                
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Text="{Binding BinaryDecimalCodePractice.Result, UpdateSourceTrigger=PropertyChanged}" Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
 
-                                </Grid>
-                                <!--<Grid Background="White" Margin="0,0,-15,0">
+
+                            </Grid>
+                            <!--<Grid Background="White" Margin="0,0,-15,0">
                                    <TabControl Name="codeVAR_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
                                         <TabItem Name ="codeVAR_item"  Header="Code" Visibility="Collapsed">
                                             <Grid>
@@ -786,9 +758,9 @@
                                     </TabControl>
 
                                 </Grid>-->
-                            </Grid>
+  
                         </TabItem>
-                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+            <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Label  Content="Двоично-десятичный код"  Margin="30,30,288,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />

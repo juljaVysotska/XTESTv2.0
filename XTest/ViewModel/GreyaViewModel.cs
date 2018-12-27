@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
 
@@ -21,10 +22,14 @@ namespace XTest.ViewModel
         private int testNumber;
         private int correctAnsver;
         private TestMode testMode;
+        private TestMode practiceMode;
         private string testTask;
         private string practiceTask;
 
         private RelayCommand nextTest;
+        private RelayCommand setEncoding;
+        private RelayCommand setDecoding;
+        private RelayCommand checkPractice;
 
         public int TestNumber
         {
@@ -132,7 +137,8 @@ namespace XTest.ViewModel
                         TestNumber++;
                         if (testNumber >= 11)
                         {
-                            GreyaCodeTest.Message = codeService.generateLine(11);
+							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 10");
+							GreyaCodeTest.Message = codeService.generateLine(11);
                             TestNumber = 1;
                             CorrectAnsver = 0;
                             testMode = TestMode.Encoding;
@@ -142,7 +148,59 @@ namespace XTest.ViewModel
             }
         }
 
-                    public GreyaViewModel()
+		public RelayCommand SetEncoding
+		{
+			get
+			{
+				return setEncoding ??
+					(setEncoding = new RelayCommand(obj =>
+					{
+						practiceMode = TestMode.Encoding;
+						PracticeTask = "Закодируйте сообщение";
+						GreyaCodePractice.Message = codeService.generateLine(11);
+					}));
+			}
+		}
+
+		public RelayCommand SetDecoding
+		{
+			get
+			{
+				return setDecoding ??
+					(setDecoding = new RelayCommand(obj =>
+					{
+						practiceMode = TestMode.Decoding;
+						PracticeTask = "Декодируйте сообщение";
+						GreyaCodePractice.Message = codeService.generateLine(7);
+					}));
+			}
+		}
+
+		public RelayCommand CheckPractice
+		{
+			get
+			{
+				return checkPractice ??
+					(checkPractice = new RelayCommand(obj =>
+					{
+						string ansver;
+						if (practiceMode == TestMode.Encoding)
+						{
+							string encode = codeService.encode(GreyaCodePractice.Message);
+							ansver = GreyaCodePractice.Result.Equals(encode) ? "Правильно!" : "Неправильно!";
+							MessageBox.Show(ansver);
+						}
+						else if (practiceMode == TestMode.Decoding)
+						{
+							string decode = codeService.decode(GreyaCodePractice.Message);
+							ansver = GreyaCodePractice.Result.Equals(decode) ? "Правильно!" : "Неправильно!";
+							MessageBox.Show(ansver);
+						}
+					}));
+			}
+		}
+
+		public GreyaViewModel()
         {
             TestTask = "Закодируйте сообщение";
             PracticeTask = "Закодируйте сообщение";
