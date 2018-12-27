@@ -95,7 +95,7 @@ namespace XTest
         string correctAnswer;
         string dcorrectAnswer;
         bool isCodingEnabled;
-        private void hemmingCoding() {
+        private void hemmingCoding(TextBox tb, Label lb) {
             isCodingEnabled = true;
             string taskNumber = "";
             Random rnd = new Random();
@@ -107,7 +107,7 @@ namespace XTest
                 taskNumber += rand.Next(2);
 
             }
-            lblHemtask.Content = "Закодируйте сообщение: " + taskNumber;
+            lb.Content = "Закодируйте сообщение: " + taskNumber;
             //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
             correctAnswer = Model.Services.HemmingCodeService.Main(taskNumber);
         }
@@ -119,7 +119,7 @@ namespace XTest
                 MessageBox.Show("Правильно");
                 cheat = 0;
 
-                hemmingCoding();
+                hemmingCoding(tbHem, lblHemtask);
 
 
             }
@@ -154,7 +154,7 @@ namespace XTest
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            hemmingCoding();
+            hemmingCoding(tbHem, lblHemtask);
         }
 
         private void BtnHemDecoding_Click(object sender, RoutedEventArgs e)
@@ -164,7 +164,7 @@ namespace XTest
 
         private void BtnHemCoding_Click(object sender, RoutedEventArgs e)
         {
-            hemmingCoding();
+            hemmingCoding(tbHem, lblHemtask);
         }
         private void hemDecoding() {
 
@@ -182,6 +182,30 @@ namespace XTest
             lblHemtask.Content = "Раскодируйте сообщение: " + Model.Services.HemmingCodeService.Main(taskNumber);
             //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
             dcorrectAnswer = taskNumber;
+        }
+
+        private void Grid_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            hemmingCoding(tbHem1, lblHemtask1);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (tbHem1.Text == correctAnswer && isCodingEnabled)
+            {
+                MessageBox.Show("Правильно");
+
+                hemmingCoding(tbHem1, lblHemtask1);
+
+
+            }
+
+            else
+            {
+                MessageBox.Show("Неправильно");
+            }
+
+
         }
     }
 }

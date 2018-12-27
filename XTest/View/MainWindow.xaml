@@ -4509,15 +4509,18 @@
                                 <Button x:Name="btnHemDecoding" Content="Декодирование" Grid.Column="2" HorizontalAlignment="Left" Margin="337,30,0,0" VerticalAlignment="Top" Width="116" Height="27" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="BtnHemDecoding_Click"/>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" Margin="0,-1,0,1.4" VerticalAlignment="Bottom">
-                            <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код Хэмминга"  Margin="30,30,417,506"  FontSize="24"/>
-                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
-                                <Label  Content="Результат:"  Margin="30,165,436.4,383.6"  FontSize="14"  />
-                                <TextBox Margin="30,198,416.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <Label x:Name="lblTask"  Content="Закодируйте сообщение"  Margin="29,112,287.4,437.6"  FontSize="14"  />
+                        <TabItem x:Name="hemmingTest" Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" Margin="0,-1,0,1.4" VerticalAlignment="Bottom">
+                            <Grid Background="White" Margin="0,0,-15,0" Loaded="Grid_Loaded_1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="144*"/>
+                                    <ColumnDefinition Width="125*"/>
+                                    <ColumnDefinition Width="397*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Content="Код Хэмминга"  Margin="30,30,20.5,506"  FontSize="24" Grid.ColumnSpan="2"/>
+                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="38.5,10,10,539"  FontSize="14" Foreground="#4F91FB" Grid.Column="2" />
+                                <TextBox x:Name="tbHem1" Margin="30,198,19.5,350" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}" Grid.ColumnSpan="2"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="247.5,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Grid.Column="2" Click="Button_Click_1"/>
+                                <Label x:Name="lblHemtask1"  Content="Закодируйте сообщение"  Margin="30,139,286,411"  FontSize="14" Grid.ColumnSpan="3"  />
                             </Grid>
                         </TabItem>
 
