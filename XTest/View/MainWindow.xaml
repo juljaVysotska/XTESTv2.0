@@ -4494,15 +4494,15 @@
 
                             </Grid>
                         </TabItem>
-                        <TabItem x:Name="HemmingPractice" Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" MouseLeftButtonUp="HemmingPractice_MouseLeftButtonUp" MouseRightButtonUp="HemmingPractice_MouseRightButtonUp">
-                            <Grid Background="White" Margin="0,0,-15,0">
+                        <TabItem x:Name="HemmingPractice" Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0" Loaded="Grid_Loaded">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="131*"/>
                                     <ColumnDefinition Width="23*"/>
                                     <ColumnDefinition Width="512*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label  Content="Код Хэмминга"  Margin="30,30,417,506"  FontSize="24" Grid.ColumnSpan="3"/>
-                                <Button x:Name="btnHemNext" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="363,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Click" Grid.Column="2"/>
+                                <Button x:Name="btnHemNext" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="363,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Click" Grid.Column="2" MouseRightButtonUp="BtnHemNext_MouseRightButtonUp"/>
                                 <TextBox x:Name="tbHem" HorizontalAlignment="Left" Height="24" Margin="30,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" TextChanged="TbHem_TextChanged" Grid.ColumnSpan="3"/>
                                 <Label x:Name="lblHemtask" Content="Закодируйте сообщение:&#xD;&#xA;" HorizontalAlignment="Left" Margin="30,97,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
                             </Grid>
