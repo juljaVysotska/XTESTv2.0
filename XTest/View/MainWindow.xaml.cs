@@ -93,7 +93,21 @@ namespace XTest
 
         int cheat;
         string correctAnswer;
+        private void hemmingCoding() {
+            string taskNumber = "";
+            Random rnd = new Random();
+            int a = rnd.Next(6) + 9;
+            Random rand = new Random();
 
+            for (int i = 0; i <= a; i++)
+            {
+                taskNumber += rand.Next(2);
+
+            }
+            lblHemtask.Content = "Закодируйте сообщение: " + taskNumber;
+            //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
+            correctAnswer = Model.Services.HemmingCodeService.Main(taskNumber);
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -102,19 +116,8 @@ namespace XTest
              MessageBox.Show("Правильно");
                 cheat = 0;
 
-                string taskNumber = "";
-                Random rnd = new Random();
-                int a = rnd.Next(6) + 9;
-                Random rand = new Random();
-
-                for (int i = 0; i <= a; i++)
-                {
-                    taskNumber += rand.Next(2);
-
-                }
-                lblHemtask.Content = "Закодируйте сообщение: " + taskNumber;
-                //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
-                correctAnswer = Model.Services.HemmingCodeService.Main(taskNumber);
+                hemmingCoding();
+               
                 
             }
             else {
@@ -140,6 +143,11 @@ namespace XTest
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
+            hemmingCoding();
+        }
+
+        private void BtnHemDecoding_Click(object sender, RoutedEventArgs e)
+        {
             string taskNumber = "";
             Random rnd = new Random();
             int a = rnd.Next(6) + 9;
@@ -150,9 +158,14 @@ namespace XTest
                 taskNumber += rand.Next(2);
 
             }
-            lblHemtask.Content = "Закодируйте сообщение: " + taskNumber;
+            lblHemtask.Content = "Раскодируйте сообщение: " + Model.Services.HemmingCodeService.Main(taskNumber);
             //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
-            correctAnswer = Model.Services.HemmingCodeService.Main(taskNumber);
+            correctAnswer = taskNumber;
+        }
+
+        private void BtnHemCoding_Click(object sender, RoutedEventArgs e)
+        {
+            hemmingCoding();
         }
     }
 }
