@@ -78,18 +78,25 @@ namespace XTest
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Result result = marks["Berger"];
-            if (Berger.isEncodedCorrectly(lblTask.Content.ToString(), txbBergerResult.Text))
+            if (result.currentTestNumber <= 6)
             {
-                MessageBox.Show("Congrats!");
-                result.correctTests += 1;
-                result.currentTestNumber += 1;
+                if (result.currentTestNumber <= 3 ? 
+                    Berger.isEncodedCorrectly(lblTask.Content.ToString(), txbBergerResult.Text) :
+                    Berger.isDecodedCorrectly(lblTask.Content.ToString(), txbBergerResult.Text))
+                {
+                    MessageBox.Show("Congrats!");
+                    result.correctTests += 1;
+                    result.currentTestNumber += 1;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong answer. Correct answer: " + (result.currentTestNumber <= 3 ?
+                        Berger.encode(lblTask.Content.ToString()) :
+                        Berger.decode(lblTask.Content.ToString())));
+                    result.currentTestNumber += 1;
+                }
+                GenerateBerger();
             }
-            else
-            {
-                MessageBox.Show("Game over. Correct answer: " + Berger.encode(lblTask.Content.ToString()));
-                result.currentTestNumber += 1;
-            }
-            GenerateBerger();
         }
     }
 }

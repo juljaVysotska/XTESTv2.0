@@ -37,7 +37,7 @@ namespace XTest.Model.Services
 
         public static string encode(string input)
         {
-            int r = (int) Math.Ceiling(Math.Log(input.Length, 2));
+            int r = calcLength(input);
             int count = ~input.Count(c => c == '1');
             string addition = Convert.ToString(count, 2);
             addition = addition.Substring(addition.Length - r);
@@ -50,7 +50,22 @@ namespace XTest.Model.Services
 
         public static string decode(string input)
         {
-            return "";
+            int r = calcLength(input);
+            while (calcLength(input.Length-r) != r)
+            {
+                r -= 1;
+            }
+            return input.Substring(0,input.Length-r);
+        }
+
+        private static int calcLength(string input)
+        {
+            return (int) Math.Ceiling(Math.Log(input.Length, 2));
+        }
+
+        private static int calcLength(int inputLength)
+        {
+            return (int)Math.Ceiling(Math.Log(inputLength, 2));
         }
     }
 }
