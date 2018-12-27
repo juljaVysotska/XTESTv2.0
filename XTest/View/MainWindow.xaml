@@ -521,6 +521,9 @@
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Grid Background="White" Margin="0,0,-15,0">
+                                    <Button Name ="codeVAR_btn2" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" />
+                                    <Button Name="decodeVAR_btn2" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
                                     <Label  Content="Код Грея"  Margin="30,30,323,506"  FontSize="24"/>
                                     <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                     <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
@@ -535,9 +538,7 @@
                                     <Label Content="3" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
                                 </Grid>
 
-                                <Grid Background="White" Margin="0,0,-15,0">
-                                    <Button Name ="codeVAR_btn2" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" />
-                                    <Button Name="decodeVAR_btn2" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <!--<Grid Background="White" Margin="0,0,-15,0">
                                     <TabControl Name="codeVAR_control2" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
                                         <TabItem Name ="codeVAR_item2"  Header="Code" Visibility="Collapsed">
                                             <Grid>
@@ -553,7 +554,7 @@
 
                                     </TabControl>
 
-                                </Grid>
+                                </Grid>-->
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
@@ -744,6 +745,9 @@
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Grid Background="White" Margin="0,0,-15,0">
+                                    <Button Name ="codeVAR_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" />
+                                    <Button Name="decodeVAR_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
                                     <Label  Content="Двоично-десятичный код"  Margin="30,30,323,506"  FontSize="24"/>
                                     <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                     <Label  Content="Двоично-десятичный код"  Margin="30,30,288,506"  FontSize="24"/>
@@ -762,10 +766,8 @@
 
 
                                 </Grid>
-                                <Grid Background="White" Margin="0,0,-15,0">
-                                    <Button Name ="codeVAR_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" />
-                                    <Button Name="decodeVAR_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                    <TabControl Name="codeVAR_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
+                                <!--<Grid Background="White" Margin="0,0,-15,0">
+                                   <TabControl Name="codeVAR_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
                                         <TabItem Name ="codeVAR_item"  Header="Code" Visibility="Collapsed">
                                             <Grid>
 
@@ -780,7 +782,7 @@
 
                                     </TabControl>
 
-                                </Grid>
+                                </Grid>-->
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
