@@ -4494,7 +4494,7 @@
 
                             </Grid>
                         </TabItem>
-                        <TabItem x:Name="HemmingPractice" Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" MouseLeftButtonUp="HemmingPractice_MouseLeftButtonUp">
+                        <TabItem x:Name="HemmingPractice" Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" MouseLeftButtonUp="HemmingPractice_MouseLeftButtonUp" MouseRightButtonUp="HemmingPractice_MouseRightButtonUp">
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="131*"/>

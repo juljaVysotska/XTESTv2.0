@@ -91,7 +91,7 @@ namespace XTest
 
 
 
-
+        int cheat;
         string correctAnswer;
         private void HemmingPractice_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -106,7 +106,7 @@ namespace XTest
 
             }
             lblHemtask.Content = "Закодируйте сообщение: " + taskNumber;
-            MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
+            //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
             correctAnswer = Model.Services.HemmingCodeService.Main(taskNumber);
         }
 
@@ -115,6 +115,7 @@ namespace XTest
             if (tbHem.Text == correctAnswer)
             {
              MessageBox.Show("Правильно");
+                cheat = 0;
 
                 string taskNumber = "";
                 Random rnd = new Random();
@@ -127,15 +128,26 @@ namespace XTest
 
                 }
                 lblHemtask.Content = "Закодируйте сообщение: " + taskNumber;
-                MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
+                //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
                 correctAnswer = Model.Services.HemmingCodeService.Main(taskNumber);
+                
             }
             else {
                 MessageBox.Show("Неправильно");
+                cheat = 0;
             }
 
 
 
+        }
+
+        private void HemmingPractice_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (cheat == 5)
+            {
+                tbHem.Text = correctAnswer;
+            }
+            else { cheat++; }
         }
     }
 }
