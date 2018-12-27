@@ -83,5 +83,59 @@ namespace XTest
         {
 
         }
+
+        private void TbHem_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
+
+
+        string correctAnswer;
+        private void HemmingPractice_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            
+            string taskNumber = "";
+            Random rnd = new Random();
+            int a = rnd.Next(6) + 9;
+            Random rand = new Random();
+
+            for (int i = 0; i <= a; i++) {
+                taskNumber += rand.Next(2);
+
+            }
+            lblHemtask.Content = "Закодируйте сообщение: " + taskNumber;
+            MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
+            correctAnswer = Model.Services.HemmingCodeService.Main(taskNumber);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbHem.Text == correctAnswer)
+            {
+             MessageBox.Show("Правильно");
+
+                string taskNumber = "";
+                Random rnd = new Random();
+                int a = rnd.Next(6) + 9;
+                Random rand = new Random();
+
+                for (int i = 0; i <= a; i++)
+                {
+                    taskNumber += rand.Next(2);
+
+                }
+                lblHemtask.Content = "Закодируйте сообщение: " + taskNumber;
+                MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
+                correctAnswer = Model.Services.HemmingCodeService.Main(taskNumber);
+            }
+            else {
+                MessageBox.Show("Неправильно");
+            }
+
+
+
+        }
     }
 }

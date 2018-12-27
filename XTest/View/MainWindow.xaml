@@ -936,13 +936,17 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Код Хэмминга(Систематический)" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+            <TabItem x:Name="HemmingCode" Header="Код Хэмминга(Систематический)" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656" SelectionChanged="TabControl_Berger_SelectionChanged">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="271*"/>
+                                    <ColumnDefinition Width="394*"/>
+                                </Grid.ColumnDefinitions>
 
-                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2" Grid.ColumnSpan="2">
                                     <RichTextBox BorderBrush="White" TextChanged="RichTextBox_TextChanged">
 
                                         <FlowDocument>
@@ -4490,10 +4494,17 @@
 
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                        <TabItem x:Name="HemmingPractice" Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" MouseLeftButtonUp="HemmingPractice_MouseLeftButtonUp">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код Хэмминга"  Margin="30,30,417,506"  FontSize="24"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="131*"/>
+                                    <ColumnDefinition Width="23*"/>
+                                    <ColumnDefinition Width="512*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Content="Код Хэмминга"  Margin="30,30,417,506"  FontSize="24" Grid.ColumnSpan="3"/>
+                                <Button x:Name="btnHemNext" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="363,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Click" Grid.Column="2"/>
+                                <TextBox x:Name="tbHem" HorizontalAlignment="Left" Height="24" Margin="30,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" TextChanged="TbHem_TextChanged" Grid.ColumnSpan="3"/>
+                                <Label x:Name="lblHemtask" Content="Закодируйте сообщение:&#xD;&#xA;" HorizontalAlignment="Left" Margin="30,97,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" Margin="0,-1,0,1.4" VerticalAlignment="Bottom">

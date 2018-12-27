@@ -8,6 +8,8 @@ namespace XTest.Model.Services
 {
     public class HemmingCodeService
     {
+
+
         public static int[] FixBrokenBit(int BrokenBitPosition, int[] Sequence)
         {
             if (Sequence[BrokenBitPosition - 1] == 0) Sequence[BrokenBitPosition - 1] = 1;
@@ -65,7 +67,7 @@ namespace XTest.Model.Services
             return ((a & 1) == 0) ? true : false;
         }
 
-        public static int[] GenerateSequence()
+        public static int[] GenerateSequence(string bytes)
         {
             int[] Sequence = new int[21];
             int[] ControlBeatValue = new int[5];
@@ -74,12 +76,14 @@ namespace XTest.Model.Services
             int BrokenBitConsole;
             int BrokenBeatPosition;
             string str;
-            int ch = 1;
 
+
+            int ch = 1;
+            str = Console.ReadLine();
             Console.WriteLine("Введите последовательность не более 16 бит");
             Console.Write("Последовательность - ");
             //==================================Создать элемент, в котором пользователь должен вписать последовательность бит =========
-            str = Console.ReadLine();
+            str = bytes;
             //==============================================================================================================================
             for (int i = 0; i < str.Length; i++)
                 Sequence[i] = (int)Char.GetNumericValue(str[i]);
@@ -123,9 +127,11 @@ namespace XTest.Model.Services
             Console.WriteLine();
 
             Console.WriteLine("Введите номер бита, который надо сломать");
-            Console.Write("позиция - ");
+          /*  Console.Write("позиция - ");
             //===============================создать элемент, куда надо ввести позицию======================================================
-            str = Console.ReadLine();
+            str = "0";
+            Random rnd = new Random();
+            str =  rnd.Next(Sequence.Length).ToString();
             //============================================================================================================================
             BrokenBitConsole = Int32.Parse(str);
 
@@ -145,23 +151,22 @@ namespace XTest.Model.Services
             BrokenBeatPosition = FindBrokenBitPosition(BrokenBeats);
 
             Sequence = FixBrokenBit(BrokenBeatPosition, Sequence);
-
+*/
             return Sequence;
         }
 
-        static void Main(string[] args)
+        public static string Main( string bytes)
         {
             int[] sequence;
-
-            sequence = GenerateSequence();
+            string answer = "";
+            sequence = GenerateSequence(bytes);
             for (int i = 0; i < sequence.Length; i++)
             {
                 //===============================Создать элемент для вывода результата==============================================================
-                if (!Step(i + 1)) { Console.Write(sequence[i] + " "); }
+                if (!Step(i + 1)) { answer += (sequence[i]); }
                 //============================================================================================================================
             }
-
-            Console.ReadKey();
+            return answer;
         }
     }
 }
