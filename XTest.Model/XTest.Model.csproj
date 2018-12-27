@@ -53,6 +53,7 @@
     <Compile Include="Services\IterativeCodeService.cs" />
     <Compile Include="Services\EllaesCodeService.cs" />
     <Compile Include="Services\RidMaller.cs" />
+    <Compile Include="Services\ShennonFanoService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
