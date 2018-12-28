@@ -30,6 +30,7 @@ namespace XTest
           
         }
 
+        bool bergerPracticeEncode = true;
         private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!results.ContainsKey("Berger"))
@@ -39,26 +40,43 @@ namespace XTest
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
             {
-                GenerateBerger();
+                GenerateBergerTest();
+            } else if (tabControl.SelectedIndex == 1)
+            {
+                GenerateBergerPractice();
             }
         }
 
-        private void GenerateBerger()
+        private void GenerateBergerPractice()
+        {
+            if (bergerPracticeEncode)
+            {
+                lblBergerTaskExplanation_Practice.Content = "Зашифруйте:";
+                lblTask_Practice.Content = Berger.generateEncode();
+            }
+            else
+            {
+                lblBergerTaskExplanation.Content = "Расшифруйте:";
+                lblTask_Practice.Content = Berger.generateDecode();
+            }
+        }
+
+        private void GenerateBergerTest()
         {
             Result result = results["Berger"];
             if (result.currentTestNumber <= 3)
             {
-                lblBergerTaskExplanation.Content = "Encode this:";
+                lblBergerTaskExplanation.Content = "Зашифруйте:";
                 lblTask.Content = Berger.generateEncode();
             }
             else if (result.currentTestNumber > 3 && result.currentTestNumber < 7)
             {
-                lblBergerTaskExplanation.Content = "Decode this:";
+                lblBergerTaskExplanation.Content = "Расшифруйте:";
                 lblTask.Content = Berger.generateDecode();
             }
             else
             {
-                MessageBox.Show("You've already completed this test!");
+                MessageBox.Show("Вы уже закончили этот тест!");
             }
         }
 
@@ -71,21 +89,49 @@ namespace XTest
                     Berger.isEncodedCorrectly(lblTask.Content.ToString(), txbBergerResult.Text) :
                     Berger.isDecodedCorrectly(lblTask.Content.ToString(), txbBergerResult.Text))
                 {
-                    MessageBox.Show("Congrats!");
+                    MessageBox.Show("Правильно!");
                     result.correctTests += 1;
                     result.currentTestNumber += 1;
                 }
                 else
                 {
-                    MessageBox.Show("Wrong answer. Correct answer: " + (result.currentTestNumber <= 3 ?
+                    MessageBox.Show("Не правильно! Ответ: " + (result.currentTestNumber <= 3 ?
                         Berger.encode(lblTask.Content.ToString()) :
                         Berger.decode(lblTask.Content.ToString())));
                     result.currentTestNumber += 1;
                 }
-                GenerateBerger();
+                GenerateBergerTest();
             }
         }
-      
+
+        private void code_Berger_btn_Click(object sender, RoutedEventArgs e)
+        {
+            bergerPracticeEncode = true;
+            GenerateBergerPractice();
+        }
+
+        private void decode_Berger_btn_Click(object sender, RoutedEventArgs e)
+        {
+            bergerPracticeEncode = false;
+            GenerateBergerPractice();
+        }
+
+        private void ButtonBergerNext_Practice_Click(object sender, RoutedEventArgs e)
+        {
+            if (bergerPracticeEncode ?
+                    Berger.isEncodedCorrectly(lblTask_Practice.Content.ToString(), txbBergerResult_Practice.Text) :
+                    Berger.isDecodedCorrectly(lblTask_Practice.Content.ToString(), txbBergerResult_Practice.Text))
+            {
+                MessageBox.Show("Правильно!");
+            } else
+            {
+                MessageBox.Show("Не правильно! Ответ: " + (bergerPracticeEncode ?
+                    Berger.encode(lblTask_Practice.Content.ToString()) :
+                    Berger.decode(lblTask_Practice.Content.ToString())));
+            }
+            GenerateBergerPractice();
+        }
+
         private void code_btn_Click(object sender, RoutedEventArgs e)
         {
             codeVAR_control.SelectedIndex = 0;
