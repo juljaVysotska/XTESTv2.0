@@ -1423,7 +1423,7 @@
                                     <RichTextBox BorderBrush="White">
 
                                         <FlowDocument>
-                                            <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="30,30,0,0">Код Бергера
+                                            <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="30,30,0,0">Код Бергера. Краткие теоретические сведения.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Введение
                                             </Paragraph>
@@ -1457,6 +1457,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >2.	Двоичная запись суммы весов для семиразрядной проверочной части, имеет вид 0100010. Инвертированный вид ее 1011101. Таким образом, полная последовательность выглядит как 01101000011011101.
                                             </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >            </Paragraph>
 
                                         </FlowDocument>
                                     </RichTextBox>
