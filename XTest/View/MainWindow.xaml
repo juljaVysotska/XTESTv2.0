@@ -1075,27 +1075,37 @@
                   
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                                <Grid Background="White" Margin="0,0,-15,0">
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
-                                    <RichTextBox BorderBrush="White">
 
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
                                         <FlowDocument>
-                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Код с проверкой по |q|
+                                            <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Код с проверкой по модулю q. Краткие теоретические сведения.
                                             </Paragraph>
-
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Введение
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Принцип построения данного кода аналогичен по построению двоичного кода с одной проверкой на четность по mod 2. Отличие в построении заключается в дополнении кодовых комбинаций первичного q-ичного кода одним проверочным разрядом до значения основания (алфавита) кода q, т.е. если кодовая комбинация является множеством из k элементов {a1a2...ak}, где a1, a2, ..., ak – информационные элементы кодовой комбинации, принимающие значения от 0 до (q-1), то проверочный разряд b1 определяется суммой этих элементов по mod q:
                                             </Paragraph>
-
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >b1 = q - (a1 + a2 + ... + ak) mod q.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Например:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Пусть кодовая комбинация состоит из 4 элементов, т.е k = 4, и алфавит состоит из 4 цифр {0,1,2,3}, т.е. q = 4. Определим проверочный разряд и запишем новую комбинацию. a1 = 1; a2 = 0; a3 = 3; a4 = 2. Проверочный разряд равен b1 = 4 - ( 1 + 0 + 3 + 2 ) mod 4 = 4 - 2 = 2. Комбинация 10322.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Проверка на наличие ошибки:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">10322 S = (1 + 0 + 3 + 2 + 2) mod 4 = 0 без ошибки;
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">12322 S = (1 + 2 + 3 + 2 + 2) mod 4 = 2 с ошибкой.
+                                            </Paragraph>
+                                            
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
 
 
-                            </Grid>
-                        </TabItem>
+                            </Grid>                        </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
                                 <Button Name ="codeQ_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeQ_btn_Click"/>
