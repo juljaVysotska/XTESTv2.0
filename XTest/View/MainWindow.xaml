@@ -1598,7 +1598,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P8 = 0.02 11111
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >   </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >    </Paragraph>
 
                                         </FlowDocument>
                                     </RichTextBox>
