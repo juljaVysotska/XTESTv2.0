@@ -56,7 +56,7 @@ namespace XTest
             }
             else
             {
-                lblBergerTaskExplanation.Content = "Расшифруйте:";
+                lblBergerTaskExplanation_Practice.Content = "Расшифруйте:";
                 lblTask_Practice.Content = Berger.generateDecode();
             }
         }
