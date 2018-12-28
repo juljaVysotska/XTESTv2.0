@@ -1438,12 +1438,14 @@
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
+                                <Button Name ="codeBerger_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="code_Berger_btn_Click"/>
+                                <Button Name="decodeBerger_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decode_Berger_btn_Click"/>
                                 <Label  Content="Код Бергера"  Margin="30,30,417,506"  FontSize="24"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <TextBox x:Name="txbBergerResult_Copy" Margin="30,198,415.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <Button x:Name="ButtonBergerNext_Practice" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="ButtonBergerNext_Practice_Click"/>
+                                <TextBox x:Name="txbBergerResult_Practice" Margin="30,198,415.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                 <Label  Content="Результат:"  Margin="30,165,436.2,383.6"  FontSize="14"  />
-                                <Label x:Name="lblBergerTask_Copy"  Content="Пример"  Margin="29,112,287.2,437.6"  FontSize="14"  />
-                                <Label x:Name="lblBergerTaskExplanation_Copy"  Content="Закодируйте сообщение"  Margin="30,80,286.8,469"  FontSize="14"  />
+                                <Label x:Name="lblTask_Practice"  Content="Пример"  Margin="29,112,287.2,437.6"  FontSize="14"  />
+                                <Label x:Name="lblBergerTaskExplanation_Practice"  Content="Закодируйте сообщение"  Margin="30,80,286.8,469"  FontSize="14"  />
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" Margin="0,-1,0,1.4" VerticalAlignment="Bottom">
