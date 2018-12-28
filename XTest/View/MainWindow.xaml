@@ -9,6 +9,7 @@
     <Window.Resources>
         <local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
         <local:EllaesCodeViewModel x:Key="ellaesVM"></local:EllaesCodeViewModel>
+        <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -969,25 +970,36 @@
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код БЧХ"  Margin="30,30,399,506"  FontSize="24"/>
-                                <Label Content="сообщение" Margin="46,134,-47,-135"/>
-                                <Label Content="Результат:" Margin="30,211,-30,-212"/>
-                                <Label Content="Закодируйте сообщение/Принятая комбинация:" Margin="30,97,-30,-98"/>
-                                <TextBox Height="30" Width="200" Margin="30,256,435,295" Style="{DynamicResource RoundConer}" />
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-
+                                <Button Name ="codeB4H_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="code_B4H_btn_Click"/>
+                                <Button Name="decodeB4h_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decode_B4H_btn_Click"/>
+                                <TabControl Name="codeB4H_control" HorizontalAlignment="Left" Height="536" VerticalAlignment="Top" Width="655" Margin="0,45,0,0" >
+                                    <TabItem Name ="codeB4H_item"  Header="Code" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Код БЧХ"    FontSize="24"/>
+                                            <Label Content="сообщение" Margin="46,134,-47,-135"/>
+                                            <Label Content="Результат:" Margin="30,211,-30,-212"/>
+                                            <Label Content="Закодируйте сообщение/Принятая комбинация:" Margin="30,97,-30,-98"/>
+                                            <TextBox Height="30" Width="200"  Margin="-350,30,30,30"  Style="{DynamicResource RoundConer}" />
+                                            <Button Content="Далее" Margin="520 450 20 20" Height="30" Width="90" HorizontalAlignment="Left"  VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+                                </TabControl>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код БЧХ"  Margin="30,30,417,506"  FontSize="24"/>
-                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                <Label  Content="Код БЧХ"  Margin="30,30,399,506"  FontSize="24"/>
-                                <Label Content="сообщение" Margin="46,134,-47,-135"/>
-                                <Label Content="Результат:" Margin="30,211,-30,-212"/>
-                                <Label Content="Закодируйте сообщение:" Margin="30,97,-30,-98"/>
-                                <TextBox Height="30" Width="200" Margin="30,256,435,295" Style="{DynamicResource RoundConer}" />
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="158*"/>
+                                    <ColumnDefinition Width="507*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Content="Код БЧХ"  Margin="30,30,417,506"  FontSize="24" Grid.ColumnSpan="2"/>
+                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="149,10,10,539"  FontSize="14" Foreground="#4F91FB" Grid.Column="1" />
+                                <Label  Content="Код БЧХ"  Margin="30,30,399,506"  FontSize="24" Grid.ColumnSpan="2"/>
+                                <Label Content="сообщение" Margin="46,134,-47,-135" Grid.ColumnSpan="2"/>
+                                <Label Content="Результат:" Margin="30,211,-30,-212" Grid.ColumnSpan="2"/>
+                                <Label Content="Закодируйте сообщение:" Margin="30,97,-30,-98" Grid.ColumnSpan="2"/>
+                                <TextBox Height="30" Width="200" Margin="30,256,435,295" Style="{DynamicResource RoundConer}" Grid.ColumnSpan="2" />
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="358,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Grid.Column="1"/>
                             </Grid>
                         </TabItem>
                     </TabControl>
@@ -1058,12 +1070,12 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="Код с проверкой по |p|" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+            <TabItem Header="Код с проверкой по |q|" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
-
+                  
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
                                     <RichTextBox BorderBrush="White">
@@ -1085,42 +1097,83 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="13*"/>
-                                    <ColumnDefinition Width="120*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label  Content="Код с проверкой по |q|"  Margin="30,30,269,506"  FontSize="24" Grid.ColumnSpan="2"/>
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                                <Button Name ="codeQ_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeQ_btn_Click"/>
+                                <Button Name="decodeQ_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeQ_btn_Click"/>
+                                <TabControl Name="codeQ_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
+                                    <TabItem Name ="codeQ_item"  Header="Code" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Для кодовой комбинации при q = " Margin="30"  FontSize="14"/>
+                                          
+                                            <Label Content="{Binding Path=Q}" x:Name="q" Margin="260 30 30 30"  FontSize="14"  />
+                                            <Label  Content="постройте код" HorizontalAlignment="Right" Margin="30 30 270 30"  FontSize="14"  />
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,150,287,136"  FontSize="14"  />
+                                           
+                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            
 
-                                <Label Content="Результат(разделитель-пробел):" Margin="30,200 0 0" Grid.ColumnSpan="2"/>
-                                <Label Content="Для кодовой комбинации при q=" Margin="30,97,-30,-98" Grid.ColumnSpan="2"/>
-                                <Label Content="x" Margin="185,97,-30,-98" Grid.Column="1"/>
-                                <Label Content ="постройке код:" Margin="200,97,-30,-98" Grid.Column="1"/>
-                                <Label Content="x" Margin="30 150 0 0" Grid.ColumnSpan="2"/>
+                                            <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Name ="decodeQ_item" Header="Decode" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label Content="Правильна ли принятая кодовая комбинация:"/>
+                                            <Label Content="{Binding Decode}" Name="Qcomb" Margin="0 40 0 0"/>
+                                            <Label Content="если q =" Margin="0 80 0 0"/>
+                                            <Label Content="{Binding Path=Q}" Name="Decq" Margin="60 80 0 0"/>
+                                            <RadioButton IsChecked="{Binding Path=IsSuccess}" Name="QYes" Margin="0 130 0 0" Content="Да"/>
+                                            <RadioButton Name="QNo" Margin="0 150 0 0" Content="Нет"/>
+                                            <Button Command="{Binding CheckDecode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                           
+                                        </Grid>
+                                    </TabItem>
 
-                                <TextBox Margin="30,244,400,305" Style="{DynamicResource RoundConer}" Grid.ColumnSpan="2" />
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="451,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Grid.Column="1"/>
+                                </TabControl>
 
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код с проверкой по |q|"  Margin="30,30,269,506"  FontSize="24"/>
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                                <Button Command="{Binding Next}" Name ="nextQ_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextQ_btn_Click"  />
+                                <TabControl Margin="0,10,10,80" Name="TestQ_control"  >
+                                    <TabItem Header="1" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Для кодовой комбинации при q = " Margin="30"  FontSize="14"/>
 
-                                <Label Content="Результат(разделитель-пробел):" Margin="30,200 0 0"/>
-                                <Label Content="Для кодовой комбинации при q=" Margin="30,97,-30,-98"/>
-                                <Label Content="x" Margin="250,97,-30, -98"/>
-                                <Label Content ="постройке код:" Margin="265,97,-30, -98"/>
-                                <Label Content="x" Margin="30 150 0 0"/>
+                                            <Label  Content="{Binding Path=Q}"  Margin="260 30 30 30"  FontSize="14"  />
+                                            <Label  Content="постройте код" HorizontalAlignment="Right" Margin="30 30 270 30"  FontSize="14"  />
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,150,287,136"  FontSize="14"  />
 
-                                <TextBox Margin="30,244,400,305" Style="{DynamicResource RoundConer}" />
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                            <TextBox Text="{Binding Coded}"   Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                           
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="2"  Visibility="Collapsed">
+                                        <Grid>
+                                            <Label Content="Правильна ли принятая кодовая комбинация:"/>
+                                            <Label Content="{Binding Decode}" Name="QcombTest" Margin="0 40 0 0"/>
+                                            <Label Content="если q =" Margin="0 80 0 0"/>
+                                            <Label Content="{Binding Path=Q}" Name="DecqTest" Margin="60 80 0 0"/>
+                                            <RadioButton IsChecked="{Binding Path=IsSuccess}" Name="QYesTest" Margin="0 130 0 0" Content="Да"/>
+                                            <RadioButton Name="QNoTest" Margin="0 150 0 0" Content="Нет"/>
+                                            
+
+                                        </Grid>
+                                    </TabItem>
+                                    
+                                </TabControl>
+
+
+                                
                             </Grid>
+              
                         </TabItem>
                     </TabControl>
                 </Grid>
             </TabItem>
->>>>>>> Add Front B4H, primary non-binary code, q modulo check code
+
             <TabItem Header="Код с простым повторением" Height="35" Width="260"  Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Итеративный код" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код Грея" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>

@@ -29,7 +29,7 @@ namespace XTest
           
         }
 
-        
+        int Qstage = 0;
 
         private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -77,6 +77,45 @@ namespace XTest
         {
             
                 TestVAR_control.SelectedIndex++;
+        }
+
+        private void CodeB4H_control_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void code_B4H_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void decode_B4H_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void codeQ_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeQ_control.SelectedIndex = 0;
+        }
+
+        private void decodeQ_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeQ_control.SelectedIndex = 1;
+        }
+
+        private void NextQ_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Qstage++;
+            if (Qstage == 4)
+            {
+                TestQ_control.SelectedIndex++;                
+            }
+            else if(Qstage == 8)
+            {
+                TestQ_control.SelectedIndex--;
+                Qstage = 0;
+            }
         }
     }
 }
