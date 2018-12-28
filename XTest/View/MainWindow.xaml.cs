@@ -104,12 +104,40 @@ namespace XTest
 
         private void GenerateShennon()
         {
-            Dictionary<int, double> messages = ShennonFanoService.generateMessages();
-            foreach (var message in messages)
+            Result result = results["Shennon-Fano"];
+            if (result.currentTestNumber <= 3)
             {
-
+                Dictionary<int, double> messages = ShennonFanoService.generateMessages();
+                foreach (var message in messages)
+                {
+                    //TODO display messages
+                }
             }
-            return;
+            else
+            {
+                MessageBox.Show("You've already completed this test!");
+            }
+        }
+
+        private void Button_Shennon_Next_Click(object sender, RoutedEventArgs e)
+        {
+            Result result = results["Shennon-Fano"];
+            if (result.currentTestNumber <= 3)
+            {
+                //TODO collect info and check if correct
+                if (ShennonFanoService.isCalculatedCorrectly(null, null))
+                {
+                    MessageBox.Show("Congrats!");
+                    result.correctTests += 1;
+                    result.currentTestNumber += 1;
+                }
+                else
+                {
+                    MessageBox.Show("Wrong answer.");
+                    result.currentTestNumber += 1;
+                }
+                GenerateShennon();
+            }
         }
         #endregion
 
