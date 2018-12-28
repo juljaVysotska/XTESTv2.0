@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Services
 {
-    public static class Berger
+    public static class BergerService
     {
         static Random rnd = new Random();
 

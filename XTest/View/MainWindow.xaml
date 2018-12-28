@@ -970,7 +970,7 @@
 
                                             <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" FontWeight="Bold" Padding="30,0,30,0" > Пример: </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" FontWeight="Bold" Padding="30,0,30,0" >Пример:</Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >Преимущество кодов Бергера по сравнению с кодами с постоянным весом заключается в том, что они являются разделимыми кодами с очень простым алгоритмом построения проверочной части. В симметричных канал такие коды обнаруживают все одиночные ошибки и некоторую часть многократных. Можно построить коды с лучшими обнаруживающими свойствами для симметричных каналов. В таких кодах каждой информационной позиции приписывают различный вес, причем ни один вес не является степенью двух ( 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 17 и т.д ). Проверочные знаки этого образуются путем суммирования весов, соответствующих тем информационным разрядам, в которых расположены единицы, затем происходит инверсия полученного числа. Такой код обнаруживает в симметричном канале все двойные ошибки и обнаруживает и исправляет одиночные ошибки.
@@ -1124,7 +1124,7 @@
                                                 Результат декодирования: 1011001.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" Padding="30,0,30,0" FontSize="16">
-                                               
+
                                             </Paragraph>
                                         </FlowDocument>
                                     </RichTextBox>
@@ -1145,7 +1145,7 @@
 
                                 <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
                                 <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Text="{Binding GreyaCodePractice.Result, UpdateSourceTrigger=PropertyChanged}" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
-                               
+
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
@@ -1370,9 +1370,9 @@
                                     </TabControl>
 
                                 </Grid>-->
-  
+
                         </TabItem>
-            <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Label  Content="Двоично-десятичный код"  Margin="30,30,288,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
@@ -1414,7 +1414,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Код Бергера" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
-            <Grid Margin="275,-620,0,130">
+                <Grid Margin="275,-620,0,130">
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656" SelectionChanged="TabControl_Berger_SelectionChanged">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
@@ -1448,7 +1448,7 @@
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                 <TextBox x:Name="txbBergerResult_Copy" Margin="30,198,415.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                 <Label  Content="Результат:"  Margin="30,165,436.2,383.6"  FontSize="14"  />
-                                <Label x:Name="lblTask_Copy"  Content="Пример"  Margin="29,112,287.2,437.6"  FontSize="14"  />
+                                <Label x:Name="lblBergerTask_Copy"  Content="Пример"  Margin="29,112,287.2,437.6"  FontSize="14"  />
                                 <Label x:Name="lblBergerTaskExplanation_Copy"  Content="Закодируйте сообщение"  Margin="30,80,286.8,469"  FontSize="14"  />
                             </Grid>
                         </TabItem>
@@ -1460,13 +1460,61 @@
                                 <Label  Content="Результат:"  Margin="30,165,436.4,383.6"  FontSize="14"  />
                                 <TextBox x:Name="txbBergerResult" Margin="30,198,416.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Berger_Next_Click"/>
-                                <Label x:Name="lblTask"  Content="Закодируйте сообщение"  Margin="29,112,287.4,437.6"  FontSize="14"  />
+                                <Label x:Name="lblBergerTask"  Content="Закодируйте сообщение"  Margin="29,112,287.4,437.6"  FontSize="14"  />
                             </Grid>
                         </TabItem>
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="Код шеннона-Фано" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
+            <TabItem Header="Код Шеннона-Фано" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+                <Grid Margin="275,-620,0,130">
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656" SelectionChanged="TabControl_Shennon_SelectionChanged">
+                        <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+                                    <RichTextBox BorderBrush="White">
+
+                                        <FlowDocument>
+                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Код Шеннона-Фано
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0"  >THEORY
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" FontWeight="Bold" Padding="30,0,30,0" >Пример:</Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >THEORY
+                                            </Paragraph>
+
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label  Content="Код Шеннона-Фано"  Margin="30,30,417,506"  FontSize="24"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <TextBox x:Name="txbShennonResult_Copy" Margin="30,198,415.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <Label  Content="Результат:"  Margin="30,165,436.2,383.6"  FontSize="14"  />
+                                <Label x:Name="lblShennonTask_Copy"  Content="Пример"  Margin="29,112,287.2,437.6"  FontSize="14"  />
+                                <Label x:Name="lblShennonTaskExplanation_Copy"  Content="Закодируйте сообщение"  Margin="30,80,286.8,469"  FontSize="14"  />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" Margin="0,-1,0,1.4" VerticalAlignment="Bottom">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label  Content="Код Шеннона-Фано"  Margin="30,30,417,506"  FontSize="24"/>
+                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
+                                <Label x:Name="lblShennonTaskExplanation"  Content="Составьте кодовые комбинации"  Margin="30,80,287,469"  FontSize="14"  />
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Berger_Next_Click"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
             <TabItem Header="Код Хаффмена" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Коды спутники" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Энтропия" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>

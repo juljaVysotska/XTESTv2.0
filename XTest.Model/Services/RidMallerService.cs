@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Services
 {
-    public class RidMaller
+    public class RidMallerService
     {
 
         public int[][] GenerateArray()

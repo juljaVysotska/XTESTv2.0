@@ -30,6 +30,7 @@ namespace XTest
           
         }
 
+        #region Berger
         private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!results.ContainsKey("Berger"))
@@ -49,12 +50,12 @@ namespace XTest
             if (result.currentTestNumber <= 3)
             {
                 lblBergerTaskExplanation.Content = "Encode this:";
-                lblTask.Content = Berger.generateEncode();
+                lblBergerTask.Content = BergerService.generateEncode();
             }
             else if (result.currentTestNumber > 3 && result.currentTestNumber < 7)
             {
                 lblBergerTaskExplanation.Content = "Decode this:";
-                lblTask.Content = Berger.generateDecode();
+                lblBergerTask.Content = BergerService.generateDecode();
             }
             else
             {
@@ -68,8 +69,8 @@ namespace XTest
             if (result.currentTestNumber <= 6)
             {
                 if (result.currentTestNumber <= 3 ?
-                    Berger.isEncodedCorrectly(lblTask.Content.ToString(), txbBergerResult.Text) :
-                    Berger.isDecodedCorrectly(lblTask.Content.ToString(), txbBergerResult.Text))
+                    BergerService.isEncodedCorrectly(lblBergerTask.Content.ToString(), txbBergerResult.Text) :
+                    BergerService.isDecodedCorrectly(lblBergerTask.Content.ToString(), txbBergerResult.Text))
                 {
                     MessageBox.Show("Congrats!");
                     result.correctTests += 1;
@@ -78,14 +79,40 @@ namespace XTest
                 else
                 {
                     MessageBox.Show("Wrong answer. Correct answer: " + (result.currentTestNumber <= 3 ?
-                        Berger.encode(lblTask.Content.ToString()) :
-                        Berger.decode(lblTask.Content.ToString())));
+                        BergerService.encode(lblBergerTask.Content.ToString()) :
+                        BergerService.decode(lblBergerTask.Content.ToString())));
                     result.currentTestNumber += 1;
                 }
                 GenerateBerger();
             }
         }
-      
+        #endregion
+
+        #region Shennon-Fano
+        private void TabControl_Shennon_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!results.ContainsKey("Shennon-Fano"))
+            {
+                results.Add("Shennon-Fano", new Result("Shennon-Fano", 3));
+            }
+            TabControl tabControl = (TabControl)sender;
+            if (tabControl.SelectedIndex == 2)
+            {
+                GenerateShennon();
+            }
+        }
+
+        private void GenerateShennon()
+        {
+            Dictionary<int, double> messages = ShennonFanoService.generateMessages();
+            foreach (var message in messages)
+            {
+
+            }
+            return;
+        }
+        #endregion
+
         private void code_btn_Click(object sender, RoutedEventArgs e)
         {
             codeVAR_control.SelectedIndex = 0;
