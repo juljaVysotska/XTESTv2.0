@@ -970,7 +970,10 @@
 
                                             <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
+                                            <Paragraph TextAlignment="Left" FontSize="16" FontWeight="Bold" Padding="30,0,30,0" > Пример: </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >Преимущество кодов Бергера по сравнению с кодами с постоянным весом заключается в том, что они являются разделимыми кодами с очень простым алгоритмом построения проверочной части. В симметричных канал такие коды обнаруживают все одиночные ошибки и некоторую часть многократных. Можно построить коды с лучшими обнаруживающими свойствами для симметричных каналов. В таких кодах каждой информационной позиции приписывают различный вес, причем ни один вес не является степенью двух ( 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 17 и т.д ). Проверочные знаки этого образуются путем суммирования весов, соответствующих тем информационным разрядам, в которых расположены единицы, затем происходит инверсия полученного числа. Такой код обнаруживает в симметричном канале все двойные ошибки и обнаруживает и исправляет одиночные ошибки.
                                             </Paragraph>
 
                                         </FlowDocument>
@@ -1410,7 +1413,59 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Код Бергера" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
+            <TabItem Header="Код Бергера" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+            <Grid Margin="275,-620,0,130">
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656" SelectionChanged="TabControl_Berger_SelectionChanged">
+                        <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+                                    <RichTextBox BorderBrush="White">
+
+                                        <FlowDocument>
+                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Код Бергера
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0"  >Коды Бергера относятся к разряду несистематических кодов. Существует несколько вариантов построения кодов Бергера. В наиболее простом варианте кодирование происходит следующим образом: в информационной части кода подсчитывается число единиц, после чего формируются проверочные разряды, представляющие инвертированную запись этого числа в двоичной форме.Таким образом, число проверочных разрядов R равно наименьшему целому числу, превышающему Log2( k ), т.е R >= Log2( k ). Например, сообщение 011010, закодированное кодом Бергера, выглядит как 011010100.
+                                            Коды Бергера предназначены для использования в асиметричных каналах связи, где возможно либо только преобразование нулей в единицы, либо наоборот.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" FontWeight="Bold" Padding="30,0,30,0" >Пример:</Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >Преимущество кодов Бергера по сравнению с кодами с постоянным весом заключается в том, что они являются разделимыми кодами с очень простым алгоритмом построения проверочной части. В симметричных канал такие коды обнаруживают все одиночные ошибки и некоторую часть многократных. Можно построить коды с лучшими обнаруживающими свойствами для симметричных каналов. В таких кодах каждой информационной позиции приписывают различный вес, причем ни один вес не является степенью двух ( 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 17 и т.д ). Проверочные знаки этого образуются путем суммирования весов, соответствующих тем информационным разрядам, в которых расположены единицы, затем происходит инверсия полученного числа. Такой код обнаруживает в симметричном канале все двойные ошибки и обнаруживает и исправляет одиночные ошибки.
+                                            </Paragraph>
+
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label  Content="Код Бергера"  Margin="30,30,417,506"  FontSize="24"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <TextBox x:Name="txbBergerResult_Copy" Margin="30,198,415.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <Label  Content="Результат:"  Margin="30,165,436.2,383.6"  FontSize="14"  />
+                                <Label x:Name="lblTask_Copy"  Content="Пример"  Margin="29,112,287.2,437.6"  FontSize="14"  />
+                                <Label x:Name="lblBergerTaskExplanation_Copy"  Content="Закодируйте сообщение"  Margin="30,80,286.8,469"  FontSize="14"  />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" Margin="0,-1,0,1.4" VerticalAlignment="Bottom">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label  Content="Код Бергера"  Margin="30,30,417,506"  FontSize="24"/>
+                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
+                                <Label x:Name="lblBergerTaskExplanation"  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
+                                <Label  Content="Результат:"  Margin="30,165,436.4,383.6"  FontSize="14"  />
+                                <TextBox x:Name="txbBergerResult" Margin="30,198,416.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Berger_Next_Click"/>
+                                <Label x:Name="lblTask"  Content="Закодируйте сообщение"  Margin="29,112,287.4,437.6"  FontSize="14"  />
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
             <TabItem Header="Код шеннона-Фано" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код Хаффмена" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Коды спутники" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>

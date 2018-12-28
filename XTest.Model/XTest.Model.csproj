@@ -54,6 +54,7 @@
     <Compile Include="Services\EllaesCodeService.cs" />
     <Compile Include="Services\RidMaller.cs" />
     <Compile Include="Services\ShennonFanoService.cs" />
+	<Compile Include="Services\Berger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
