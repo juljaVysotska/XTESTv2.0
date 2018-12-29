@@ -377,7 +377,47 @@
                                     <TabItem Name ="codeVAR_item3"  Header="Code" Visibility="Collapsed">
                                         <Grid>
                                             <Label Margin="10, 10,8,6"  FontSize="24">Итеративный код</Label>
-                                            
+                                            <Label Margin="30, 60,8,6"  FontSize="20">Закодируйте сообщение</Label>
+                                            <WrapPanel Width="240" Height="240" HorizontalAlignment="Left" Margin="30 -40 0 0 ">
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center">?</TextBox>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+
+
+                                            </WrapPanel>
                                             <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                         </Grid>
                                     </TabItem>
