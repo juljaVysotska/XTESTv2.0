@@ -376,7 +376,7 @@
                                 <TabControl Name="codeVAR_control3" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
                                     <TabItem Name ="codeVAR_item3"  Header="Code" Visibility="Collapsed">
                                         <Grid>
-                                            <Label Margin="10, 10,8,6"  FontSize="24">Двоично-десятичный код</Label>
+                                            <Label Margin="10, 10,8,6"  FontSize="24">Итеративный код</Label>
                                             <Button Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                         </Grid>
                                     </TabItem>
