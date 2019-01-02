@@ -12,7 +12,7 @@ namespace XTest.ViewModel
 {
     public class RidMallerViewModel : INotifyPropertyChanged
     {
-        public RidMaller _service { get; set; }
+        public RidMallerService _service { get; set; }
         public int[][] array;
         public int[][] arrayCode;
         public int[][] arrayDecode;
@@ -67,7 +67,7 @@ namespace XTest.ViewModel
 
         public RidMallerViewModel()
         {
-            var ridMaller = new RidMaller();
+            var ridMaller = new RidMallerService();
             this._service = ridMaller;
             Array = ridMaller.RandomMessage(ridMaller.GenerateArray());
             OldArray = ridMaller.FuckenCSharp(Array);
@@ -123,7 +123,7 @@ namespace XTest.ViewModel
                       check += 1;
                       if (check == 7)
                       {
-                          MessageBox.Show(mark.ToString());
+                          MessageBox.Show("Правильных ответов"+ mark.ToString() + " из 6");
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                           check = 1;

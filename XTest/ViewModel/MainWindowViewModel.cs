@@ -11,6 +11,8 @@ namespace XTest.ViewModel
 {
     public class MainWindowViewModel
     {
+		public GreyaViewModel greyavm { get; set; }
+		public BinaryDecimalViewModel bdvm { get; set; }
         EllaesCodeViewModel viewModel { get; set; }
         RidMallerViewModel mallerViewModel { get; set; }
         CheckByQViewModel checkByQ { get; set; }
