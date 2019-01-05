@@ -250,6 +250,8 @@ namespace XTest
             codeQ_control.SelectedIndex = 1;
         }
 
+        int Qstage = 0;
+
         private void NextQ_btn_Click(object sender, RoutedEventArgs e)
         {
             Qstage++;
