@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Compile Include="ViewModel\EllaesCodeViewModel.cs" />
+    <Compile Include="ViewModel\RecurentCodeViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Page Include="ViewModel\Window1.xaml">
       <SubType>Designer</SubType>
