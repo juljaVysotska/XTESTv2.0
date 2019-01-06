@@ -72,11 +72,38 @@ namespace XTest
         {
             codeEL_control.SelectedIndex = 1;
         }
-
+        int check1 = 0;
         private void nextVAR_btn_Click(object sender, RoutedEventArgs e)
         {
-            
-                TestVAR_control.SelectedIndex++;
+            check1++;
+            TestVAR_control.SelectedIndex++;
+            if (check1 == 5) {
+                TestVAR_control.SelectedIndex = 0;
+            }
+        }
+
+        private void codeR_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeR_control.SelectedIndex = 0;
+        }
+
+        private void decodeR_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeR_control.SelectedIndex = 1;
+        }
+
+        int check = 0;
+        private void nextRT_btn_Click(object sender, RoutedEventArgs e)
+        {
+            check++;
+            if (check == 4){
+                RT_control.SelectedIndex = 1;
+            }
+        }
+
+        private void WrapPanel_TextInput(object sender, TextCompositionEventArgs e)
+        {
+
         }
     }
 }
