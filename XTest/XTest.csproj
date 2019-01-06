@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\EllaesCodeViewModel.cs" />
+    <Compile Include="ViewModel\RecurentCodeViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\RidMallerViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
