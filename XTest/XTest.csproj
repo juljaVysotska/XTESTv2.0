@@ -173,5 +173,14 @@
   <ItemGroup>
     <Resource Include="Resources\key.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\B4H1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\B4H2.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PN1.JPG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

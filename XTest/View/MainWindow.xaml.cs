@@ -21,7 +21,7 @@ namespace XTest
    
     public partial class MainWindow : Window
     {
-        
+        int Qstage;
         public static Dictionary<string, Result> results = new Dictionary<string, Result>();
 
         public MainWindow()
@@ -262,6 +262,48 @@ namespace XTest
                 TestQ_control.SelectedIndex--;
                 Qstage = 0;
             }
+        }
+
+        private void codeP_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeP_control.SelectedIndex = 0;
+        }
+        private void decodeP_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeP_control.SelectedIndex = 1;
+        }
+
+        private void NextP_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void codeB4H_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeB4H_control.SelectedIndex = 0;
+
+        }
+        private void decodeB4H_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeB4H_control.SelectedIndex = 1;
+        }
+        private void NextB4H_btn_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void codePN_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeB4H_control.SelectedIndex = 0;
+        }
+        private void decodePN_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeB4H_control.SelectedIndex = 1;
+        }
+
+        private void NextPN_btn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
