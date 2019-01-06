@@ -31,27 +31,7 @@ namespace XTest
 
         
 
-        private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            TabControl tabControl = (TabControl)sender;
-            if (tabControl.SelectedIndex == 2)
-            {
-
-            }
-        }
-      
-        private void code_btn_Click(object sender, RoutedEventArgs e)
-        {
-            codeVAR_control.SelectedIndex = 0;
-        }
-
-       
-        private void decode_btn_Click(object sender, RoutedEventArgs e)
-        {
-            codeVAR_control.SelectedIndex = 1;
-        }
-
-        
+     
 
         private void codeRM_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -92,18 +72,20 @@ namespace XTest
             codeR_control.SelectedIndex = 1;
         }
 
-        int check = 0;
-        private void nextRT_btn_Click(object sender, RoutedEventArgs e)
-        {
-            check++;
-            if (check == 4){
-                RT_control.SelectedIndex = 1;
-            }
-        }
 
         private void WrapPanel_TextInput(object sender, TextCompositionEventArgs e)
         {
 
+        }
+        
+        private void nextVARPractice_btn_Click(object sender, RoutedEventArgs e)
+        {
+            check1++;
+            PracticeVAR_control.SelectedIndex++;
+            if (check1 == 5)
+            {
+                //check = 0;
+            }
         }
     }
 }
