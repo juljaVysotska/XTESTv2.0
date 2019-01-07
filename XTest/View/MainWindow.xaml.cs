@@ -226,15 +226,142 @@ namespace XTest
                 TestVAR_control.SelectedIndex++;
         }
 
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+
         private void CodeB4H_control_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
         {
 
         }
+
+
+        private void TbHem_TextChanged(object sender, TextChangedEventArgs e)
 
         private void code_B4H_btn_Click(object sender, RoutedEventArgs e)
+
         {
 
         }
+
+
+
+
+        int cheat;
+        string correctAnswer;
+        string dcorrectAnswer;
+        bool isCodingEnabled;
+        private void hemmingCoding(TextBox tb, Label lb) {
+            isCodingEnabled = true;
+            string taskNumber = "";
+            Random rnd = new Random();
+            int a = rnd.Next(6) + 9;
+            Random rand = new Random();
+
+            for (int i = 0; i <= a; i++)
+            {
+                taskNumber += rand.Next(2);
+
+            }
+            lb.Content = "Закодируйте сообщение: " + taskNumber;
+            //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
+            correctAnswer = Model.Services.HemmingCodeService.Main(taskNumber);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbHem.Text == correctAnswer && isCodingEnabled)
+            {
+                MessageBox.Show("Правильно");
+                cheat = 0;
+
+                hemmingCoding(tbHem, lblHemtask);
+
+
+            }
+            else if (tbHem.Text == dcorrectAnswer && !isCodingEnabled) {
+                MessageBox.Show("Правильно");
+                cheat = 0;
+            }
+            else
+            {
+                MessageBox.Show("Неправильно");
+                cheat = 0;
+            }
+
+
+
+        }
+
+
+
+        private void BtnHemNext_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (cheat == 5 && isCodingEnabled)
+            {
+                tbHem.Text = correctAnswer;
+            }
+            else if (cheat == 5 && !isCodingEnabled) {
+                tbHem.Text = dcorrectAnswer;
+            }
+            else { cheat++; }
+
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            hemmingCoding(tbHem, lblHemtask);
+        }
+
+        private void BtnHemDecoding_Click(object sender, RoutedEventArgs e)
+        {
+            hemDecoding();
+        }
+
+        private void BtnHemCoding_Click(object sender, RoutedEventArgs e)
+        {
+            hemmingCoding(tbHem, lblHemtask);
+        }
+        private void hemDecoding() {
+
+            isCodingEnabled = false;
+            string taskNumber = "";
+            Random rnd = new Random();
+            int a = rnd.Next(6) + 9;
+            Random rand = new Random();
+
+            for (int i = 0; i <= a; i++)
+            {
+                taskNumber += rand.Next(2);
+
+            }
+            lblHemtask.Content = "Раскодируйте сообщение: " + Model.Services.HemmingCodeService.Main(taskNumber);
+            //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
+            dcorrectAnswer = taskNumber;
+        }
+
+        private void Grid_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            hemmingCoding(tbHem1, lblHemtask1);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (tbHem1.Text == correctAnswer && isCodingEnabled)
+            {
+                MessageBox.Show("Правильно");
+
+                hemmingCoding(tbHem1, lblHemtask1);
+
+
+            }
+
+            else
+            {
+                MessageBox.Show("Неправильно");
+            }
+
+
 
         private void decode_B4H_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -264,6 +391,7 @@ namespace XTest
                 TestQ_control.SelectedIndex--;
                 Qstage = 0;
             }
+
         }
     }
 }
