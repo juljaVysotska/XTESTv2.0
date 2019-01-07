@@ -7,12 +7,12 @@
         mc:Ignorable="d" Icon="..\Resources\key.ico"
         Title="CryptTest" Height="660" Width="960" FontSize="14" ResizeMode="CanMinimize">
     <Window.Resources>
-        <!--<local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
+        <local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
         <local:EllaesCodeViewModel x:Key="ellaesVM"></local:EllaesCodeViewModel>
         <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
-        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>--> 
+        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel> 
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -5638,7 +5638,232 @@
             </TabItem>
             <TabItem Header="Код Хаффмена" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Коды спутники" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
-            <TabItem Header="Энтропия" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
+            <TabItem Header="Энтропия" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+                <Grid Margin="275,-620,0,130">
+
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="661">
+                        <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB"  >
+                            <Grid Background="White" Margin="0,0,-15,0">
+
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True">
+
+                                        <FlowDocument>
+                                            <Paragraph  FontSize="24"  Padding="30,30,0,0">
+                                                Количество информации. Энтропия. Краткие теоретические сведения.
+                                            </Paragraph>
+                                            <Paragraph  FontSize="16" FontWeight="Bold" Padding="30,0,0,0">
+                                                Количество информации.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0">
+                                                Количество информации является апостериорной характеристикой и определяет количество информации, которое получают после приема сообщений. Если p( Xi ) – вероятность i-ого сообщения, то индивидуальное количество информации:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="300"  Height="50" Source="..\Resources\entr1.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Следовательно, количество информации, содержащееся в ансамбле из N сообщений равно:</Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="300"  Height="70" Source="..\Resources\entr2.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph  FontSize="16" FontWeight="Bold" Padding="30,0,0,0">
+                                                Безусловная энтропия.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                Энтропия – это средняя величина <LineBreak/>неопределенности состояния источника сообщения. Является обьективной характеристикой источника сообщений, и, если известна статистика сообщений, может быть определена априорно, т.е до получения сообщений.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="300"  Height="70" Source="..\Resources\entr3.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                Свойства энтропии:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" >
+                                                1.	Энтропия есть величина вещественная, ограниченная и неотрицательная.
+                                                <LineBreak/>
+                                                2.	Энтропия детерминированных сообщений равна нулю.
+                                                <LineBreak/>
+                                                3.	Энтропия максимальна, если сообщения равновероятны: H(X) = log(N).
+                                                <LineBreak/>
+                                                4.	Энтропия системы двух альтернативных событий изменяется от 0 до 1.
+                                                <LineBreak/>
+
+                                            </Paragraph>
+
+                                            <Paragraph  FontSize="16" FontWeight="Bold" Padding="30,0,0,0">
+                                                Условная энтропия.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                Условная вероятность P(Xi/Yi) показывает вероятность того, что при приеме сообщения Yi было действительно передано сообщение Xi. Индивидуальная энтропия: H(Xi) = - log( P(Xi ) ). Индивидуальная условная энтропия: H( Xi/Yj ) = - log( P(Xi/Yj ) ). Тогда количество информации (полное): I( X/Y ) = H( X ) - H( X/Y ), а это не что иное, как полное количество информации с учетом условной энтропии. Условную энтропию принято показывать в виде матрицы: со стороны источника и со стороны приемника:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="600"  Height="150" Source="..\Resources\entr4.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                Для данной матрицы:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="400"  Height="70" Source="..\Resources\entr5.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                Полная условная энтропия вычисляется по формуле:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="400"  Height="70" Source="..\Resources\entr6.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                Свойства условной энтропии:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="60,0,30,0" >
+                                                1.	Если ансамбли сообщений Х и Y жестко статистически связаны между собой, т.е. при возникновении Х1 принимается Y1 , при Х2 – Y2 и т.д., тогда условная энтропия равна нулю: H( X/Y ) = 0 и H( Y/X ) = 0.
+                                                <LineBreak/>
+                                                2.	Если ансамбль сообщений Х и Y взаимно независимы, то полная условная энтропия Х относительно Y равняется безусловной энтропии Х: H( X/Y ) = H( X ) и H( Y/X ) = H( Y ).
+                                                
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
+                                                При выполнении данной лабораторной работы вводите результаты с точностью до 0.001, т.е. с тремя знаками после запятой. Вычисления желательно выполнять более точно, а затем выполнять округления, т.к. допустимая погрешность ±0.001.
+                                            </Paragraph>
+                                            <Paragraph/>
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <!--<Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ellaesVM}}">
+
+                                <Button Name ="codeEL_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeEL_btn_Click" Grid.Column="1" />
+                                <Button Name="decodeEL_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="269,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeEL_btn_Click" Grid.Column="1" />
+                                <TabControl Name="codeEL_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" Grid.ColumnSpan="2" >
+                                    <TabItem Name ="codeEL_item"  Header="Code" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение:"  Margin="30,30,417,440"  FontSize="14"/>
+                                            <WrapPanel Width="200" Height="200" HorizontalAlignment="Left" Margin="30 -150 0 0 " DataContext="{Binding ArrayCode}">
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][0]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][1]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][2]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][3]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][4]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][0]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][1]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][2]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][3]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][4]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][0]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][1]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][2]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][3]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][4]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][0]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][1]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][2]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][3]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][4]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][0]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][1]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][2]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][3]}" FontSize="14" VerticalContentAlignment="Center"/>
+                                            </WrapPanel>
+
+                                            <Button Content="Готово" Command="{Binding NextCode}" Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Name ="decodeEL_item" Header="Decode" Visibility="Collapsed" >
+                                        <Grid DataContext="{Binding Source={StaticResource ellaesVM}}">
+                                            <Label  Content="Раскодируйте сообщение:"  Margin="30,30,417,440"  FontSize="14"/>
+                                            <WrapPanel Width="200" Height="200" HorizontalAlignment="Left"  Margin="30 -150 0 0" DataContext="{Binding ArrayDecode}">
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [0][0]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [0][1]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [0][2]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [0][3]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [0][4]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [1][0]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [1][1]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [1][2]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [1][3]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [1][4]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [2][0]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [2][1]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [2][2]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [2][3]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [2][4]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [3][0]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [3][1]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [3][2]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [3][3]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [3][4]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [4][0]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [4][1]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [4][2]}" VerticalContentAlignment="Center"/>
+                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [4][3]}" VerticalContentAlignment="Center"/>
+                                            </WrapPanel>
+                                            <Button Content="Готово" Command="{Binding NextDecode}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
+
+                            </Grid>-->
+                        </TabItem>
+                        <TabItem Header="Тест"  Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <!--<Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ellaesVM}}">
+                                <Label  Content="Код Эллаеса"  Margin="30,30,417,506"  FontSize="24"/>
+                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
+                                <Button Content="Далее" Command="{Binding Next}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Label Content="Закодируйте сообщение:" Margin="30,70,459,479"/>
+                                <WrapPanel Width="200" Height="200" Margin="30,90,440,264" DataContext="{Binding Array}">
+                                    <TextBox Name="tb00" Width="40" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Name="tb01" Width="40" Height="40" Text="{Binding Path=[0][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                </WrapPanel>
+                            </Grid>-->
+                        </TabItem>
+
+                    </TabControl>
+
+                    
+
+
+                </Grid>
+            </TabItem>
+
             <TabItem Header="Рекурентный код" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Канальные коды" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
 
