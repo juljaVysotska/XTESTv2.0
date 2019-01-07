@@ -36,7 +36,7 @@ namespace XTest
         {
             if (!results.ContainsKey("Berger"))
             {
-                results.Add("Berger", new Result("Berger", 6));
+                results.Add("Berger", new Result("Код Бергера", 6));
             }
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
@@ -134,29 +134,39 @@ namespace XTest
         #endregion
 
         #region Shennon-Fano
+
+        List<ShennonFanoDto> ShennonMessages = new List<ShennonFanoDto>();
+
         private void TabControl_Shennon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!results.ContainsKey("Shennon-Fano"))
             {
-                results.Add("Shennon-Fano", new Result("Shennon-Fano", 3));
+                results.Add("Shennon-Fano", new Result("Код Шенона-Фано", 3));
             }
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
             {
-                GenerateShennon();
+                GenerateShennonTest();
+            }
+            else if (tabControl.SelectedIndex == 1)
+            {
+                GenerateShennonPractice();
             }
         }
 
-        private void GenerateShennon()
+        private void GenerateShennonPractice()
+        {
+            ShennonMessages = ShennonFanoService.generateMessages();
+            Resources["ShennonTask"] = ShennonMessages;
+        }
+
+        private void GenerateShennonTest()
         {
             Result result = results["Shennon-Fano"];
             if (result.currentTestNumber <= 3)
             {
-                Dictionary<int, double> messages = ShennonFanoService.generateMessages();
-                foreach (var message in messages)
-                {
-                    //TODO display messages
-                }
+                ShennonMessages = ShennonFanoService.generateMessages();
+                Resources["ShennonTask"] = ShennonMessages;
             }
             else
             {
@@ -164,13 +174,25 @@ namespace XTest
             }
         }
 
-        private void Button_Shennon_Next_Click(object sender, RoutedEventArgs e)
+        private void Button_Shennon_Practice_Next_Click(object sender, RoutedEventArgs e)
+        {
+            if (ShennonFanoService.isCalculatedCorrectly(ShennonMessages))
+            {
+                MessageBox.Show("Congrats!");
+            }
+            else
+            {
+                MessageBox.Show("Wrong answer.");
+            }
+            GenerateShennonPractice();
+        }
+
+        private void Button_Shennon_Test_Next_Click(object sender, RoutedEventArgs e)
         {
             Result result = results["Shennon-Fano"];
             if (result.currentTestNumber <= 3)
             {
-                //TODO collect info and check if correct
-                if (ShennonFanoService.isCalculatedCorrectly(null, null))
+                if (ShennonFanoService.isCalculatedCorrectly(ShennonMessages))
                 {
                     MessageBox.Show("Congrats!");
                     result.correctTests += 1;
@@ -181,7 +203,7 @@ namespace XTest
                     MessageBox.Show("Wrong answer.");
                     result.currentTestNumber += 1;
                 }
-                GenerateShennon();
+                GenerateShennonTest();
             }
         }
         #endregion

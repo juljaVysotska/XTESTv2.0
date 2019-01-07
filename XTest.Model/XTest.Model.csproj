@@ -46,6 +46,7 @@
     <Compile Include="Models\BinaryDecimalCode.cs" />
     <Compile Include="Models\GreyaCode.cs" />
     <Compile Include="Models\IterativeCode.cs" />
+    <Compile Include="Models\ShennonFanoDto.cs" />
     <Compile Include="Models\TestMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BinaryDecimalCodeService.cs" />

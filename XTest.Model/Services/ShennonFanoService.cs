@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using XTest.Model.Models;
 
 namespace XTest.Model.Services
 {
@@ -10,7 +11,7 @@ namespace XTest.Model.Services
     {
         static Random rnd = new Random();
 
-        public static Dictionary<int, double> generateMessages()
+        public static List<ShennonFanoDto> generateMessages()
         {
             Dictionary<int, double> result = new Dictionary<int, double>();
             double message = 1.0;
@@ -23,8 +24,12 @@ namespace XTest.Model.Services
                 i++;
             }
             sortValues(result);
-            calculate(result);
-            return result;
+            List<ShennonFanoDto> returnList = new List<ShennonFanoDto>();
+            foreach (var dto in result)
+            {
+                returnList.Add(new ShennonFanoDto(dto.Key, dto.Value, ""));
+            }
+            return returnList;
         }
 
         private static void sortValues(Dictionary<int, double> messageFrequencies)
@@ -38,23 +43,31 @@ namespace XTest.Model.Services
             }
         }
 
-        public static bool isCalculatedCorrectly(Dictionary<int, double> task, Dictionary<int, string> input)
+        public static bool isCalculatedCorrectly(List<ShennonFanoDto> input)
         {
-            return input.SequenceEqual(calculate(task));
+            var correctAnswer = calculate(input);
+            for (int i = 0; i < input.Count; i++)
+            {
+                if (input[i].result != correctAnswer[i].result)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
-        public static Dictionary<int, string> calculate(Dictionary<int, double> messageFrequencies)
+        public static List<ShennonFanoDto> calculate(List<ShennonFanoDto> messageFrequencies)
         {
-            Dictionary<int, string> result = new Dictionary<int, string>();
+            List<ShennonFanoDto> result = new List<ShennonFanoDto>();
             calculateRecursive(result, messageFrequencies, 0, messageFrequencies.Count() - 1, 1.0, "");
             return result;
         }
 
-        private static void calculateRecursive(Dictionary<int, string> result, Dictionary<int, double> messageFrequencies, int start, int end, double percentage, string path)
+        private static void calculateRecursive(List<ShennonFanoDto> result, List<ShennonFanoDto> messageFrequencies, int start, int end, double percentage, string path)
         {
             if (start == end)
             {
-                result.Add(start, path);
+                result.Add(new ShennonFanoDto(start, messageFrequencies[start].value, path));
             }
             else
             {
@@ -62,7 +75,7 @@ namespace XTest.Model.Services
                 int i = start;
                 for (; i <= end; i++)
                 {
-                    tempPercentage = Math.Round(tempPercentage - messageFrequencies[i], 2);
+                    tempPercentage = Math.Round(tempPercentage - messageFrequencies[i].value, 2);
                     if (tempPercentage <= percentage / 2)
                     {
                         break;
