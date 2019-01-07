@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="ViewModel\BinaryDecimalViewModel.cs" />
     <Compile Include="ViewModel\GreyaViewModel.cs" />
+    <Compile Include="ViewModel\IterativeViewModel.cs" />
     <Compile Include="ViewModel\CheckByQViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\EllaesCodeViewModel.cs" />
