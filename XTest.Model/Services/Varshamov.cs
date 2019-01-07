@@ -67,6 +67,31 @@ namespace XTest.Model.Services
             return arr;
         }
 
+        public bool Equals(int[][] a1, int[][] a2)
+        {
+            var a = true;
+            for (int i = 0; i < a1.Length; i++)
+            {
+                for (int j = 0; j < a2.Length; j++)
+                {
+                    if (a)
+                        a = a1[i][j] == a2[i][j];
+                }
+            }
+            return a;
+        }
+
+        public bool Equals(int[] a1, int[] a2)
+        {
+            var a = true;
+            for (int i = 0; i < a1.Length; i++)
+            {
+                    if (a)
+                        a = a1[i] == a2[i];
+            }
+            return a;
+        }
+
         public bool CheckProdMatrix(int b, int[][] arr)
         {
             int[] array = new int[arr.Length];
@@ -99,6 +124,16 @@ namespace XTest.Model.Services
             return array;
         }
 
+        public string SimpleArrToString(int [] arr)
+        {
+            string s = "";
+            for (int i = 0; i < arr.Length; i++)
+            {
+                s += arr[i];
+            }
+            return s;
+        }
+
         public int[] GenerateArray(int n)
         {
             int[] arr = new int[n];
@@ -107,6 +142,16 @@ namespace XTest.Model.Services
                 arr[i] = rand.Next(0, 2);
             }
             return arr;
+        }
+
+        public int[] FuckenCSharp(int[] arr)
+        {
+            int[] array = new int[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                array[i] = arr[i];
+            }
+            return array;
         }
 
         public string[] Syndrom(int[][] arr, int [][] simpleArr)
