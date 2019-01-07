@@ -944,8 +944,620 @@
             </TabItem>
             <TabItem Header="Код Хемминга(Систематический)" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код Абрамсона" Height="35" Width="260"  Padding="30,0,0,0"  BorderBrush="#FFF5F7F9" Background="#FFF5F7F9"/>
-            <TabItem Header="Код Файра" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
+            <TabItem Header="Код Файра" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+                <Grid Margin="275,-620,0,130">
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
+                        <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
 
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" IsUndoEnabled="False" Cursor="Arrow" TextChanged="RichTextBox_TextChanged">
+
+                                        <FlowDocument>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span FontSize="24">
+                                                    <Run/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span FontSize="24">
+                                                    <Run Text="Коды Файра. Краткие теоретические сведения."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span FontSize="24">
+                                                    <Run/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Center">
+                                                <Span FontWeight="Bold" FontSize="18">
+                                                    <Run Text="Кодирование."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Циклические коды относятся к числу блоковых систематических кодов, в которых каждая комбинация кодируется самостоятельно (в виде блока) таким образом, что информационные (k) и контрольные (m) символы всегда находятся на определённых местах. В основу циклического кодирования положено использование неприводимого многочлена P(X), который применительно к циклическим кодам называется образующим многочленом (полиномом). В качестве информационных символов для построения циклических кодов берутся комбинации двоичного кода на все сочетания. Циклический код или закодированное сообщение F(X) можно образовать двумя способами:"/>
+                                                </Span>
+                                            </Paragraph>
+                                            <List MarkerStyle="Decimal" Margin="0" Padding="0">
+                                                <ListItem Margin="48,0,0,0">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                        <Span>
+                                                            <Run Text="Умножением одной из комбинаций двоичного кода на все сочетания ( комбинация Q(X) ), принадлежащей к той же группе того же кода, что и заданная ( комбинация G(X) ), на образующий многочлен P(X); "/>
+                                                        </Span>
+                                                    </Paragraph>
+                                                </ListItem>
+                                                <ListItem Margin="48,0,0,0">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                        <Span>
+                                                            <Run Text="Умножением заданной кодовой комбинации G(X) на одночлен X"/>
+                                                        </Span>
+                                                        <Span Typography.Variants="Superscript">
+                                                            <Run Text="m"/>
+                                                        </Span>
+                                                        <Span>
+                                                            <Run Text=", имеющий ту же степень, что и образующий многочлен P(X), с добавлением к этому произведению остатка от деления произведения X"/>
+                                                        </Span>
+                                                        <Span Typography.Variants="Superscript">
+                                                            <Run Text="m"/>
+                                                        </Span>
+                                                        <Span>
+                                                            <Run Text=" · G(X) на образующий многочлен P(X). Таким образом, F(X) = Q(X) · P(X) = X"/>
+                                                        </Span>
+                                                        <Span Typography.Variants="Superscript">
+                                                            <Run Text="m"/>
+                                                        </Span>
+                                                        <Span>
+                                                            <Run Text=" · G(X) + R(X). "/>
+                                                        </Span>
+                                                    </Paragraph>
+                                                </ListItem>
+                                            </List>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Коды Файра относятся к группе циклических кодов, позволяющих обнаруживать и исправлять одиночные пачки ошибок. Следовательно, процедура кодирования для кодов Файра аналогична стандартной процедуре кодирования циклических кодов. Образующий полином данного кода P(X) = P"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="1"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="(X) · (X"/>
+                                                </Span>
+                                                <Span Typography.Variants="Superscript">
+                                                    <Run Text="C"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" + 1), где P"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="1"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="(X) – неприводимый многочлен степени L. Из принципа построения кода следует, что:"/>
+                                                </Span>
+                                            </Paragraph>
+                                            <List MarkerStyle="Decimal" Margin="0" Padding="0">
+                                                <ListItem Margin="48,0,0,0">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                        <Span>
+                                                            <Run Text="L &gt;= B"/>
+                                                        </Span>
+                                                        <Span Typography.Variants="Subscript">
+                                                            <Run Text="s"/>
+                                                        </Span>
+                                                        <Span>
+                                                            <Run Text=". "/>
+                                                        </Span>
+                                                    </Paragraph>
+                                                </ListItem>
+                                                <ListItem Margin="48,0,0,0">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                        <Span>
+                                                            <Run Text="C &gt;= B"/>
+                                                        </Span>
+                                                        <Span Typography.Variants="Subscript">
+                                                            <Run Text="s"/>
+                                                        </Span>
+                                                        <Span>
+                                                            <Run Text=" + B"/>
+                                                        </Span>
+                                                        <Span Typography.Variants="Subscript">
+                                                            <Run Text="r"/>
+                                                        </Span>
+                                                        <Span>
+                                                            <Run Text=" - 1. "/>
+                                                        </Span>
+                                                    </Paragraph>
+                                                </ListItem>
+                                            </List>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Здесь где B"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="r"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" – длина пачки обнаруживемых ошибок, B"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="s"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" – длина пачки исправляемых ошибок. При этом С не должно делиться нацело на число e = 2"/>
+                                                </Span>
+                                                <Span Typography.Variants="Superscript">
+                                                    <Run Text="L"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" - 1. Неприводимый многочлен P"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="1"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="(X) выбирается из таблицы непридимых многочленов для циклических кодов. Длина кодовой комбинации n = НОК(e, C). Число контрольных символов m = С + 1."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    "/>
+                                                </Span>
+                                                <Span FontWeight="Bold">
+                                                    <Run Text="Пример кодирования"/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="   "/>
+                                                </Span>
+                                                <Span FontWeight="Bold">
+                                                    <Run Text=" "/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="Необходимо закодировать сообщение "/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="101010"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" так, чтобы имелась возможность обнаружить и исправить пачку из 2-х ошибок."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Дан неприводимый полином P"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="1"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="(X) = "/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="111"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=". Условие L &gt;= B"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="s "/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="выполняется ( L = 2, B"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="s"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" = 2 ). C &gt;= B"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="s"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" + B"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="r"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" - 1 = 2 + 2 - 1 = 3. Для выполнения условия неделения C на 2"/>
+                                                </Span>
+                                                <Span Typography.Variants="Superscript">
+                                                    <Run Text="L"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" - 1 необходимо взять C = 4."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Образующий полином P(X) = P"/>
+                                                </Span>
+                                                <Span Typography.Variants="Subscript">
+                                                    <Run Text="1"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="(X) · (X"/>
+                                                </Span>
+                                                <Span Typography.Variants="Superscript">
+                                                    <Run Text="4"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" + 1) = "/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="1110111"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Выполним деление X"/>
+                                                </Span>
+                                                <Span Typography.Variants="Superscript">
+                                                    <Run Text="m"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" · G(X) на P(X):"/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="1 0 1 0 1 0 0 0 0 0 0 0 | 1 1 1 0 1 1 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="1 1 1 0 1 1 1           |--------------"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="-------------           |"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="  1 0 0 0 1 1 0"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="  1 1 1 0 1 1 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="  -------------"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="    1 1 0 0 0 1 0"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="    1 1 1 0 1 1 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="    -------------"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="        1 0 1 0 1 0 0"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="        1 1 1 0 1 1 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="        -------------"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="          1 0 0 0 1 1 0"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="          1 1 1 0 1 1 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="          -------------"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="            1 1 0 0 0 1"/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Кодовая комбинация: F(X) = X"/>
+                                                </Span>
+                                                <Span Typography.Variants="Superscript">
+                                                    <Run Text="m"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text=" · G(X) + R(X) = "/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="101010110001"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    "/>
+                                                </Span>
+                                                <Span FontWeight="Bold" FontStyle="Italic">
+                                                    <Run Text="Примечание. "/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="Во всех рассчетах при тестировании кодирования и декодирования принимайте C = 4 и L = 2, т.е. обнаруживается и исправляется 2 ошибки."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Center">
+                                                <Span FontWeight="Bold" FontSize="18">
+                                                    <Run Text="Декодирование."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Идея обнаружения ошибок в принятом циклическом коде заключается в том, что при отсутствии ошибок закодированная комбинация F(X) делится на образующий многочлен P(X) без остатка. В этом случае контрольные символы отбрасываются, а информационные символы используются по назначению. Если произошло искажение принятой кодовой комбинации, то эта комбинация F(X) преобразуется в комбинацию H(X), которую можно представить как сумму двух многочленов: H(X) = F(X) + E(X), где E(X) – многочлен ошибок, содержащий столько единиц, сколько элементов принятой комбинации не совпадает с элементами в переданной комбинации. Декодирование циклических кодов можно осуществлять следующим образом:"/>
+                                                </Span>
+                                            </Paragraph>
+                                            <List MarkerStyle="Decimal" Margin="0" Padding="0">
+                                                <ListItem Margin="48,0,0,0">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                        <Span>
+                                                            <Run Text="Вычислить остаток (синдром) R(X). Если R(X) = 0, то комбинация принята без ошибок. Наличие остатка говорит о том, что комбинация принята искаженной. "/>
+                                                        </Span>
+                                                    </Paragraph>
+                                                </ListItem>
+                                                <ListItem Margin="48,0,0,0">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                        <Span>
+                                                            <Run Text="Подсчитать вес остатка W. Если W &lt;= s (s – число исправляемых ошибок), то принятую комбинацию складывают по модулю 2 с остатком и получают исправленную комбинацию. "/>
+                                                        </Span>
+                                                    </Paragraph>
+                                                </ListItem>
+                                                <ListItem Margin="48,0,0,0">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                        <Span>
+                                                            <Run Text="Если W &gt; s, то производится циклический сдвиг на один символ влево и полученная после такого сдвига комбинация снова делится на образующий многочлен. Если после этого W &lt;= s, то циклически сдвинутую комбинацию складывают с остатком и затем после сложения обратно сдвигают на один символ вправо (возвращают на прежнее место). В результате получаем исправленную комбинацию. "/>
+                                                        </Span>
+                                                    </Paragraph>
+                                                </ListItem>
+                                                <ListItem Margin="48,0,0,0">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                        <Span>
+                                                            <Run Text="Если после циклического сдвига на один символ по прежнему W &gt; s, то производятся дополнительные циклические сдвиги влево. При этом после каждого сдвига осуществляется деление полученной комбинации на P(X) и проверяется вес остатка. При W &lt;= s выполняются действия, указанные в пункте 3, с той лишь разницей, что обратных циклических сдвигов вправо необходимо будет сделать столько, сколько было сделано влево. "/>
+                                                        </Span>
+                                                    </Paragraph>
+                                                </ListItem>
+                                            </List>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span FontWeight="Bold">
+                                                    <Run Text="Пример декодирования"/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Дан образующий полином P(X) = "/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="1110111"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Принята кодовая комбинация "/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="101010110000"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Выполним ее декодирование."/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="1 0 1 0 1 0 1 1 0 0 0 0 | 1 1 1 0 1 1 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="1 1 1 0 1 1 1           |--------------"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="-------------           |"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="  1 0 0 0 1 0 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="  1 1 1 0 1 1 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="  -------------"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="    1 1 0 0 1 0 0"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="    1 1 1 0 1 1 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="    -------------"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="        1 0 0 1 1 0 0"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="        1 1 1 0 1 1 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="        -------------"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="          1 1 1 0 1 1 0"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="          1 1 1 0 1 1 1"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="          -------------"/>
+                                                </Span>
+                                                <Span FontSize="16" FontFamily="Courier New">
+                                                    <LineBreak/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="                      1"/>
+                                                </Span>
+                                            </Paragraph>
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                <Span>
+                                                    <Run Text="    Так как вес остатка равен 1, и код способен исправлять одиночные ошибки, то дополнительные сдвиги выполнять не нужно. Исключая проверочные разряды, декодированная комбинация будет равна "/>
+                                                </Span>
+                                                <Span FontFamily="Courier New">
+                                                    <Run Text="101010"/>
+                                                </Span>
+                                                <Span>
+                                                    <Run Text="."/>
+                                                </Span>
+                                            </Paragraph>
+
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="47*"/>
+                                    <ColumnDefinition Width="619*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Content="Итеративный код"  Margin="30,30,323,506"  FontSize="24" Grid.ColumnSpan="2"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="469.5,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Grid.Column="1"/>
+
+                                <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14" Grid.ColumnSpan="2"  />
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14" Grid.ColumnSpan="2"  />
+
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+                                <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18" Grid.ColumnSpan="2"/>
+                                <Label Content="5" HorizontalAlignment="Left" Margin="33.5,480,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1"/>
+                                <Label Content="/ 10" HorizontalAlignment="Left" Margin="53.5,480,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1"/>
+                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
+                                <Label Content="3" HorizontalAlignment="Left" Margin="103.5,511,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1"/>
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label  Content="Итеративный код"  Margin="30,30,288,506"  FontSize="24"/>
+                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
+                                <Label  Content="Закодируйте сообщение"  Margin="29,80,288,469"  FontSize="14"  />
+
+                                <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
+                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
+                                <Label Content="5" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="/ 10" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="3" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+
+                            </Grid>
+                        </TabItem>
+
+                    </TabControl>
+
+                </Grid>
+            </TabItem>
             <TabItem Header="Код Хемминга" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
             <TabItem Header="Код БЧХ" Height="35" Width="260"   Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
@@ -1077,10 +1689,10 @@
             </TabItem>
             <TabItem Header="Код с проверкой по |q|" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
-                  
+
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                                <Grid Background="White" Margin="0,0,-15,0">
+                            <Grid Background="White" Margin="0,0,-15,0">
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
@@ -1104,13 +1716,14 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">12322 S = (1 + 2 + 3 + 2 + 2) mod 4 = 2 с ошибкой.
                                             </Paragraph>
-                                            
+
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
 
 
-                            </Grid>                        </TabItem>
+                            </Grid>
+                        </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
                                 <Button Name ="codeQ_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeQ_btn_Click"/>
@@ -1119,13 +1732,13 @@
                                     <TabItem Name ="codeQ_item"  Header="Code" Visibility="Collapsed">
                                         <Grid>
                                             <Label  Content="Для кодовой комбинации при q = " Margin="30"  FontSize="14"/>
-                                          
+
                                             <Label Content="{Binding Path=Q}" x:Name="q" Margin="260 30 30 30"  FontSize="14"  />
                                             <Label  Content="постройте код" HorizontalAlignment="Right" Margin="30 30 270 30"  FontSize="14"  />
                                             <Label  Content="{Binding Path=Code}"  Margin="30,150,287,136"  FontSize="14"  />
-                                           
+
                                             <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                            
+
 
                                             <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                         </Grid>
@@ -1139,7 +1752,7 @@
                                             <RadioButton IsChecked="{Binding Path=IsSuccess}" Name="QYes" Margin="0 130 0 0" Content="Да"/>
                                             <RadioButton Name="QNo" Margin="0 150 0 0" Content="Нет"/>
                                             <Button Command="{Binding CheckDecode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                           
+
                                         </Grid>
                                     </TabItem>
 
@@ -1162,7 +1775,7 @@
                                             <TextBox Text="{Binding Coded}"   Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
-                                           
+
                                         </Grid>
                                     </TabItem>
                                     <TabItem Header="2"  Visibility="Collapsed">
@@ -1173,17 +1786,17 @@
                                             <Label Content="{Binding Path=Q}" Name="DecqTest" Margin="60 80 0 0"/>
                                             <RadioButton IsChecked="{Binding Path=IsSuccess}" Name="QYesTest" Margin="0 130 0 0" Content="Да"/>
                                             <RadioButton Name="QNoTest" Margin="0 150 0 0" Content="Нет"/>
-                                            
+
 
                                         </Grid>
                                     </TabItem>
-                                    
+
                                 </TabControl>
 
 
-                                
+
                             </Grid>
-              
+
                         </TabItem>
                     </TabControl>
                 </Grid>
@@ -1667,9 +2280,9 @@
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0"  >Коды Бергера предназначены для использования в ассиметричных каналах связи, где возможно либо только преобразование нулей в единицы, либо наоборот.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" Padding="30,0,30,0" >Пример:</Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" > 1.	Подлежащие передачи информационные символы 011010. 
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >1.	Подлежащие передачи информационные символы 011010.
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >2.	Двоичная запись количества единиц 011. 
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >2.	Двоичная запись количества единиц 011.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >3.	Инвертированная двоичная запись 100.
                                             </Paragraph>
@@ -1692,7 +2305,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >2.	Двоичная запись суммы весов для семиразрядной проверочной части, имеет вид 0100010. Инвертированный вид ее 1011101. Таким образом, полная последовательность выглядит как 01101000011011101.
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" ></Paragraph>
 
                                         </FlowDocument>
                                     </RichTextBox>
@@ -1765,7 +2378,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P4 = 0.13
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P5 = 0.08  
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P5 = 0.08
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P6 = 0.06
                                             </Paragraph>
@@ -1781,7 +2394,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P2 = 0.15 0
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P3 = 0.14 1
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P4 = 0.13 1
@@ -1798,17 +2411,17 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P0 = 0.21 00
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P1 = 0.15 01
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P2 = 0.15 01
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P3 = 0.14 10
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P4 = 0.13 10
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P5 = 0.08 11
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P6 = 0.06 11
@@ -1821,17 +2434,17 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P0 = 0.21 00
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P1 = 0.15 010
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P2 = 0.15 011
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P3 = 0.14 100
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P4 = 0.13 101
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P5 = 0.08 110
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P6 = 0.06 111
@@ -1863,7 +2476,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P8 = 0.02 11111
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >    </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" ></Paragraph>
 
                                         </FlowDocument>
                                     </RichTextBox>

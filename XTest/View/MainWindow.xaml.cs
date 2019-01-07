@@ -265,5 +265,10 @@ namespace XTest
                 Qstage = 0;
             }
         }
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
