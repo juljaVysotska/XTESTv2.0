@@ -146,6 +146,11 @@ namespace XTest.ViewModel
                         if (testNumber >= 11)
                         {
 							MessageBox.Show("Правильных ответов " + CorrectAnsverBinaryDecimal.ToString() + " из 10");
+							if (!MainWindow.results.ContainsKey("Двоично-Десятичный Код"))
+							{
+								MainWindow.results.Add("Двоично-Десятичный Код", new Result("Greya", 10));
+							}
+							MainWindow.results["Двоично-Десятичный Код"].correctTests = correctAnsver;
 							BinaryDecimalCodeTest.Message = codeService.enncodeNumber(random.Next(100, 10000), BinaryDecimalCodeTest.Code);
                             TestNumberBinaryDecimal = 1;
                             CorrectAnsverBinaryDecimal = 0;

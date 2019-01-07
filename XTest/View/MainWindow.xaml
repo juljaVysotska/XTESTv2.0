@@ -986,47 +986,6 @@
                                     <TabItem Name ="codeVAR_item3"  Header="Code" Visibility="Collapsed">
                                         <Grid>
                                             <Label Margin="10, 10,8,6"  FontSize="24">Итеративный код</Label>
-                                            <!--Исправить ошибки-->
-                                            <!--<Label Margin="30, 60,8,6"  FontSize="20">Исправте ошибки</Label>
-                                            <Label Margin="30, 100,8,6"  FontSize="20">Q=10</Label>
-                                            <WrapPanel Width="240" Height="240" HorizontalAlignment="Left" Margin="30 20 0 0 " DataContext="{Binding ArrayCode}">
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][0]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][1]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][2]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][3]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][4]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][5]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="True"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][0]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][1]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][2]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][3]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][4]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][5]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="True"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][0]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][1]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][2]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][3]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][4]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][5]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="True"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][0]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][1]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][2]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][3]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][4]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][5]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="True"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][0]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][1]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][2]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][3]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][4]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][5]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="True"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [5][0]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="True"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [5][1]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="True"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [5][2]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="True"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [5][3]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="True"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [5][4]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="True"/>
-                                            </WrapPanel>-->
-
                                             <!--Закодируйте сообщение-->
                                             <Label Margin="30, 70,8,6" Content="{Binding PracticeTask}"  FontSize="16"/>
                                             <Label Margin="30, 370,8,6"  FontSize="14">Q = </Label>

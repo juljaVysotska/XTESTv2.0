@@ -139,6 +139,11 @@ namespace XTest.ViewModel
                         if (testNumber >= 11)
                         {
 							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 10");
+							if (!MainWindow.results.ContainsKey("Код Грея"))
+							{
+								MainWindow.results.Add("Код Грея", new Result("Greya", 10));
+							}
+							MainWindow.results["Код Грея"].correctTests = correctAnsver;
 							GreyaCodeTest.Message = codeService.generateLine(11);
                             TestNumber = 1;
                             CorrectAnsver = 0;
