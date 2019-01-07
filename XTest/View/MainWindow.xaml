@@ -944,7 +944,168 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Код Хемминга(Систематический)" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
-            <TabItem Header="Код Абрамсона" Height="35" Width="260"  Padding="30,0,0,0"  BorderBrush="#FFF5F7F9" Background="#FFF5F7F9"/>
+            <TabItem Header="Код Абрамсона" Height="35" Width="260"  Padding="30,0,0,0"  BorderBrush="#FFF5F7F9" Background="#FFF5F7F9">
+                <Grid Margin="275,-620,0,130">
+
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
+                        <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
+                                        <FlowDocument>
+                                            <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Коды Абрамсона. Краткие теоретические сведения.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Кодирование
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Циклические коды относятся к числу блоковых систематических кодов, в которых каждая комбинация кодируется самостоятельно (в виде блока) таким образом, что информационные (k) и контрольные (m) символы всегда находятся на определённых местах. В основу циклического кодирования положено использование неприводимого многочлена P(x), который применительно к циклическим кодам называется образующим многочленом (полиномом). В качестве информационных символов для построения циклических кодов берутся комбинации двоичного кода на все сочетания. Циклический код или закодированное сообщение F(x) можно образовать двумя способами:</Paragraph>
+                                            
+                                        
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                1.	Умножением одной из комбинаций двоичного кода на все сочетания ( комбинация Q(x) ), принадлежащей к той же группе того же кода, что и заданная ( комбинация G(x) ), на образующий многочлен P(x); 
+2.	Умножением заданной кодовой комбинации G(x) на одночлен xm, имеющий ту же степень, что и образующий многочлен P(x), с добавлением к этому произведению остатка от деления произведения xm · G(x) на образующий многочлен P(x). Таким образом, F(x) = Q(x) · P(x) = (xm) · G(x) + R(x).
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">2.	Умножением заданной кодовой комбинации G(x) на одночлен x^m, имеющий ту же степень, что и образующий многочлен P(x), с добавлением к этому произведению остатка от деления произведения x^m · G(x) на образующий многочлен P(x). Таким образом, F(x) = Q(x) · P(x) = (xm) · G(x) + R(x).
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Коды Абрамсона относятся к группе циклических кодов, позволяющих обнаруживать и исправлять одиночные пачки ошибок. Следовательно, процедура кодирования для кодов Абрамсона аналогична стандартной процедуре кодирования циклических кодов. Длина кодовой комбинации кодов Абрамсона n = 2h - 1,  где h – степень неприводимого полином P1(x).Образующий полином P(x) = ( 1 + x ) · P1(x). Число информационных символов k = 2h - h - 2. Эти выражения справедливы для минимального кодового расстояния dmin = 4, что позволяет корректировать все одиночные и все смежные двойные ошибки.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Пример кодирования
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Необходимо закодировать сообщение 0110010110.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Дан неприводимый полином P1 = 10011, т.е. P1(x) = x⁴ + x + 1. Образующий полином в этом случае будет равен P(x) = ( 1 + x ) · ( x4 + x + 1 ) = x⁵ + x⁴ + x² + 1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Необходимо найти остаток от деления G(x) · x⁵ на образующий полином x⁵ + x⁴ + x² + 1:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="600" Height="400" Source="..\Resources\A1.JPG"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Вес остатка – 2. Так как код Абрамсона способен исправлять все одиночные и смежные двойные ошибки ( в данном случае единичные биты остатка не смежны ), необходимо выполнить циклический сдвиг начального сообщения на один бит влево и повторить деление:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="600" Height="400" Source="..\Resources\A2.JPG"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Вес остатка равен 4, значит необходимо продолжать выполнять циклический сдвиг и деление.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="600" Height="400" Source="..\Resources\A3.JPG"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Вес остатка равен 4, значит необходимо продолжать выполнять циклический сдвиг и деление.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="600" Height="400" Source="..\Resources\A4.JPG"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">В данном случае вес остатка – 2, и исправляемые биты смежны. Для получения исправленной комбинации необходимо сложить по модулю 2 сдвинутую комбинацию с остатком ( в результате получается число 111111110110011 ) и сдвинуть результат циклически на три позиции вправо ( 011111111110110 ). Отбросив проверочную часть, получим окончательный результат – 0111111111.
+                                            </Paragraph>
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                                <Button Name ="codeA_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeA_btn_Click"/>
+                                <Button Name="decodeA_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeA_btn_Click"/>
+                                <TabControl Name="codeA_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
+                                    <TabItem Name ="codeA_item"  Header="Code" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение: " Margin="30"  FontSize="14"/>
+
+                                            
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
+                                            <Label  Content="Неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
+                                            <Label  Content="xxxxxxxx"  Margin="30,160,287,136"  FontSize="14"  />
+                                          
+                                            <Label  Content="Результат:" Margin="30 210 0 0"  FontSize="14"/>
+
+                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                            <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Name ="decodeA_item" Header="Decode" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Закодированная комбинация: " Margin="30"  FontSize="14"/>
+
+
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
+                                            <Label  Content="Известен неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
+                                            <Label  Content="xxxxxxxx"  Margin="30,160,287,136"  FontSize="14"  />
+
+                                            <Label  Content="Восстановите исходное сообщение:" Margin="30 210 0 0"  FontSize="14"/>
+
+                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="30 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+                                            <Button Command="{Binding CheckDecode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                                <Button Command="{Binding Next}" Name ="nextA_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextA_btn_Click"  />
+                                <TabControl Margin="0,10,10,80" Name="TestA_control"  >
+                                    <TabItem Header="1" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение: " Margin="30"  FontSize="14"/>
+
+
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
+                                            <Label  Content="Неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
+                                            <Label  Content="xxxxxxxx"  Margin="30,160,287,136"  FontSize="14"  />
+
+                                            <Label  Content="Результат:" Margin="30 210 0 0"  FontSize="14"/>
+
+                                            <TextBox Text="{Binding Coded}"   Height="30" Width="200" Margin="30 30 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="2"  Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Закодированная комбинация: " Margin="30"  FontSize="14"/>
+
+
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
+                                            <Label  Content="Известен неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
+                                            <Label  Content="xxxxxxxx"  Margin="30,160,287,136"  FontSize="14"  />
+
+                                            <Label  Content="Восстановите исходное сообщение:" Margin="30 210 0 0"  FontSize="14"/>
+
+                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="30 30 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
+
+
+
+                            </Grid>
+
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
             <TabItem Header="Код Файра" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
 
             <TabItem Header="Код Хемминга" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
@@ -1352,7 +1513,8 @@
                                 </ScrollViewer>
 
 
-                            </Grid>                        </TabItem>
+                            </Grid>                     
+                        </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
                                 <Button Name ="codeQ_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeQ_btn_Click"/>
