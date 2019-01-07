@@ -4931,6 +4931,7 @@
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Label  Content="Итеративный код"  Margin="30,64,294,472"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
+                                
                                 <Label Margin="30,100,8,6" Content="{Binding TestTask, UpdateSourceTrigger=PropertyChanged}" FontSize="16"/>
                                 <Label Margin="30, 400,8,6"  FontSize="14">Q =</Label>
                                 <Label Margin="60, 400,8,6"  FontSize="14" Content="{Binding Path=IterativeCodeTest.Q, UpdateSourceTrigger=PropertyChanged}"/>
@@ -5815,9 +5816,11 @@
                                 <Label Content="Нmax(х) = " HorizontalAlignment="Left" Margin="58,461,0,0" VerticalAlignment="Top"/>
                                 <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,461,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202"/>-->
 
-                                <Label Content="Алфавит источника состоит из n символов: X1, X2, ... Xn." HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
-                                <WrapPanel Width="160" Height="160" Margin="42,134,0,207" HorizontalAlignment="Left" >
-                                    <TextBox Width="40" Height="40"  HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                
+                                <!--Hardcodeeeeee-->
+                                <!--<Label Content="Дана матрица условных вероятностей" HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
+                                <WrapPanel Width="160" Height="160" Margin="42,121,0,300" HorizontalAlignment="Left" >
+                                    <TextBox Width="40" Height="40"  HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
                                     <TextBox Width="40" Height="40" Text="X1" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
                                     <TextBox Width="40" Height="40" Text="X2" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
                                     <TextBox Width="40" Height="40" Text="X3" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
@@ -5834,47 +5837,33 @@
                                     <TextBox Width="40" Height="40" Text="0.71" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
                                     <TextBox Width="40" Height="40" Text="0.54" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
                                 </WrapPanel>
-
-
-
-                                <Button  Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Label Content="Дана матрица условных вероятностей" HorizontalAlignment="Left" Margin="342,87,0,0" VerticalAlignment="Top"/>
+                                <WrapPanel Width="150" Height="120" Margin="342,50,0,207" HorizontalAlignment="Left" >
+                                    <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
+                                    <TextBox Width="60" Height="40" Text="0.37" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
+                                    <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" Foreground="Black" BorderBrush="{x:Null}"/>
+                                    <TextBox Width="60" Height="40" Text="0.12" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
+                                    <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
+                                    <TextBox Width="60" Height="40" Text="0.51" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" Foreground="Black" BorderBrush="{x:Null}"/>
+                                </WrapPanel>
+                                <Label Content="Вычислите условную энтропию источника при равных вероятностях" HorizontalAlignment="Left" Margin="42,327,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Вычислите условную энтропию источника при даных вероятностях" HorizontalAlignment="Left" Margin="42,401,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Н(х) = " HorizontalAlignment="Left" Margin="62,361,0,0" VerticalAlignment="Top"/>
+                                <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,362,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180"/>
+                                <Label Content="Нmax(х) = " HorizontalAlignment="Left" Margin="62,435,0,0" VerticalAlignment="Top"/>
+                                <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,435,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180"/>-->
                                 
+                                <Button  Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
                             </Grid>
 
                         </TabItem>
                         <TabItem Header="Тест"  Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <!--<Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ellaesVM}}">
-                                <Label  Content="Код Эллаеса"  Margin="30,30,417,506"  FontSize="24"/>
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label  Content="Энтропия"  Margin="30,64,294,472"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                <Button Content="Далее" Command="{Binding Next}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <Label Content="Закодируйте сообщение:" Margin="30,70,459,479"/>
-                                <WrapPanel Width="200" Height="200" Margin="30,90,440,264" DataContext="{Binding Array}">
-                                    <TextBox Name="tb00" Width="40" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Name="tb01" Width="40" Height="40" Text="{Binding Path=[0][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[0][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[1][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[2][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[3][4]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][2]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                    <TextBox Width="40" Height="40" Text="{Binding Path=[4][3]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                </WrapPanel>
-                            </Grid>-->
+                                <Button  Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                            </Grid>
                         </TabItem>
 
                     </TabControl>
