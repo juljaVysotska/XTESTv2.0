@@ -15,5 +15,6 @@ namespace XTest.ViewModel
 		public BinaryDecimalViewModel bdvm { get; set; }
         EllaesCodeViewModel viewModel { get; set; }
         RidMallerViewModel mallerViewModel { get; set; }
+        CheckByQViewModel checkByQ { get; set; }
     }
 }
