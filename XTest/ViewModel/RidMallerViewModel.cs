@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using XTest.Model.Models;
 using XTest.Model.Services;
 
 namespace XTest.ViewModel
@@ -136,6 +137,7 @@ namespace XTest.ViewModel
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                           check = 1;
+                          MainWindow.results.Add("RidMaller", new Result("Код Ріда Маллера ", Mark));
                           Mark = 0;
                       }
                   }));

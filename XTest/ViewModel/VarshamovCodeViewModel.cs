@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using XTest.Model.Models;
 using XTest.Model.Services;
 
 namespace XTest.ViewModel
@@ -286,6 +287,8 @@ namespace XTest.ViewModel
                                   Mark += 1;
                               check = 0;
                               MessageBox.Show(Mark.ToString());
+                              MainWindow.results.Add("Varshamov", new Result("Код Варшамова ", Mark));
+
                               Initializer();
                               break;
                       }
