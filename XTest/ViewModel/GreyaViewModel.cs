@@ -104,7 +104,8 @@ namespace XTest.ViewModel
                 testMode = TestMode.Encoding;
                 TestTask = "Закодируйте сообщение";
                 OnPropertyChanged("GreyaSelectedTabIndex");
-                selectedIndex = value;
+				GreyaCodeTest.Message = codeService.generateLine(11);
+				selectedIndex = value;
             }
         }
 

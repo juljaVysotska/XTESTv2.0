@@ -12,12 +12,15 @@ namespace XTest.Model.Models
     public class IterativeCode : INotifyPropertyChanged
     {
         public int q;
-        public int[][] array;
+        public string[][] array;
+        public int[][] intArray;
+        public int[][] result;
 
         public IterativeCode()
         {
             this.q = 0;
             array = null;
+            result = null;
         }
 
 
@@ -31,17 +34,37 @@ namespace XTest.Model.Models
             }
         }
 
-        public int[][] Array
-        {
+        public string[][] ArrayCode
+		{
             get { return array; }
             set
             {
                 array = value;
-                OnPropertyChanged("Arrary");
+                OnPropertyChanged("ArrayCode");
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+		public int[][] IntArray
+		{
+			get { return intArray; }
+			set
+			{
+				intArray = value;
+				OnPropertyChanged("IntArray");
+			}
+		}
+
+		public int[][] Result
+		{
+			get { return result; }
+			set
+			{
+				result = value;
+				OnPropertyChanged("Result");
+			}
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)

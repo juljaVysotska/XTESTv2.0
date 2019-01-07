@@ -99,11 +99,14 @@ namespace XTest.ViewModel
             }
             set
             {
-                TestNumberBinaryDecimal = 1;
+				Random random = new Random();
+				TestNumberBinaryDecimal = 1;
                 CorrectAnsverBinaryDecimal = 0;
                 testMode = TestMode.Encoding;
                 TestTaskBinaryDecimal = "Закодируйте сообщение";
-                OnPropertyChanged("BinaryDecimalSelectedTabIndex");
+				BinaryDecimalCodeTest.Code = codeService.generateCode();
+				int r1 = random.Next(100, 10000);
+				OnPropertyChanged("BinaryDecimalSelectedTabIndex");
                 selectedIndex = value;
             }
         }
