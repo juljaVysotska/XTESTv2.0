@@ -10,15 +10,35 @@ namespace XTest.Model.Models
 {
     public class BinaryDecimalCode : INotifyPropertyChanged
     {
+        private string message;
+        private string result;
         private string code;
-        private int number;
-        private string encodeNumb;
 
         public BinaryDecimalCode()
         {
+            this.message = "";
+            this.result = "";
             this.code = "";
-            this.number = 0;
-            this.encodeNumb = "";
+        }
+
+        public string Message
+        {
+            get { return message; }
+            set
+            {
+                message = value;
+                OnPropertyChanged("Message");
+            }
+        }
+
+        public string Result
+        {
+            get { return result; }
+            set
+            {
+                result = value;
+                OnPropertyChanged("Result");
+            }
         }
 
         public string Code
@@ -28,26 +48,6 @@ namespace XTest.Model.Models
             {
                 code = value;
                 OnPropertyChanged("Code");
-            }
-        }
-
-        public string EncodeNumb
-        {
-            get { return encodeNumb; }
-            set
-            {
-                encodeNumb = value;
-                OnPropertyChanged("EncodeNumb");
-            }
-        }
-
-        public int Number
-        {
-            get { return number; }
-            set
-            {
-                number = value;
-                OnPropertyChanged("Number");
             }
         }
 
