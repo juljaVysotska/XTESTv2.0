@@ -7,12 +7,12 @@
         mc:Ignorable="d" Icon="..\Resources\key.ico"
         Title="CryptTest" Height="660" Width="960" FontSize="14" ResizeMode="CanMinimize">
     <Window.Resources>
-        <local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
+        <!--<local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
         <local:EllaesCodeViewModel x:Key="ellaesVM"></local:EllaesCodeViewModel>
         <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
-        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>
+        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>--> 
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -4796,17 +4796,47 @@
                                     <RichTextBox BorderBrush="White" IsReadOnly="True" IsUndoEnabled="False" Cursor="Arrow">
 
                                         <FlowDocument>
-                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Итеративный код
+                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Недвоичный итеративный код. Краткие теоретические сведения.
                                             </Paragraph>
 
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >
+                                                Для передачи информации широко используются итеративные коды, обладающие высокой обнаруживающей способностью. При определении проверочных элементов q-ичных итеративных кодов производят сложение элементов кодовых комбинаций базового кода по модулю q. Обнаружение ошибок производится по аналогии с двоичным кодом – сравнением проверочных элементов каждой строки (столбца), принятых из канала и полученных на приемной стороне путем вычислений.
                                             </Paragraph>
+                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >
+                                                Исправление искаженного элемента производят следующим образом. Если не выполняется проверка для i-ой строки и j-ого столбца, то элемент, находящийся на пересечении i-ой строки и j-ого столбца, заменяется элементом, вычисленным путем сложения данного принятого элемента (ошибочного) со значением, полученным путем вычитания значений принятого из канала и вычисленного на приемной стороне проверочных элементой i-ой строки (или j-ого столбца).
+                                            </Paragraph>
+                                            
+                                            
                                             <Paragraph TextAlignment="Left" FontSize="16" FontWeight="Bold" Padding="30,0,30,0" >Пример:</Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >
+                                                Код с q = 8, k = 16: 0721650135741226
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >Преимущество кодов Бергера по сравнению с кодами с постоянным весом заключается в том, что они являются разделимыми кодами с очень простым алгоритмом построения проверочной части. В симметричных канал такие коды обнаруживают все одиночные ошибки и некоторую часть многократных. Можно построить коды с лучшими обнаруживающими свойствами для симметричных каналов. В таких кодах каждой информационной позиции приписывают различный вес, причем ни один вес не является степенью двух ( 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 17 и т.д ). Проверочные знаки этого образуются путем суммирования весов, соответствующих тем информационным разрядам, в которых расположены единицы, затем происходит инверсия полученного числа. Такой код обнаруживает в симметричном канале все двойные ошибки и обнаруживает и исправляет одиночные ошибки.
+                                            
+                                            <Paragraph TextAlignment="Left" >
+                                                <InlineUIContainer>
+                                                    <Image Margin="30,0,0,0" Width="160"  Height="160" Source="..\Resources\iter1.png"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >
+                                                6 = q - ( 0 + 7 + 2 + 1 ) mod q, где q = 8
+                                                <LineBreak/>
+                                                Закодированная последовательность:0721665014357451226565544
                                             </Paragraph>
 
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >
+                                                При приеме сообщения получаем:
+                                            </Paragraph>
+                                            <Paragraph>
+                                                <InlineUIContainer>
+                                                    <Image Height="195" Width="195" Source="..\Resources\iter2.png" Margin="30,0,0,0"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >
+                                                0 = ( 0 + 7 + 2 + 1 + 6 ) mod q, где q = 8
+                                                <LineBreak/>
+                                                При приеме сообщения с одной ошибкой получим: 0721665014351451226565544
+                                            </Paragraph>
+                                            <Paragraph></Paragraph>
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
