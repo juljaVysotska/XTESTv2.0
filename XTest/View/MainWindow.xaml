@@ -13,7 +13,7 @@
         <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
-        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>--> 
+        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>-->
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -4674,10 +4674,10 @@
             </TabItem>
             <TabItem Header="Код с проверкой по |q|" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
-                  
+
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                                <Grid Background="White" Margin="0,0,-15,0">
+                            <Grid Background="White" Margin="0,0,-15,0">
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
@@ -4701,13 +4701,14 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">12322 S = (1 + 2 + 3 + 2 + 2) mod 4 = 2 с ошибкой.
                                             </Paragraph>
-                                            
+
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
 
 
-                            </Grid>                        </TabItem>
+                            </Grid>
+                        </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
                                 <Button Name ="codeQ_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeQ_btn_Click"/>
@@ -4716,13 +4717,13 @@
                                     <TabItem Name ="codeQ_item"  Header="Code" Visibility="Collapsed">
                                         <Grid>
                                             <Label  Content="Для кодовой комбинации при q = " Margin="30"  FontSize="14"/>
-                                          
+
                                             <Label Content="{Binding Path=Q}" x:Name="q" Margin="260 30 30 30"  FontSize="14"  />
                                             <Label  Content="постройте код" HorizontalAlignment="Right" Margin="30 30 270 30"  FontSize="14"  />
                                             <Label  Content="{Binding Path=Code}"  Margin="30,150,287,136"  FontSize="14"  />
-                                           
+
                                             <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                            
+
 
                                             <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                         </Grid>
@@ -4736,7 +4737,7 @@
                                             <RadioButton IsChecked="{Binding Path=IsSuccess}" Name="QYes" Margin="0 130 0 0" Content="Да"/>
                                             <RadioButton Name="QNo" Margin="0 150 0 0" Content="Нет"/>
                                             <Button Command="{Binding CheckDecode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                           
+
                                         </Grid>
                                     </TabItem>
 
@@ -4759,7 +4760,7 @@
                                             <TextBox Text="{Binding Coded}"   Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
-                                           
+
                                         </Grid>
                                     </TabItem>
                                     <TabItem Header="2"  Visibility="Collapsed">
@@ -4770,17 +4771,17 @@
                                             <Label Content="{Binding Path=Q}" Name="DecqTest" Margin="60 80 0 0"/>
                                             <RadioButton IsChecked="{Binding Path=IsSuccess}" Name="QYesTest" Margin="0 130 0 0" Content="Да"/>
                                             <RadioButton Name="QNoTest" Margin="0 150 0 0" Content="Нет"/>
-                                            
+
 
                                         </Grid>
                                     </TabItem>
-                                    
+
                                 </TabControl>
 
 
-                                
+
                             </Grid>
-              
+
                         </TabItem>
                     </TabControl>
                 </Grid>
@@ -4806,13 +4807,13 @@
                                             <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >
                                                 Исправление искаженного элемента производят следующим образом. Если не выполняется проверка для i-ой строки и j-ого столбца, то элемент, находящийся на пересечении i-ой строки и j-ого столбца, заменяется элементом, вычисленным путем сложения данного принятого элемента (ошибочного) со значением, полученным путем вычитания значений принятого из канала и вычисленного на приемной стороне проверочных элементой i-ой строки (или j-ого столбца).
                                             </Paragraph>
-                                            
-                                            
+
+
                                             <Paragraph TextAlignment="Left" FontSize="16" FontWeight="Bold" Padding="30,0,30,0" >Пример:</Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >
                                                 Код с q = 8, k = 16: 0721650135741226
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" >
                                                 <InlineUIContainer>
                                                     <Image Margin="30,0,0,0" Width="160"  Height="160" Source="..\Resources\iter1.png"/>
@@ -4855,7 +4856,7 @@
                                             <Label Margin="30, 10,8,6"  FontSize="24">Итеративный код</Label>
                                             <!--Закодируйте сообщение-->
                                             <Label Margin="30, 45,8,6" Content="{Binding PracticeTask}"  FontSize="16"/>
-                                            <Label Margin="30, 350,8,6"  FontSize="14">Q = </Label>
+                                            <Label Margin="30, 350,8,6"  FontSize="14">Q =</Label>
                                             <Label Margin="60, 350,8,6"  FontSize="14" Content="{Binding Path=IterativeCodePractice.Q,UpdateSourceTrigger=PropertyChanged}"/>
                                             <WrapPanel Width="240" Height="240" HorizontalAlignment="Left" Margin="30 -90 0 0 ">
 
@@ -5396,9 +5397,9 @@
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0"  >Коды Бергера предназначены для использования в ассиметричных каналах связи, где возможно либо только преобразование нулей в единицы, либо наоборот.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" Padding="30,0,30,0" >Пример:</Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" > 1.	Подлежащие передачи информационные символы 011010. 
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >1.	Подлежащие передачи информационные символы 011010.
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >2.	Двоичная запись количества единиц 011. 
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >2.	Двоичная запись количества единиц 011.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >3.	Инвертированная двоичная запись 100.
                                             </Paragraph>
@@ -5421,7 +5422,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >2.	Двоичная запись суммы весов для семиразрядной проверочной части, имеет вид 0100010. Инвертированный вид ее 1011101. Таким образом, полная последовательность выглядит как 01101000011011101.
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >            </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" ></Paragraph>
 
                                         </FlowDocument>
                                     </RichTextBox>
@@ -5693,7 +5694,8 @@
                                                 Безусловная энтропия.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
-                                                Энтропия – это средняя величина <LineBreak/>неопределенности состояния источника сообщения. Является обьективной характеристикой источника сообщений, и, если известна статистика сообщений, может быть определена априорно, т.е до получения сообщений.
+                                                Энтропия – это средняя величина
+                                                <LineBreak/> неопределенности состояния источника сообщения. Является обьективной характеристикой источника сообщений, и, если известна статистика сообщений, может быть определена априорно, т.е до получения сообщений.
                                             </Paragraph>
                                             <Paragraph TextAlignment="Center" >
                                                 <InlineUIContainer>
@@ -5750,7 +5752,7 @@
                                                 1.	Если ансамбли сообщений Х и Y жестко статистически связаны между собой, т.е. при возникновении Х1 принимается Y1 , при Х2 – Y2 и т.д., тогда условная энтропия равна нулю: H( X/Y ) = 0 и H( Y/X ) = 0.
                                                 <LineBreak/>
                                                 2.	Если ансамбль сообщений Х и Y взаимно независимы, то полная условная энтропия Х относительно Y равняется безусловной энтропии Х: H( X/Y ) = H( X ) и H( Y/X ) = H( Y ).
-                                                
+
 
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" Padding="30,0,30,0" >
@@ -5765,9 +5767,13 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
+                            <Grid Background="White" Margin="10,0,-25,0">
+
+
                                 <Label Content="Энтропия" HorizontalAlignment="Left" Margin="42,30,0,0"  FontSize="24"  VerticalAlignment="Top"/>
-                                <Label Content="Дан ансамбль А, состоящий из N сообщений, в котором: " HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
+
+                                <!--Ансамбль-->
+                                <!--<Label Content="Дан ансамбль А, состоящий из N сообщений, в котором: " HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
                                 <Label Content="P(X1) = 1/2" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,118,0,0" VerticalAlignment="Top"/>
                                 <Label Content="P(X2) = 1/4" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,148,0,0" VerticalAlignment="Top"/>
                                 <Label Content="P(X3) = P(X4) = 1/8" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,178,0,0" VerticalAlignment="Top"/>
@@ -5782,13 +5788,40 @@
                                 <Label Content="X4" HorizontalAlignment="Left" FontSize="16" Margin="252,250,0,0" VerticalAlignment="Top"/>
                                 <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="282,250,0,0" VerticalAlignment="Top"/>
                                 <TextBox HorizontalAlignment="Left" Height="23" Margin="48,300,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160"/>
-                                <Label Content="бит" HorizontalAlignment="Left" FontSize="16" Margin="215,295,0,0" VerticalAlignment="Top"/>
-                                
+                                <Label Content="бит" HorizontalAlignment="Left" FontSize="16" Margin="215,295,0,0" VerticalAlignment="Top"/>-->
+
+                                <Label Content="Алфавит источника состоит из n символов: X1, X2, ... Xn." HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
+                                <WrapPanel Width="150" Height="240" Margin="42,134,0,207" HorizontalAlignment="Left" >
+                                    <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="60" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="60" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="60" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="60" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="60" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="60" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                    <TextBox Width="60" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                </WrapPanel>
+                                <Label Content="Найдите безусловную и максимальную энтропию источника" HorizontalAlignment="Left" Margin="42,387,0,0" VerticalAlignment="Top"/>
+
+                                <Label Content="Н(х) = " HorizontalAlignment="Left" Margin="82,421,0,0" VerticalAlignment="Top"/>
+                                <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,421,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202"/>
+                                <Label Content="Нmax(х) = " HorizontalAlignment="Left" Margin="58,461,0,0" VerticalAlignment="Top"/>
+                                <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,461,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202"/>
+
+
+
+
+
                                 <Button  Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-
-
+                                
                             </Grid>
-                         
+
                         </TabItem>
                         <TabItem Header="Тест"  Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <!--<Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ellaesVM}}">
@@ -5827,7 +5860,7 @@
 
                     </TabControl>
 
-                    
+
 
 
                 </Grid>
