@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XTest.ViewModel"
         mc:Ignorable="d" Icon="..\Resources\key.ico"
+        xmlns:models="clr-namespace:XTest.Model.Models;assembly=XTest.Model"
         Title="CryptTest" Height="660" Width="960" FontSize="14" ResizeMode="CanMinimize">
     <Window.Resources>
         <!--<local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
@@ -5493,7 +5494,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P4 = 0.13
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P5 = 0.08  
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P5 = 0.08
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P6 = 0.06
                                             </Paragraph>
@@ -5509,7 +5510,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P2 = 0.15 0
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P3 = 0.14 1
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P4 = 0.13 1
@@ -5526,17 +5527,17 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P0 = 0.21 00
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P1 = 0.15 01
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P2 = 0.15 01
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P3 = 0.14 10
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P4 = 0.13 10
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P5 = 0.08 11
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P6 = 0.06 11
@@ -5549,17 +5550,17 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P0 = 0.21 00
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P1 = 0.15 010
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P2 = 0.15 011
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P3 = 0.14 100
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P4 = 0.13 101
                                             </Paragraph>
-                                            
+
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P5 = 0.08 110
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P6 = 0.06 111
@@ -5591,7 +5592,7 @@
                                             </Paragraph>
                                             <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >P8 = 0.02 11111
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" >    </Paragraph>
+                                            <Paragraph TextAlignment="Left" FontSize="16" Padding="30,0,30,0" ></Paragraph>
 
                                         </FlowDocument>
                                     </RichTextBox>
@@ -5602,35 +5603,53 @@
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код Шеннона-Фано"  Margin="30,30,417,506"  FontSize="24"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <TextBox x:Name="txbShennonResult_Copy" Margin="30,198,415.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <Label  Content="Результат:"  Margin="30,165,436.2,383.6"  FontSize="14"  />
-                                <Label x:Name="lblShennonTask_Copy"  Content="Пример"  Margin="29,112,287.2,437.6"  FontSize="14"  />
-                                <Label x:Name="lblShennonTaskExplanation_Copy"  Content="Закодируйте сообщение"  Margin="30,80,286.8,469"  FontSize="14"  />
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="277*"/>
+                                    <ColumnDefinition Width="385*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Content="Код Шеннона-Фано"  Margin="30,30,32.5,506"  FontSize="24"/>
+                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="239.5,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Grid.Column="1" Click="Button_Shennon_Practice_Next_Click"/>
+                                <Label x:Name="lblShennonTaskExplanation_Copy"  Content="Составьте кодовые комбинации"  Margin="30,80,287,469"  FontSize="14" Grid.ColumnSpan="2"  />
+                                <ListBox ItemsSource="{DynamicResource ShennonTask}" Margin="74,141,81,99" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition SharedSizeGroup="Value" Width="50" />
+                                                    <ColumnDefinition SharedSizeGroup="Result" Width="50" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Text="{Binding value}" Grid.Column="0"/>
+                                                <TextBox Text="{Binding result, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" Margin="0,-1,0,1.4" VerticalAlignment="Bottom">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Код Шеннона-Фано"  Margin="30,30,401,506"  FontSize="24"/>
-                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                <Label x:Name="lblShennonTaskExplanation"  Content="Составьте кодовые комбинации"  Margin="30,80,287,469"  FontSize="14"  />
-                                <Button x:Name="ButtonShennonNext" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Shennon_Next_Click"/>
-                                <ItemsControl ItemsSource="{Binding QuestionsToAnswer}" Margin="74,141,81,99">
-                                    <ItemsControl.ItemTemplate>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="149*"/>
+                                    <ColumnDefinition Width="512*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Content="Код Шеннона-Фано"  Margin="30,30,401,506"  FontSize="24" Grid.ColumnSpan="2"/>
+                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="158,10,10,539"  FontSize="14" Foreground="#4F91FB" Grid.Column="1" />
+                                <Label x:Name="lblShennonTaskExplanation"  Content="Составьте кодовые комбинации"  Margin="30,80,287,469"  FontSize="14" Grid.ColumnSpan="2"  />
+                                <Button x:Name="ButtonShennonNext" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="367,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Shennon_Test_Next_Click" Grid.Column="1"/>
+                                <ListBox ItemsSource="{DynamicResource ShennonTask}" Margin="74,141,81,99" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
+                                    <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="100"/>
-                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition SharedSizeGroup="Value" Width="50" />
+                                                    <ColumnDefinition SharedSizeGroup="Result" Width="50" />
                                                 </Grid.ColumnDefinitions>
-
-                                                <TextBlock Text="{Binding QuestionText}"/>
-                                                <TextBox Text="{Binding AnswerText}" Grid.Column="1"/>
+                                                <TextBlock Text="{Binding Path=value}" Grid.Column="0"/>
+                                                <TextBox Text="{Binding Path=result, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1"/>
                                             </Grid>
                                         </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </Grid>
                         </TabItem>
                     </TabControl>
