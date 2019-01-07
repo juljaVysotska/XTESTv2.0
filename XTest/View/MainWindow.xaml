@@ -7,12 +7,12 @@
         mc:Ignorable="d" Icon="..\Resources\key.ico"
         Title="CryptTest" Height="660" Width="960" FontSize="14" ResizeMode="CanMinimize">
     <Window.Resources>
-        <local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
+        <!--<local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
         <local:EllaesCodeViewModel x:Key="ellaesVM"></local:EllaesCodeViewModel>
         <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
-        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel> 
+        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>--> 
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -5746,80 +5746,30 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <!--<Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ellaesVM}}">
+                            <Grid Background="White" Margin="0,0,-15,0">
+                                <Label Content="Энтропия" HorizontalAlignment="Left" Margin="42,30,0,0"  FontSize="24"  VerticalAlignment="Top"/>
+                                <Label Content="Дан ансамбль А, состоящий из N сообщений, в котором: " HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
+                                <Label Content="P(X1) = 1/2" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,118,0,0" VerticalAlignment="Top"/>
+                                <Label Content="P(X2) = 1/4" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,148,0,0" VerticalAlignment="Top"/>
+                                <Label Content="P(X3) = P(X4) = 1/8" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,178,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Вычислите количество информации, содержащееся в ансамбле А:" HorizontalAlignment="Left" Margin="42,217,0,0" VerticalAlignment="Top"/>
+                                <Label Content="X2" HorizontalAlignment="Left" FontSize="16" Margin="42,250,0,0" VerticalAlignment="Top"/>
+                                <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="72,250,0,0" VerticalAlignment="Top"/>
+                                <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="102,250,0,0" VerticalAlignment="Top"/>
+                                <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="132,250,0,0" VerticalAlignment="Top"/>
+                                <Label Content="X4" HorizontalAlignment="Left" FontSize="16" Margin="162,250,0,0" VerticalAlignment="Top"/>
+                                <Label Content="X2" HorizontalAlignment="Left" FontSize="16" Margin="192,250,0,0" VerticalAlignment="Top"/>
+                                <Label Content="X4" HorizontalAlignment="Left" FontSize="16" Margin="222,250,0,0" VerticalAlignment="Top"/>
+                                <Label Content="X4" HorizontalAlignment="Left" FontSize="16" Margin="252,250,0,0" VerticalAlignment="Top"/>
+                                <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="282,250,0,0" VerticalAlignment="Top"/>
+                                <TextBox HorizontalAlignment="Left" Height="23" Margin="48,300,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160"/>
+                                <Label Content="бит" HorizontalAlignment="Left" FontSize="16" Margin="215,295,0,0" VerticalAlignment="Top"/>
+                                
+                                <Button  Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
 
-                                <Button Name ="codeEL_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeEL_btn_Click" Grid.Column="1" />
-                                <Button Name="decodeEL_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="269,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeEL_btn_Click" Grid.Column="1" />
-                                <TabControl Name="codeEL_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" Grid.ColumnSpan="2" >
-                                    <TabItem Name ="codeEL_item"  Header="Code" Visibility="Collapsed">
-                                        <Grid>
-                                            <Label  Content="Закодируйте сообщение:"  Margin="30,30,417,440"  FontSize="14"/>
-                                            <WrapPanel Width="200" Height="200" HorizontalAlignment="Left" Margin="30 -150 0 0 " DataContext="{Binding ArrayCode}">
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][0]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][1]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][2]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][3]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [0][4]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][0]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][1]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][2]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][3]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [1][4]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][0]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][1]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][2]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][3]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [2][4]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][0]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][1]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][2]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][3]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [3][4]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][0]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][1]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][2]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding [4][3]}" FontSize="14" VerticalContentAlignment="Center"/>
-                                            </WrapPanel>
 
-                                            <Button Content="Готово" Command="{Binding NextCode}" Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                        </Grid>
-                                    </TabItem>
-                                    <TabItem Name ="decodeEL_item" Header="Decode" Visibility="Collapsed" >
-                                        <Grid DataContext="{Binding Source={StaticResource ellaesVM}}">
-                                            <Label  Content="Раскодируйте сообщение:"  Margin="30,30,417,440"  FontSize="14"/>
-                                            <WrapPanel Width="200" Height="200" HorizontalAlignment="Left"  Margin="30 -150 0 0" DataContext="{Binding ArrayDecode}">
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [0][0]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [0][1]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [0][2]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [0][3]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [0][4]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [1][0]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [1][1]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [1][2]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [1][3]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [1][4]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [2][0]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [2][1]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [2][2]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [2][3]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [2][4]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [3][0]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [3][1]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [3][2]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [3][3]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [3][4]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [4][0]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [4][1]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [4][2]}" VerticalContentAlignment="Center"/>
-                                                <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" FontSize="14" Text="{Binding [4][3]}" VerticalContentAlignment="Center"/>
-                                            </WrapPanel>
-                                            <Button Content="Готово" Command="{Binding NextDecode}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                        </Grid>
-                                    </TabItem>
-
-                                </TabControl>
-
-                            </Grid>-->
+                            </Grid>
+                         
                         </TabItem>
                         <TabItem Header="Тест"  Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <!--<Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ellaesVM}}">
