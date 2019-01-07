@@ -4821,12 +4821,12 @@
                                 <TabControl Name="codeVAR_control3" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
                                     <TabItem Name ="codeVAR_item3"  Header="Code" Visibility="Collapsed">
                                         <Grid>
-                                            <Label Margin="10, 10,8,6"  FontSize="24">Итеративный код</Label>
+                                            <Label Margin="30, 10,8,6"  FontSize="24">Итеративный код</Label>
                                             <!--Закодируйте сообщение-->
-                                            <Label Margin="30, 70,8,6" Content="{Binding PracticeTask}"  FontSize="16"/>
-                                            <Label Margin="30, 370,8,6"  FontSize="14">Q = </Label>
-                                            <Label Margin="60, 370,8,6"  FontSize="14" Content="{Binding Path=IterativeCodePractice.Q,UpdateSourceTrigger=PropertyChanged}"/>
-                                            <WrapPanel Width="240" Height="240" HorizontalAlignment="Left" Margin="30 -40 0 0 ">
+                                            <Label Margin="30, 45,8,6" Content="{Binding PracticeTask}"  FontSize="16"/>
+                                            <Label Margin="30, 350,8,6"  FontSize="14">Q = </Label>
+                                            <Label Margin="60, 350,8,6"  FontSize="14" Content="{Binding Path=IterativeCodePractice.Q,UpdateSourceTrigger=PropertyChanged}"/>
+                                            <WrapPanel Width="240" Height="240" HorizontalAlignment="Left" Margin="30 -90 0 0 ">
 
                                                 <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding IterativeCodePractice.ArrayCode[0][0]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="{Binding MainArrReadOnlyPractice, UpdateSourceTrigger=PropertyChanged}"/>
                                                 <TextBox Width="40" Height="40" HorizontalContentAlignment="Center" Text="{Binding IterativeCodePractice.ArrayCode[0][1]}" FontSize="14" VerticalContentAlignment="Center" IsReadOnly="{Binding MainArrReadOnlyPractice, UpdateSourceTrigger=PropertyChanged}"/>
@@ -4897,7 +4897,7 @@
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Итеративный код"  Margin="30,30,288,506"  FontSize="24"/>
+                                <Label  Content="Итеративный код"  Margin="30,64,294,472"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Label Margin="30,100,8,6" Content="{Binding TestTask, UpdateSourceTrigger=PropertyChanged}" FontSize="16"/>
                                 <Label Margin="30, 400,8,6"  FontSize="14">Q =</Label>
@@ -4948,8 +4948,8 @@
                                 <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>-->
                                 <Button Command="{Binding NextTest}" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
 
-                                <Label x:Name="Lbl_Task"  Content="Закодируйте сообщение"  Margin="29,112,287.4,437.6"  FontSize="14"  />
-
+                                <!--<Label x:Name="Lbl_Task"  Content="Закодируйте сообщение"  Margin="29,112,287.4,437.6"  FontSize="14"  />
+-->
 
                                 <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
                                 <Label Content="{Binding TestNumber, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
