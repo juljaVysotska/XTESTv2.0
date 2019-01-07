@@ -315,5 +315,18 @@ namespace XTest
         {
 
         }
+
+        private void codeA_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeA_control.SelectedIndex = 0;
+        }
+        private void decodeA_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeA_control.SelectedIndex = 1;
+        }
+        private void NextA_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
