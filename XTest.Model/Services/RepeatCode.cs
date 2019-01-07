@@ -6,7 +6,38 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Services
 {
-    class RepeatCode
+    public class RepeatCode
     {
+        private string code;
+        private string coded;
+
+        string GenerateCode()
+        {
+            int n;
+            Random rand = new Random();
+            n = rand.Next(8, 10);
+            code = "";
+            for (int i = 0; i < n; i++)
+            {
+                code += rand.Next(9);
+            }
+            return code;
+        }
+
+        string Code()
+        {
+            coded = code + code;
+            return coded;
+        }
+
+        bool CorrectCode(string a, string b) //b is input combination
+        {
+            if(b!=null && a.Count() == b.Count())
+            {
+                if (a.Equals(b))
+                    return true;
+            }
+            return false;
+        }
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace XTest.Model.Services
 {
-    class B4H
+    public class B4H
     {
+
     }
 }
