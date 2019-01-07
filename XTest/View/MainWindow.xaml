@@ -8,12 +8,12 @@
         xmlns:models="clr-namespace:XTest.Model.Models;assembly=XTest.Model"
         Title="CryptTest" Height="660" Width="960" FontSize="14" ResizeMode="CanMinimize">
     <Window.Resources>
-        <!--<local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
+        <local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
         <local:EllaesCodeViewModel x:Key="ellaesVM"></local:EllaesCodeViewModel>
         <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
-        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>-->
+        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
