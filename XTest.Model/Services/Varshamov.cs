@@ -14,7 +14,7 @@ namespace XTest.Model.Services
             if (n == 0)
                 return 1;
             else
-                return n + factorial(n - 1);
+                return n * factorial(n - 1);
         }
 
         public int CountOfColumns(int n, int d)
@@ -44,11 +44,29 @@ namespace XTest.Model.Services
 
         public int CountOfTestDigits(int r)
         {
-            if ((int)Math.Sqrt(r) == Math.Sqrt(r))
-                return r;
+            var res = Math.Log(r, 2);
+            if ((int)res == res)
+                return (int)res;
             else
-                return r + 1;
+                return (int)res + 1;
         }
+
+        public int[][] Array(int n, int m)
+        {
+            
+            int[][] arr = new int[n][];
+            for (int i = 0; i < n; i++)
+            {
+                arr[i] = new int[m];
+                for (int j= 0; j < m; j++) {
+
+                    arr[i][j] = 0;
+                }
+            }
+
+            return arr;
+        }
+
 
         public int[][] GenerateSimpleMatrix(int n)
         {
@@ -114,6 +132,7 @@ namespace XTest.Model.Services
         private string[] ArrayToString(int[][] arr)
         {
             string[] array = new string[arr.Length];
+            array.Initialize();
             for (int i = 0; i < arr.Length; i++)
             {
                 for (int j = 0; j < arr[i].Length; j++)
@@ -156,19 +175,19 @@ namespace XTest.Model.Services
 
         public string[] Syndrom(int[][] arr, int[][] simpleArr)
         {
-            string[] array = new string[arr.Length + simpleArr.Length];
-            for (int i = 0; i < arr.Length; i++)
+            string[] array = new string[arr[0].Length + simpleArr[0].Length];
+            for (int i = 0; i < arr[0].Length; i++)
             {
-                for (int j = 0; j < arr[i].Length; j++)
+                for (int j = 0; j < arr.Length; j++)
                 {
-                    array[i] += arr[i][j];
+                    array[i] += arr[j][i];
                 }
             }
-            for (int i = 0; i < simpleArr.Length; i++)
+            for (int i = 0; i < simpleArr[0].Length; i++)
             {
-                for (int j = 0; j < simpleArr[i].Length; j++)
+                for (int j = 0; j < simpleArr.Length; j++)
                 {
-                    array[arr.Length + i] += simpleArr[i][j];
+                    array[arr[0].Length + i] += simpleArr[j][i];
                 }
             }
             return array;
@@ -199,6 +218,17 @@ namespace XTest.Model.Services
             return array;
         }
 
+        public bool SumOfRaws(int [][] arr)
+        {
+            bool b = true;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (b)
+                    b = (arr[i].Sum() >= 2); 
+            }
+            return b;
+        }
+
         public int[][] GenerateArr(int b)
         {
             int[][] array = new int[6][];
@@ -210,7 +240,7 @@ namespace XTest.Model.Services
                     array[i][j] = rand.Next(0, 2);
                 }
             }
-            if (CheckHelper(ArrayToString(array)))
+            if (CheckHelper(ArrayToString(array)) && SumOfRaws(array))
                 return array;
             else
                 return GenerateArr(b);
@@ -237,7 +267,11 @@ namespace XTest.Model.Services
             {
                 for (int j = i; j < arr.Length; j++)
                 {
-                    b &= !(arr[i] == arr[j]);
+                    if (i != j)
+                    {
+                        if (b)
+                            b = !(arr[i] == arr[j]);
+                    }
                 }
             }
             return b;

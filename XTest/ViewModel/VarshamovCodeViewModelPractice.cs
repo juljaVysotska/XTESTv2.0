@@ -10,7 +10,7 @@ using XTest.Model.Services;
 
 namespace XTest.ViewModel
 {
-    public class VarshamovCodeViewModel : INotifyPropertyChanged
+    public class VarshamovCodeViewModelPractice : INotifyPropertyChanged
     {
         Random random = new Random();
         private int n;
@@ -32,7 +32,6 @@ namespace XTest.ViewModel
         private int[][] array;
         private RelayCommand next;
         private int check { get; set; }
-        private int mark { get; set; }
         private Varshamov _service { get; set; }
 
         public int N
@@ -166,16 +165,6 @@ namespace XTest.ViewModel
             }
         }
 
-        public int Mark
-        {
-            get { return mark; }
-            set
-            {
-                mark = value;
-                OnPropertyChanged("Mark");
-            }
-        }
-
         public int CountOfRaws
         {
             get { return countOfRaws; }
@@ -196,7 +185,7 @@ namespace XTest.ViewModel
             }
         }
 
-        public VarshamovCodeViewModel()
+        public VarshamovCodeViewModelPractice()
         {
             _service = new Varshamov();
             Initializer();
@@ -206,7 +195,7 @@ namespace XTest.ViewModel
         private void Initializer()
         {
 
-            Mark = 0;
+   
             N = random.Next(8, 20);
             D = random.Next(3, 8);
             B = 3;
@@ -234,58 +223,49 @@ namespace XTest.ViewModel
                               var r = _service.CountOfTestDigits(columns);
                               if (countOfColumns == columns && countOfExceptions == _service.CountOfFixedExceptions(d)
                               && countOfRaws == _service.CountOfRaws(n, r) && countOfDigits == r)
-                                  Mark += 1;
-                              SelectedIndex = 1;        
+                                  MessageBox.Show("yes");
+                              else
+                                  MessageBox.Show("no");
+                              SelectedIndex = 1;
                               break;
                           case 2:
                               if (_service.Equals(_service.GenerateSimpleMatrix(6), SimpleArray) && _service.CheckProdMatrix(B, Array))
-                                  Mark += 1;
+                                  MessageBox.Show("yes");
+                              else
+                                  MessageBox.Show("no");
                               SelectedIndex = 2;
                               Array = _service.GenerateArr(3);
                               SimpleArray = _service.GenerateSimpleMatrix(6);
                               break;
                           case 3:
                               if (_service.Equals(_service.CodeNum(Array, generateArray), ResultArr))
-                                  Mark += 1;
-                              Array = _service.GenerateArr(3);
-                              SimpleArray = _service.GenerateSimpleMatrix(6);
-                              generateArray = _service.GenerateArray(6);
-                              CodeNum = _service.SimpleArrToString(generateArray);
-                              ResultArr = new int[10];
-                              break;
-                          case 4:
-                              if (_service.Equals(_service.CodeNum(Array, generateArray), ResultArr))
-                                  Mark += 1;
-                              Array = _service.GenerateArr(3);
-                              SimpleArray = _service.GenerateSimpleMatrix(6);
-                              generateArray = _service.GenerateArray(6);
-                              CodeNum = _service.SimpleArrToString(generateArray);
-                              ResultArr = new int[10];
-                              break;
-                          case 5:
-                              if (_service.Equals(_service.CodeNum(Array, generateArray), ResultArr))
-                                  Mark += 1;
+                                  MessageBox.Show("yes");
+                              else
+                                  MessageBox.Show("no");
                               SelectedIndex = 3;
                               Array = _service.GenerateArr(3);
                               SimpleArray = _service.GenerateSimpleMatrix(6);
                               break;
-                          case 6:
+                          case 4:
                               if (_service.Equals(_service.GenerateSimpleMatrix(4), OneSimpleMatrix) &&
                               _service.Equals(_service.HMAtrix(Array), HMatrix))
-                                  Mark += 1;
+                                  MessageBox.Show("yes");
+                              else
+                                  MessageBox.Show("no");
                               SelectedIndex = 4;
                               Array = _service.HMAtrix(_service.GenerateArr(3));
                               SimpleArray = _service.GenerateSimpleMatrix(4);
                               ResultArr = _service.GenerateArray(10);
                               oldArray = _service.FuckenCSharp(ResultArr);
-                              Syndrom = _service.Syndrom(SimpleArray,Array);
+                              Syndrom = _service.Syndrom(SimpleArray, Array);
                               ResultArr[random.Next(0, 10)] = (ResultArr[random.Next(0, 10)] + 1) % 2;
                               break;
-                          case 7:
+                          case 5:
                               if (_service.Equals(oldArray, ResultArr))
-                                  Mark += 1;
+                                  MessageBox.Show("yes");
+                              else
+                                  MessageBox.Show("no");
                               check = 0;
-                              MessageBox.Show(Mark.ToString());
                               Initializer();
                               break;
                       }

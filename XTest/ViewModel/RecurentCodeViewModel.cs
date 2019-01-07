@@ -69,6 +69,16 @@ namespace XTest.ViewModel
             }
         }
 
+        public int Mark
+        {
+            get { return mark; }
+            set
+            {
+                mark = value;
+                OnPropertyChanged("Mark");
+            }
+        }
+
         public int SelectedIndex
         {
             get { return selectedIndex; }
@@ -84,7 +94,7 @@ namespace XTest.ViewModel
             _service = new RecurentCode();
             SelectedIndex = 0;
             check = 1;
-            mark = 0;
+            Mark = 0;
             k = rand.Next(1, 5);
             arr = _service.GenerateArray(k);
             oldArray = _service.Output(arr);
@@ -102,7 +112,7 @@ namespace XTest.ViewModel
                       {
                           var a = _service.Code(arr, k);
                           if (array == _service.Output(a))
-                              mark += 1;
+                              Mark += 1;
                          K = rand.Next(1, 5);
                           arr = _service.GenerateArray(k);
                           OldArray = _service.Output(arr);
@@ -114,7 +124,7 @@ namespace XTest.ViewModel
                           MessageBox.Show("decode");
                           var a = _service.Code(arr, k);
                           if (array == _service.Output(a))
-                              mark += 1;
+                              Mark += 1;
                           K = rand.Next(1, 5);
                          
                           decodeArr = _service.GenerateForDecode(k);
@@ -128,7 +138,7 @@ namespace XTest.ViewModel
                       {
                           var a = _service.Decode(decodeArr, k);
                           if (array == _service.Output(a))
-                              mark += 1;
+                              Mark += 1;
                           K = rand.Next(1, 5);
                           decodeArr = _service.GenerateForDecode(k);
                           DecodeArray = _service.Output(decodeArr[1]);
@@ -138,9 +148,9 @@ namespace XTest.ViewModel
                       check += 1;
                       if (check == 7)
                       {
-                          MessageBox.Show(mark.ToString());
+                          MessageBox.Show(Mark.ToString());
                           check = 1;
-                          mark = 0;
+                          Mark = 0;
                           K = rand.Next(1, 5);
                           arr = _service.GenerateArray(k);
                           OldArray = _service.Output(arr);

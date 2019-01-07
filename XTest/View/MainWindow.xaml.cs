@@ -52,14 +52,10 @@ namespace XTest
         {
             codeEL_control.SelectedIndex = 1;
         }
-        int check1 = 0;
+        
         private void nextVAR_btn_Click(object sender, RoutedEventArgs e)
         {
-            check1++;
-            TestVAR_control.SelectedIndex++;
-            if (check1 == 5) {
-                TestVAR_control.SelectedIndex = 0;
-            }
+
         }
 
         private void codeR_btn_Click(object sender, RoutedEventArgs e)
@@ -80,12 +76,7 @@ namespace XTest
         
         private void nextVARPractice_btn_Click(object sender, RoutedEventArgs e)
         {
-            check1++;
-            PracticeVAR_control.SelectedIndex++;
-            if (check1 == 5)
-            {
-                //check = 0;
-            }
+            
         }
     }
 }
