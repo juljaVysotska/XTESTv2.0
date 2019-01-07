@@ -12,6 +12,7 @@
         <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
+        <local:RepeatCodeViewModel x:Key="repeatCodeVM"></local:RepeatCodeViewModel>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -1481,7 +1482,7 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource repeatCodeVM}}">
                                 <Button Name ="codeP_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeP_btn_Click"/>
                                 <Button Name="decodeP_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeP_btn_Click"/>
                                 <TabControl Name="codeP_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
@@ -1491,7 +1492,7 @@
 
                                             <Label  Content="{Binding Path=Code}"  Margin="30,60,287,136"  FontSize="14"  />
 
-                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 -270 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="20 -270 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
                                             <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
@@ -1500,8 +1501,8 @@
                                     <TabItem Name ="decodeP_item" Header="Decode" Visibility="Collapsed" >
                                         <Grid>
                                             <Label Content="Раскодируйте сообщение:"/>
-                                            <Label Content="{Binding Decode}" Name="Pcomb" Margin="20 50 0 0"/>
-                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 -270 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <Label Content="{Binding Path=Coded}" Name="Pcomb" Margin="20 50 0 0"/>
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="20 -270 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
                                             <Button Command="{Binding CheckDecode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
@@ -1514,7 +1515,7 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource repeatCodeVM}}">
                                 <Button Command="{Binding Next}" Name ="nextP_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextP_btn_Click"  />
                                 <TabControl Margin="0,10,10,80" Name="TestP_control"  >
                                     <TabItem Header="1" Visibility="Collapsed" >
@@ -1523,7 +1524,7 @@
 
                                             <Label  Content="{Binding Path=Code}" Name="PTest"  Margin="30,60,287,136"  FontSize="14"  />
 
-                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 -270 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="20 -270 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
                                         </Grid>
@@ -1531,8 +1532,8 @@
                                     <TabItem Header="2"  Visibility="Collapsed">
                                         <Grid>
                                             <Label Content="Раскодируйте сообщение:"/>
-                                            <Label Content="{Binding Decode}" Name="PcombTest" Margin="20 50 0 0"/>
-                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 -270 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <Label Content="{Binding Path=Coded}" Name="PcombTest" Margin="20 50 0 0"/>
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="188,92,0,361" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
 

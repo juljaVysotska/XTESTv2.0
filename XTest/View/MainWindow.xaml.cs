@@ -22,6 +22,7 @@ namespace XTest
     public partial class MainWindow : Window
     {
         int Qstage = 0;
+        int Pstage = 0;
         public static Dictionary<string, Result> results = new Dictionary<string, Result>();
 
         public MainWindow()
@@ -275,7 +276,16 @@ namespace XTest
 
         private void NextP_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            Pstage++;
+            if (Pstage == 4)
+            {
+                TestP_control.SelectedIndex++;
+            }
+            else if (Pstage == 8)
+            {
+                TestP_control.SelectedIndex--;
+                Pstage = 0;
+            }
         }
 
         private void codeB4H_btn_Click(object sender, RoutedEventArgs e)
