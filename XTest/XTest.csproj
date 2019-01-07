@@ -68,6 +68,7 @@
     <Compile Include="ViewModel\RecurentCodeViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\RidMallerViewModel.cs" />
+    <Compile Include="ViewModel\VarshamovCodeViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
