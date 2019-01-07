@@ -21,7 +21,8 @@ namespace XTest
    
     public partial class MainWindow : Window
     {
-        
+        int Qstage = 0;
+
         public static Dictionary<string, Result> results = new Dictionary<string, Result>();
 
         public MainWindow()
@@ -250,7 +251,6 @@ namespace XTest
             codeQ_control.SelectedIndex = 1;
         }
 
-        int Qstage = 0;
 
         private void NextQ_btn_Click(object sender, RoutedEventArgs e)
         {
