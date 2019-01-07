@@ -304,11 +304,11 @@ namespace XTest
 
         private void codePN_btn_Click(object sender, RoutedEventArgs e)
         {
-            codeB4H_control.SelectedIndex = 0;
+            codePN_control.SelectedIndex = 0;
         }
         private void decodePN_btn_Click(object sender, RoutedEventArgs e)
         {
-            codeB4H_control.SelectedIndex = 1;
+            codePN_control.SelectedIndex = 1;
         }
 
         private void NextPN_btn_Click(object sender, RoutedEventArgs e)
