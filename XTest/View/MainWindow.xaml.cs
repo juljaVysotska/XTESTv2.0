@@ -343,7 +343,18 @@ namespace XTest
 
 
         }
-
+        private void Button_Shennon_Practice_Next_Click(object sender, RoutedEventArgs e)
+        {
+            if (ShennonFanoService.isCalculatedCorrectly(ShennonMessages))
+            {
+                MessageBox.Show("Правильно!");
+            }
+            else
+            {
+                MessageBox.Show("Не правильно!.");
+            }
+            GenerateShennonPractice();
+        }
 
 
         private void BtnHemNext_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
