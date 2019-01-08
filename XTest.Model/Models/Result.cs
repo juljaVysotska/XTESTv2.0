@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,20 +10,31 @@ namespace XTest.Model.Models
 {
     public class Result
     {
-        public string testName;
-        public int testsTotal;
-        public int correctTests = 0;
-        public int currentTestNumber = 1;
+        public string testName { get; set; }
+        public int testsTotal { get; set; }
+        public int correctTests { get; set; }
+        public int currentTestNumber { get; set; }
+        public string testStat
+        {
+            get => correctTests + "/" + testsTotal;
+            set => testStat = value;
+        }
+        public int mark {
+            get => Convert.ToInt32(Math.Floor(correctTests / ((double)testsTotal) * 5));
+            set => mark = value;
+        }
 
         public Result(string testName, int testsTotal)
         {
             this.testName = testName;
             this.testsTotal = testsTotal;
+            this.correctTests = 0;
+            this.currentTestNumber = 1;
         }
 
         public override string ToString()
         {
-            return testName + " - " + testsTotal;
+            return testName + "\t" + testStat + "\tБалл:" + mark;
         }
     }
 }

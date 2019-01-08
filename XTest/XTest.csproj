@@ -66,6 +66,7 @@
     <Compile Include="ViewModel\AbramsonaCodeViewModel.cs" />
     <Compile Include="ViewModel\BinaryDecimalViewModel.cs" />
     <Compile Include="ViewModel\GreyaViewModel.cs" />
+    <Compile Include="ViewModel\IterativeViewModel.cs" />
     <Compile Include="ViewModel\CheckByQViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\EllaesCodeViewModel.cs" />
@@ -176,25 +177,28 @@
     <Resource Include="Resources\key.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\B4H1.gif" />
+    <Resource Include="Resources\iter1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\B4H2.JPG" />
+    <Resource Include="Resources\iter2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\PN1.JPG" />
+    <Resource Include="Resources\entr1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\A1.JPG" />
+    <Resource Include="Resources\entr2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\A2.JPG" />
+    <Resource Include="Resources\entr3.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\A3.JPG" />
+    <Resource Include="Resources\entr4.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\A4.JPG" />
+    <Resource Include="Resources\entr5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\entr6.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
