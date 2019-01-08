@@ -280,11 +280,15 @@ namespace XTest
         string polinom;
         string msg;
         string franswer;
+        int testnumber;
+        int correctanswers;
+
         private void GridFayr_Loaded(object sender, RoutedEventArgs e)
         {
 
             fayr();
-
+            testnumber = 1;
+            correctanswers = 0;
 
 
         }
@@ -319,8 +323,8 @@ namespace XTest
             }
             
         }
-
         private void fayr() {
+            
             frisCodingEnabled = true;
             franswer = "";
             msg = "";
@@ -376,6 +380,7 @@ namespace XTest
             }
             franswer = msg + ostatok;
             frCodelbl.Content = "Закодируте сообщение: " + msg;
+            frtCodelbl.Content = "Закодируте сообщение: " + msg;
             polinomLbl.Content = "Неприводимый полином P1: 111";
 
         }
@@ -452,7 +457,7 @@ namespace XTest
                 }
               
             }
-            MessageBox.Show(msg);
+            //MessageBox.Show(msg);
             franswer = msg + ostatok;
             frCodelbl.Content = "Закодируте сообщение: " + franswer;
             polinomLbl.Content = "Неприводимый полином P1: 111";
@@ -461,6 +466,39 @@ namespace XTest
         {
             fayrd();
 
+        }
+
+        private void FrtestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (frtTextbox.Text == franswer && testnumber <= 10)
+            {
+                MessageBox.Show("Правильно!");
+                correctanswers += 1;
+                fayr();
+            }
+            else if (frtTextbox.Text != franswer && testnumber <= 10)
+            {
+                MessageBox.Show("Не правильно!");
+                fayr();
+            }
+             if (testnumber == 10) {
+                MessageBox.Show("Тест завершён. Количество правильных ответов: " + correctanswers);
+            }
+            testnumber += 1;
+            testnum.Content = testnumber.ToString();
+            crctans.Content = correctanswers.ToString();
+
+        }
+
+        private void SurrendBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (frisCodingEnabled)
+            {
+                ToolTip = franswer;
+            }
+            else {
+                ToolTip = msg;
+            }
         }
     }
 }

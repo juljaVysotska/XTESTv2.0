@@ -1530,24 +1530,25 @@
                                 <Label x:Name="polinomLbl"  Content="Неприводимый полином P1:"  Margin="30,112,287,437"  FontSize="14" Grid.ColumnSpan="2"  />
                                 <Button x:Name="frCodebtn" Content="Кодирование" Grid.Column="1" HorizontalAlignment="Left" Margin="329,30,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.34,-0.457" Click="FrCodebtn_Click"/>
                                 <Button x:Name="frDecodebtn" Content="Декодирование" Grid.Column="1" HorizontalAlignment="Left" Margin="469,30,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.34,-0.457" Click="FrDecodebtn_Click"/>
+                                <Label x:Name="surrendBtn" Content="?" Grid.Column="1" HorizontalAlignment="Left" Margin="569,80,0,0" VerticalAlignment="Top" MouseMove="SurrendBtn_MouseMove"/>
 
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Итеративный код"  Margin="30,30,288,506"  FontSize="24"/>
-                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                <Label  Content="Закодируйте сообщение"  Margin="29,80,288,469"  FontSize="14"  />
+                                <Label  Content="Код Файра"  Margin="30,30,288,506"  FontSize="24"/>
+                                <Label x:Name="frtCodelbl"  Content="Закодируйте сообщение"  Margin="29,80,288,469"  FontSize="14"  />
 
                                 <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
-                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <TextBox x:Name="frtTextbox" Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
+                                <Button x:Name="frtestBtn" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="FrtestBtn_Click"/>
 
                                 <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
-                                <Label Content="5" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label x:Name="testnum" Content="1" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
                                 <Label Content="/ 10" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
                                 <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                <Label Content="3" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label x:Name="crctans" Content="0" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label x:Name="polinomLbl_Copy"  Content="Неприводимый полином P1 = 111"  Margin="30,112,287,437"  FontSize="14"  />
 
                             </Grid>
                         </TabItem>
