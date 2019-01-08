@@ -9,6 +9,7 @@ namespace XTest.Model.Models
     public enum TestMode
     {
         Encoding,
-        Decoding
+        Decoding,
+		Default
     }
 }

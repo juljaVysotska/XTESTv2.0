@@ -51,15 +51,16 @@ namespace XTest.Model.Services
 				result[i] = new string[2];
 				result[i][0] = "P(X" + i +") = ";
 				
-				double d = r.Next(10, 90) / 100.0;
+				double d = r.Next(1, (int)(100/count)*2) / 100.0;
 				while (rest - d <=0 && rest!=0)
 				{
-					d = r.Next( 100) / 100.0;
+					d = r.Next(100) / 100.0;
 				}
+				if (i == count-1)
+					result[i][1] = rest.ToString();
+				else
+					result[i][1] = d.ToString();
 				rest = rest - d;
-
-
-				result[i][1] = d.ToString();
 			}
 			return result;
 		}
@@ -74,7 +75,12 @@ namespace XTest.Model.Services
 					result += double.Parse(Unconditional[i][1]) * Math.Log(double.Parse(Unconditional[i][1]), 2);
 				}
 			}
-			return result;
+			return Math.Round( result, 3);
+		}
+
+		public double getMaxHX(string[][] Unconditional)
+		{
+			return Math.Round( Math.Log(Unconditional.Length, 2), 3);
 		}
 
 

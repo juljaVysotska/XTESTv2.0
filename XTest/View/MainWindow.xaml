@@ -7731,8 +7731,8 @@
                                 <Label Content="Энтропия" HorizontalAlignment="Left" Margin="42,30,0,0"  FontSize="24"  VerticalAlignment="Top"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <!--Ансамбль-->
-                                <!--<Grid Visibility="{Binding EnsambleVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">-->
-                                <Grid Visibility="Hidden">
+                                <Grid Visibility="{Binding EnsambleVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">
+                                <!--<Grid Visibility="Hidden">-->
                                     <Label Content="Дан ансамбль А, состоящий из N сообщений, в котором: " HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
                                     <Label Content="P(X1) = 1/2" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,118,0,0" VerticalAlignment="Top"/>
                                     <Label Content="P(X2) = 1/4" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,148,0,0" VerticalAlignment="Top"/>
@@ -7751,30 +7751,30 @@
                                     <Label Content="бит" HorizontalAlignment="Left" FontSize="16" Margin="215,295,0,0" VerticalAlignment="Top"/>
                                 </Grid>
                                 <!--Максимальная энтропия-->
-                                <!--<Grid Visibility="{Binding UnconditionalVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">-->
-                                <Grid Visibility="Visible">
+                                <Grid Visibility="{Binding UnconditionalVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">
+                                <!--<Grid Visibility="Visible">-->
                                     <Label Content="Алфавит источника состоит из n символов: X1, X2, ... Xn." HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
-                                    <WrapPanel Width="150" Height="240" Margin="42,114,0,207" HorizontalAlignment="Left" >
-                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[0][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[0][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[1][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[1][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[2][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[2][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[3][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[3][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[4][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[4][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[5][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
-                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[5][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    <WrapPanel Width="90" Height="240" Margin="82,114,0,207" HorizontalAlignment="Left" >
+                                        <TextBox  Width="50" Height="40" Text="{Binding UnconditionalTest[0][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox Width="40" Height="40" Text="{Binding UnconditionalTest[0][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox  Width="50" Height="40" Text="{Binding UnconditionalTest[1][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox Width="40" Height="40" Text="{Binding UnconditionalTest[1][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox  Width="50" Height="40" Text="{Binding UnconditionalTest[2][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox Width="40" Height="40" Text="{Binding UnconditionalTest[2][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox  Width="50" Height="40" Text="{Binding UnconditionalTest[3][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox Width="40" Height="40" Text="{Binding UnconditionalTest[3][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox Width="50" Height="40" Text="{Binding UnconditionalTest[4][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox Width="40" Height="40" Text="{Binding UnconditionalTest[4][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox  Width="50" Height="40" Text="{Binding UnconditionalTest[5][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
+                                        <TextBox Width="40" Height="40" Text="{Binding UnconditionalTest[5][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
                                     </WrapPanel>
                                     <Label Content="Найдите безусловную и максимальную энтропию источника" HorizontalAlignment="Left" Margin="42,367,0,0" VerticalAlignment="Top"/>
 
 
                                     <Label Content="Н(х) = " HorizontalAlignment="Left" Margin="82,401,0,0" VerticalAlignment="Top"/>
-                                    <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,401,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202"/>
+                                    <TextBox Text="{Binding UnconditionalResultHX, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,401,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202"/>
                                     <Label Content="Нmax(х) = " HorizontalAlignment="Left" Margin="58,441,0,0" VerticalAlignment="Top"/>
-                                    <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,441,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202"/>
+                                    <TextBox Text="{Binding UnconditionalResultHMaxX, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,441,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202"/>
                                 </Grid>
                                 <!--Hardcodeeeeee-->
                                 <Grid Visibility="{Binding ConditionalVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">
