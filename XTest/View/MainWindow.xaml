@@ -171,6 +171,8 @@
                                                 DisplayMemberBinding="{Binding Value.testName}" />
                                 <GridViewColumn Header="Правильные ответы" 
                                                 DisplayMemberBinding="{Binding Value.testStat}" />
+                                <GridViewColumn Header="Всего заданий" 
+                                                DisplayMemberBinding="{Binding Value.testsTotal}" />
                                 <GridViewColumn Header="Балл" 
                                                 DisplayMemberBinding="{Binding Value.mark}" />
                             </GridView>

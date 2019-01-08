@@ -16,7 +16,7 @@ namespace XTest.Model.Models
         public int currentTestNumber { get; set; }
         public string testStat
         {
-            get => correctTests + "/" + testsTotal;
+            get => correctTests + "/" + (currentTestNumber-1);
             set => testStat = value;
         }
         public int mark {
