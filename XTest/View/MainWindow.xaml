@@ -119,7 +119,7 @@
     <Grid>
 
 
-        <TabControl HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="950" TabStripPlacement="Right" Margin="2,0,0,0" >
+        <TabControl x:Name="MainTabControl" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="950" TabStripPlacement="Right" Margin="2,0,0,0" SelectionChanged="MainTabControl_SelectionChanged" >
             <TabControl.Template>
                 <ControlTemplate TargetType="TabControl">
                     <StackPanel>
@@ -155,12 +155,27 @@
             <TabItem  Header="Отчеты" Height="35" Width="260"   Padding="30,0,0,0"
                       Background="#B2CAF2" BorderBrush="#B2CAF2" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
                 <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource ellaesVM}}">
-                    <Label Content="Пройденные тесты: " Margin="30,52,480,541"  FontSize="16"/>
-                    <Label Content="Название кода : " Margin="30,108,521,490" />
-                    <Label Content="Оценка: " Margin="425,108,126,490" />
-                    <TextBox  Margin="30,154,165,425" VerticalContentAlignment="Center" Text="{Binding Result}" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-
-                    <Button  Content="Получить результаты тестов"  Height="50" Width="203" HorizontalAlignment="Left" Margin="425,521,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"  />
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="39*"/>
+                        <ColumnDefinition Width="629*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28*"/>
+                        <RowDefinition Height="599*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Пройденные тесты: " Margin="30,24,480,541"  FontSize="16" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <ListView x:Name="ResultListView" ItemsSource="{DynamicResource ResultMarks}" HorizontalAlignment="Left" Height="504" Margin="30,62,0,0" VerticalAlignment="Top" Width="609" Grid.Row="1" Grid.ColumnSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Название теста" 
+                                                DisplayMemberBinding="{Binding Value.testName}" />
+                                <GridViewColumn Header="Правильные ответы" 
+                                                DisplayMemberBinding="{Binding Value.testStat}" />
+                                <GridViewColumn Header="Балл" 
+                                                DisplayMemberBinding="{Binding Value.mark}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Grid>
             </TabItem>
             <TabItem Name ="VarshamCode" Header="Код Варшамова" Height="35" Width="260"   Padding="30,0,0,0"
@@ -4931,7 +4946,7 @@
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Label  Content="Итеративный код"  Margin="30,64,294,472"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                
+
                                 <Label Margin="30,100,8,6" Content="{Binding TestTask, UpdateSourceTrigger=PropertyChanged}" FontSize="16"/>
                                 <Label Margin="30, 400,8,6"  FontSize="14">Q =</Label>
                                 <Label Margin="60, 400,8,6"  FontSize="14" Content="{Binding Path=IterativeCodeTest.Q, UpdateSourceTrigger=PropertyChanged}"/>
@@ -5816,7 +5831,7 @@
                                 <Label Content="Нmax(х) = " HorizontalAlignment="Left" Margin="58,461,0,0" VerticalAlignment="Top"/>
                                 <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,461,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202"/>-->
 
-                                
+
                                 <!--Hardcodeeeeee-->
                                 <!--<Label Content="Дана матрица условных вероятностей" HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
                                 <WrapPanel Width="160" Height="160" Margin="42,121,0,300" HorizontalAlignment="Left" >
@@ -5852,7 +5867,7 @@
                                 <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,362,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180"/>
                                 <Label Content="Нmax(х) = " HorizontalAlignment="Left" Margin="62,435,0,0" VerticalAlignment="Top"/>
                                 <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,435,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180"/>-->
-                                
+
                                 <Button  Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
 
                             </Grid>
