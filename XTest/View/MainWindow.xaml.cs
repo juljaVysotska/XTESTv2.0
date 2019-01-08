@@ -186,8 +186,8 @@ namespace XTest
             }
         }
 
-        
-     
+
+
 
         private void Button_Shennon_Test_Next_Click(object sender, RoutedEventArgs e)
 
@@ -244,7 +244,7 @@ namespace XTest
         {
             codeEL_control.SelectedIndex = 1;
         }
-        
+
         private void nextVAR_btn_Click(object sender, RoutedEventArgs e)
         {
 
@@ -266,10 +266,10 @@ namespace XTest
         {
 
         }
-        
+
         private void nextVARPractice_btn_Click(object sender, RoutedEventArgs e)
         {
-            
+
 
             TestVAR_control.SelectedIndex++;
 
@@ -498,7 +498,7 @@ namespace XTest
         }
         private void NextB4H_btn_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void codePN_btn_Click(object sender, RoutedEventArgs e)
@@ -516,7 +516,7 @@ namespace XTest
         }
 
 
-      
+
 
         private void codeA_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -539,6 +539,240 @@ namespace XTest
                 Astage = 0;
             }
         }
+
+
+        #region Fayr
+        int frcheat;
+        bool frisCodingEnabled;
+        string polinom;
+        string msg;
+        string franswer;
+        int testnumber;
+        int correctanswers;
+
+        private void GridFayr_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            fayr();
+            testnumber = 1;
+            correctanswers = 0;
+
+
+        }
+
+        private void FeNext_Click(object sender, RoutedEventArgs e)
+        {
+            if (frisCodingEnabled)
+            {
+                if (frTextbox.Text == franswer)
+                {
+                    MessageBox.Show("Правильно!");
+                    fayr();
+                }
+                else
+                {
+                    MessageBox.Show("Не правильно!");
+
+                }
+            }
+            else
+            {
+                if (frTextbox.Text == msg)
+                {
+                    MessageBox.Show("Правильно!");
+                    fayrd();
+                }
+                else
+                {
+                    MessageBox.Show("Не правильно!");
+
+                }
+
+            }
+
+        }
+        private void fayr()
+        {
+
+            frisCodingEnabled = true;
+            franswer = "";
+            msg = "";
+            polinom = "1110111";
+            Random rand = new Random();
+
+            for (int i = 0; i <= 5; i++)
+            {
+                msg += rand.Next(2).ToString();
+            }
+
+            if (msg == "000000")
+            {
+                msg = "";
+                for (int i = 0; i <= 5; i++)
+                {
+                    msg += rand.Next(2).ToString();
+                }
+
+
+            }
+            double c = Convert.ToInt32(msg, 2) % Convert.ToInt32(polinom, 2);
+
+            Int64 BinaryHolder;
+            char[] BinaryArray;
+            string BinaryResult = "";
+
+            while (c > 0)
+            {
+                BinaryHolder = Convert.ToInt64(c % 2);
+                BinaryResult += BinaryHolder;
+                c = c / 2;
+            }
+
+            BinaryArray = BinaryResult.ToCharArray();
+            Array.Reverse(BinaryArray);
+            BinaryResult = new string(BinaryArray);
+
+            bool iszero = true;
+            string ostatok = "";
+            foreach (char k in BinaryResult)
+            {
+                if (k.ToString() == "1")
+                {
+                    iszero = false;
+                    ostatok += "1";
+                }
+                else if (iszero == false)
+                {
+                    ostatok += "0";
+                }
+
+            }
+            franswer = msg + ostatok;
+            frCodelbl.Content = "Закодируте сообщение: " + msg;
+            frtCodelbl.Content = "Закодируте сообщение: " + msg;
+            polinomLbl.Content = "Неприводимый полином P1: 111";
+
+        }
+
+        private void FeNext_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+            if (frcheat == 5 && frisCodingEnabled)
+            {
+                frTextbox.Text = franswer;
+            }
+            else if (frcheat == 5 && !frisCodingEnabled)
+            {
+                frTextbox.Text = msg;
+            }
+            else { frcheat++; }
+        }
+
+        private void FrCodebtn_Click(object sender, RoutedEventArgs e)
+        {
+            fayr();
+        }
+        private void fayrd()
+        {
+            frisCodingEnabled = false;
+            franswer = "";
+            msg = "";
+            polinom = "1110111";
+            Random rand = new Random();
+
+            for (int i = 0; i <= 5; i++)
+            {
+                msg += rand.Next(2).ToString();
+            }
+
+            if (msg == "000000")
+            {
+                msg = "";
+                for (int i = 0; i <= 5; i++)
+                {
+                    msg += rand.Next(2).ToString();
+                }
+
+
+            }
+            double c = Convert.ToInt32(msg, 2) % Convert.ToInt32(polinom, 2);
+
+            Int64 BinaryHolder;
+            char[] BinaryArray;
+            string BinaryResult = "";
+
+            while (c > 0)
+            {
+                BinaryHolder = Convert.ToInt64(c % 2);
+                BinaryResult += BinaryHolder;
+                c = c / 2;
+            }
+
+            BinaryArray = BinaryResult.ToCharArray();
+            Array.Reverse(BinaryArray);
+            BinaryResult = new string(BinaryArray);
+
+            bool iszero = true;
+            string ostatok = "";
+            foreach (char k in BinaryResult)
+            {
+                if (k.ToString() == "1")
+                {
+                    iszero = false;
+                    ostatok += "1";
+                }
+                else if (iszero == false)
+                {
+                    ostatok += "0";
+                }
+
+            }
+            //MessageBox.Show(msg);
+            franswer = msg + ostatok;
+            frCodelbl.Content = "Закодируте сообщение: " + franswer;
+            polinomLbl.Content = "Неприводимый полином P1: 111";
+        }
+        private void FrDecodebtn_Click(object sender, RoutedEventArgs e)
+        {
+            fayrd();
+
+        }
+
+        private void FrtestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (frtTextbox.Text == franswer && testnumber <= 10)
+            {
+                MessageBox.Show("Правильно!");
+                correctanswers += 1;
+                fayr();
+            }
+            else if (frtTextbox.Text != franswer && testnumber <= 10)
+            {
+                MessageBox.Show("Не правильно!");
+                fayr();
+            }
+            if (testnumber == 10)
+            {
+                MessageBox.Show("Тест завершён. Количество правильных ответов: " + correctanswers);
+            }
+            testnumber += 1;
+            testnum.Content = testnumber.ToString();
+            crctans.Content = correctanswers.ToString();
+
+        }
+
+        private void SurrendBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (frisCodingEnabled)
+            {
+                ToolTip = franswer;
+            }
+            else
+            {
+                ToolTip = msg;
+            }
+        }
+        #endregion
 
     }
 }
