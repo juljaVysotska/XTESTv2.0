@@ -68,9 +68,12 @@
     <Compile Include="ViewModel\CheckByQViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\EllaesCodeViewModel.cs" />
+    <Compile Include="ViewModel\RecurentCodeViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\RepeatCodeViewModel.cs" />
     <Compile Include="ViewModel\RidMallerViewModel.cs" />
+    <Compile Include="ViewModel\VarshamovCodeViewModel.cs" />
+    <Compile Include="ViewModel\VarshamovCodeViewModelPractice.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

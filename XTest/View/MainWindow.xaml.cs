@@ -144,7 +144,7 @@ namespace XTest
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
             {
-                GenerateShennon();
+                //GenerateShennon();
             }
         }
 
@@ -164,8 +164,8 @@ namespace XTest
                 MessageBox.Show("You've already completed this test!");
             }
         }
-
-        private void Button_Shennon_Next_Click(object sender, RoutedEventArgs e)
+        
+      private void Button_Shennon_Next_Click(object sender, RoutedEventArgs e)
         {
             Result result = results["Shennon-Fano"];
             if (result.currentTestNumber <= 3)
@@ -200,6 +200,7 @@ namespace XTest
 
         
 
+
         private void codeRM_btn_Click(object sender, RoutedEventArgs e)
         {
             codeRM_control.SelectedIndex = 0;
@@ -219,11 +220,31 @@ namespace XTest
         {
             codeEL_control.SelectedIndex = 1;
         }
-
+        
         private void nextVAR_btn_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void codeR_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeR_control.SelectedIndex = 0;
+        }
+
+        private void decodeR_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeR_control.SelectedIndex = 1;
+        }
+
+
+        private void WrapPanel_TextInput(object sender, TextCompositionEventArgs e)
+        {
+
+        }
+        
+        private void nextVARPractice_btn_Click(object sender, RoutedEventArgs e)
+        {
             
-                TestVAR_control.SelectedIndex++;
         }
 
         private void CodeB4H_control_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -316,17 +337,6 @@ namespace XTest
 
         }
 
-        private void codeA_btn_Click(object sender, RoutedEventArgs e)
-        {
-            codeA_control.SelectedIndex = 0;
-        }
-        private void decodeA_btn_Click(object sender, RoutedEventArgs e)
-        {
-            codeA_control.SelectedIndex = 1;
-        }
-        private void NextA_btn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
     }
 }

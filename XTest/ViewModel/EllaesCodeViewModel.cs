@@ -53,6 +53,15 @@ namespace XTest.ViewModel
             }
         }
 
+        public int Mark
+        {
+            get { return mark; }
+            set
+            {
+                mark = value;
+                OnPropertyChanged("Mark");
+            }
+        }
         public int[][] ArrayCode
         {
             get { return array; }
@@ -79,7 +88,7 @@ namespace XTest.ViewModel
         {
             EllaesCodeService ellaesCodeService = new EllaesCodeService();
             check = 1;
-            mark = 0;
+            Mark = 0;
             this._service = ellaesCodeService;
             OldArray = _service.GenerateArray(4, 4);
             Array = _service.ResizeArray(OldArray);
@@ -101,7 +110,7 @@ namespace XTest.ViewModel
                       {
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
-                              mark += 1;
+                              Mark += 1;
 
                           OldArray = _service.GenerateArray(4, 4);
                           Array = _service.ResizeArray(OldArray);
@@ -112,7 +121,7 @@ namespace XTest.ViewModel
                           MessageBox.Show("Исправьте ошибки в сообщении:");
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
-                              mark += 1;
+                              Mark += 1;
 
                           Array = _service.GenerateArrayWithException(4, 4);
                           OldArray = _service.FuckingCSharp(Array);
@@ -121,19 +130,19 @@ namespace XTest.ViewModel
                       {
                           OldArray = _service.Decode(OldArray);
                           if (_service.Equals(OldArray, Array))
-                              mark += 1;
+                              Mark += 1;
                           Array = _service.GenerateArrayWithException(4, 4);
                           OldArray = _service.FuckingCSharp(Array);
                       }
                       check += 1;
                       if (check == 9)
                       {
-                          MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8");
+                          MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 8");
                           OldArray = _service.GenerateArray(4, 4);
                           Array = _service.ResizeArray(OldArray);
-                          MainWindow.results.Add("Ellaes", new Result("Код Эллаеса ", mark));
+                          MainWindow.results.Add("Ellaes", new Result("Код Эллаеса ", Mark));
                           check = 1;
-                          mark = 0;
+                          Mark = 0;
                       }
                   }));
             }

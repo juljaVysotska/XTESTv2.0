@@ -16,5 +16,9 @@ namespace XTest.ViewModel
         EllaesCodeViewModel viewModel { get; set; }
         RidMallerViewModel mallerViewModel { get; set; }
         CheckByQViewModel checkByQ { get; set; }
+        RecurentCodeViewModel recurentVM { get; set; }
+        VarshamovCodeViewModel varshamVM { get; set; }
+        VarshamovCodeViewModel varshamVWPractice { get; set; }
+
     }
 }
