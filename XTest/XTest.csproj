@@ -63,9 +63,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModel\AbramsonaCodeViewModel.cs" />
     <Compile Include="ViewModel\BinaryDecimalViewModel.cs" />
+    <Compile Include="ViewModel\EllayesViewModel.cs" />
     <Compile Include="ViewModel\GreyaViewModel.cs" />
     <Compile Include="ViewModel\CheckByQViewModel.cs" />
+    <Compile Include="ViewModel\IterativeViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\EllaesCodeViewModel.cs" />
     <Compile Include="ViewModel\RecurentCodeViewModel.cs" />

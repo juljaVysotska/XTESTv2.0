@@ -15,20 +15,23 @@ using System.Windows.Shapes;
 using XTest.Model.Models;
 using XTest.ViewModel;
 using XTest.Model.Services;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace XTest
 {
-   
+
     public partial class MainWindow : Window
     {
         int Qstage = 0;
         int Pstage = 0;
+        int Astage = 0;
         public static Dictionary<string, Result> results = new Dictionary<string, Result>();
 
         public MainWindow()
         {
             InitializeComponent();
-          
+            Resources["ResultMarks"] = results;
         }
 
         #region Berger
@@ -37,13 +40,14 @@ namespace XTest
         {
             if (!results.ContainsKey("Berger"))
             {
-                results.Add("Berger", new Result("Berger", 6));
+                results.Add("Berger", new Result("Код Бергера", 6));
             }
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
             {
                 GenerateBergerTest();
-            } else if (tabControl.SelectedIndex == 1)
+            }
+            else if (tabControl.SelectedIndex == 1)
             {
                 GenerateBergerPractice();
             }
@@ -92,6 +96,7 @@ namespace XTest
                     BergerService.isDecodedCorrectly(lblBergerTask.Content.ToString(), txbBergerResult.Text))
                 {
                     MessageBox.Show("Правильно!");
+                    txbBergerResult.Text = "";
                     result.correctTests += 1;
                     result.currentTestNumber += 1;
                 }
@@ -100,6 +105,7 @@ namespace XTest
                     MessageBox.Show("Не правильно! Ответ: " + (result.currentTestNumber <= 3 ?
                         BergerService.encode(lblBergerTask.Content.ToString()) :
                         BergerService.decode(lblBergerTask.Content.ToString())));
+                    txbBergerResult.Text = "";
                     result.currentTestNumber += 1;
                 }
                 GenerateBergerTest();
@@ -125,7 +131,8 @@ namespace XTest
                     BergerService.isDecodedCorrectly(lblTask_Practice.Content.ToString(), txbBergerResult_Practice.Text))
             {
                 MessageBox.Show("Правильно!");
-            } else
+            }
+            else
             {
                 MessageBox.Show("Не правильно! Ответ: " + (bergerPracticeEncode ?
                     BergerService.encode(lblTask_Practice.Content.ToString()) :
@@ -135,54 +142,71 @@ namespace XTest
         #endregion
 
         #region Shennon-Fano
+
+        List<ShennonFanoDto> ShennonMessages = new List<ShennonFanoDto>();
+
         private void TabControl_Shennon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!results.ContainsKey("Shennon-Fano"))
             {
-                results.Add("Shennon-Fano", new Result("Shennon-Fano", 3));
+                results.Add("Shennon-Fano", new Result("Код Шеннона-Фано", 3));
             }
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
             {
+
                 //GenerateShennon();
+
+                GenerateShennonTest();
+            }
+            else if (tabControl.SelectedIndex == 1)
+            {
+                GenerateShennonPractice();
+
             }
         }
 
-        private void GenerateShennon()
+        private void GenerateShennonPractice()
+        {
+            ShennonMessages = ShennonFanoService.generateMessages();
+            Resources["ShennonTask"] = ShennonMessages;
+        }
+
+        private void GenerateShennonTest()
         {
             Result result = results["Shennon-Fano"];
             if (result.currentTestNumber <= 3)
             {
-                Dictionary<int, double> messages = ShennonFanoService.generateMessages();
-                foreach (var message in messages)
-                {
-                    //TODO display messages
-                }
+                ShennonMessages = ShennonFanoService.generateMessages();
+                Resources["ShennonTask"] = ShennonMessages;
             }
             else
             {
-                MessageBox.Show("You've already completed this test!");
+                MessageBox.Show("Вы уже закончили этот тест!");
             }
         }
+
         
-      private void Button_Shennon_Next_Click(object sender, RoutedEventArgs e)
+     
+
+        private void Button_Shennon_Test_Next_Click(object sender, RoutedEventArgs e)
+
         {
             Result result = results["Shennon-Fano"];
             if (result.currentTestNumber <= 3)
             {
-                //TODO collect info and check if correct
-                if (ShennonFanoService.isCalculatedCorrectly(null, null))
+                if (ShennonFanoService.isCalculatedCorrectly(ShennonMessages))
                 {
-                    MessageBox.Show("Congrats!");
+                    MessageBox.Show("Правильно!");
                     result.correctTests += 1;
                     result.currentTestNumber += 1;
                 }
                 else
                 {
-                    MessageBox.Show("Wrong answer.");
+                    MessageBox.Show("Не правильно.");
                     result.currentTestNumber += 1;
                 }
-                GenerateShennon();
+                GenerateShennonTest();
             }
         }
         #endregion
@@ -192,13 +216,13 @@ namespace XTest
             codeVAR_control.SelectedIndex = 0;
         }
 
-       
+
         private void decode_btn_Click(object sender, RoutedEventArgs e)
         {
             codeVAR_control.SelectedIndex = 1;
         }
 
-        
+
 
 
         private void codeRM_btn_Click(object sender, RoutedEventArgs e)
@@ -224,6 +248,7 @@ namespace XTest
         private void nextVAR_btn_Click(object sender, RoutedEventArgs e)
         {
 
+
         }
 
         private void codeR_btn_Click(object sender, RoutedEventArgs e)
@@ -245,17 +270,152 @@ namespace XTest
         private void nextVARPractice_btn_Click(object sender, RoutedEventArgs e)
         {
             
+
+            TestVAR_control.SelectedIndex++;
+
         }
+
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e) { }
 
         private void CodeB4H_control_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
         {
 
         }
+
+
+        private void TbHem_TextChanged(object sender, TextChangedEventArgs e) { }
 
         private void code_B4H_btn_Click(object sender, RoutedEventArgs e)
+
         {
 
         }
+
+
+
+
+        int cheat;
+        string correctAnswer;
+        string dcorrectAnswer;
+        bool isCodingEnabled;
+        private void hemmingCoding(TextBox tb, Label lb)
+        {
+            isCodingEnabled = true;
+            string taskNumber = "";
+            Random rnd = new Random();
+            int a = rnd.Next(6) + 9;
+            Random rand = new Random();
+
+            for (int i = 0; i <= a; i++)
+            {
+                taskNumber += rand.Next(2);
+
+            }
+            lb.Content = "Закодируйте сообщение: " + taskNumber;
+            //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
+            correctAnswer = Model.Services.HemmingCodeService.Main(taskNumber);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbHem.Text == correctAnswer && isCodingEnabled)
+            {
+                MessageBox.Show("Правильно");
+                cheat = 0;
+
+                hemmingCoding(tbHem, lblHemtask);
+
+
+            }
+            else if (tbHem.Text == dcorrectAnswer && !isCodingEnabled)
+            {
+                MessageBox.Show("Правильно");
+                cheat = 0;
+            }
+            else
+            {
+                MessageBox.Show("Неправильно");
+                cheat = 0;
+            }
+
+
+
+        }
+
+
+
+        private void BtnHemNext_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (cheat == 5 && isCodingEnabled)
+            {
+                tbHem.Text = correctAnswer;
+            }
+            else if (cheat == 5 && !isCodingEnabled)
+            {
+                tbHem.Text = dcorrectAnswer;
+            }
+            else { cheat++; }
+
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            hemmingCoding(tbHem, lblHemtask);
+        }
+
+        private void BtnHemDecoding_Click(object sender, RoutedEventArgs e)
+        {
+            hemDecoding();
+        }
+
+        private void BtnHemCoding_Click(object sender, RoutedEventArgs e)
+        {
+            hemmingCoding(tbHem, lblHemtask);
+        }
+        private void hemDecoding()
+        {
+
+            isCodingEnabled = false;
+            string taskNumber = "";
+            Random rnd = new Random();
+            int a = rnd.Next(6) + 9;
+            Random rand = new Random();
+
+            for (int i = 0; i <= a; i++)
+            {
+                taskNumber += rand.Next(2);
+
+            }
+            lblHemtask.Content = "Раскодируйте сообщение: " + Model.Services.HemmingCodeService.Main(taskNumber);
+            //MessageBox.Show(Model.Services.HemmingCodeService.Main(taskNumber));
+            dcorrectAnswer = taskNumber;
+        }
+
+        private void Grid_Loaded_1(object sender, RoutedEventArgs e)
+        {
+            hemmingCoding(tbHem1, lblHemtask1);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (tbHem1.Text == correctAnswer && isCodingEnabled)
+            {
+                MessageBox.Show("Правильно");
+
+                hemmingCoding(tbHem1, lblHemtask1);
+
+
+            }
+
+            else
+            {
+                MessageBox.Show("Неправильно");
+            }
+        }
+
+
 
         private void decode_B4H_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -272,18 +432,25 @@ namespace XTest
             codeQ_control.SelectedIndex = 1;
         }
 
+
         private void NextQ_btn_Click(object sender, RoutedEventArgs e)
         {
             Qstage++;
             if (Qstage == 4)
             {
-                TestQ_control.SelectedIndex++;                
+                TestQ_control.SelectedIndex++;
             }
-            else if(Qstage == 8)
+            else if (Qstage == 8)
             {
                 TestQ_control.SelectedIndex--;
                 Qstage = 0;
             }
+
+        }
+
+        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(results).Refresh();
         }
 
         private void codeP_btn_Click(object sender, RoutedEventArgs e)
@@ -325,11 +492,11 @@ namespace XTest
 
         private void codePN_btn_Click(object sender, RoutedEventArgs e)
         {
-            codeB4H_control.SelectedIndex = 0;
+            codePN_control.SelectedIndex = 0;
         }
         private void decodePN_btn_Click(object sender, RoutedEventArgs e)
         {
-            codeB4H_control.SelectedIndex = 1;
+            codePN_control.SelectedIndex = 1;
         }
 
         private void NextPN_btn_Click(object sender, RoutedEventArgs e)
@@ -337,6 +504,30 @@ namespace XTest
 
         }
 
+
       
+
+        private void codeA_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeA_control.SelectedIndex = 0;
+        }
+        private void decodeA_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeA_control.SelectedIndex = 1;
+        }
+        private void NextA_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Astage++;
+            if (Astage == 4)
+            {
+                TestA_control.SelectedIndex++;
+            }
+            else if (Astage == 8)
+            {
+                TestA_control.SelectedIndex--;
+                Astage = 0;
+            }
+        }
+
     }
 }

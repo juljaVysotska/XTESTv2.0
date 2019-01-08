@@ -12,7 +12,7 @@ namespace XTest.Model.Services
         public int getRandomQ()
         {
             Random rdm = new Random();
-            int q = rdm.Next(2, 11);
+            int q = rdm.Next(2, 9);
             return q;
         }
 
@@ -57,19 +57,28 @@ namespace XTest.Model.Services
             return result;
         }
 
-        public int[][] makeOneMistake(int[][] arrForMistake)
+        public string[][] makeOneMistake(int[][] arrForMistake)
         {
             int[][] arrWithMisst = arrForMistake;
             Random rdm = new Random();
-            int i = rdm.Next(arrForMistake.Length);
-            int j = rdm.Next(arrForMistake[0].Length);
+            int i = rdm.Next(arrForMistake.Length-1);
+            int j = rdm.Next(arrForMistake[0].Length-1);
             int misstake = rdm.Next(10);
             while (misstake == arrWithMisst[i][j])
             {
                 misstake = rdm.Next(10);
             }
             arrWithMisst[i][j] = misstake;
-            return arrWithMisst;
+			string[][] s = new string[6][];
+			for (int m = 0; m < 6; m++)
+			{
+				s[m] = new string[6];
+				for (int n = 0; n < 6; n++)
+				{
+					s[m][n] = arrWithMisst[m][n].ToString();
+				}
+			}
+			return s;
         }
 
 
