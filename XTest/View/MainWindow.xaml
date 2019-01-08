@@ -13,6 +13,7 @@
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
         <local:RepeatCodeViewModel x:Key="repeatCodeVM"></local:RepeatCodeViewModel>
+        <local:AbramsonaCodeViewModel x:Key="abramsonaCodeVM"></local:AbramsonaCodeViewModel>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -1015,7 +1016,7 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource abramsonaCodeVM}}">
                                 <Button Name ="codeA_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeA_btn_Click"/>
                                 <Button Name="decodeA_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeA_btn_Click"/>
                                 <TabControl Name="codeA_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
@@ -1026,11 +1027,11 @@
                                             
                                             <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
                                             <Label  Content="Неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
-                                            <Label  Content="xxxxxxxx"  Margin="30,160,287,136"  FontSize="14"  />
+                                            <Label  Content="{Binding Path=Poly}"  Margin="30,160,287,136"  FontSize="14"  />
                                           
                                             <Label  Content="Результат:" Margin="30 210 0 0"  FontSize="14"/>
 
-                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
                                             <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
@@ -1041,13 +1042,13 @@
                                             <Label  Content="Закодированная комбинация: " Margin="30"  FontSize="14"/>
 
 
-                                            <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
+                                            <Label  Content="{Binding Path=Coded}"  Margin="30,70,287,136"  FontSize="14"  />
                                             <Label  Content="Известен неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
-                                            <Label  Content="xxxxxxxx"  Margin="30,160,287,136"  FontSize="14"  />
+                                            <Label  Content="{Binding Path=Poly}"  Margin="30,160,287,136"  FontSize="14"  />
 
                                             <Label  Content="Восстановите исходное сообщение:" Margin="30 210 0 0"  FontSize="14"/>
 
-                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="30 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="30 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
                                             <Button Command="{Binding CheckDecode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
 
@@ -1059,7 +1060,7 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource abramsonaCodeVM}}">
                                 <Button Command="{Binding Next}" Name ="nextA_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextA_btn_Click"  />
                                 <TabControl Margin="0,10,10,80" Name="TestA_control"  >
                                     <TabItem Header="1" Visibility="Collapsed" >
@@ -1069,11 +1070,11 @@
 
                                             <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
                                             <Label  Content="Неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
-                                            <Label  Content="xxxxxxxx"  Margin="30,160,287,136"  FontSize="14"  />
+                                            <Label  Content="{Binding Path=Poly}"  Margin="30,160,287,136"  FontSize="14"  />
 
                                             <Label  Content="Результат:" Margin="30 210 0 0"  FontSize="14"/>
 
-                                            <TextBox Text="{Binding Coded}"   Height="30" Width="200" Margin="30 30 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding Answer}"   Height="30" Width="200" Margin="30 30 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
 
@@ -1084,13 +1085,13 @@
                                             <Label  Content="Закодированная комбинация: " Margin="30"  FontSize="14"/>
 
 
-                                            <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
+                                            <Label  Content="{Binding Path=Coded}"  Margin="30,70,287,136"  FontSize="14"  />
                                             <Label  Content="Известен неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
-                                            <Label  Content="xxxxxxxx"  Margin="30,160,287,136"  FontSize="14"  />
+                                            <Label  Content="{Binding Path=Poly}"  Margin="30,160,287,136"  FontSize="14"  />
 
                                             <Label  Content="Восстановите исходное сообщение:" Margin="30 210 0 0"  FontSize="14"/>
 
-                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="30 30 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="30 30 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
                                         </Grid>
