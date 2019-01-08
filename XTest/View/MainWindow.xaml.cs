@@ -270,5 +270,197 @@ namespace XTest
         {
 
         }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        int frcheat;
+        bool frisCodingEnabled;
+        string polinom;
+        string msg;
+        string franswer;
+        private void GridFayr_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            fayr();
+
+
+
+        }
+
+        private void FeNext_Click(object sender, RoutedEventArgs e)
+        {
+            if (frisCodingEnabled)
+            {
+                if (frTextbox.Text == franswer)
+                {
+                    MessageBox.Show("Правильно!");
+                    fayr();
+                }
+                else
+                {
+                    MessageBox.Show("Не правильно!");
+
+                }
+            }
+            else {
+                if (frTextbox.Text == msg)
+                {
+                    MessageBox.Show("Правильно!");
+                    fayrd();
+                }
+                else
+                {
+                    MessageBox.Show("Не правильно!");
+
+                }
+
+            }
+            
+        }
+
+        private void fayr() {
+            frisCodingEnabled = true;
+            franswer = "";
+            msg = "";
+            polinom = "1110111";
+            Random rand = new Random();
+
+            for (int i = 0; i <= 5; i++)
+            {
+                msg += rand.Next(2).ToString();
+            }
+
+            if (msg == "000000")
+            {
+                msg = "";
+                for (int i = 0; i <= 5; i++)
+                {
+                    msg += rand.Next(2).ToString();
+                }
+
+
+            }
+            double c = Convert.ToInt32(msg, 2) % Convert.ToInt32(polinom, 2);
+
+            Int64 BinaryHolder;
+            char[] BinaryArray;
+            string BinaryResult = "";
+
+            while (c > 0)
+            {
+                BinaryHolder = Convert.ToInt64(c % 2);
+                BinaryResult += BinaryHolder;
+                c = c / 2;
+            }
+
+            BinaryArray = BinaryResult.ToCharArray();
+            Array.Reverse(BinaryArray);
+            BinaryResult = new string(BinaryArray);
+
+            bool iszero = true;
+            string ostatok = "";
+            foreach (char k in BinaryResult)
+            {
+                if (k.ToString() == "1")
+                {
+                    iszero = false;
+                    ostatok += "1";
+                }
+                else if (iszero == false)
+                {
+                    ostatok += "0";
+                }
+
+            }
+            franswer = msg + ostatok;
+            frCodelbl.Content = "Закодируте сообщение: " + msg;
+            polinomLbl.Content = "Неприводимый полином P1: 111";
+
+        }
+
+        private void FeNext_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+            if (frcheat == 5 && frisCodingEnabled)
+            {
+                frTextbox.Text = franswer;
+            }
+            else if (frcheat == 5 && !frisCodingEnabled)
+            {
+                frTextbox.Text = msg;
+            }
+            else { frcheat++; }
+        }
+
+        private void FrCodebtn_Click(object sender, RoutedEventArgs e)
+        {
+            fayr();
+        }
+        private void fayrd() {
+            frisCodingEnabled = false;
+            franswer = "";
+            msg = "";
+            polinom = "1110111";
+            Random rand = new Random();
+
+            for (int i = 0; i <= 5; i++)
+            {
+                msg += rand.Next(2).ToString();
+            }
+
+            if (msg == "000000")
+            {
+                msg = "";
+                for (int i = 0; i <= 5; i++)
+                {
+                    msg += rand.Next(2).ToString();
+                }
+
+
+            }
+            double c = Convert.ToInt32(msg, 2) % Convert.ToInt32(polinom, 2);
+
+            Int64 BinaryHolder;
+            char[] BinaryArray;
+            string BinaryResult = "";
+
+            while (c > 0)
+            {
+                BinaryHolder = Convert.ToInt64(c % 2);
+                BinaryResult += BinaryHolder;
+                c = c / 2;
+            }
+
+            BinaryArray = BinaryResult.ToCharArray();
+            Array.Reverse(BinaryArray);
+            BinaryResult = new string(BinaryArray);
+
+            bool iszero = true;
+            string ostatok = "";
+            foreach (char k in BinaryResult)
+            {
+                if (k.ToString() == "1")
+                {
+                    iszero = false;
+                    ostatok += "1";
+                }
+                else if (iszero == false)
+                {
+                    ostatok += "0";
+                }
+              
+            }
+            MessageBox.Show(msg);
+            franswer = msg + ostatok;
+            frCodelbl.Content = "Закодируте сообщение: " + franswer;
+            polinomLbl.Content = "Неприводимый полином P1: 111";
+        }
+        private void FrDecodebtn_Click(object sender, RoutedEventArgs e)
+        {
+            fayrd();
+
+        }
     }
 }

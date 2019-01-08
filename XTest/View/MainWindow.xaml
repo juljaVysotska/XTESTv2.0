@@ -946,7 +946,7 @@
             <TabItem Header="Код Абрамсона" Height="35" Width="260"  Padding="30,0,0,0"  BorderBrush="#FFF5F7F9" Background="#FFF5F7F9"/>
             <TabItem Header="Код Файра" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
-                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656" SelectionChanged="TabControl_SelectionChanged">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
 
@@ -1514,24 +1514,22 @@
 
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
+                        <TabItem x:Name="frPractice" Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid x:Name="gridFayr" Background="White" Margin="0,0,-15,0" Loaded="GridFayr_Loaded">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="47*"/>
                                     <ColumnDefinition Width="619*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label  Content="Итеративный код"  Margin="30,30,323,506"  FontSize="24" Grid.ColumnSpan="2"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="469.5,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Grid.Column="1"/>
+                                <Label  Content="Код Файра"  Margin="30,30,323,506"  FontSize="24" Grid.ColumnSpan="2"/>
+                                <Button x:Name="feNext" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="469.5,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Grid.Column="1" Click="FeNext_Click"/>
 
-                                <Label  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14" Grid.ColumnSpan="2"  />
+                                <Label x:Name="frCodelbl"  Content="Закодируйте сообщение:"  Margin="30,80,287,469"  FontSize="14" Grid.ColumnSpan="2"  />
                                 <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14" Grid.ColumnSpan="2"  />
 
-                                <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
-                                <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18" Grid.ColumnSpan="2"/>
-                                <Label Content="5" HorizontalAlignment="Left" Margin="33.5,480,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1"/>
-                                <Label Content="/ 10" HorizontalAlignment="Left" Margin="53.5,480,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1"/>
-                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
-                                <Label Content="3" HorizontalAlignment="Left" Margin="103.5,511,0,0" VerticalAlignment="Top" FontSize="18" Grid.Column="1"/>
+                                <TextBox x:Name="frTextbox" Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+                                <Label x:Name="polinomLbl"  Content="Неприводимый полином P1:"  Margin="30,112,287,437"  FontSize="14" Grid.ColumnSpan="2"  />
+                                <Button x:Name="frCodebtn" Content="Кодирование" Grid.Column="1" HorizontalAlignment="Left" Margin="329,30,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.34,-0.457" Click="FrCodebtn_Click"/>
+                                <Button x:Name="frDecodebtn" Content="Декодирование" Grid.Column="1" HorizontalAlignment="Left" Margin="469,30,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.34,-0.457" Click="FrDecodebtn_Click"/>
 
                             </Grid>
                         </TabItem>
