@@ -24,7 +24,8 @@ namespace XTest
     public partial class MainWindow : Window
     {
         int Qstage = 0;
-
+        int Pstage = 0;
+        int Astage = 0;
         public static Dictionary<string, Result> results = new Dictionary<string, Result>();
 
         public MainWindow()
@@ -430,6 +431,79 @@ namespace XTest
         private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(results).Refresh();
+        }
+
+        private void codeP_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeP_control.SelectedIndex = 0;
+        }
+        private void decodeP_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeP_control.SelectedIndex = 1;
+        }
+
+        private void NextP_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Pstage++;
+            if (Pstage == 4)
+            {
+                TestP_control.SelectedIndex++;
+            }
+            else if (Pstage == 8)
+            {
+                TestP_control.SelectedIndex--;
+                Pstage = 0;
+            }
+        }
+
+        private void codeB4H_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeB4H_control.SelectedIndex = 0;
+
+        }
+        private void decodeB4H_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeB4H_control.SelectedIndex = 1;
+        }
+        private void NextB4H_btn_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void codePN_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codePN_control.SelectedIndex = 0;
+        }
+        private void decodePN_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codePN_control.SelectedIndex = 1;
+        }
+
+        private void NextPN_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void codeA_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeA_control.SelectedIndex = 0;
+        }
+        private void decodeA_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeA_control.SelectedIndex = 1;
+        }
+        private void NextA_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Astage++;
+            if (Astage == 4)
+            {
+                TestA_control.SelectedIndex++;
+            }
+            else if (Astage == 8)
+            {
+                TestA_control.SelectedIndex--;
+                Astage = 0;
+            }
         }
     }
 }

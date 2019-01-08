@@ -13,6 +13,8 @@
         <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
+        <local:RepeatCodeViewModel x:Key="repeatCodeVM"></local:RepeatCodeViewModel>
+        <local:AbramsonaCodeViewModel x:Key="abramsonaCodeVM"></local:AbramsonaCodeViewModel>
         <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -4556,8 +4558,168 @@
             </TabItem>
 
             <TabItem Header="Код Хемминга(Систематический)" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
+            <TabItem Header="Код Абрамсона" Height="35" Width="260"  Padding="30,0,0,0"  BorderBrush="#FFF5F7F9" Background="#FFF5F7F9">
+                <Grid Margin="275,-620,0,130">
 
-            <TabItem Header="Код Абрамсона" Height="35" Width="260"  Padding="30,0,0,0"  BorderBrush="#FFF5F7F9" Background="#FFF5F7F9"/>
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
+                        <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
+                                        <FlowDocument>
+                                            <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Коды Абрамсона. Краткие теоретические сведения.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Кодирование
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Циклические коды относятся к числу блоковых систематических кодов, в которых каждая комбинация кодируется самостоятельно (в виде блока) таким образом, что информационные (k) и контрольные (m) символы всегда находятся на определённых местах. В основу циклического кодирования положено использование неприводимого многочлена P(x), который применительно к циклическим кодам называется образующим многочленом (полиномом). В качестве информационных символов для построения циклических кодов берутся комбинации двоичного кода на все сочетания. Циклический код или закодированное сообщение F(x) можно образовать двумя способами:</Paragraph>
+                                            
+                                        
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                1.	Умножением одной из комбинаций двоичного кода на все сочетания ( комбинация Q(x) ), принадлежащей к той же группе того же кода, что и заданная ( комбинация G(x) ), на образующий многочлен P(x); 
+2.	Умножением заданной кодовой комбинации G(x) на одночлен xm, имеющий ту же степень, что и образующий многочлен P(x), с добавлением к этому произведению остатка от деления произведения xm · G(x) на образующий многочлен P(x). Таким образом, F(x) = Q(x) · P(x) = (xm) · G(x) + R(x).
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">2.	Умножением заданной кодовой комбинации G(x) на одночлен x^m, имеющий ту же степень, что и образующий многочлен P(x), с добавлением к этому произведению остатка от деления произведения x^m · G(x) на образующий многочлен P(x). Таким образом, F(x) = Q(x) · P(x) = (xm) · G(x) + R(x).
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Коды Абрамсона относятся к группе циклических кодов, позволяющих обнаруживать и исправлять одиночные пачки ошибок. Следовательно, процедура кодирования для кодов Абрамсона аналогична стандартной процедуре кодирования циклических кодов. Длина кодовой комбинации кодов Абрамсона n = 2h - 1,  где h – степень неприводимого полином P1(x).Образующий полином P(x) = ( 1 + x ) · P1(x). Число информационных символов k = 2h - h - 2. Эти выражения справедливы для минимального кодового расстояния dmin = 4, что позволяет корректировать все одиночные и все смежные двойные ошибки.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Пример кодирования
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Необходимо закодировать сообщение 0110010110.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Дан неприводимый полином P1 = 10011, т.е. P1(x) = x⁴ + x + 1. Образующий полином в этом случае будет равен P(x) = ( 1 + x ) · ( x4 + x + 1 ) = x⁵ + x⁴ + x² + 1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Необходимо найти остаток от деления G(x) · x⁵ на образующий полином x⁵ + x⁴ + x² + 1:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="600" Height="400" Source="..\Resources\A1.JPG"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Вес остатка – 2. Так как код Абрамсона способен исправлять все одиночные и смежные двойные ошибки ( в данном случае единичные биты остатка не смежны ), необходимо выполнить циклический сдвиг начального сообщения на один бит влево и повторить деление:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="600" Height="400" Source="..\Resources\A2.JPG"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Вес остатка равен 4, значит необходимо продолжать выполнять циклический сдвиг и деление.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="600" Height="400" Source="..\Resources\A3.JPG"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Вес остатка равен 4, значит необходимо продолжать выполнять циклический сдвиг и деление.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="600" Height="400" Source="..\Resources\A4.JPG"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">В данном случае вес остатка – 2, и исправляемые биты смежны. Для получения исправленной комбинации необходимо сложить по модулю 2 сдвинутую комбинацию с остатком ( в результате получается число 111111110110011 ) и сдвинуть результат циклически на три позиции вправо ( 011111111110110 ). Отбросив проверочную часть, получим окончательный результат – 0111111111.
+                                            </Paragraph>
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource abramsonaCodeVM}}">
+                                <Button Name ="codeA_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeA_btn_Click"/>
+                                <Button Name="decodeA_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeA_btn_Click"/>
+                                <TabControl Name="codeA_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
+                                    <TabItem Name ="codeA_item"  Header="Code" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение: " Margin="30"  FontSize="14"/>
+
+                                            
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
+                                            <Label  Content="Неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
+                                            <Label  Content="{Binding Path=Poly}"  Margin="30,160,287,136"  FontSize="14"  />
+                                          
+                                            <Label  Content="Результат:" Margin="30 210 0 0"  FontSize="14"/>
+
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                            <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Name ="decodeA_item" Header="Decode" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Закодированная комбинация: " Margin="30"  FontSize="14"/>
+
+
+                                            <Label  Content="{Binding Path=Coded}"  Margin="30,70,287,136"  FontSize="14"  />
+                                            <Label  Content="Известен неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
+                                            <Label  Content="{Binding Path=Poly}"  Margin="30,160,287,136"  FontSize="14"  />
+
+                                            <Label  Content="Восстановите исходное сообщение:" Margin="30 210 0 0"  FontSize="14"/>
+
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="30 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+                                            <Button Command="{Binding CheckDecode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource abramsonaCodeVM}}">
+                                <Button Command="{Binding Next}" Name ="nextA_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextA_btn_Click"  />
+                                <TabControl Margin="0,10,10,80" Name="TestA_control"  >
+                                    <TabItem Header="1" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение: " Margin="30"  FontSize="14"/>
+
+
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
+                                            <Label  Content="Неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
+                                            <Label  Content="{Binding Path=Poly}"  Margin="30,160,287,136"  FontSize="14"  />
+
+                                            <Label  Content="Результат:" Margin="30 210 0 0"  FontSize="14"/>
+
+                                            <TextBox Text="{Binding Answer}"   Height="30" Width="200" Margin="30 30 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="2"  Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Закодированная комбинация: " Margin="30"  FontSize="14"/>
+
+
+                                            <Label  Content="{Binding Path=Coded}"  Margin="30,70,287,136"  FontSize="14"  />
+                                            <Label  Content="Известен неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
+                                            <Label  Content="{Binding Path=Poly}"  Margin="30,160,287,136"  FontSize="14"  />
+
+                                            <Label  Content="Восстановите исходное сообщение:" Margin="30 210 0 0"  FontSize="14"/>
+
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="30 30 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
+
+
+
+                            </Grid>
+
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
             <TabItem Header="Код Файра" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
 
             <TabItem Header="Код Хемминга" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
@@ -4569,17 +4731,121 @@
                             <Grid Background="White" Margin="0,0,-15,0">
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
-                                    <RichTextBox BorderBrush="White">
 
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
                                         <FlowDocument>
-                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Код БЧХ
+                                            <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Коды БЧХ. Краткие теоретические сведения.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Введение
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                Коды БЧХ, разработанные Боузом, Чоудхури и Хоквинхемом, позволяют обнаруживать и исправлять любое количество ошибок. Заданными величинами при кодировании являются: число ошибок s, которое следует исправить, и общее число символов, посылаемых в линию, т.е. длина слова n. Число информационных символов (k) и контрольных символов (m), а также состав контрольных символов подлежат определению.
                                             </Paragraph>
 
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Кодирование
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14" FontWeight="Bold">
+                                                1.Выбор длины слова.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">При кодировании по методу БЧХ нельзя выбирать произвольно длину слова n. Первым ограничением является то, что слово может иметь только нечетное число символов. Необходимо, чтобы выполнялось равенство: 2h - 1 = n, где h - целое число.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14" FontWeight="Bold">2.	Определение кодового расстояния d.
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                d = 2s + 1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14" FontWeight="Bold">3.	Определение образующего многочлена P(X).
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                Образующий многочлен есть наименьшее кратное (НОК) так называемых минимальных многочленов М(X) до порядка 2s-1 включительно. Причем образующий многочлен составляется из произведения некоторого числа нечетных минимальных многочленов P(X) = НОК[ M1(X) · M3(X) · ... · M2s-1(X)]. (1) Минимальные многочлены являются простыми неприводимыми многочленами. Заметим, что если среди минимальных многочленов окажутся два одинаковых, то один из них исключается.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14" FontWeight="Bold">4.	Определение числа минимальных многочленов (L).
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                Из пункта 3 следует, что порядок минимальных многочленов определяется как 2s-1. Можно показать, что число минимальных многочленов равно числу исправляемых ошибок, т.е. L = s.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14" FontWeight="Bold">5.	Определение старшей степени l минимального многочлена.
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                Степень l есть такое наименьшее целое число, при котором 2 - 1 нацело делится на n. Это значит, что l = h.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14" FontWeight="Bold">6.	Выбор минимальных многочленов.
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                Когда определено число минимальных многочленов L и степень старшего многочлена l, многочлены выписываются из таблицы 1.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14" FontWeight="Bold">7.	Определение степени b образующего многочлена P(X).
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                Степень образующего многочлена не превышает произведения l · s или L · s. В зависимости от НОК, степень P(X) может быть и меньше b &lt;= l · s После нахождения всех минимальных многочленов образующий многочлен находится по уравнению (1).
+
                                             </Paragraph>
 
+
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14" FontWeight="Bold">8.	Определение числа контрольных символов.
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                Так как число контрольных символов m равно степени образующего многочлена, то для кода длины n выполняется b = m
+                                                &lt; l · s. 
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14" FontWeight="Bold">9.	Определение числа информационных символов.
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                производится из равенства k = n - m.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14" FontWeight="Bold">10.	Вычисление закодированного сообщения.
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                Закодированное сообщение F(X) можно получить двумя путями:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                1.1.	F(X)=Q(X) · P(X), где P(X) - образуюший многочлен, а Q(X) получается следующим образом:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="200"  Height="70" Source="..\Resources\B4H1.gif"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                где G(X) – комбинация, которую необходимо закодировать, R(X) – остаток от деления.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                2.	F(X)=xm · G(X) + R(X).
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Пример кодирования
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Необходимо закодировать сообщение с возможностью исправления 2-х ошибок так, чтобы в канал передачи данных передавалось 15 бит ( n = 15, h = 4 ).
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Кодовое расстояние равно d = 2s + 1 = 5.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Будет использовано 2 минимальных многочлена. Старшая степень минимального многочлена - 4.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Используем минимальные многочлены 10011 и 1011.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Тогда образующий многочлен равен 10011 · 1011 = 10101101, т.е. из 15 разрядов кода 7 будут проверочными.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Кодирование определенного сообщения кодом БЧХ не отличается от кодирования другими циклическими кодами. Пример получения закодированной комбинации из исходного сообщения и образующего многочлена см., например, в теоретических сведениях к коду Файра.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Декодирование
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Декодирование и исправление ошибок кода БЧХ выполняется аналогично любому другому циклическому коду (см., например, теоретические сведения и пример декодирования к коду Абрамсона).
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Примечание. При тестировании предполагаются следующие параметры кода: в канал передается 15 бит и исправляется 2 ошибки.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image  Source="..\Resources\B4H2.JPG"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
@@ -4588,38 +4854,73 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
-                                <Button Name ="codeB4H_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="code_B4H_btn_Click"/>
-                                <Button Name="decodeB4h_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decode_B4H_btn_Click"/>
-                                <TabControl Name="codeB4H_control" HorizontalAlignment="Left" Height="536" VerticalAlignment="Top" Width="655" Margin="0,45,0,0" >
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                                <Button Name ="codeB4H_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeB4H_btn_Click"/>
+                                <Button Name="decodeB4H_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeB4H_btn_Click"/>
+                                <TabControl Name="codeB4H_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
                                     <TabItem Name ="codeB4H_item"  Header="Code" Visibility="Collapsed">
                                         <Grid>
-                                            <Label  Content="Код БЧХ"    FontSize="24"/>
-                                            <Label Content="сообщение" Margin="46,134,-47,-135"/>
-                                            <Label Content="Результат:" Margin="30,211,-30,-212"/>
-                                            <Label Content="Закодируйте сообщение/Принятая комбинация:" Margin="30,97,-30,-98"/>
-                                            <TextBox Height="30" Width="200"  Margin="-350,30,30,30"  Style="{DynamicResource RoundConer}" />
-                                            <Button Content="Далее" Margin="520 450 20 20" Height="30" Width="90" HorizontalAlignment="Left"  VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                            <Label  Content="Закодируйте сообщение: "   FontSize="14"/>
+
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,60,287,136"  FontSize="14"  />
+                                            <Label  Content="Результат: " Margin="20 150 0 0"  FontSize="14"/>
+                                            
+                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 -100 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                            <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                         </Grid>
                                     </TabItem>
+                                    <TabItem Name ="decodeB4H_item" Header="Decode" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label Content="Принятая комбинация:"/>
+                                            <Label Content="{Binding Decode}" Name="B4Hcomb" Margin="20 50 0 0"/>
+                                            <Label Content="Восстановите исходное сообщение:" Margin="0 150"/>
+                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 -100 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                            <Button Command="{Binding CheckDecode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                        </Grid>
+                                    </TabItem>
+
                                 </TabControl>
+
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="158*"/>
-                                    <ColumnDefinition Width="507*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label  Content="Код БЧХ"  Margin="30,30,417,506"  FontSize="24" Grid.ColumnSpan="2"/>
-                                <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="149,10,10,539"  FontSize="14" Foreground="#4F91FB" Grid.Column="1" />
-                                <Label  Content="Код БЧХ"  Margin="30,30,399,506"  FontSize="24" Grid.ColumnSpan="2"/>
-                                <Label Content="сообщение" Margin="46,134,-47,-135" Grid.ColumnSpan="2"/>
-                                <Label Content="Результат:" Margin="30,211,-30,-212" Grid.ColumnSpan="2"/>
-                                <Label Content="Закодируйте сообщение:" Margin="30,97,-30,-98" Grid.ColumnSpan="2"/>
-                                <TextBox Height="30" Width="200" Margin="30,256,435,295" Style="{DynamicResource RoundConer}" Grid.ColumnSpan="2" />
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="358,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Grid.Column="1"/>
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                                <Button Command="{Binding Next}" Name ="nextB4H_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextB4H_btn_Click"  />
+                                <TabControl Margin="0,10,10,80" Name="TestB4H_control"  >
+                                    <TabItem Header="1" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение: "   FontSize="14"/>
+
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,60,287,136"  FontSize="14"  />
+                                            <Label  Content="Результат: " Margin="20 150 0 0"  FontSize="14"/>
+
+                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 -100 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="2"  Visibility="Collapsed">
+                                        <Grid>
+                                            <Label Content="Принятая комбинация:"/>
+                                            <Label Content="{Binding Decode}" Name="TestB4Hcomb" Margin="20 50 0 0"/>
+                                            <Label Content="Восстановите исходное сообщение:" Margin="0 150"/>
+                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 -100 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
+
+
+
                             </Grid>
+
                         </TabItem>
                     </TabControl>
                 </Grid>
@@ -4632,17 +4933,52 @@
                             <Grid Background="White" Margin="0,0,-15,0">
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
-                                    <RichTextBox BorderBrush="White">
 
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
                                         <FlowDocument>
-                                            <Paragraph TextAlignment="Left" FontSize="24" Padding="30,30,0,0">Первичные недвоичные коды
+                                            <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Первичные недвоичные коды. Краткие теоретические сведения.
                                             </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Введение
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Основания недвоичных кодов всегда больше 2, т.е. q >= 3, поэтому для построения таких кодов используют методы теории комбинаторики: перестановки Pq из q элементов, размещения Aqm и сочетания ( комбинация ) Cq из q элементов по m элементов.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Для кодов, которые базируются на перестановках символов алфавита длина кодовой комбинации n = q = const. Полное число перестановок:
 
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0"  >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec metus id turpis aliquam molestie. Nulla eu volutpat eros. Aenean fringilla lobortis ornare. Quisque quis accumsan leo. Suspendisse tortor felis, facilisis quis fermentum at, maximus id turpis. Duis tristique vulputate consequat. Curabitur ligula ex, interdum vitae tellus vitae, egestas consequat ligula.
                                             </Paragraph>
-                                            <Paragraph TextAlignment="Left" Padding="30,0,30,0" >Maecenas at ipsum id nunc elementum fermentum. Nam finibus vel leo sed egestas. Vestibulum lacinia sem eu neque hendrerit, vitae suscipit orci tristique. Nullam felis ante, mollis a augue ut, mollis porttitor est. Nullam scelerisque ut purus a hendrerit. Phasellus fermentum sem eget ex iaculis, ac fringilla leo ullamcorper. Nullam blandit maximus faucibus. Curabitur et sollicitudin turpis. Aenean vitae nulla turpis. Etiam lorem sapien, mattis at eros pharetra, auctor commodo orci. Integer pulvinar dictum consectetur. Nullam nec justo a dui tincidunt gravida. Phasellus tristique mi leo, quis volutpat ex vestibulum at. Quisque at dolor condimentum, congue ipsum eu, faucibus justo. Cras at neque quam. Pellentesque faucibus, tellus eu ultricies faucibus, diam enim rhoncus orci, id hendrerit purus risus sed nunc.
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >N = 1 · 2 · 3 ... n = n! = q!.
                                             </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Так, например, для кода с алфавитом q = 3 ( a, b, c ) будет всего 6 перестановок: abc, acb, bac, bca, cab, cba, т.е. N = 1 · 2 · 3 = 6.
 
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Увеличение алфавита кода приводит к увеличению числа перестановок и соответственно числа кодовых комбинаций.
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Отличительной особенностью такого кода является отсутствие одинаковых символов в одной кодовой комбинации, поэтому их можно отнести к кодам c обнаружением однократных и некоторых многократных ошибок. Действительно, преобразование любого символа в комбинации приводит к появлению в ней неcкольких одинаковых символов, что автоматически обнаруживаются декодером и вызовет отказ в приеме данной комбинации.
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">
+                                                Для кодов, которые базируются на размещениях символов алфавита полное число комбинаций:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >N = q · ( q - 1 ) · ( q - 2 ) · ... · ( q - m + 1 ) = q! / ( q - m )!,
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">где m – число символов алфавита q, из которых составляется кодовая комбинация, всегда q > m, а длина кодовой комбинации n = m. Такие коды, в отличие от кодов на перестановки, позволяют обнаруживать только некоторые однократные ошибки, когда под воздействием помех происходит преобразование, что приводит к удвоению некоторых символов в комбинации. При двукратных ошибках и ошибках большей кратности могут возникнуть разрешенные комбинации, которые не могут быть обнаружены декодером.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Для кодов, которые базируются на определенном числе сочетаний символов алфавита, полное число комбинаций:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >n = q^N,
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">где m – число символов алфавита q, из которых составляется кодовая комбинация, всегда q > m, а длина кодовой комбинации n = m. Для данного кода можно отметить увеличение количества кодовых комбинаций по сравнению с кодом на размещение.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Сменно-качественный код можно получить из кода на все сочетания, если наложить на него некоторые ограничения. Так, в комбинации сменно-качественного кода не должны находиться рядом одинаковые символы. Число комбинаций такого кода:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" >
+                                                <InlineUIContainer>
+                                                    <Image Width="200" Height="100" Source="..\Resources\PN1.JPG"/>
+                                                </InlineUIContainer>
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">К преимуществу кода следует отнести возможность распознавания кодовых комбинаций и обнаружение в них ошибок, так как в комбинациях этого кода два одинаковых символа не должны стоять рядом.
+                                            </Paragraph>
+                                            
                                         </FlowDocument>
                                     </RichTextBox>
                                 </ScrollViewer>
@@ -4651,40 +4987,107 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Первичные недвоичные коды"  Margin="30,30,269,506"  FontSize="24"/>
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                                <Button Name ="codePN_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codePN_btn_Click"/>
+                                <Button Name="decodePN_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodePN_btn_Click"/>
+                                <TabControl Name="codePN_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
+                                    <TabItem Name ="codePN_item"  Header="Code" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Составьте кодовые комбинации для кода с параметрами: "   FontSize="14"/>
+                                            <Label Content="q=" Margin="30"/>
 
-                                <Label Content="Результат(разделитель-пробел):" Margin="30,310 0 0"/>
-                                <Label Content="Составьте кодовые комбинации для кода с параметрами:" Margin="30,97,-30,-98"/>
-                                <Label Content="q=" Margin="30 150 0 0"/>
-                                <Label Content="x" Margin="50 150 0 0"/>
-                                <Label Content="n="  Margin="30 180 0 0"/>
-                                <Label Content="x" Margin="50 180 0 0"/>
-                                <Label Content="Алфавит:" Margin="30 210 0 0"/>
-                                <Label Content="x" Margin="90 210 0 0"/>
-                                <Label Content="Тип кода:" Margin="30 250 0 0"/>
-                                <Label Content="x" Margin="95 250 0 0"/>
-                                <TextBox Margin="30,345,416,205" Style="{DynamicResource RoundConer}" />
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                            <Label  Content="x"  Margin="55,30,287,136"  FontSize="14"  />
+                                            <Label Content="n=" Margin="30 60 0 0"/>
+                                            <Label Content="x" Margin="60 60 0 0"/>
+                                            <Label Content="Алфавит:" Margin="30 90 0 0"/>
+                                            <Label Content="xxxx" Margin="90 90 0 0"/>
+                                            <Label Content ="Тип кода:" Margin="30 120 0 0"/>
+                                            <Label Content="ТИП КОДА" Margin="90 120 0 0"/>
+                                            <Label Content="Результат:" Margin="30 160 0 0"/>
+
+                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 -100 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                            <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Name ="decodePN_item" Header="Decode" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label Content="Является ли кодовая комбинация:"/>
+                                            <Label Content="xxxxx" Margin="30 30 0 0 "/>
+                                            <Label Content="правильной для кода с параметрами:" Margin="0 60 0 0"/>
+                                            <Label Content="q=" Margin="30 90 0 0"/>
+                                            <Label Content="x"  Margin="60 90 0 0"/>
+                                            <Label Content="n="  Margin="30 120 0 0"/>
+                                            <Label Content="x" Margin="60 120 0 0"/>
+                                            <Label Content="Алфавит:" Margin="30 150 0 0"/>
+                                            <Label Content="xxxxxx" Margin="90 150 0 0"/>
+                                            <Label Content="Тип кода:" Margin="30 180 0 0"/>
+                                            <Label Content="ТИП КОДА" Margin="100 180 0 0"/>
+                                            <RadioButton Content="Да" Margin="30 210 0 0"/>
+                                            <RadioButton Content="Нет" Margin="30 240 0 0"/>
+                                            
+                                           
+
+                                            <Button Command="{Binding CheckDecode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
 
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Первичные недвоичные коды"  Margin="30,30,269,506"  FontSize="24"/>
-                                <Label Content="Результат(разделитель-пробел):" Margin="30,310 0 0"/>
-                                <Label Content="Составьте кодовые комбинации для кода с параметрами:" Margin="30,97,-30,-98"/>
-                                <Label Content="q=" Margin="30 150 0 0"/>
-                                <Label Content="x" Margin="50 150 0 0"/>
-                                <Label Content="n="  Margin="30 180 0 0"/>
-                                <Label Content="x" Margin="50 180 0 0"/>
-                                <Label Content="Алфавит:" Margin="30 210 0 0"/>
-                                <Label Content="x" Margin="90 210 0 0"/>
-                                <Label Content="Тип кода:" Margin="30 250 0 0"/>
-                                <Label Content="x" Margin="95 250 0 0"/>
-                                <TextBox Margin="30,345,416,205" Style="{DynamicResource RoundConer}" />
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
+                                <Button Command="{Binding Next}" Name ="nextPN_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextPN_btn_Click"  />
+                                <TabControl Margin="0,10,10,80" Name="TestPN_control"  >
+                                    <TabItem Header="1" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Составьте кодовые комбинации для кода с параметрами: "   FontSize="14"/>
+                                            <Label Content="q=" Margin="30"/>
+
+
+                                            <Label  Content="x"  Margin="55,30,287,136"  FontSize="14"  />
+                                            <Label Content="n=" Margin="30 60 0 0"/>
+                                            <Label Content="x" Margin="60 60 0 0"/>
+                                            <Label Content="Алфавит:" Margin="30 90 0 0"/>
+                                            <Label Content="xxxx" Margin="90 90 0 0"/>
+                                            <Label Content ="Тип кода:" Margin="30 120 0 0"/>
+                                            <Label Content="ТИП КОДА" Margin="90 120 0 0"/>
+                                            <Label Content="Результат:" Margin="30 160 0 0"/>
+
+                                            <TextBox Text="{Binding Coded}"  Height="30" Width="200" Margin="20 -50 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="2"  Visibility="Collapsed">
+                                        <Grid>
+                                            <Label Content="Является ли кодовая комбинация:"/>
+                                            <Label Content="xxxxx" Margin="30 30 0 0 "/>
+                                            <Label Content="правильной для кода с параметрами:" Margin="0 60 0 0"/>
+                                            <Label Content="q=" Margin="30 90 0 0"/>
+                                            <Label Content="x"  Margin="60 90 0 0"/>
+                                            <Label Content="n="  Margin="30 120 0 0"/>
+                                            <Label Content="x" Margin="60 120 0 0"/>
+                                            <Label Content="Алфавит:" Margin="30 150 0 0"/>
+                                            <Label Content="xxxxxx" Margin="90 150 0 0"/>
+                                            <Label Content="Тип кода:" Margin="30 180 0 0"/>
+                                            <Label Content="ТИП КОДА" Margin="100 180 0 0"/>
+                                            <RadioButton Content="Да" Margin="30 210 0 0"/>
+                                            <RadioButton Content="Нет" Margin="30 240 0 0"/>
+
+
+
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
+
                             </Grid>
+
                         </TabItem>
                     </TabControl>
                 </Grid>
@@ -4792,6 +5195,127 @@
 
                                         </Grid>
                                     </TabItem>
+                                    
+                                </TabControl>
+
+
+                                
+                            </Grid>
+              
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Код с простым повторением" Height="35" Width="260"  Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+                <Grid Margin="275,-620,0,130">
+
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
+                        <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0">
+
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
+                                        <FlowDocument>
+                                            <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Код с простым повторением. Краткие теоретические сведения.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Введение
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">В основу построения данного кода, по аналогии с двоичным, положен метод повторения исходной кодовой комбинации. Отличие q-ичного кода от аналогичного двоичного заключается в том, что повторение кодовой комбинаяции q-ичного кода может производится параллельно во времени введением дополнительной позиционной избыточности. Так, например, при использовании многочастотного кода удвоение числа частотных позиций обеспечивает параллельную передачу кодовой комбинации данного слова. При этом появляются дополнительные преимущетсва перед двоичным кодом: передача информационной и проверочной частей кодовой комбинации многочастотного кода производится с разнесением по частоте, что повышает помехоустойчивость кода при селективных замираниях, характерных для некоторых типов беспроводных типов связи.
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Алгоритм построения q-ичного кода с повторением имеет вид:
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Ai = Bi, i Є [ 1, k ], где
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Ai - множество позиций, предназначенное для передачи i-го сообщения;
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Bi- множество позиций, предназначенное для передачи i-го проверочного единичного элемента кодовой комбинации;
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">k - число информационных элементов
+
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Center" FontSize="16" FontWeight="Bold" >Например:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Кодирование:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">при k = 4 комбинация 1032 преобразуется в 10321032.
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">Декодирование:
+                                            </Paragraph>
+                                            <Paragraph TextAlignment="Left"  Padding="30,0,0,0" FontSize="14">при k = 3 комбинация 205205 раскодируется в 205.
+                                            </Paragraph>
+
+                                        </FlowDocument>
+                                    </RichTextBox>
+                                </ScrollViewer>
+
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource repeatCodeVM}}">
+                                <Button Name ="codeP_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeP_btn_Click"/>
+                                <Button Name="decodeP_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeP_btn_Click"/>
+                                <TabControl Name="codeP_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
+                                    <TabItem Name ="codeP_item"  Header="Code" Visibility="Collapsed">
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение: "   FontSize="14"/>
+
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,60,287,136"  FontSize="14"  />
+
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="20 -270 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                            <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Name ="decodeP_item" Header="Decode" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label Content="Раскодируйте сообщение:"/>
+                                            <Label Content="{Binding Path=Coded}" Name="Pcomb" Margin="20 50 0 0"/>
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="20 -270 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                            <Button Command="{Binding CheckDecode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+
+                                        </Grid>
+                                    </TabItem>
+
+                                </TabControl>
+
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource repeatCodeVM}}">
+                                <Button Command="{Binding Next}" Name ="nextP_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextP_btn_Click"  />
+                                <TabControl Margin="0,10,10,80" Name="TestP_control"  >
+                                    <TabItem Header="1" Visibility="Collapsed" >
+                                        <Grid>
+                                            <Label  Content="Закодируйте сообщение: "   FontSize="14"/>
+
+                                            <Label  Content="{Binding Path=Code}" Name="PTest"  Margin="30,60,287,136"  FontSize="14"  />
+
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="20 -270 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="2"  Visibility="Collapsed">
+                                        <Grid>
+                                            <Label Content="Раскодируйте сообщение:"/>
+                                            <Label Content="{Binding Path=Coded}" Name="PcombTest" Margin="20 50 0 0"/>
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="188,92,0,361" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+
+
+
+
+                                        </Grid>
+                                    </TabItem>
 
                                 </TabControl>
 
@@ -4803,11 +5327,9 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-
-            <TabItem Header="Код с простым повторением" Height="35" Width="260"  Padding="30,0,0,0" Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
-            <TabItem Header="Итеративный код" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
-                <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource iterativeVM}}">
-                    <TabControl  SelectedIndex="{Binding IterativeSelectedTabIndex}" HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
+                <TabItem Header="Итеративный код" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+                <Grid Margin="275,-620,0,130">
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
 

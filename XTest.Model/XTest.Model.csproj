@@ -52,7 +52,9 @@
 
     <Compile Include="Services\HemmingCodeService.cs" />
 
+    <Compile Include="Services\AbramsonaCode.cs" />
     <Compile Include="Services\BinaryDecimalCodeService.cs" />
+    <Compile Include="Services\FirstNonbinary.cs" />
     <Compile Include="Services\GreyaCodeService.cs" />
     <Compile Include="Services\IterativeCodeService.cs" />
 
@@ -61,6 +63,7 @@
     <Compile Include="Services\CheckByQ.cs" />
 
     <Compile Include="Services\EllaesCodeService.cs" />
+    <Compile Include="Services\RepeatCode.cs" />
     <Compile Include="Services\RidMallerService.cs" />
     <Compile Include="Services\ShennonFanoService.cs" />
     <Compile Include="Services\BergerService.cs" />
