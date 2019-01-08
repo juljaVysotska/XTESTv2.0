@@ -65,15 +65,19 @@
     </Compile>
     <Compile Include="ViewModel\AbramsonaCodeViewModel.cs" />
     <Compile Include="ViewModel\BinaryDecimalViewModel.cs" />
+    <Compile Include="ViewModel\EllayesViewModel.cs" />
     <Compile Include="ViewModel\EntropyViewModel.cs" />
     <Compile Include="ViewModel\GreyaViewModel.cs" />
-    <Compile Include="ViewModel\IterativeViewModel.cs" />
     <Compile Include="ViewModel\CheckByQViewModel.cs" />
+    <Compile Include="ViewModel\IterativeViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\EllaesCodeViewModel.cs" />
+    <Compile Include="ViewModel\RecurentCodeViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\RepeatCodeViewModel.cs" />
     <Compile Include="ViewModel\RidMallerViewModel.cs" />
+    <Compile Include="ViewModel\VarshamovCodeViewModel.cs" />
+    <Compile Include="ViewModel\VarshamovCodeViewModelPractice.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -178,28 +182,25 @@
     <Resource Include="Resources\key.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\iter1.png" />
+    <Resource Include="Resources\B4H1.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\iter2.png" />
+    <Resource Include="Resources\B4H2.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\entr1.png" />
+    <Resource Include="Resources\PN1.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\entr2.png" />
+    <Resource Include="Resources\A1.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\entr3.png" />
+    <Resource Include="Resources\A2.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\entr4.png" />
+    <Resource Include="Resources\A3.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\entr5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\entr6.png" />
+    <Resource Include="Resources\A4.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

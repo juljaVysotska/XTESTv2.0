@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using XTest.Model.Models;
 using XTest.Model.Services;
 
 namespace XTest.ViewModel
@@ -64,6 +65,15 @@ namespace XTest.ViewModel
             }
         }
 
+        public int Mark
+        {
+            get { return mark; }
+            set
+            {
+                mark = value;
+                OnPropertyChanged("Mark");
+            }
+        }
 
         public RidMallerViewModel()
         {
@@ -76,7 +86,7 @@ namespace XTest.ViewModel
             ArrayDecode = _service.RandomMessageDecode(_service.GenerateArray());
             OldArrayDecode = _service.FuckenCSharp(ArrayDecode);
             check = 1;
-            mark = 0;
+            Mark = 0;
         }
 
 
@@ -96,7 +106,7 @@ namespace XTest.ViewModel
                       {
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
-                              mark += 1;
+                              Mark += 1;
 
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
@@ -107,7 +117,7 @@ namespace XTest.ViewModel
                           MessageBox.Show("А теперь раскодируйте сообщение!");
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
-                              mark += 1;
+                              Mark += 1;
 
                           Array = _service.RandomMessageDecode(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
@@ -116,18 +126,19 @@ namespace XTest.ViewModel
                       {
                           OldArray = _service.Decode(OldArray);
                           if (_service.Equals(OldArray, Array))
-                              mark += 1;
+                              Mark += 1;
                           Array = _service.RandomMessageDecode(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                       }
                       check += 1;
                       if (check == 7)
                       {
-                          MessageBox.Show("Правильных ответов"+ mark.ToString() + " из 6");
+                          MessageBox.Show("Правильных ответов"+ Mark.ToString() + " из 6");
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                           check = 1;
-                          mark = 0;
+                          MainWindow.results.Add("RidMaller", new Result("Код Ріда Маллера ", Mark));
+                          Mark = 0;
                       }
                   }));
             }

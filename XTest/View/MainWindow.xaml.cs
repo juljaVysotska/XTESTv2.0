@@ -154,11 +154,15 @@ namespace XTest
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
             {
+
+                //GenerateShennon();
+
                 GenerateShennonTest();
             }
             else if (tabControl.SelectedIndex == 1)
             {
                 GenerateShennonPractice();
+
             }
         }
 
@@ -182,20 +186,11 @@ namespace XTest
             }
         }
 
-        private void Button_Shennon_Practice_Next_Click(object sender, RoutedEventArgs e)
-        {
-            if (ShennonFanoService.isCalculatedCorrectly(ShennonMessages))
-            {
-                MessageBox.Show("Правильно!");
-            }
-            else
-            {
-                MessageBox.Show("Не правильно!.");
-            }
-            GenerateShennonPractice();
-        }
+        
+     
 
         private void Button_Shennon_Test_Next_Click(object sender, RoutedEventArgs e)
+
         {
             Result result = results["Shennon-Fano"];
             if (result.currentTestNumber <= 3)
@@ -229,6 +224,7 @@ namespace XTest
 
 
 
+
         private void codeRM_btn_Click(object sender, RoutedEventArgs e)
         {
             codeRM_control.SelectedIndex = 0;
@@ -248,11 +244,35 @@ namespace XTest
         {
             codeEL_control.SelectedIndex = 1;
         }
-
+        
         private void nextVAR_btn_Click(object sender, RoutedEventArgs e)
         {
 
+
+        }
+
+        private void codeR_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeR_control.SelectedIndex = 0;
+        }
+
+        private void decodeR_btn_Click(object sender, RoutedEventArgs e)
+        {
+            codeR_control.SelectedIndex = 1;
+        }
+
+
+        private void WrapPanel_TextInput(object sender, TextCompositionEventArgs e)
+        {
+
+        }
+        
+        private void nextVARPractice_btn_Click(object sender, RoutedEventArgs e)
+        {
+            
+
             TestVAR_control.SelectedIndex++;
+
         }
 
 
@@ -323,7 +343,18 @@ namespace XTest
 
 
         }
-
+        private void Button_Shennon_Practice_Next_Click(object sender, RoutedEventArgs e)
+        {
+            if (ShennonFanoService.isCalculatedCorrectly(ShennonMessages))
+            {
+                MessageBox.Show("Правильно!");
+            }
+            else
+            {
+                MessageBox.Show("Не правильно!.");
+            }
+            GenerateShennonPractice();
+        }
 
 
         private void BtnHemNext_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
@@ -484,6 +515,9 @@ namespace XTest
 
         }
 
+
+      
+
         private void codeA_btn_Click(object sender, RoutedEventArgs e)
         {
             codeA_control.SelectedIndex = 0;
@@ -505,5 +539,6 @@ namespace XTest
                 Astage = 0;
             }
         }
+
     }
 }
