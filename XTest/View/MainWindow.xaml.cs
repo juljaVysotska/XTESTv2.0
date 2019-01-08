@@ -148,7 +148,7 @@ namespace XTest
         {
             if (!results.ContainsKey("Shennon-Fano"))
             {
-                results.Add("Shennon-Fano", new Result("Код Шенона-Фано", 3));
+                results.Add("Shennon-Fano", new Result("Код Шеннона-Фано", 3));
             }
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
@@ -177,7 +177,7 @@ namespace XTest
             }
             else
             {
-                MessageBox.Show("You've already completed this test!");
+                MessageBox.Show("Вы уже закончили этот тест!");
             }
         }
 
@@ -185,11 +185,11 @@ namespace XTest
         {
             if (ShennonFanoService.isCalculatedCorrectly(ShennonMessages))
             {
-                MessageBox.Show("Congrats!");
+                MessageBox.Show("Правильно!");
             }
             else
             {
-                MessageBox.Show("Wrong answer.");
+                MessageBox.Show("Не правильно!.");
             }
             GenerateShennonPractice();
         }
@@ -201,13 +201,13 @@ namespace XTest
             {
                 if (ShennonFanoService.isCalculatedCorrectly(ShennonMessages))
                 {
-                    MessageBox.Show("Congrats!");
+                    MessageBox.Show("Правильно!");
                     result.correctTests += 1;
                     result.currentTestNumber += 1;
                 }
                 else
                 {
-                    MessageBox.Show("Wrong answer.");
+                    MessageBox.Show("Не правильно.");
                     result.currentTestNumber += 1;
                 }
                 GenerateShennonTest();
