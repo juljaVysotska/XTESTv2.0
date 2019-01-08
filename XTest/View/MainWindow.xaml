@@ -5253,16 +5253,17 @@
                                 <TabControl Name="codeA_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
                                     <TabItem Name ="codeA_item"  Header="Code" Visibility="Collapsed">
                                         <Grid>
-                                            <Label  Content="Закодируйте сообщение: " Margin="30"  FontSize="14"/>
+                                            <Label  Content="Код Абрамсона"  Margin="30,30,0,0"  FontSize="24"/>
+                                            <Label  Content="Закодируйте сообщение: " Margin="30,70,0,0"  FontSize="14"/>
 
-                                            
-                                            <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
-                                            <Label  Content="Неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
-                                            <Label  Content="{Binding Path=Poly}"  Margin="30,160,287,136"  FontSize="14"  />
+
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,90,287,136"  FontSize="14"  />
+                                            <Label  Content="Неприводимый полином P1: " Margin="30 170 0 0"  FontSize="14"/>
+                                            <Label  Content="{Binding Path=Poly}"  Margin="30,190,287,136"  FontSize="14"  />
                                           
-                                            <Label  Content="Результат:" Margin="30 210 0 0"  FontSize="14"/>
+                                            <Label  Content="Результат:" Margin="30 260 0 0"  FontSize="14"/>
 
-                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding Answer}"  Height="30" Width="200" Margin="30 110 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
                                             <Button Command="{Binding CheckCode}" Content="Готово"  Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
@@ -5296,16 +5297,19 @@
                                 <TabControl Margin="0,10,10,80" Name="TestA_control"  >
                                     <TabItem Header="1" Visibility="Collapsed" >
                                         <Grid>
-                                            <Label  Content="Закодируйте сообщение: " Margin="30"  FontSize="14"/>
+                                            <Label  Content="Код Абрамсона"  Margin="30,30,0,0"  FontSize="24"/>
+                                            <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="300,0,10,39"  FontSize="14" Foreground="#4F91FB" />
+
+                                            <Label  Content="Закодируйте сообщение: " Margin="30,80,0,0"  FontSize="14"/>
 
 
-                                            <Label  Content="{Binding Path=Code}"  Margin="30,70,287,136"  FontSize="14"  />
-                                            <Label  Content="Неприводимый полином P1: " Margin="30 130 0 0"  FontSize="14"/>
-                                            <Label  Content="{Binding Path=Poly}"  Margin="30,160,287,136"  FontSize="14"  />
+                                            <Label  Content="{Binding Path=Code}"  Margin="30,100,287,136"  FontSize="14"  />
+                                            <Label  Content="Неприводимый полином P1: " Margin="30 170 0 0"  FontSize="14"/>
+                                            <Label  Content="{Binding Path=Poly}"  Margin="30,190,287,136"  FontSize="14"  />
 
-                                            <Label  Content="Результат:" Margin="30 210 0 0"  FontSize="14"/>
+                                            <Label  Content="Результат:" Margin="30 230 0 0"  FontSize="14"/>
 
-                                            <TextBox Text="{Binding Answer}"   Height="30" Width="200" Margin="30 30 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding Answer}"   Height="30" Width="200" Margin="30 80 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
 
