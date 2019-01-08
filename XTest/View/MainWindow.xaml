@@ -196,7 +196,7 @@
 
                                     <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
-                                        <RichTextBox BorderBrush="White" IsReadOnly="True" >
+                                        <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow" >
                                             <FlowDocument>
                                                 <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Код Варшамова. Краткие теоретические сведения.
                                                 </Paragraph>
@@ -1169,7 +1169,7 @@
 
                                     <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
-                                        <RichTextBox BorderBrush="White" IsReadOnly="True">
+                                        <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow">
 
                                             <FlowDocument>
                                                 <Paragraph TextAlignment="Center" FontSize="24"  FontStyle="Italic" Padding="0,30,0,0">Код Эллайеса. Краткие теоретические сведения.
@@ -1326,7 +1326,7 @@
                                 <Grid Background="White" Margin="0,0,-15,0">
 
                                     <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
-                                        <RichTextBox BorderBrush="White" IsReadOnly="True">
+                                        <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow">
 
                                             <FlowDocument>
                                                 <Paragraph TextAlignment="Center" FontStyle="Italic" Padding="0 30 0 0 " FontSize="24" >Коды Рида-Маллера
@@ -1595,17 +1595,16 @@
                                 </Grid.ColumnDefinitions>
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2" Grid.ColumnSpan="2">
-                                    <RichTextBox BorderBrush="White" TextChanged="RichTextBox_TextChanged">
+                                    <RichTextBox BorderBrush="White" TextChanged="RichTextBox_TextChanged" Cursor="Arrow">
 
                                         <FlowDocument>
                                             <Paragraph FontSize="24" Padding="30,30,0,0" TextAlignment="Left">
                                                 <Run Text="Код Хэмминга"/>
-                                                <Run Text=" "/>
                                                 <Run Text=". Краткие теоритические сведения"/>
                                                 <Run Text=" "/>
                                                 <Run Text=" "/>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left" TextIndent="37.8">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left" TextIndent="37.8">
                                                 <Span>
                                                     <Run Text="Код Хэмминга – один из наиболее распространенных систематических кодов. К кодам Хэмминга относятся коды с минимальным кодовым расстоянием "/>
                                                 </Span>
@@ -1624,7 +1623,7 @@
                                                 <Run Text=" "/>
                                                 <Run Text=", исправляющие все одиночные ошибки."/>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left" TextIndent="37.8">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left" TextIndent="37.8">
                                                 <Span>
                                                     <Run Text="Формирование "/>
                                                 </Span>
@@ -1669,35 +1668,35 @@
                                                     <Run Text=". Проверочные элементы представляют собой линейные комбинации информационных элементов, т.е. взвешенные суммы информационных элементов с весовыми коэффициентами 1 и 0. Для двоичных кодов в качестве линейной операции используют сложение по модулю 2. Операция вычитания совпадает с операцией сложения."/>
                                                 </Span>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left" TextIndent="37.8">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left" TextIndent="37.8">
                                                 <Span>
                                                     <Run Text="Последовательность 0 и 1 в кодовой комбинации иначе называют кодовым вектором. Коду Хэмминга присущи свойства линейных кодов:"/>
                                                 </Span>
                                             </Paragraph>
                                             <List MarkerStyle="Decimal" Margin="0" Padding="0">
                                                 <ListItem Margin="48,0,0,0">
-                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                         <Span>
                                                             <Run Text="Сумма или разность кодовых комбинаций кода дает вектор, принадлежащий данному коду. "/>
                                                         </Span>
                                                     </Paragraph>
                                                 </ListItem>
                                                 <ListItem Margin="48,0,0,0">
-                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                         <Span>
                                                             <Run Text="Линейные коды образуют алгебраическую группу по отношению к операции сложения по модулю 2. "/>
                                                         </Span>
                                                     </Paragraph>
                                                 </ListItem>
                                                 <ListItem Margin="48,0,0,0">
-                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                                    <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                         <Span>
                                                             <Run Text="Минимальое кодовое расстояние между кодовыми векторами группового кода равно минимальному весу ненулевых кодовых векторов. "/>
                                                         </Span>
                                                     </Paragraph>
                                                 </ListItem>
                                             </List>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left" TextIndent="37.8">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left" TextIndent="37.8">
                                                 <Span>
                                                     <Run Text="При передаче кодового вектора может быть искажен любой элемент, число таких ситуаций равно "/>
                                                 </Span>
@@ -1818,7 +1817,7 @@
                                                     <Run Text="– полное число комбинаций кода."/>
                                                 </Span>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left" TextIndent="37.8">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left" TextIndent="37.8">
                                                 <Span>
                                                     <Run Text="Минимальное соотношение корректирующих и информационных разрядов, ниже которого код не может сохранять свои корректирующие способности, определяется из выражения "/>
                                                 </Span>
@@ -1839,7 +1838,7 @@
                                                     <Run Text="."/>
                                                 </Span>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left" TextIndent="37.8">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left" TextIndent="37.8">
                                                 <Span>
                                                     <Run Text="Для вычисления основных параметров кода Хэмминга можно задать число проверочных элементов "/>
                                                 </Span>
@@ -2210,7 +2209,7 @@
                                                     </TableRow>
                                                 </TableRowGroup>
                                             </Table>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Span>
                                                     <Run Text="    Характерной особенностью проверочной матрицы кода с "/>
                                                 </Span>
@@ -2879,7 +2878,7 @@
                                                     </TableRow>
                                                 </TableRowGroup>
                                             </Table>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Run Text=" Итак, если взять комбинации простого четырехэлементного кода и отбросить нулевыю комбинацию, то можно легко получить проверочную матрицу, записав все кодовые комбинации последовательно в столбцы матрицы "/>
                                                 <Run Text=" "/>
                                                 <Span FontStyle="Italic">
@@ -2890,7 +2889,7 @@
                                                     <Run Text="."/>
                                                 </Span>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Run Text="    Перестановкой столбцов, содержащих одну единицу, вправо матрицу приводим к виду:"/>
                                             </Paragraph>
                                             <Table CellSpacing="0" Margin="0.33,0,0,0">
@@ -3940,15 +3939,15 @@
                                                     </TableRow>
                                                 </TableRowGroup>
                                             </Table>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Run Text=" При появлении ошибки в кодовой комбинации окажутся невыполненными те проверочные отношения, в которые входит значение ошибочного разряда."/>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Span>
                                                     <Run Text="    Так, если ошибка возникла в 7-м информационном разряде, то окажутся невыполненными 1, 3 и 4 уравнения, т.е синдром равен 1011 (совпадает с 7-м столбцом матрицы H). Таким образом, местоположение столбца матрицы H, совпадающего с вычисленным синдромом, указывает место ошибки. Вычисленное значение синдрома обязательно совпадает с одним из столбцов матрицы H, т.к. в качестве столбцов выбраны все возможные двоичные r-разрядные числа."/>
                                                 </Span>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Span>
                                                     <Run Text="    Хэмминг предложил расположить столбцы проверочной матрицы так, чтобы номер i-го столбца матрицы H и номер ошибочного разряда кодовой комбинации соответствовали двоичному представлению числа i. Тогда синдром, полученный из проверочных уравнений, будет двоичным представлением номера разряда кодовой комбинации, в котором произошла ошибка. Для этого проверочные разряды должны находиться не в конце кодовой комбинации, а на номерах позиций, которые выражаются степенью двойки ( 2"/>
                                                 </Span>
@@ -3985,7 +3984,7 @@
                                                     <Run Text=" ), как это имеет место в непреобразованной матрице H, потому что каждый из них входит только в одно из проверочных уравнений."/>
                                                 </Span>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Span>
                                                     <Run Text="    В последнем случае проверочные разряды размещаются между информационными. Синдром, согласно непреобразованной проверочной матрице H"/>
                                                 </Span>
@@ -4497,7 +4496,7 @@
                                                     <Run Text=", которые  встречаются  в этой системе уравнений по одному разу."/>
                                                 </Span>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Span>
                                                     <Run Text="    Например, если необходимо  закодировать сообщение простого кода 11001010110 ( k = 11 ) в коде Хэмминга, нужно определить проверочные разряды в комбинации: u"/>
                                                 </Span>
@@ -4948,10 +4947,10 @@
                                                     </TableRow>
                                                 </TableRowGroup>
                                             </Table>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Run Text="   Вычисляя проверочные разряды согласно этой системе, получим для данного сообщения:"/>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Span>
                                                     <Run Text="u"/>
                                                 </Span>
@@ -5012,12 +5011,12 @@
                                                     <Run Text=" = 1 (+) 0 (+) 1 (+) 0 (+) 1 (+) 1 (+) 0 = 1."/>
                                                 </Span>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Span>
                                                     <Run Text="    Следовательно, комбинация кода Хэмминга для рассматриваемого сообщения будет иметь вид 111110001010110."/>
                                                 </Span>
                                             </Paragraph>
-                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="0,6.67" TextAlignment="Left">
+                                            <Paragraph FontSize="16" FontFamily="Times New Roman" Margin="40,6.67" TextAlignment="Left">
                                                 <Span>
                                                     <Run Text="    Предположим, что 8-й єлемент кодовой комбинации принят ошибочно, т.е. получено сообщение 1111100"/>
                                                 </Span>
@@ -5186,7 +5185,7 @@
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
-                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow" >
                                         <FlowDocument>
                                             <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Коды Абрамсона. Краткие теоретические сведения.
                                             </Paragraph>
@@ -5351,7 +5350,7 @@
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
-                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow" >
                                         <FlowDocument>
                                             <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Коды БЧХ. Краткие теоретические сведения.
                                             </Paragraph>
@@ -5553,7 +5552,7 @@
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
-                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow" >
                                         <FlowDocument>
                                             <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Первичные недвоичные коды. Краткие теоретические сведения.
                                             </Paragraph>
@@ -5720,7 +5719,7 @@
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
-                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow" >
                                         <FlowDocument>
                                             <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Код с проверкой по модулю q. Краткие теоретические сведения.
                                             </Paragraph>
@@ -5835,7 +5834,7 @@
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
-                                    <RichTextBox BorderBrush="White" IsReadOnly="True" >
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow" >
                                         <FlowDocument>
                                             <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="0,20,0,0">Код с простым повторением. Краткие теоретические сведения.
                                             </Paragraph>
@@ -6544,7 +6543,7 @@
                             <Grid Background="White" Margin="0,0,-15,0">
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
-                                    <RichTextBox BorderBrush="White">
+                                    <RichTextBox BorderBrush="White" Cursor="Arrow">
 
                                         <FlowDocument>
                                             <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="30,30,0,0">Код Бергера. Краткие теоретические сведения.
@@ -6623,7 +6622,7 @@
                             <Grid Background="White" Margin="0,0,-15,0">
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
-                                    <RichTextBox BorderBrush="White">
+                                    <RichTextBox BorderBrush="White" Cursor="Arrow">
 
                                         <FlowDocument>
                                             <Paragraph TextAlignment="Center"  FontStyle="Italic"  FontSize="24" Padding="30,30,0,0">Код Шеннона-Фано. Краткие теоретические сведения.
@@ -6826,7 +6825,7 @@
 
                                 <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
-                                    <RichTextBox BorderBrush="White" IsReadOnly="True">
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow">
 
                                         <FlowDocument>
                                             <Paragraph  FontSize="24"  Padding="30,30,0,0">
@@ -7040,7 +7039,7 @@
                                     <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
 
 
-                                        <RichTextBox BorderBrush="White" IsReadOnly="True">
+                                    <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow">
                                             <FlowDocument>
                                                 <Paragraph TextAlignment="Center" FontStyle="Italic" Padding="30 30 0 0 " FontSize="24" >Рекуррентный код. Краткие теоретические сведения.
                                                 </Paragraph>
