@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
+using static XTest.MainWindow;
 
 namespace XTest.ViewModel
 {
@@ -140,11 +141,11 @@ namespace XTest.ViewModel
                         {
 							TestNumber = 1;
 							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 10");
-							if (!MainWindow.results.ContainsKey("Greya"))
+							if (!MainWindow.results.ContainsKey(TestType.Greya))
 							{
-								MainWindow.results.Add("Greya", new Result("Код Грея", 10));
+								MainWindow.results.Add(TestType.Greya, new Result("Код Грея", 10));
 							}
-							MainWindow.results["Greya"].correctTests = correctAnsver;
+							MainWindow.results[TestType.Greya].correctTests = correctAnsver;
 							GreyaCodeTest.Message = codeService.generateLine(11);
                             CorrectAnsver = 0;
                             testMode = TestMode.Encoding;

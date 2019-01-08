@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
+using static XTest.MainWindow;
 
 namespace XTest.ViewModel
 {
@@ -151,7 +152,7 @@ namespace XTest.ViewModel
                       {
                           MessageBox.Show(Mark.ToString());
                           check = 1;
-                          MainWindow.results.Add("Recurent", new Result("Рекурентний код ", Mark));
+                          MainWindow.results.Add(TestType.Recurent, new Result("Рекурентний код ", Mark));
                           Mark = 0;
                           K = rand.Next(1, 5);
                           arr = _service.GenerateArray(k);

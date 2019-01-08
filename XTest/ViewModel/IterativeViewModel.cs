@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
+using static XTest.MainWindow;
 
 namespace XTest.ViewModel
 {
@@ -207,11 +208,11 @@ namespace XTest.ViewModel
 							IterativeCodeTest.ArrayCode = setArray(IterativeCodeTest.IntArray);
 							TestNumber = 1;
 							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 10");
-							if (!MainWindow.results.ContainsKey("Iterative"))
+							if (!MainWindow.results.ContainsKey(TestType.Iterative))
 							{
-								MainWindow.results.Add("Iterative", new Result("Итеративный Код", 10));
+								MainWindow.results.Add(TestType.Iterative, new Result("Итеративный Код", 10));
 							}
-							MainWindow.results["Iterative"].correctTests = correctAnsver;
+							MainWindow.results[TestType.Iterative].correctTests = correctAnsver;
 							CorrectAnsver = 0;
 							testMode = TestMode.Encoding;
 							TestTask = "Закодируйте сообщение";

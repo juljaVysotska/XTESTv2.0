@@ -30,7 +30,24 @@ namespace XTest
         int Pstage = 0;
         int Astage = 0;
         public static string FILE_FILTER = "XTest Results(*.xtst)| *.xtst";
-        public static Dictionary<string, Result> results = new Dictionary<string, Result>();
+        public static Dictionary<TestType, Result> results = new Dictionary<TestType, Result>();
+
+        public enum TestType
+        {
+            Berger,
+            ShennonFano,
+            BinaryDecimal,
+            Ellaes,
+            Greya,
+            CheckByQ,
+            Entropy,
+            Iterative,
+            Recurent,
+            RepeatCode,
+            RidMaller,
+            Varshamov,
+            Abramsona
+        }
 
         public MainWindow()
         {
@@ -42,9 +59,9 @@ namespace XTest
         bool bergerPracticeEncode = true;
         private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!results.ContainsKey("Berger"))
+            if (!results.ContainsKey(TestType.Berger))
             {
-                results.Add("Berger", new Result("Код Бергера", 6));
+                results.Add(TestType.Berger, new Result("Код Бергера", 6));
             }
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
@@ -73,7 +90,7 @@ namespace XTest
 
         private void GenerateBergerTest()
         {
-            Result result = results["Berger"];
+            Result result = results[TestType.Berger];
             if (result.currentTestNumber <= 3)
             {
                 lblBergerTaskExplanation.Content = "Зашифруйте:";
@@ -96,7 +113,7 @@ namespace XTest
 
         private void Button_Berger_Next_Click(object sender, RoutedEventArgs e)
         {
-            Result result = results["Berger"];
+            Result result = results[TestType.Berger];
             if (result.currentTestNumber <= 6)
             {
                 if (result.currentTestNumber <= 3 ?
@@ -155,9 +172,9 @@ namespace XTest
 
         private void TabControl_Shennon_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!results.ContainsKey("Shennon-Fano"))
+            if (!results.ContainsKey(TestType.ShennonFano))
             {
-                results.Add("Shennon-Fano", new Result("Код Шеннона-Фано", 3));
+                results.Add(TestType.ShennonFano, new Result("Код Шеннона-Фано", 3));
             }
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
@@ -174,16 +191,16 @@ namespace XTest
         private void GenerateShennonPractice()
         {
             ShennonMessages = ShennonFanoService.generateMessages();
-            Resources["ShennonTask"] = ShennonMessages;
+            Resources[TestType.ShennonFano] = ShennonMessages;
         }
 
         private void GenerateShennonTest()
         {
-            Result result = results["Shennon-Fano"];
+            Result result = results[TestType.ShennonFano];
             if (result.currentTestNumber <= 3)
             {
                 ShennonMessages = ShennonFanoService.generateMessages();
-                Resources["ShennonTask"] = ShennonMessages;
+                Resources[TestType.ShennonFano] = ShennonMessages;
             }
             else
             {
@@ -201,7 +218,7 @@ namespace XTest
         private void Button_Shennon_Test_Next_Click(object sender, RoutedEventArgs e)
 
         {
-            Result result = results["Shennon-Fano"];
+            Result result = results[TestType.ShennonFano];
             if (result.currentTestNumber <= 3)
             {
                 if (ShennonFanoService.isCalculatedCorrectly(ShennonMessages))
@@ -837,7 +854,7 @@ namespace XTest
                     {
                         using (fsin)
                         {
-                            results = (Dictionary<string, Result>)bf.Deserialize(fsin);
+                            results = (Dictionary<TestType, Result>)bf.Deserialize(fsin);
                         }
                         RefreshResults();
                         MessageBox.Show("Результаты загружены успешно!");

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
+using static XTest.MainWindow;
 
 namespace XTest.ViewModel
 {
@@ -213,11 +214,11 @@ namespace XTest.ViewModel
 						{
 							TestNumber = 1;
 							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 6");
-							if (!MainWindow.results.ContainsKey("Entropy"))
+							if (!MainWindow.results.ContainsKey(TestType.Entropy))
 							{
-								MainWindow.results.Add("Entropy", new Result("Энтропия", 10));
+								MainWindow.results.Add(TestType.Entropy, new Result("Энтропия", 10));
 							}
-							MainWindow.results["Entropy"].correctTests = correctAnsver;
+							MainWindow.results[TestType.Entropy].correctTests = correctAnsver;
 							CorrectAnsver = 0;
 							EnsambleVisibility = true;
 							UnconditionalVisibility = false;

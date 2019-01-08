@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
+using static XTest.MainWindow;
 
 namespace XTest.ViewModel
 {
@@ -33,7 +34,7 @@ namespace XTest.ViewModel
             set { result = value; }
         }
 
-        private string Output(Dictionary<string, Result> dictionary)
+        private string Output(Dictionary<TestType, Result> dictionary)
         {
             var str = "";
             foreach (var item in dictionary)
@@ -140,7 +141,7 @@ namespace XTest.ViewModel
                           MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 8");
                           OldArray = _service.GenerateArray(4, 4);
                           Array = _service.ResizeArray(OldArray);
-                          MainWindow.results.Add("Ellaes", new Result("Код Эллаеса ", Mark));
+                          MainWindow.results.Add(TestType.Ellaes, new Result("Код Эллаеса ", Mark));
                           check = 1;
                           Mark = 0;
                       }

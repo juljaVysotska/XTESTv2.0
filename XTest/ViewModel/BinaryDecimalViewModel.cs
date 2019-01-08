@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
+using static XTest.MainWindow;
 
 namespace XTest.ViewModel
 {
@@ -147,11 +148,11 @@ namespace XTest.ViewModel
                         {
 							TestNumberBinaryDecimal = 1;
 							MessageBox.Show("Правильных ответов " + CorrectAnsverBinaryDecimal.ToString() + " из 10");
-							if (!MainWindow.results.ContainsKey("BinaryDecimal"))
+							if (!MainWindow.results.ContainsKey(TestType.BinaryDecimal))
 							{
-								MainWindow.results.Add("BinaryDecimal", new Result("Двоично-Десятичный Код", 10));
+								MainWindow.results.Add(TestType.BinaryDecimal, new Result("Двоично-Десятичный Код", 10));
 							}
-							MainWindow.results["BinaryDecimal"].correctTests = correctAnsver;
+							MainWindow.results[TestType.BinaryDecimal].correctTests = correctAnsver;
 							BinaryDecimalCodeTest.Message = codeService.enncodeNumber(random.Next(100, 10000), BinaryDecimalCodeTest.Code);
                             CorrectAnsverBinaryDecimal = 0;
                             testMode = TestMode.Encoding;

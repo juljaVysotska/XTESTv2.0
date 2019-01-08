@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
+using static XTest.MainWindow;
 
 namespace XTest.ViewModel
 {
@@ -287,7 +288,7 @@ namespace XTest.ViewModel
                                   Mark += 1;
                               check = 0;
                               MessageBox.Show(Mark.ToString());
-                              MainWindow.results.Add("Varshamov", new Result("Код Варшамова ", Mark));
+                              MainWindow.results.Add(TestType.Varshamov, new Result("Код Варшамова ", Mark));
 
                               Initializer();
                               break;

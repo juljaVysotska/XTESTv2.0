@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
+using static XTest.MainWindow;
 
 namespace XTest.ViewModel
 {
@@ -129,7 +130,7 @@ namespace XTest.ViewModel
                           if (check == 9)
                           {
                               MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8");
-                              MainWindow.results.Add("CheckByQ", new Result("Проверка по мoдулю q ", mark));
+                              MainWindow.results.Add(TestType.CheckByQ, new Result("Проверка по мoдулю q ", mark));
                               Upload();
                               check = 1;
                               mark = 0;
