@@ -13,13 +13,13 @@ namespace XTest.Model.Models
     {
         private const string DATE_TIME_FORMAT = "dd.MM.yy HH:mm";
 
-        public string testName { get; set; }
-        public int testsTotal { get; set; }
+        public string testName { get; private set; }
+        public int testsTotal { get; private set; }
         public int correctTests { get; set; }
         private int _currentTestNumber;
         public int currentTestNumber {
             get => _currentTestNumber;
-            set {
+            private set {
                 if (value > testsTotal)
                 {
                     _endTime = DateTime.Now;
@@ -47,11 +47,11 @@ namespace XTest.Model.Models
         public string testStat
         {
             get => correctTests + "/" + (currentTestNumber - 1);
-            set => testStat = value;
+            private set => testStat = value;
         }
         public int mark {
             get => Convert.ToInt32(Math.Floor(correctTests / ((double)testsTotal) * 5));
-            set => mark = value;
+            private set => mark = value;
         }
 
         public Result(string testName, int testsTotal)
@@ -62,6 +62,17 @@ namespace XTest.Model.Models
             this.currentTestNumber = 1;
             this._startTime = DateTime.Now;
             this.attempts = 1;
+        }
+
+        public void CorrectAnswer()
+        {
+            correctTests += 1;
+            currentTestNumber += 1;
+        }
+
+        public void WrongAnswer()
+        {
+            currentTestNumber += 1;
         }
 
         public void Reset()

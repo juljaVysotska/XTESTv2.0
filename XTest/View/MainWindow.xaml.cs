@@ -122,8 +122,7 @@ namespace XTest
                 {
                     MessageBox.Show("Правильно!");
                     txbBergerResult.Text = "";
-                    result.correctTests += 1;
-                    result.currentTestNumber += 1;
+                    result.CorrectAnswer();
                 }
                 else
                 {
@@ -131,7 +130,7 @@ namespace XTest
                         BergerService.encode(lblBergerTask.Content.ToString()) :
                         BergerService.decode(lblBergerTask.Content.ToString())));
                     txbBergerResult.Text = "";
-                    result.currentTestNumber += 1;
+                    result.WrongAnswer();
                 }
                 GenerateBergerTest();
             }
@@ -224,13 +223,12 @@ namespace XTest
                 if (ShennonFanoService.isCalculatedCorrectly(ShennonMessages))
                 {
                     MessageBox.Show("Правильно!");
-                    result.correctTests += 1;
-                    result.currentTestNumber += 1;
+                    result.CorrectAnswer();
                 }
                 else
                 {
                     MessageBox.Show("Не правильно.");
-                    result.currentTestNumber += 1;
+                    result.WrongAnswer();
                 }
                 GenerateShennonTest();
             }
