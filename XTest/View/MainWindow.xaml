@@ -16,6 +16,7 @@
         <local:RepeatCodeViewModel x:Key="repeatCodeVM"></local:RepeatCodeViewModel>
         <local:AbramsonaCodeViewModel x:Key="abramsonaCodeVM"></local:AbramsonaCodeViewModel>
         <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>
+        <local:EntropyViewModel x:Key="entropyVm"></local:EntropyViewModel>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -25,6 +26,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
         <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
@@ -5328,7 +5331,7 @@
                 </Grid>
             </TabItem>
                 <TabItem Header="Итеративный код" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
-                <Grid Margin="275,-620,0,130">
+                <Grid Margin="275,-620,0,130"  DataContext="{Binding Source={StaticResource iterativeVM}}">
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
@@ -6313,23 +6316,24 @@
                                 <Label Content="Энтропия" HorizontalAlignment="Left" Margin="42,30,0,0"  FontSize="24"  VerticalAlignment="Top"/>
 
                                 <!--Ансамбль-->
-                                <!--<Label Content="Дан ансамбль А, состоящий из N сообщений, в котором: " HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
-                                <Label Content="P(X1) = 1/2" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,118,0,0" VerticalAlignment="Top"/>
-                                <Label Content="P(X2) = 1/4" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,148,0,0" VerticalAlignment="Top"/>
-                                <Label Content="P(X3) = P(X4) = 1/8" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,178,0,0" VerticalAlignment="Top"/>
-                                <Label Content="Вычислите количество информации, содержащееся в ансамбле А:" HorizontalAlignment="Left" Margin="42,217,0,0" VerticalAlignment="Top"/>
-                                <Label Content="X2" HorizontalAlignment="Left" FontSize="16" Margin="42,250,0,0" VerticalAlignment="Top"/>
-                                <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="72,250,0,0" VerticalAlignment="Top"/>
-                                <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="102,250,0,0" VerticalAlignment="Top"/>
-                                <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="132,250,0,0" VerticalAlignment="Top"/>
-                                <Label Content="X4" HorizontalAlignment="Left" FontSize="16" Margin="162,250,0,0" VerticalAlignment="Top"/>
-                                <Label Content="X2" HorizontalAlignment="Left" FontSize="16" Margin="192,250,0,0" VerticalAlignment="Top"/>
-                                <Label Content="X4" HorizontalAlignment="Left" FontSize="16" Margin="222,250,0,0" VerticalAlignment="Top"/>
-                                <Label Content="X4" HorizontalAlignment="Left" FontSize="16" Margin="252,250,0,0" VerticalAlignment="Top"/>
-                                <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="282,250,0,0" VerticalAlignment="Top"/>
-                                <TextBox HorizontalAlignment="Left" Height="23" Margin="48,300,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160"/>
-                                <Label Content="бит" HorizontalAlignment="Left" FontSize="16" Margin="215,295,0,0" VerticalAlignment="Top"/>-->
-
+                                <Grid Visibility="Visible">
+                                    <Label Content="Дан ансамбль А, состоящий из N сообщений, в котором: " HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="P(X1) = 1/2" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,118,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="P(X2) = 1/4" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,148,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="P(X3) = P(X4) = 1/8" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,178,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="Вычислите количество информации, содержащееся в ансамбле А:" HorizontalAlignment="Left" Margin="42,217,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="X2" HorizontalAlignment="Left" FontSize="16" Margin="42,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="72,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="102,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="132,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="X4" HorizontalAlignment="Left" FontSize="16" Margin="162,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="X2" HorizontalAlignment="Left" FontSize="16" Margin="192,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="X4" HorizontalAlignment="Left" FontSize="16" Margin="222,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="X4" HorizontalAlignment="Left" FontSize="16" Margin="252,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="X3" HorizontalAlignment="Left" FontSize="16" Margin="282,250,0,0" VerticalAlignment="Top"/>
+                                    <TextBox Text="{Binding GreyaCodeTest.Result, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="48,300,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160"/>
+                                    <Label Content="бит" HorizontalAlignment="Left" FontSize="16" Margin="215,295,0,0" VerticalAlignment="Top"/>
+                                </Grid>
                                 <!--Максимальная энтропия-->
                                 <!--<Label Content="Алфавит источника состоит из n символов: X1, X2, ... Xn." HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
                                 <WrapPanel Width="150" Height="240" Margin="42,134,0,207" HorizontalAlignment="Left" >
@@ -6398,10 +6402,100 @@
 
                         </TabItem>
                         <TabItem Header="Тест"  Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
-                                <Label  Content="Энтропия"  Margin="30,64,294,472"  FontSize="24"/>
+                            <Grid Background="White" Margin="0,0,-15,0"  DataContext="{Binding Source={StaticResource entropyVm}}">
+                                <Label Content="Энтропия" HorizontalAlignment="Left" Margin="42,30,0,0"  FontSize="24"  VerticalAlignment="Top"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                <Button  Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <!--Ансамбль-->
+                                <!--<Grid Visibility="{Binding EnsambleVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">-->
+                                <Grid Visibility="Hidden">
+                                    <Label Content="Дан ансамбль А, состоящий из N сообщений, в котором: " HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="P(X1) = 1/2" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,118,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="P(X2) = 1/4" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,148,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="P(X3) = P(X4) = 1/8" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,178,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="Вычислите количество информации, содержащееся в ансамбле А:" HorizontalAlignment="Left" Margin="42,217,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding EnsembleTest[0], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" FontSize="16" Margin="42,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding EnsembleTest[1], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" FontSize="16" Margin="72,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding EnsembleTest[2], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" FontSize="16" Margin="102,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding EnsembleTest[3], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" FontSize="16" Margin="132,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding EnsembleTest[4], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" FontSize="16" Margin="162,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding EnsembleTest[5], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" FontSize="16" Margin="192,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding EnsembleTest[6], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" FontSize="16" Margin="222,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding EnsembleTest[7], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" FontSize="16" Margin="252,250,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="{Binding EnsembleTest[8], UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" FontSize="16" Margin="282,250,0,0" VerticalAlignment="Top"/>
+                                    <TextBox Text="{Binding EnsembleResult, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="48,300,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160" Style="{DynamicResource RoundConer}"/>
+                                    <Label Content="бит" HorizontalAlignment="Left" FontSize="16" Margin="215,295,0,0" VerticalAlignment="Top"/>
+                                </Grid>
+                                <!--Максимальная энтропия-->
+                                <!--<Grid Visibility="{Binding UnconditionalVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">-->
+                                <Grid Visibility="Visible">
+                                    <Label Content="Алфавит источника состоит из n символов: X1, X2, ... Xn." HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
+                                    <WrapPanel Width="150" Height="240" Margin="42,114,0,207" HorizontalAlignment="Left" >
+                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[0][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[0][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[1][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[1][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[2][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[2][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[3][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[3][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[4][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[4][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox  Width="90" Height="40" Text="{Binding UnconditionalTest[5][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="60" Height="40" Text="{Binding UnconditionalTest[5][1], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    </WrapPanel>
+                                    <Label Content="Найдите безусловную и максимальную энтропию источника" HorizontalAlignment="Left" Margin="42,367,0,0" VerticalAlignment="Top"/>
+
+
+                                    <Label Content="Н(х) = " HorizontalAlignment="Left" Margin="82,401,0,0" VerticalAlignment="Top"/>
+                                    <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,401,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202"/>
+                                    <Label Content="Нmax(х) = " HorizontalAlignment="Left" Margin="58,441,0,0" VerticalAlignment="Top"/>
+                                    <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,441,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202"/>
+                                </Grid>
+                                <!--Hardcodeeeeee-->
+                                <Grid Visibility="{Binding ConditionalVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">
+                                    <Label Content="Дана матрица условных вероятностей" HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
+                                    <WrapPanel Width="160" Height="160" Margin="42,121,0,300" HorizontalAlignment="Left" >
+                                        <TextBox Width="40" Height="40"  HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
+                                        <TextBox Width="40" Height="40" Text="X1" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="X2" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="X3" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="Y1" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="0.35" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="0.71" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="0.34" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="Y2" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="0.23" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="0.17" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="0.17" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="Y3" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="0.50" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="0.71" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                        <TextBox Width="40" Height="40" Text="0.54" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
+                                    </WrapPanel>
+                                    <Label Content="Дана матрица условных вероятностей" HorizontalAlignment="Left" Margin="342,87,0,0" VerticalAlignment="Top"/>
+                                    <WrapPanel Width="150" Height="120" Margin="342,50,0,207" HorizontalAlignment="Left" >
+                                        <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
+                                        <TextBox Width="60" Height="40" Text="0.37" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
+                                        <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" Foreground="Black" BorderBrush="{x:Null}"/>
+                                        <TextBox Width="60" Height="40" Text="0.12" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
+                                        <TextBox  Width="90" Height="40" Text="P(X1) = " HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderBrush="{x:Null}"/>
+                                        <TextBox Width="60" Height="40" Text="0.51" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center" Foreground="Black" BorderBrush="{x:Null}"/>
+                                    </WrapPanel>
+                                    <Label Content="Вычислите условную энтропию источника при равных вероятностях" HorizontalAlignment="Left" Margin="42,327,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="Вычислите условную энтропию источника при даных вероятностях" HorizontalAlignment="Left" Margin="42,401,0,0" VerticalAlignment="Top"/>
+                                    <Label Content="Н(х) = " HorizontalAlignment="Left" Margin="62,361,0,0" VerticalAlignment="Top"/>
+                                    <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,362,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180"/>
+                                    <Label Content="Нmax(х) = " HorizontalAlignment="Left" Margin="62,435,0,0" VerticalAlignment="Top"/>
+                                    <TextBox HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,435,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180"/>
+                                </Grid>
+                                <Button Command="{Binding NextTest}"  Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
+                                <Label Content="{Binding TestNumber, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="/ 6" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="{Binding CorrectAnsver, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+
+
                             </Grid>
                         </TabItem>
 

@@ -207,11 +207,11 @@ namespace XTest.ViewModel
 							IterativeCodeTest.ArrayCode = setArray(IterativeCodeTest.IntArray);
 							TestNumber = 1;
 							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 10");
-							if (!MainWindow.results.ContainsKey("Итеративный Код"))
+							if (!MainWindow.results.ContainsKey("Iterative"))
 							{
-								MainWindow.results.Add("Итеративный Код", new Result("Greya", 10));
+								MainWindow.results.Add("Iterative", new Result("Итеративный Код", 10));
 							}
-							MainWindow.results["Итеративный Код"].correctTests = correctAnsver;
+							MainWindow.results["Iterative"].correctTests = correctAnsver;
 							CorrectAnsver = 0;
 							testMode = TestMode.Encoding;
 							TestTask = "Закодируйте сообщение";
