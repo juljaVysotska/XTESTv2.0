@@ -145,6 +145,7 @@ namespace XTest.ViewModel
 						TestNumberBinaryDecimal++;
                         if (testNumber >= 11)
                         {
+							TestNumberBinaryDecimal = 1;
 							MessageBox.Show("Правильных ответов " + CorrectAnsverBinaryDecimal.ToString() + " из 10");
 							if (!MainWindow.results.ContainsKey("BinaryDecimal"))
 							{
@@ -152,7 +153,6 @@ namespace XTest.ViewModel
 							}
 							MainWindow.results["BinaryDecimal"].correctTests = correctAnsver;
 							BinaryDecimalCodeTest.Message = codeService.enncodeNumber(random.Next(100, 10000), BinaryDecimalCodeTest.Code);
-                            TestNumberBinaryDecimal = 1;
                             CorrectAnsverBinaryDecimal = 0;
                             testMode = TestMode.Encoding;
                             TestTaskBinaryDecimal = "Закодируйте сообщение";

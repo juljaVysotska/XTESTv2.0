@@ -138,6 +138,7 @@ namespace XTest.ViewModel
                         TestNumber++;
                         if (testNumber >= 11)
                         {
+							TestNumber = 1;
 							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 10");
 							if (!MainWindow.results.ContainsKey("Greya"))
 							{
@@ -145,7 +146,6 @@ namespace XTest.ViewModel
 							}
 							MainWindow.results["Greya"].correctTests = correctAnsver;
 							GreyaCodeTest.Message = codeService.generateLine(11);
-                            TestNumber = 1;
                             CorrectAnsver = 0;
                             testMode = TestMode.Encoding;
                             TestTask = "Закодируйте сообщение";
