@@ -17,6 +17,9 @@ using XTest.ViewModel;
 using XTest.Model.Services;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using Microsoft.Win32;
 
 namespace XTest
 {
@@ -26,12 +29,13 @@ namespace XTest
         int Qstage = 0;
         int Pstage = 0;
         int Astage = 0;
+        public static string FILE_FILTER = "XTest Results(*.xtst)| *.xtst";
         public static Dictionary<string, Result> results = new Dictionary<string, Result>();
 
         public MainWindow()
         {
             InitializeComponent();
-            Resources["ResultMarks"] = results;
+            RefreshResults();
         }
 
         #region Berger
@@ -82,7 +86,11 @@ namespace XTest
             }
             else
             {
-                MessageBox.Show("Вы уже закончили этот тест!");
+                if (MessageBox.Show("Вы закончили этот тест! Ваш балл: " + result.mark + ". Хотите попробовать ещё?", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    result.Reset();
+                    GenerateBergerTest();
+                }
             }
         }
 
@@ -154,9 +162,6 @@ namespace XTest
             TabControl tabControl = (TabControl)sender;
             if (tabControl.SelectedIndex == 2)
             {
-
-                //GenerateShennon();
-
                 GenerateShennonTest();
             }
             else if (tabControl.SelectedIndex == 1)
@@ -182,7 +187,11 @@ namespace XTest
             }
             else
             {
-                MessageBox.Show("Вы уже закончили этот тест!");
+                if (MessageBox.Show("Вы закончили этот тест! Ваш балл: " + result.mark + ". Хотите попробовать ещё?", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    result.Reset();
+                    GenerateShennonTest();
+                }
             }
         }
 
@@ -457,11 +466,6 @@ namespace XTest
                 Qstage = 0;
             }
 
-        }
-
-        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(results).Refresh();
         }
 
         private void codeP_btn_Click(object sender, RoutedEventArgs e)
@@ -774,5 +778,92 @@ namespace XTest
         }
         #endregion
 
+        #region Results
+
+        private void Button_Open_Results_Click(object sender, RoutedEventArgs e)
+        {
+            LoadResults();
+        }
+
+        private void Button_Save_Results_Click(object sender, RoutedEventArgs e)
+        {
+            SaveResults();
+        }
+
+        public void SaveResults()
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.FileName = "results";
+            sfd.Filter = FILE_FILTER;
+            sfd.DefaultExt = ".xtst";
+
+            bool? result = sfd.ShowDialog();
+
+            if (result == true)
+            {
+                try
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    FileStream fsout = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                    using (fsout)
+                    {
+                        bf.Serialize(fsout, results);
+                    }
+                    RefreshResults();
+                    MessageBox.Show("Результаты сохранены успешно!");
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Произошла ошибка при сохранении результатов: " + e.Message, "Ошибка");
+                }
+            }
+        }
+
+        public void LoadResults()
+        {
+            OpenFileDialog odf = new OpenFileDialog();
+            odf.DefaultExt = ".xtst";
+            odf.Filter = FILE_FILTER;
+            odf.CheckFileExists = true;
+            bool? result = odf.ShowDialog();
+
+            if (result == true)
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                if (File.Exists(odf.FileName))
+                {
+                    FileStream fsin = new FileStream(odf.FileName, FileMode.Open, FileAccess.Read, FileShare.None);
+                    try
+                    {
+                        using (fsin)
+                        {
+                            results = (Dictionary<string, Result>)bf.Deserialize(fsin);
+                        }
+                        RefreshResults();
+                        MessageBox.Show("Результаты загружены успешно!");
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Произошла ошибка при чтении результатов: " + e.Message, "Ошибка");
+                    }
+                } else
+                {
+                    MessageBox.Show("Указанный файл не существует!", "Ошибка");
+                }
+            }
+        }
+
+        private void RefreshResults()
+        {
+            CollectionViewSource.GetDefaultView(results).Refresh();
+            Resources["ResultMarks"] = results;
+        }
+
+        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshResults();
+        }
+
+        #endregion
     }
 }
