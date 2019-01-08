@@ -15,12 +15,12 @@
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
         <local:RepeatCodeViewModel x:Key="repeatCodeVM"></local:RepeatCodeViewModel>
         <local:AbramsonaCodeViewModel x:Key="abramsonaCodeVM"></local:AbramsonaCodeViewModel>
-            <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>
-            <local:RecurentCodeViewModel x:Key="recurentVM"></local:RecurentCodeViewModel>
-            <local:VarshamovCodeViewModel x:Key="varshamVW"></local:VarshamovCodeViewModel>
-            <local:VarshamovCodeViewModelPractice x:Key="varshamVWPractice"></local:VarshamovCodeViewModelPractice>
-            <local:EntropyViewModel x:Key="entropyVm"></local:EntropyViewModel>
-            <Style x:Key="FocusVisual">
+        <local:IterativeViewModel x:Key="iterativeVM"></local:IterativeViewModel>
+        <local:RecurentCodeViewModel x:Key="recurentVM"></local:RecurentCodeViewModel>
+        <local:VarshamovCodeViewModel x:Key="varshamVW"></local:VarshamovCodeViewModel>
+        <local:VarshamovCodeViewModelPractice x:Key="varshamVWPractice"></local:VarshamovCodeViewModelPractice>
+        <local:EntropyViewModel x:Key="entropyVm"></local:EntropyViewModel>
+        <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
                     <ControlTemplate>
@@ -163,29 +163,44 @@
             <TabItem  Header="Отчеты" Height="35" Width="260"   Padding="30,0,0,0"
                       Background="#B2CAF2" BorderBrush="#B2CAF2" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
                 <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource ellaesVM}}">
+                    <Grid.Background>
+                        <ImageBrush/>
+                    </Grid.Background>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="39*"/>
-                        <ColumnDefinition Width="629*"/>
+                        <ColumnDefinition Width="426*"/>
+                        <ColumnDefinition Width="202*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="28*"/>
                         <RowDefinition Height="599*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Пройденные тесты: " Margin="30,24,480,541"  FontSize="16" Grid.Row="1" Grid.ColumnSpan="2"/>
-                    <ListView x:Name="ResultListView" ItemsSource="{DynamicResource ResultMarks}" HorizontalAlignment="Left" Height="504" Margin="30,62,0,0" VerticalAlignment="Top" Width="609" Grid.Row="1" Grid.ColumnSpan="2">
+                    <Label Content="Пройденные тесты: " Margin="30,24,279,541"  FontSize="16" Grid.Row="1" Grid.ColumnSpan="2"/>
+                    <ListView x:Name="ResultListView" ItemsSource="{DynamicResource ResultMarks}" HorizontalAlignment="Left" Height="508" Margin="30,62,0,0" VerticalAlignment="Top" Width="609" Grid.Row="1" Grid.ColumnSpan="3" SelectionMode="Single">
+                        <ListView.Background>
+                            <ImageBrush TileMode="FlipX" ImageSource="/XTest;component/Resources/watermark.jpg" Opacity="0.75" />
+                        </ListView.Background>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Название теста" 
+                                <GridViewColumn Header="Название теста" Width="140"
                                                 DisplayMemberBinding="{Binding Value.testName}" />
-                                <GridViewColumn Header="Правильные ответы" 
+                                <GridViewColumn Header="Правильно" Width="78"
                                                 DisplayMemberBinding="{Binding Value.testStat}" />
-                                <GridViewColumn Header="Всего заданий" 
+                                <GridViewColumn Header="Заданий" Width="68"
                                                 DisplayMemberBinding="{Binding Value.testsTotal}" />
-                                <GridViewColumn Header="Балл" 
+                                <GridViewColumn Header="Попытка" Width="68"
+                                                DisplayMemberBinding="{Binding Value.attempts}" />
+                                <GridViewColumn Header="Балл" Width="43"
                                                 DisplayMemberBinding="{Binding Value.mark}" />
+                                <GridViewColumn Header="Начало теста" Width="100"
+                                                DisplayMemberBinding="{Binding Value.startTime}" />
+                                <GridViewColumn Header="Конец теста" Width="100"
+                                                DisplayMemberBinding="{Binding Value.endTime}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
+                    <Button Content="Сохранить" Grid.Column="2" HorizontalAlignment="Left" Margin="98,32,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="25" Click="Button_Save_Results_Click"/>
+                    <Button Content="Открыть" Grid.Column="2" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="25" Click="Button_Open_Results_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Name ="VarshamCode" Header="Код Варшамова" Height="35" Width="260"   Padding="30,0,0,0"
@@ -6563,7 +6578,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-                <TabItem Header="Итеративный код" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+            <TabItem Header="Итеративный код" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130"  DataContext="{Binding Source={StaticResource iterativeVM}}">
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
@@ -7413,7 +7428,7 @@
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="158,10,10,539"  FontSize="14" Foreground="#4F91FB" Grid.Column="1" />
                                 <Label x:Name="lblShennonTaskExplanation"  Content="Составьте кодовые комбинации"  Margin="30,80,287,469"  FontSize="14" Grid.ColumnSpan="2"  />
                                 <Button x:Name="ButtonShennonNext" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="367,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Shennon_Test_Next_Click" Grid.Column="1"/>
-                                <ListBox ItemsSource="{DynamicResource ShennonTask}" Margin="74,141,81,99" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
+                                <ListBox ItemsSource="{DynamicResource ShennonTask}" Margin="74,141,81,99" BorderBrush="{x:Null}" Grid.ColumnSpan="2" IsSynchronizedWithCurrentItem="False">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <Grid>
