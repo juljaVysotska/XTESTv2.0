@@ -624,21 +624,8 @@ namespace XTest
                 ToolTip = msg;
             }
         }
-    }
-			private void NextQ_btn_Click(object sender, RoutedEventArgs e)
-			{
-				Qstage++;
-				if (Qstage == 4)
-				{
-					TestQ_control.SelectedIndex++;
-				}
-				else if (Qstage == 8)
-				{
-					TestQ_control.SelectedIndex--;
-					Qstage = 0;
-				}
+    
 
-			}
 		
 	}
 }
