@@ -7916,14 +7916,14 @@
                                 <Button Name="decodeR_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeR_btn_Click"  />
                                 <TabControl Name="codeR_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
                                     <TabItem Name ="codeR_item"  Header="Code"  Visibility="Collapsed">
-                                        <Grid>
+                                        <Grid >
                                             <Label  Content="Определите проверочные посылки для сообщения:"  Margin="30,30,271,434" FontSize="14"/>
                                             <TextBox Text="{Binding OldArray}" IsReadOnly="True" Margin="30,70,285,410" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label  Content="Шаг сложения k = "  Margin="30,145,482,342" FontSize="14"/>
                                             <TextBox Text="{Binding K}" IsReadOnly="True" Margin="172,140,391,340" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label  Content="Поверочные посылки:"  Margin="30,190,453,303" FontSize="14"/>
                                             <TextBox   Text="{Binding Array}" Margin="30,230,285,250"  VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                            <Button Content="Готово"   Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                            <Button Command="{Binding Code}" Content="Готово"   Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                         </Grid>
                                     </TabItem>
                                     <TabItem Name ="decodeR_item" Header="Decode" Visibility="Collapsed" >
@@ -7936,7 +7936,7 @@
                                             <TextBox  Text="{Binding K}" IsReadOnly="True" Margin="172,210,391,270" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label  Content="Восстановите исходное сообщение:"  Margin="30,260,219,205" Width="400" FontSize="14"/>
                                             <TextBox Text="{Binding Array}"  Margin="30,300,285,180"  VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                            <Button Content="Готово"   Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                            <Button Command="{Binding Decode}" Content="Готово"   Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                         </Grid>
                                     </TabItem>
                                 </TabControl>
