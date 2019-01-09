@@ -23,7 +23,17 @@ namespace XTest.ViewModel
         private int[][] OldArray { get; set; }
         private int[][] OldArrayCode { get; set; }
         private int[][] OldArrayDecode { get; set; }
+        private int selectedIndex;
 
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged("SelectedIndex");
+            }
+        }
 
         public int[][] Array
         {
@@ -115,11 +125,11 @@ namespace XTest.ViewModel
                       }
                       else if (Check == 3)
                       {
-                          MessageBox.Show("А теперь раскодируйте сообщение!");
+                         
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
                               Mark += 1;
-
+                          SelectedIndex = 1;
                           Array = _service.RandomMessageDecode(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                       }
@@ -138,6 +148,7 @@ namespace XTest.ViewModel
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                           Check = 1;
+                          SelectedIndex = 0;
                           if (!results.ContainsKey(TestType.RidMaller))
                               MainWindow.results.Add(TestType.RidMaller, new Result("Код Рида Маллера ", 6));
                           results[TestType.RidMaller].correctTests = Mark;
@@ -169,7 +180,7 @@ namespace XTest.ViewModel
                       if (_service.Equals(OldArrayCode, ArrayCode))
                           MessageBox.Show("Правильно!");
                       else
-                          MessageBox.Show("Не правильно!");
+                          MessageBox.Show("Неправильно!");
 
                       ArrayCode = _service.RandomMessage(_service.GenerateArray());
                       OldArrayCode = _service.FuckenCSharp(ArrayCode);
@@ -189,7 +200,7 @@ namespace XTest.ViewModel
                       if (_service.Equals(OldArrayDecode, ArrayDecode))
                           MessageBox.Show("Правильно!");
                       else
-                          MessageBox.Show("Не правильно!");
+                          MessageBox.Show("Неправильно!");
 
                       ArrayDecode = _service.RandomMessageDecode(_service.GenerateArray());
                       OldArrayDecode = _service.FuckenCSharp(ArrayDecode);
