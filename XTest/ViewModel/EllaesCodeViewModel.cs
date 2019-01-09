@@ -142,7 +142,7 @@ namespace XTest.ViewModel
                       }
                       else if (Check == 4)
                       {
-                          MessageBox.Show("Исправьте ошибки в сообщении:");
+                          
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
                               Mark += 1;
@@ -190,7 +190,7 @@ namespace XTest.ViewModel
                       if (_service.Equals(OldArrayCode, ArrayCode))
                           MessageBox.Show("Правильно!");
                       else
-                          MessageBox.Show("Не правильно!");
+                          MessageBox.Show("Неправильно!");
 
                       OldArrayCode = _service.GenerateArray(4, 4);
                       ArrayCode = _service.ResizeArray(OldArrayCode);
@@ -211,7 +211,7 @@ namespace XTest.ViewModel
                       if (_service.Equals(OldArrayDecode, ArrayDecode))
                           MessageBox.Show("Правильно!");
                       else
-                          MessageBox.Show("Не правильно!");
+                          MessageBox.Show("Неправильно!");
 
                       ArrayDecode = _service.GenerateArrayWithException(4, 4);
                       OldArrayDecode = _service.FuckingCSharp(ArrayDecode);

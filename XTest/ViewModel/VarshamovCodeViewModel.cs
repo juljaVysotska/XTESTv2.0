@@ -303,7 +303,7 @@ namespace XTest.ViewModel
                               if (_service.Equals(oldArray, ResultArr))
                                   Mark += 1;
                               Check = 0;
-                              MessageBox.Show(Mark.ToString());
+                              MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 7.");
                               if (!results.ContainsKey(TestType.Varshamov))
                                   MainWindow.results.Add(TestType.Varshamov, new Result("Код Варшамова ", 7));
                               results[TestType.Varshamov].correctTests = Mark;

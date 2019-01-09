@@ -157,7 +157,7 @@
                     <Image HorizontalAlignment="Center" Width="300" Source="..\Resources\logo.png" Margin="132,142,119,289"/>
                     <Label HorizontalAlignment="Center"  FontSize="26" Content="Добро пожаловать в CryptTest!" Height="57" VerticalAlignment="Bottom" Margin="148,0,139,226" Width="384"/>
                     <Label  FontSize="20
-                            " HorizontalAlignment="Center" Content="Для начала работы с программой выберите тест" Margin="116,393,95,201" Width="460"/>
+                            " HorizontalAlignment="Center" Content="Для начала работы с программой выберите тест" Margin="116,393,95,190" Width="460"/>
                 </Grid>
             </TabItem>
             <TabItem  Header="Отчеты" Height="35" Width="260"   Padding="30,0,0,0"
@@ -777,11 +777,11 @@
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource varshamVW}}">
                                 <Button  Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Command="{Binding Next}"  Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="nextVAR_btn_Click" />
-                                <Label Content="Правильных ответов:" Margin="0,536,494,14.667"/>
-                                <Label Content="Тест:" Margin="0,506,494,45.667"/>
-                                <Label Content="{Binding Mark}" Margin="158,536,464,14.667"/>
-                                <Label Content="/ 7" Margin="66,505,427,46.667"/>
-                                <Label Content="{Binding Check}" Margin="42,506,580,44.667"/>
+                                <Label Content="Правильных ответов:" Margin="0,535,494,14.667"/>
+                                <Label Content="Тест:" Margin="0,505,494,45.667"/>
+                                <Label Content="{Binding Mark}" Margin="150,535,472,15"/>
+                                <Label Content="/ 7" Margin="60,505,571,47"/>
+                                <Label Content="{Binding Check}" Margin="42,505,599,45"/>
                                 <TabControl Margin="0,10,10,80" Name="TestVAR_control"  SelectedIndex="{Binding SelectedIndex}" >
                                     <TabItem Header="1" Visibility="Collapsed" >
                                         <Grid>
@@ -1206,8 +1206,8 @@
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ellaesVM}}">
 
-                                <Button Name ="codeEL_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeEL_btn_Click" Grid.Column="1" />
-                                <Button Name="decodeEL_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="269,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeEL_btn_Click" Grid.Column="1" />
+                                <Button Name ="codeEL_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="324,9,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeEL_btn_Click" />
+                                <Button Name="decodeEL_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="478,9,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeEL_btn_Click" />
                                 <TabControl Name="codeEL_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" Grid.ColumnSpan="2" >
                                     <TabItem Name ="codeEL_item"  Header="Code" Visibility="Collapsed">
                                         <Grid>
@@ -1282,11 +1282,11 @@
                         <TabItem Header="Тест"  Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid DataContext="{Binding Source={StaticResource ellaesVM}}">
                                 <Button Content="Далее" Command="{Binding Next}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <Label Content="Правильных ответов:" Margin="0,536,494,14.667"/>
-                                <Label Content="Тест:" Margin="0,506,494,45.667"/>
-                                <Label Content="{Binding Mark}" Margin="158,536,464,14.667"/>
-                                <Label Content="/ 8" Margin="66,505,427,46.667"/>
-                                <Label Content="{Binding Check}" Margin="42,506,580,44.667"/>
+                                <Label Content="Правильных ответов:" Margin="0,535,494,14.667"/>
+                                <Label Content="Тест:" Margin="0,505,494,45.667"/>
+                                <Label Content="{Binding Mark}" Margin="150,535,472,15"/>
+                                <Label Content="/ 8" Margin="60,505,565,47"/>
+                                <Label Content="{Binding Check}" Margin="42,505,583,45"/>
                                 <Label  Content="Код Эллаеса"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <TabControl  Margin="0,70,10,80"  SelectedIndex="{Binding SelectedIndex}">
@@ -1323,7 +1323,7 @@
                                     </TabItem>
                                     <TabItem Header="2" Visibility="Collapsed">
                                         <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ellaesVM}}">
-                                            <Label Content="Раскодируйте сообщение:"  Margin="30,52,422,310"/>
+                                            <Label Content="Исправьте ошибки в сообщении:"  Margin="30,52,300,310"/>
                                             <WrapPanel Width="200" Height="200" Margin="30,90,410,100" DataContext="{Binding Array}">
                                                 <TextBox Width="40" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
                                                 <TextBox Width="40" Height="40" Text="{Binding Path=[0][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
@@ -1589,11 +1589,11 @@
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ridMallerVM}}">
                                 <Label  Content="Код Рида-Маллера"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                <Label Content="Правильных ответов:" Margin="0,536,494,14.667"/>
-                                <Label Content="Тест:" Margin="0,506,494,45.667"/>
-                                <Label Content="{Binding Mark}" Margin="158,536,464,14.667"/>
-                                <Label Content="/ 6" Margin="66,505,427,46.667"/>
-                                <Label Content="{Binding Check}" Margin="42,506,580,44.667"/>
+                                <Label Content="Правильных ответов:" Margin="0,535,494,14.667"/>
+                                <Label Content="Тест:" Margin="0,505,494,45.667"/>
+                                <Label Content="{Binding Mark}" Margin="150,535,472,15"/>
+                                <Label Content="/ 6" Margin="60,505,571,47"/>
+                                <Label Content="{Binding Check}" Margin="42,505,599,45"/>
                                 <Button Content="Далее"  Height="30" Width="90" Command="{Binding Next}" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                 <WrapPanel Width="30" Height="330" Margin="576,128,59,123" DataContext="{Binding Array}">
                                     <TextBox Width="30" Height="30" VerticalAlignment="Center" Text="{Binding [0][16]}" HorizontalAlignment="Center"/>
@@ -7911,31 +7911,31 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0" >
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource recurentVM}}" >
                                 <Button Name ="codeR_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="codeR_btn_Click"  />
                                 <Button Name="decodeR_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decodeR_btn_Click"  />
                                 <TabControl Name="codeR_control" HorizontalAlignment="Left" Height="531" VerticalAlignment="Top" Width="655" Margin="0,50,0,0" >
                                     <TabItem Name ="codeR_item"  Header="Code"  Visibility="Collapsed">
                                         <Grid>
                                             <Label  Content="Определите проверочные посылки для сообщения:"  Margin="30,30,271,434" FontSize="14"/>
-                                            <TextBox  IsReadOnly="True" Margin="30,70,285,410" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding OldArray}" IsReadOnly="True" Margin="30,70,285,410" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label  Content="Шаг сложения k = "  Margin="30,145,482,342" FontSize="14"/>
-                                            <TextBox  IsReadOnly="True" Margin="172,140,391,340" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding K}" IsReadOnly="True" Margin="172,140,391,340" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label  Content="Поверочные посылки:"  Margin="30,190,453,303" FontSize="14"/>
-                                            <TextBox   Margin="30,230,285,250"  VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox   Text="{Binding Array}" Margin="30,230,285,250"  VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Button Content="Готово"   Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                         </Grid>
                                     </TabItem>
                                     <TabItem Name ="decodeR_item" Header="Decode" Visibility="Collapsed" >
                                         <Grid>
                                             <Label  Content="Принятное сообщение:"  Margin="30,30,271,434" FontSize="14"/>
-                                            <TextBox  IsReadOnly="True" Margin="30,70,285,410" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox  Text="{Binding OldArray}" IsReadOnly="True" Margin="30,70,285,410" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label  Content="Принятые проверочные посылки:"  Margin="30,120,271,314" FontSize="14"/>
-                                            <TextBox  IsReadOnly="True" Margin="30,156,285,326" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding DecodeArray}"  IsReadOnly="True" Margin="30,156,285,326" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label  Content="Шаг сложения k = "  Margin="30,215,482,270" FontSize="14"/>
-                                            <TextBox  IsReadOnly="True" Margin="172,210,391,270" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox  Text="{Binding K}" IsReadOnly="True" Margin="172,210,391,270" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label  Content="Восстановите исходное сообщение:"  Margin="30,260,219,205" Width="400" FontSize="14"/>
-                                            <TextBox   Margin="30,300,285,180"  VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox Text="{Binding Array}"  Margin="30,300,285,180"  VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Button Content="Готово"   Height="30" Width="90" HorizontalAlignment="Left" Margin="500,450,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                         </Grid>
                                     </TabItem>
@@ -7947,11 +7947,11 @@
                                 <Label  Content="Рекурентный код"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Button Command="{Binding Next}" Name="nextRT_btn" Content="Далее"   Height="30" Width="90" HorizontalAlignment="Left" Margin="509,499,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <Label Content="Правильных ответов:" Margin="0,536,494,14.667"/>
-                                <Label Content="Тест:" Margin="0,506,494,45.667"/>
-                                <Label Content="{Binding Mark}" Margin="158,536,464,14.667"/>
-                                <Label Content="/ 6" Margin="66,505,427,46.667"/>
-                                <Label Content="{Binding Check}" Margin="42,506,580,44.667"/>
+                                <Label Content="Правильных ответов:" Margin="0,535,494,14.667"/>
+                                <Label Content="Тест:" Margin="0,505,494,45.667"/>
+                                <Label Content="{Binding Mark}" Margin="150,535,472,15"/>
+                                <Label Content="/ 6" Margin="60,505,571,47"/>
+                                <Label Content="{Binding Check}" Margin="42,505,599,45"/>
                                 <TabControl Name="RT_control" HorizontalAlignment="Left" Height="424" VerticalAlignment="Top" Width="655" Margin="0,70,0,0" SelectedIndex="{Binding SelectedIndex}">
                                     <TabItem Name ="codeRT_item"  Header="Code"  Visibility="Collapsed">
                                         <Grid>
@@ -7966,13 +7966,13 @@
                                     <TabItem Name ="decodeRT_item" Header="Decode" Visibility="Collapsed" >
                                         <Grid>
                                             <Label  Content="Принятное сообщение:"  Margin="30,30,271,300" FontSize="14"/>
-                                            <TextBox Text="{Binding OldArray}" IsReadOnly="True" Margin="30,70,285,300" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox HorizontalContentAlignment="Center" Text="{Binding OldArray}" IsReadOnly="True" Margin="30,70,285,300" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label  Content="Принятые проверочные посылки:"  Margin="30,120,271,260" FontSize="14"/>
-                                            <TextBox Text="{Binding DecodeArray}" IsReadOnly="True" Margin="30,155,285,215" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox HorizontalContentAlignment="Center" Text="{Binding DecodeArray}" IsReadOnly="True" Margin="30,155,285,215" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label   Content="Шаг сложения k = "  Margin="30,220,482,170" FontSize="14"/>
-                                            <TextBox Text="{Binding K}" IsReadOnly="True" Margin="172,210,391,160" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox HorizontalContentAlignment="Center"  Text="{Binding K}" IsReadOnly="True" Margin="172,210,391,160" VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                             <Label  Content="Восстановите исходное сообщение:"  Margin="30,260,219,130" Width="400" FontSize="14"/>
-                                            <TextBox Text="{Binding Array}"  Margin="30,300,285,70"  VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <TextBox HorizontalContentAlignment="Center" Text="{Binding Array}"  Margin="30,300,285,70"  VerticalContentAlignment="Center" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
                                         </Grid>
                                     </TabItem>
                                 </TabControl>

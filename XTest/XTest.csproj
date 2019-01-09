@@ -65,7 +65,6 @@
     </Compile>
     <Compile Include="ViewModel\AbramsonaCodeViewModel.cs" />
     <Compile Include="ViewModel\BinaryDecimalViewModel.cs" />
-    <Compile Include="ViewModel\EllayesViewModel.cs" />
     <Compile Include="ViewModel\EntropyViewModel.cs" />
     <Compile Include="ViewModel\GreyaViewModel.cs" />
     <Compile Include="ViewModel\CheckByQViewModel.cs" />

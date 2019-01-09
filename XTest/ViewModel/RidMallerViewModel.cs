@@ -134,12 +134,12 @@ namespace XTest.ViewModel
                       Check += 1;
                       if (Check == 7)
                       {
-                          MessageBox.Show("Правильных ответов"+ Mark.ToString() + " из 6");
+                          MessageBox.Show("Правильных ответов "+ Mark.ToString() + " из 6");
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                           Check = 1;
                           if (!results.ContainsKey(TestType.RidMaller))
-                              MainWindow.results.Add(TestType.RidMaller, new Result("Код Ріда Маллера ", 6));
+                              MainWindow.results.Add(TestType.RidMaller, new Result("Код Рида Маллера ", 6));
                           results[TestType.RidMaller].correctTests = Mark;
                           Mark = 0;
                       }

@@ -133,7 +133,7 @@ namespace XTest.ViewModel
                       }
                       else if (Check == 3)
                       {
-                          MessageBox.Show("decode");
+                          
                           var a = _service.Code(arr, k);
                           if (array == _service.Output(a))
                               Mark += 1;
@@ -160,7 +160,7 @@ namespace XTest.ViewModel
                       Check += 1;
                       if (Check == 7)
                       {
-                          MessageBox.Show(Mark.ToString());
+                          MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 6.");
                           Check = 1;
                           if (!results.ContainsKey(TestType.Recurent))
                               MainWindow.results.Add(TestType.Recurent, new Result("Рекурентний код ", 6));

@@ -223,25 +223,25 @@ namespace XTest.ViewModel
                               var r = _service.CountOfTestDigits(columns);
                               if (countOfColumns == columns && countOfExceptions == _service.CountOfFixedExceptions(d)
                               && countOfRaws == _service.CountOfRaws(n, r) && countOfDigits == r)
-                                  MessageBox.Show("yes");
+                                  MessageBox.Show("Правильно!");
                               else
-                                  MessageBox.Show("no");
+                                  MessageBox.Show("Неправильно!");
                               SelectedIndex = 1;
                               break;
                           case 2:
                               if (_service.Equals(_service.GenerateSimpleMatrix(6), SimpleArray) && _service.CheckProdMatrix(B, Array))
-                                  MessageBox.Show("yes");
+                                  MessageBox.Show("Правильно!");
                               else
-                                  MessageBox.Show("no");
+                                  MessageBox.Show("Неправильно!");
                               SelectedIndex = 2;
                               Array = _service.GenerateArr(3);
                               SimpleArray = _service.GenerateSimpleMatrix(6);
                               break;
                           case 3:
                               if (_service.Equals(_service.CodeNum(Array, generateArray), ResultArr))
-                                  MessageBox.Show("yes");
+                                  MessageBox.Show("Правильно!");
                               else
-                                  MessageBox.Show("no");
+                                  MessageBox.Show("Неправильно!");
                               SelectedIndex = 3;
                               Array = _service.GenerateArr(3);
                               SimpleArray = _service.GenerateSimpleMatrix(6);
@@ -249,9 +249,9 @@ namespace XTest.ViewModel
                           case 4:
                               if (_service.Equals(_service.GenerateSimpleMatrix(4), OneSimpleMatrix) &&
                               _service.Equals(_service.HMAtrix(Array), HMatrix))
-                                  MessageBox.Show("yes");
+                                  MessageBox.Show("Правильно!");
                               else
-                                  MessageBox.Show("no");
+                                  MessageBox.Show("Неправильно!");
                               SelectedIndex = 4;
                               Array = _service.HMAtrix(_service.GenerateArr(3));
                               SimpleArray = _service.GenerateSimpleMatrix(4);
@@ -262,9 +262,9 @@ namespace XTest.ViewModel
                               break;
                           case 5:
                               if (_service.Equals(oldArray, ResultArr))
-                                  MessageBox.Show("yes");
+                                  MessageBox.Show("Правильно!");
                               else
-                                  MessageBox.Show("no");
+                                  MessageBox.Show("Неправильно!");
                               check = 0;
                               Initializer();
                               break;
