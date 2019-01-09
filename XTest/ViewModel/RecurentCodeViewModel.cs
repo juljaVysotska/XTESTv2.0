@@ -15,18 +15,28 @@ namespace XTest.ViewModel
     public class RecurentCodeViewModel : INotifyPropertyChanged
     {
         private RelayCommand next;
+        private RelayCommand code;
+        private RelayCommand decode;
         private int check { get; set; }
         private int mark { get; set; }
         private int selectedIndex;
         private int k { get; set; }
+        private int kCode { get; set; }
+        private int kDecode { get; set; }
         private RecurentCode _service { get; set; }
         private string array;
         private string decodeArray;
         private string oldArray;
         private int[] arr;
         private int[][] decodeArr;
+        private string arrayCode;
+        private string oldArrayCode;
+        private int[] arrCode;
+        private int[][] arrayForDecode;
+        private string arrayDecode;
+        private string oldArrayDecode;
+        private string dArray;
 
-       
         Random rand = new Random();
 
         public string Array
@@ -38,7 +48,35 @@ namespace XTest.ViewModel
                 OnPropertyChanged("Array");
             }
         }
+        public string DArray
+        {
+            get { return dArray; }
+            set
+            {
+                dArray = value;
+                OnPropertyChanged("DArray");
+            }
+        }
+        public string ArrayDecode
+        {
+            get { return arrayDecode; }
+            set
+            {
+                arrayDecode = value;
+                OnPropertyChanged("ArrayDecode");
+            }
+        }
 
+
+        public string ArrayCode
+        {
+            get { return arrayCode; }
+            set
+            {
+                arrayCode = value;
+                OnPropertyChanged("ArrayCode");
+            }
+        }
         public string DecodeArray
         {
             get { return decodeArray; }
@@ -60,7 +98,25 @@ namespace XTest.ViewModel
             }
         }
 
+        public string OldArrayDecode
+        {
+            get { return oldArrayDecode; }
+            set
+            {
+                oldArrayDecode = value;
+                OnPropertyChanged("OldArrayDecode");
+            }
+        }
 
+        public string OldArrayCode
+        {
+            get { return oldArrayCode; }
+            set
+            {
+                oldArrayCode = value;
+                OnPropertyChanged("OldArrayCode");
+            }
+        }
         public int K
         {
             get { return k; }
@@ -71,6 +127,26 @@ namespace XTest.ViewModel
             }
         }
 
+        public int KCode
+        {
+            get { return kCode; }
+            set
+            {
+                kCode = value;
+                OnPropertyChanged("KCode");
+            }
+        }
+
+
+        public int KDecode
+        {
+            get { return kDecode; }
+            set
+            {
+                kDecode = value;
+                OnPropertyChanged("KDecode");
+            }
+        }
         public int Mark
         {
             get { return mark; }
@@ -108,11 +184,60 @@ namespace XTest.ViewModel
             Check = 1;
             Mark = 0;
             k = rand.Next(1, 5);
+            kCode = rand.Next(1, 5);
+            kDecode = rand.Next(1, 5);
             arr = _service.GenerateArray(k);
+            arrCode = _service.GenerateArray(kCode);
             oldArray = _service.Output(arr);
+            OldArrayCode = _service.Output(arrCode);
             array = "";
+            arrayCode = "";
+            arrayForDecode = _service.GenerateForDecode(k);
+            DArray = _service.Output(arrayForDecode[1]);
+            OldArrayDecode = _service.Output(arrayForDecode[0]);
+            ArrayDecode = "";
         }
 
+        public RelayCommand Code
+        {
+            get
+            {
+                return code ??
+                    (code = new RelayCommand(obj =>
+                    {
+                        var a = _service.Code(arrCode, kCode);
+                        if (arrayCode == _service.Output(a))
+                            MessageBox.Show("Правильно!");
+                        else
+                            MessageBox.Show("Неправильно!");
+                        KCode = rand.Next(1, 5);
+                        arrCode = _service.GenerateArray(kCode);
+                        OldArrayCode = _service.Output(arrCode);
+                        ArrayCode = "";
+                    }));
+            }
+        }
+        public RelayCommand Decode
+        {
+            get
+            {
+                return decode ??
+                    (decode = new RelayCommand(obj =>
+                    {
+                        var a = _service.Decode(arrayForDecode, kDecode);
+                        if (arrayDecode == _service.Output(a))
+                            MessageBox.Show("Правильно!");
+                        else
+                            MessageBox.Show("Неправильно!");
+
+                        KDecode = rand.Next(1, 5);
+                        arrayForDecode = _service.GenerateForDecode(k);
+                        DArray = _service.Output(arrayForDecode[1]);
+                        OldArrayDecode = _service.Output(arrayForDecode[0]);
+                        ArrayDecode = "";
+                    }));
+            }
+        }
         public RelayCommand Next
         {
             get
