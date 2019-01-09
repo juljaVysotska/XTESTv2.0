@@ -47,6 +47,16 @@ namespace XTest.ViewModel
             }
         }
 
+        public int Check
+        {
+            get { return check; }
+            set
+            {
+                check = value;
+                OnPropertyChanged("Check");
+            }
+        }
+
         public string[] Syndrom
         {
             get { return syndrom; }
@@ -202,7 +212,7 @@ namespace XTest.ViewModel
         {
             _service = new Varshamov();
             Initializer();
-            check = 1;
+            Check = 1;
         }
 
         private void Initializer()
@@ -212,6 +222,10 @@ namespace XTest.ViewModel
             N = random.Next(8, 20);
             D = random.Next(3, 8);
             B = 3;
+            CountOfColumns = 0;
+            CountOfExceptions = 0;
+            CountOfDigits = 0;
+            CountOfRaws = 0;
             SelectedIndex = 0;
             SimpleArray = _service.Array(6, 6);
             Array = _service.Array(6, 4);
@@ -229,7 +243,7 @@ namespace XTest.ViewModel
                 return next ??
                   (next = new RelayCommand(obj =>
                   {
-                      switch (check)
+                      switch (Check)
                       {
                           case 1:
                               var columns = _service.CountOfColumns(n, d);
@@ -276,24 +290,27 @@ namespace XTest.ViewModel
                               _service.Equals(_service.HMAtrix(Array), HMatrix))
                                   Mark += 1;
                               SelectedIndex = 4;
-                              Array = _service.HMAtrix(_service.GenerateArr(3));
+                              var generateArr = _service.GenerateArr(3);
+                              Array = _service.HMAtrix(generateArr);
                               SimpleArray = _service.GenerateSimpleMatrix(4);
-                              ResultArr = _service.GenerateArray(10);
+                              ResultArr = _service.CodeNum(generateArr, _service.GenerateArray(6));
                               oldArray = _service.FuckenCSharp(ResultArr);
                               Syndrom = _service.Syndrom(SimpleArray,Array);
-                              ResultArr[random.Next(0, 10)] = (ResultArr[random.Next(0, 10)] + 1) % 2;
+                              var rand = random.Next(0, 10);
+                              ResultArr[rand] = (ResultArr[rand] + 1) % 2;
                               break;
                           case 7:
                               if (_service.Equals(oldArray, ResultArr))
                                   Mark += 1;
-                              check = 0;
+                              Check = 0;
                               MessageBox.Show(Mark.ToString());
-                              MainWindow.results.Add(TestType.Varshamov, new Result("Код Варшамова ", Mark));
-
+                              if (!results.ContainsKey(TestType.Varshamov))
+                                  MainWindow.results.Add(TestType.Varshamov, new Result("Код Варшамова ", 7));
+                              results[TestType.Varshamov].correctTests = Mark;
                               Initializer();
                               break;
                       }
-                      check += 1;
+                      Check += 1;
                   }));
             }
 

@@ -18,6 +18,7 @@ namespace XTest.ViewModel
         private RelayCommand nextCode;
         private RelayCommand nextDecode;
         private string result;
+        private int selectedIndex;
         private int check { get; set; }
         private int mark { get; set; }
         private EllaesCodeService _service { get; set; }
@@ -63,6 +64,17 @@ namespace XTest.ViewModel
                 OnPropertyChanged("Mark");
             }
         }
+
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged("SelectedIndex");
+            }
+        }
+
         public int[][] ArrayCode
         {
             get { return array; }
@@ -88,7 +100,8 @@ namespace XTest.ViewModel
         public EllaesCodeViewModel()
         {
             EllaesCodeService ellaesCodeService = new EllaesCodeService();
-            check = 1;
+            selectedIndex = 0;
+            Check = 1;
             Mark = 0;
             this._service = ellaesCodeService;
             OldArray = _service.GenerateArray(4, 4);
@@ -99,6 +112,16 @@ namespace XTest.ViewModel
             OldArrayDecode = _service.FuckingCSharp(ArrayDecode);
         }
 
+        public int Check
+        {
+            get { return check; }
+            set
+            {
+                check = value;
+                OnPropertyChanged("Check");
+            }
+        }
+
 
         public RelayCommand Next
         {
@@ -107,7 +130,7 @@ namespace XTest.ViewModel
                 return next ??
                   (next = new RelayCommand(obj =>
                   {
-                      if (check < 4)
+                      if (Check < 4)
                       {
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
@@ -117,15 +140,17 @@ namespace XTest.ViewModel
                           Array = _service.ResizeArray(OldArray);
                           
                       }
-                      else if (check == 4)
+                      else if (Check == 4)
                       {
                           MessageBox.Show("Исправьте ошибки в сообщении:");
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
                               Mark += 1;
 
+                          SelectedIndex = 1;
                           Array = _service.GenerateArrayWithException(4, 4);
                           OldArray = _service.FuckingCSharp(Array);
+                         
                       }
                       else
                       {
@@ -135,14 +160,17 @@ namespace XTest.ViewModel
                           Array = _service.GenerateArrayWithException(4, 4);
                           OldArray = _service.FuckingCSharp(Array);
                       }
-                      check += 1;
-                      if (check == 9)
+                      Check += 1;
+                      if (Check == 9)
                       {
                           MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 8");
                           OldArray = _service.GenerateArray(4, 4);
                           Array = _service.ResizeArray(OldArray);
-                          MainWindow.results.Add(TestType.Ellaes, new Result("Код Эллаеса ", Mark));
-                          check = 1;
+                          SelectedIndex = 0;
+                          if (!results.ContainsKey(TestType.Ellaes))
+                              MainWindow.results.Add(TestType.Ellaes, new Result("Код Эллаеса ", 8));
+                          results[TestType.Ellaes].correctTests = Mark;
+                          Check = 1;
                           Mark = 0;
                       }
                   }));

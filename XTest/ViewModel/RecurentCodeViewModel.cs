@@ -81,6 +81,16 @@ namespace XTest.ViewModel
             }
         }
 
+        public int Check
+        {
+            get { return check; }
+            set
+            {
+                check = value;
+                OnPropertyChanged("Check");
+            }
+        }
+
         public int SelectedIndex
         {
             get { return selectedIndex; }
@@ -95,7 +105,7 @@ namespace XTest.ViewModel
         {
             _service = new RecurentCode();
             SelectedIndex = 0;
-            check = 1;
+            Check = 1;
             Mark = 0;
             k = rand.Next(1, 5);
             arr = _service.GenerateArray(k);
@@ -110,7 +120,7 @@ namespace XTest.ViewModel
                 return next ??
                   (next = new RelayCommand(obj =>
                   {
-                      if (check < 3)
+                      if (Check < 3)
                       {
                           var a = _service.Code(arr, k);
                           if (array == _service.Output(a))
@@ -121,7 +131,7 @@ namespace XTest.ViewModel
                           Array = "";
 
                       }
-                      else if (check == 3)
+                      else if (Check == 3)
                       {
                           MessageBox.Show("decode");
                           var a = _service.Code(arr, k);
@@ -147,12 +157,14 @@ namespace XTest.ViewModel
                           OldArray = _service.Output(decodeArr[0]);
                           Array = "";
                       }
-                      check += 1;
-                      if (check == 7)
+                      Check += 1;
+                      if (Check == 7)
                       {
                           MessageBox.Show(Mark.ToString());
-                          check = 1;
-                          MainWindow.results.Add(TestType.Recurent, new Result("Рекурентний код ", Mark));
+                          Check = 1;
+                          if (!results.ContainsKey(TestType.Recurent))
+                              MainWindow.results.Add(TestType.Recurent, new Result("Рекурентний код ", 6));
+                          results[TestType.Recurent].correctTests = Mark;
                           Mark = 0;
                           K = rand.Next(1, 5);
                           arr = _service.GenerateArray(k);

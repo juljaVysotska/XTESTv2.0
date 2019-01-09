@@ -777,8 +777,11 @@
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource varshamVW}}">
                                 <Button  Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Command="{Binding Next}"  Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="nextVAR_btn_Click" />
-                                <Label Content="Правильных ответов 7/" Margin="0,525,494,26"/>
-                                <Label Content="{Binding Mark}" Margin="158,525,464,26"/>
+                                <Label Content="Правильных ответов:" Margin="0,536,494,14.667"/>
+                                <Label Content="Тест:" Margin="0,506,494,45.667"/>
+                                <Label Content="{Binding Mark}" Margin="158,536,464,14.667"/>
+                                <Label Content="/ 7" Margin="66,505,427,46.667"/>
+                                <Label Content="{Binding Check}" Margin="42,506,580,44.667"/>
                                 <TabControl Margin="0,10,10,80" Name="TestVAR_control"  SelectedIndex="{Binding SelectedIndex}" >
                                     <TabItem Header="1" Visibility="Collapsed" >
                                         <Grid>
@@ -1178,7 +1181,7 @@
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="661">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB"  >
                             <Grid Background="White" Margin="0,0,-15,0">
-                               <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
+                                <ScrollViewer BorderBrush="White" Margin="-2,-2,12,-2">
                                     <RichTextBox BorderBrush="White" IsReadOnly="True" Cursor="Arrow">
                                         <FlowDocument>
                                             <Paragraph TextAlignment="Center" FontSize="24"  FontStyle="Italic" Padding="0,30,0,0">Код Эллайеса. Краткие теоретические сведения.
@@ -1277,16 +1280,19 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест"  Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid>
+                            <Grid DataContext="{Binding Source={StaticResource ellaesVM}}">
                                 <Button Content="Далее" Command="{Binding Next}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <Label Content="Правильных ответов 8/" Margin="20,525,474,26"/>
-                                <Label Content="{Binding Mark}" Margin="177,525,445,26"/>
+                                <Label Content="Правильных ответов:" Margin="0,536,494,14.667"/>
+                                <Label Content="Тест:" Margin="0,506,494,45.667"/>
+                                <Label Content="{Binding Mark}" Margin="158,536,464,14.667"/>
+                                <Label Content="/ 8" Margin="66,505,427,46.667"/>
+                                <Label Content="{Binding Check}" Margin="42,506,580,44.667"/>
                                 <Label  Content="Код Эллаеса"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <TabControl  Margin="0,70,10,80"  SelectedIndex="{Binding SelectedIndex}">
                                     <TabItem Header="1" Visibility="Collapsed">
-                                        <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ellaesVM}}">
-                                             <Label Content="Закодируйте сообщение:" Margin="30,52,422,310"/>
+                                        <Grid  Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ellaesVM}}">
+                                            <Label Content="Закодируйте сообщение:" Margin="30,52,422,310"/>
                                             <WrapPanel Width="200" Height="200" Margin="30,90,410,100" DataContext="{Binding Array}">
                                                 <TextBox IsReadOnly="True" Width="40" Height="40" Text="{Binding Path=[0][0]}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center"/>
                                                 <TextBox IsReadOnly="True" Width="40" Height="40" Text="{Binding Path=[0][1]}" HorizontalContentAlignment="Center" FontSize="14" VerticalContentAlignment="Center"/>
@@ -1583,8 +1589,11 @@
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ridMallerVM}}">
                                 <Label  Content="Код Рида-Маллера"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
-                                <Label Content="Правильных ответов 6/" Margin="0,525,494,26"/>
-                                <Label Content="{Binding Mark}" Margin="158,525,464,26"/>
+                                <Label Content="Правильных ответов:" Margin="0,536,494,14.667"/>
+                                <Label Content="Тест:" Margin="0,506,494,45.667"/>
+                                <Label Content="{Binding Mark}" Margin="158,536,464,14.667"/>
+                                <Label Content="/ 6" Margin="66,505,427,46.667"/>
+                                <Label Content="{Binding Check}" Margin="42,506,580,44.667"/>
                                 <Button Content="Далее"  Height="30" Width="90" Command="{Binding Next}" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
                                 <WrapPanel Width="30" Height="330" Margin="576,128,59,123" DataContext="{Binding Array}">
                                     <TextBox Width="30" Height="30" VerticalAlignment="Center" Text="{Binding [0][16]}" HorizontalAlignment="Center"/>
@@ -7764,7 +7773,7 @@
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <!--Ансамбль-->
                                 <Grid Visibility="{Binding EnsambleVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">
-                                <!--<Grid Visibility="Hidden">-->
+                                    <!--<Grid Visibility="Hidden">-->
                                     <Label Content="Дан ансамбль А, состоящий из N сообщений, в котором: " HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
                                     <Label Content="P(X1) = 1/2" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,118,0,0" VerticalAlignment="Top"/>
                                     <Label Content="P(X2) = 1/4" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="42,148,0,0" VerticalAlignment="Top"/>
@@ -7784,7 +7793,7 @@
                                 </Grid>
                                 <!--Максимальная энтропия-->
                                 <Grid Visibility="{Binding UnconditionalVisibility, Converter={StaticResource BooleanToVisibilityConverter} }">
-                                <!--<Grid Visibility="Visible">-->
+                                    <!--<Grid Visibility="Visible">-->
                                     <Label Content="Алфавит источника состоит из n символов: X1, X2, ... Xn." HorizontalAlignment="Left" Margin="42,87,0,0" VerticalAlignment="Top"/>
                                     <WrapPanel Width="90" Height="240" Margin="82,114,0,207" HorizontalAlignment="Left" >
                                         <TextBox  Width="50" Height="40" Text="{Binding UnconditionalTest[0][0], UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center"  FontSize="14" VerticalContentAlignment="Center" BorderThickness="0"/>
@@ -7938,8 +7947,11 @@
                                 <Label  Content="Рекурентный код"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Button Command="{Binding Next}" Name="nextRT_btn" Content="Далее"   Height="30" Width="90" HorizontalAlignment="Left" Margin="509,499,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <Label Content="Правильных ответов 6/" Margin="0,525,494,26"/>
-                                <Label Content="{Binding Mark}" Margin="157,525,465,26"/>
+                                <Label Content="Правильных ответов:" Margin="0,536,494,14.667"/>
+                                <Label Content="Тест:" Margin="0,506,494,45.667"/>
+                                <Label Content="{Binding Mark}" Margin="158,536,464,14.667"/>
+                                <Label Content="/ 6" Margin="66,505,427,46.667"/>
+                                <Label Content="{Binding Check}" Margin="42,506,580,44.667"/>
                                 <TabControl Name="RT_control" HorizontalAlignment="Left" Height="424" VerticalAlignment="Top" Width="655" Margin="0,70,0,0" SelectedIndex="{Binding SelectedIndex}">
                                     <TabItem Name ="codeRT_item"  Header="Code"  Visibility="Collapsed">
                                         <Grid>
@@ -7969,7 +7981,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            
+
             <TabItem Header="Канальные коды" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9"/>
 
 

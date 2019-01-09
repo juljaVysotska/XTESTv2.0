@@ -86,7 +86,7 @@ namespace XTest.ViewModel
             OldArrayCode = ridMaller.FuckenCSharp(ArrayCode);
             ArrayDecode = _service.RandomMessageDecode(_service.GenerateArray());
             OldArrayDecode = _service.FuckenCSharp(ArrayDecode);
-            check = 1;
+            Check = 1;
             Mark = 0;
         }
 
@@ -103,7 +103,7 @@ namespace XTest.ViewModel
                 return next ??
                   (next = new RelayCommand(obj =>
                   {
-                      if (check < 3)
+                      if (Check < 3)
                       {
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
@@ -113,7 +113,7 @@ namespace XTest.ViewModel
                           OldArray = _service.FuckenCSharp(Array);
 
                       }
-                      else if (check == 3)
+                      else if (Check == 3)
                       {
                           MessageBox.Show("А теперь раскодируйте сообщение!");
                           OldArray = _service.Code(OldArray);
@@ -131,19 +131,31 @@ namespace XTest.ViewModel
                           Array = _service.RandomMessageDecode(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                       }
-                      check += 1;
-                      if (check == 7)
+                      Check += 1;
+                      if (Check == 7)
                       {
                           MessageBox.Show("Правильных ответов"+ Mark.ToString() + " из 6");
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
-                          check = 1;
-                          MainWindow.results.Add(TestType.RidMaller, new Result("Код Ріда Маллера ", Mark));
+                          Check = 1;
+                          if (!results.ContainsKey(TestType.RidMaller))
+                              MainWindow.results.Add(TestType.RidMaller, new Result("Код Ріда Маллера ", 6));
+                          results[TestType.RidMaller].correctTests = Mark;
                           Mark = 0;
                       }
                   }));
             }
 
+        }
+
+        public int Check
+        {
+            get { return check; }
+            set
+            {
+                check = value;
+                OnPropertyChanged("Check");
+            }
         }
 
         public RelayCommand NextCode
