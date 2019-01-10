@@ -6848,14 +6848,8 @@
                                 <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>-->
                                 <Button Command="{Binding NextTest}" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
 
-                                <!--<Label x:Name="Lbl_Task"  Content="Закодируйте сообщение"  Margin="29,112,287.4,437.6"  FontSize="14"  />
--->
-
-                                <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
-                                <Label Content="{Binding TestNumber, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                <Label Content="/ 10" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                <Label Content="{Binding CorrectAnsver, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                
+                                <Label Content="{Binding result.summary}" Height="Auto" Width="Auto" Margin="10,502,150,20"/>
 
                             </Grid>
                         </TabItem>
@@ -6996,11 +6990,7 @@
                                 <TextBox Margin="30,218,88,331" BorderBrush="#4F91FB" Text="{Binding GreyaCodeTest.Result, UpdateSourceTrigger=PropertyChanged}" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
                                 <Button Command="{Binding NextTest}" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
 
-                                <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
-                                <Label Content="{Binding TestNumber, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                <Label Content="/ 10" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                <Label Content="{Binding CorrectAnsver, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="{Binding result.summary}" Height="Auto" Width="Auto" Margin="10,502,150.2,20"/>
 
 
                             </Grid>
@@ -7229,11 +7219,7 @@
 
                                     <Label  Content="Результат"  Margin="30,181,287,368"  FontSize="14"  />
                                     <TextBox Text="{Binding BinaryDecimalCodeTest.Result, UpdateSourceTrigger=PropertyChanged}" Margin="30,218,88,331" BorderBrush="#4F91FB" Padding="5,0,5,0" Style="{DynamicResource RoundConer}" VerticalContentAlignment="Center"/>
-                                    <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
-                                    <Label Content="{Binding TestNumberBinaryDecimal,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                    <Label Content="/ 10" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                    <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                    <Label Content="{Binding CorrectAnsverBinaryDecimal,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                    <Label Content="{Binding result.summary}" Height="Auto" Width="Auto" Margin="10,502,150.4,20"/>
 
 
                                 </Grid>
@@ -7630,7 +7616,7 @@
             <TabItem Header="Энтропия" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource entropyVm}}">
 
-                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="661">
+                    <TabControl SelectedIndex="{Binding EntropySelectedTabIndex}" HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="661">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB"  >
                             <Grid Background="White" Margin="0,0,-15,0">
 
@@ -7918,11 +7904,12 @@
                                     <TextBox Text="{Binding ConditionalResultHYX, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="30" VerticalContentAlignment="Center" Margin="145,390,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="180"/>
                                 </Grid>
                                 <Button Command="{Binding NextTest}"  Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
+                                <Label Content="{Binding result.summary}" Height="Auto" Width="Auto" Margin="10,502,155,20"/>
+                                <!--<Label Content="Тест:" HorizontalAlignment="Left" Margin="30,0,0,68" VerticalAlignment="Bottom"  FontSize="18"/>
                                 <Label Content="{Binding TestNumber, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="80,480,0,0" VerticalAlignment="Top" FontSize="18"/>
                                 <Label Content="/ 6" HorizontalAlignment="Left" Margin="100,480,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>
-                                <Label Content="{Binding CorrectAnsver, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>
+                                <Label Content="Правильных: " HorizontalAlignment="Left" Margin="30,511,0,0" VerticalAlignment="Top" FontSize="18"/>-->
+                                <!--<Label Content="{Binding CorrectAnsver, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="150,511,0,0" VerticalAlignment="Top" FontSize="18"/>-->
 
                             </Grid>
                         </TabItem>

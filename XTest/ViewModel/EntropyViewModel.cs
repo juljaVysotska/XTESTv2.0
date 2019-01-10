@@ -134,21 +134,19 @@ namespace XTest.ViewModel
 
 		public int TestNumber
 		{
-			get { return result.mark; }
+			get { return result.currentTestNumber; }
 			set
 			{
-				testNumber = value;
-				OnPropertyChanged("TestNumber");
+				
 			}
 		}
 
 		public int CorrectAnsver
 		{
-			get { return result.mark; }
+			get { return result.correctTests; }
 			set
 			{
-				correctAnsver = value;
-				OnPropertyChanged("CorrectAnsver");
+
 			}
 		}
 
@@ -160,12 +158,11 @@ namespace XTest.ViewModel
 			}
 			set
 			{
-				//TestNumber = 1;
-				//CorrectAnsver = 0;
-				//testMode = TestMode.Encoding;
-				//TestTask = "Закодируйте сообщение";
+
+				EnsembleTest = codeService.generateEnsemble();
+				UnconditionalTest = codeService.generateUnconditional();
+				ConditionalTest = codeService.generateConditional();
 				OnPropertyChanged("GreyaSelectedTabIndex");
-				//GreyaCodeTest.Message = codeService.generateLine(11);
 				selectedIndex = value;
 			}
 		}
@@ -320,31 +317,43 @@ namespace XTest.ViewModel
 						if (testMode == TestMode.Encoding)
 						{
 							int encode = codeService.getInformationCount(EnsembleTest);
-							int result;
-							int.TryParse(EnsembleResult, out result);
-							CorrectAnsver += result == encode ? 1 : 0;
+							int resultt;
+							int.TryParse(EnsembleResult, out resultt);
+							if (resultt == encode)
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsver += result == encode ? 1 : 0;
 						}
 						else if (testMode == TestMode.Decoding)
 						{
 							double encode = codeService.getHX(UnconditionalTest);
 							double encodeMax = codeService.getMaxHX(UnconditionalTest);
-							double result;
+							double resultt;
 							double resultMax;
-							double.TryParse(UnconditionalResultHX, out result);
+							double.TryParse(UnconditionalResultHX, out resultt);
 							double.TryParse(UnconditionalResultHMaxX, out resultMax);
-							CorrectAnsver += (encode == result && encodeMax == resultMax) ? 1 : 0;
+							if (resultt == encode && encodeMax == resultMax)
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsver += (encode == result && encodeMax == resultMax) ? 1 : 0;
 						}
 						else if (testMode == TestMode.Default)
 						{
 							double encode = codeService.getHYX(ConditionalTest);
-							double result;
-							double.TryParse(ConditionalResultHYX, out result);
-							CorrectAnsver += encode == result ? 1 : 0;
+							double resultt;
+							double.TryParse(ConditionalResultHYX, out resultt);
+							if (encode == resultt)
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsver += encode == result ? 1 : 0;
 						}
 						EnsembleResult = "";
 						UnconditionalResultHX = "";
 						UnconditionalResultHMaxX = "";
-						if (testNumber >= 3 && testNumber < 5)
+						if (TestNumber >= 4 && TestNumber < 6)
 						{
 							testMode = TestMode.Decoding;
 							EnsambleVisibility = false;
@@ -352,7 +361,7 @@ namespace XTest.ViewModel
 						}
 						else
 							EnsembleTest = codeService.generateEnsemble();
-						if (testNumber >= 5)
+						if (TestNumber >= 6)
 						{
 							testMode = TestMode.Default;
 							UnconditionalVisibility = false;
@@ -363,21 +372,31 @@ namespace XTest.ViewModel
 							UnconditionalTest = codeService.generateUnconditional();
 						//else
 						//	GreyaCodeTest.Message = codeService.generateLine(11);
-						TestNumber++;
-						if (testNumber >= 7)
+						if (TestNumber >= 7)
 						{
-							TestNumber = 1;
-							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 6");
-							if (!MainWindow.results.ContainsKey(TestType.Entropy))
+							//TestNumber = 1;
+							if (MessageBox.Show("Правильных ответов " + result.correctTests + " из " + result.testsTotal + ". Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
 							{
-								MainWindow.results.Add(TestType.Entropy, new Result("Энтропия", 10));
+								result.Reset();
+								EnsambleVisibility = true;
+								UnconditionalVisibility = false;
+								ConditionalVisibility = false;
+								testMode = TestMode.Encoding;
+								EnsembleTest = codeService.generateEnsemble();
+								UnconditionalTest = codeService.generateUnconditional();
+								ConditionalTest = codeService.generateConditional();
 							}
-							MainWindow.results[TestType.Entropy].correctTests = correctAnsver;
-							CorrectAnsver = 0;
-							EnsambleVisibility = true;
-							UnconditionalVisibility = false;
-							ConditionalVisibility = false;
-							testMode = TestMode.Encoding;
+							//	MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 6");
+							//if (!MainWindow.results.ContainsKey(TestType.Entropy))
+							//{
+							//	MainWindow.results.Add(TestType.Entropy, new Result("Энтропия", 10));
+							//}
+							//MainWindow.results[TestType.Entropy].correctTests = correctAnsver;
+							//CorrectAnsver = 0;
+							//EnsambleVisibility = true;
+							//UnconditionalVisibility = false;
+							//ConditionalVisibility = false;
+							//testMode = TestMode.Encoding;
 						}
 					}));
 			}
