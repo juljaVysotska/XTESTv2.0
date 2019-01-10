@@ -10,6 +10,7 @@
     <Window.Resources>
         <local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
         <local:EllaesCodeViewModel x:Key="ellaesVM"></local:EllaesCodeViewModel>
+        <local:BergerViewModel x:Key="bergerVM"></local:BergerViewModel>
         <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
@@ -1679,7 +1680,7 @@
 
             <TabItem x:Name="HemmingCode" Header="Код Хэмминга(Систематический)" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
-                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656" SelectionChanged="TabControl_Berger_SelectionChanged">
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Grid.ColumnDefinitions>
@@ -7247,7 +7248,7 @@
             </TabItem>
             <TabItem Header="Код Бергера" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
-                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656" SelectionChanged="TabControl_Berger_SelectionChanged">
+                    <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
                         <TabItem Header="Теория" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0">
 
@@ -7299,26 +7300,42 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Практика" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                            <Grid Background="White" Margin="0,0,-15,0">
-                                <Button Name ="codeBerger_btn" Content="Кодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="code_Berger_btn_Click"/>
-                                <Button Name="decodeBerger_btn" Content="Декодировка"  Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="decode_Berger_btn_Click"/>
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource bergerVM}}">
+                                <Button Content="Кодировка" Command="{Binding ModeCode}" Height="30" Width="120" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Button Content="Декодировка" Command="{Binding ModeDecode}" Height="30" Width="120" HorizontalAlignment="Left" Margin="506,10,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <TabControl  Margin="0,90,10,32"  SelectedIndex="{Binding SelectedIndex}">
+                                    <TabItem Header="Code" Visibility="Collapsed">
+                                        <Grid Background="White" Margin="0,0,-15,6">
+                                            <Button Content="Далее" Command="{Binding NextCode}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="528,357,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                            <TextBox Text="{Binding taskCodeResult}" Height="30" Margin="10,110,436,260" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <Label Content="Результат:"  Margin="10,95,456,291"  FontSize="14"  />
+                                            <Label Content="{Binding taskCode}"  Margin="10,40,306,344"  FontSize="14"  />
+                                            <Label Content="Закодируйте сообщение:"  Margin="10,10,307,374"  FontSize="14"  />
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="Decode" Visibility="Collapsed">
+                                        <Grid  Background="White" Margin="0,0,-15,0">
+                                            <Button Content="Далее" Command="{Binding NextDecode}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="528,357,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                            <TextBox Text="{Binding taskDecodeResult}" Height="30" Margin="10,110,436,260" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            <Label Content="Результат:"  Margin="10,95,456,291"  FontSize="14"  />
+                                            <Label Content="{Binding taskDecode}"  Margin="10,40,306,344"  FontSize="14"  />
+                                            <Label Content="Раскодируйте сообщение:"  Margin="10,10,307,374"  FontSize="14"  />
+                                        </Grid>
+                                    </TabItem>
+                                </TabControl>
                                 <Label  Content="Код Бергера"  Margin="30,30,417,506"  FontSize="24"/>
-                                <Button x:Name="ButtonBergerNext_Practice" Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="ButtonBergerNext_Practice_Click"/>
-                                <TextBox x:Name="txbBergerResult_Practice" Margin="30,198,415.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <Label  Content="Результат:"  Margin="30,165,436.2,383.6"  FontSize="14"  />
-                                <Label x:Name="lblTask_Practice"  Content="Пример"  Margin="29,112,287.2,437.6"  FontSize="14"  />
-                                <Label x:Name="lblBergerTaskExplanation_Practice"  Content="Закодируйте сообщение"  Margin="30,80,286.8,469"  FontSize="14"  />
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" Margin="0,-1,0,1.4" VerticalAlignment="Bottom">
+                        <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB" Margin="0,-1,0,1.4" VerticalAlignment="Bottom" DataContext="{Binding Source={StaticResource bergerVM}}">
                             <Grid Background="White" Margin="0,0,-15,0">
                                 <Label  Content="Код Бергера"  Margin="30,30,417,506"  FontSize="24"/>
+                                <Label Content="{Binding result.summary}" Height="Auto" Width="Auto" Margin="10,502,140,20"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Label x:Name="lblBergerTaskExplanation"  Content="Закодируйте сообщение"  Margin="30,80,287,469"  FontSize="14"  />
                                 <Label  Content="Результат:"  Margin="30,165,436.4,383.6"  FontSize="14"  />
-                                <TextBox x:Name="txbBergerResult" Margin="30,198,416.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
-                                <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="Button_Berger_Next_Click"/>
-                                <Label x:Name="lblBergerTask"  Content="Закодируйте сообщение"  Margin="29,112,287.4,437.6"  FontSize="14"  />
+                                <TextBox x:Name="txbBergerResult" Text="{Binding taskResult}" Margin="30,198,416.4,350.6" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                <Button Content="Далее" Command="{Binding Next}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
+                                <Label x:Name="lblBergerTask"  Content="{Binding task}"  Margin="29,112,287.4,437.6"  FontSize="14"  />
                             </Grid>
                         </TabItem>
                     </TabControl>

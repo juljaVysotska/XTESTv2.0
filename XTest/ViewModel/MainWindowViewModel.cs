@@ -14,6 +14,7 @@ namespace XTest.ViewModel
 		public GreyaViewModel greyavm { get; set; }
 		public BinaryDecimalViewModel bdvm { get; set; }
         EllaesCodeViewModel viewModel { get; set; }
+        BergerViewModel bergerViewModel { get; set; }
         RidMallerViewModel mallerViewModel { get; set; }
         CheckByQViewModel checkByQ { get; set; }
         RecurentCodeViewModel recurentVM { get; set; }

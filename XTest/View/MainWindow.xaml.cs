@@ -55,116 +55,6 @@ namespace XTest
             RefreshResults();
         }
 
-        #region Berger
-        bool bergerPracticeEncode = true;
-        private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (!results.ContainsKey(TestType.Berger))
-            {
-                results.Add(TestType.Berger, new Result("Код Бергера", 6));
-            }
-            TabControl tabControl = (TabControl)sender;
-            if (tabControl.SelectedIndex == 2)
-            {
-                GenerateBergerTest();
-            }
-            else if (tabControl.SelectedIndex == 1)
-            {
-                GenerateBergerPractice();
-            }
-        }
-
-        private void GenerateBergerPractice()
-        {
-            if (bergerPracticeEncode)
-            {
-                lblBergerTaskExplanation_Practice.Content = "Зашифруйте:";
-                lblTask_Practice.Content = BergerService.generateEncode();
-            }
-            else
-            {
-                lblBergerTaskExplanation_Practice.Content = "Расшифруйте:";
-                lblTask_Practice.Content = BergerService.generateDecode();
-            }
-        }
-
-        private void GenerateBergerTest()
-        {
-            Result result = results[TestType.Berger];
-            if (result.currentTestNumber <= 3)
-            {
-                lblBergerTaskExplanation.Content = "Зашифруйте:";
-                lblBergerTask.Content = BergerService.generateEncode();
-            }
-            else if (result.currentTestNumber > 3 && result.currentTestNumber < 7)
-            {
-                lblBergerTaskExplanation.Content = "Расшифруйте:";
-                lblBergerTask.Content = BergerService.generateDecode();
-            }
-            else
-            {
-                if (MessageBox.Show("Вы закончили этот тест! Ваш балл: " + result.mark + ". Хотите попробовать ещё?", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    result.Reset();
-                    GenerateBergerTest();
-                }
-            }
-        }
-
-        private void Button_Berger_Next_Click(object sender, RoutedEventArgs e)
-        {
-            Result result = results[TestType.Berger];
-            if (result.currentTestNumber <= 6)
-            {
-                if (result.currentTestNumber <= 3 ?
-                    BergerService.isEncodedCorrectly(lblBergerTask.Content.ToString(), txbBergerResult.Text) :
-                    BergerService.isDecodedCorrectly(lblBergerTask.Content.ToString(), txbBergerResult.Text))
-                {
-                    MessageBox.Show("Правильно!");
-                    txbBergerResult.Text = "";
-                    result.CorrectAnswer();
-                }
-                else
-                {
-                    MessageBox.Show("Не правильно! Ответ: " + (result.currentTestNumber <= 3 ?
-                        BergerService.encode(lblBergerTask.Content.ToString()) :
-                        BergerService.decode(lblBergerTask.Content.ToString())));
-                    txbBergerResult.Text = "";
-                    result.WrongAnswer();
-                }
-                GenerateBergerTest();
-            }
-        }
-
-        private void code_Berger_btn_Click(object sender, RoutedEventArgs e)
-        {
-            bergerPracticeEncode = true;
-            GenerateBergerPractice();
-        }
-
-        private void decode_Berger_btn_Click(object sender, RoutedEventArgs e)
-        {
-            bergerPracticeEncode = false;
-            GenerateBergerPractice();
-        }
-
-        private void ButtonBergerNext_Practice_Click(object sender, RoutedEventArgs e)
-        {
-            if (bergerPracticeEncode ?
-                    BergerService.isEncodedCorrectly(lblTask_Practice.Content.ToString(), txbBergerResult_Practice.Text) :
-                    BergerService.isDecodedCorrectly(lblTask_Practice.Content.ToString(), txbBergerResult_Practice.Text))
-            {
-                MessageBox.Show("Правильно!");
-            }
-            else
-            {
-                MessageBox.Show("Не правильно! Ответ: " + (bergerPracticeEncode ?
-                    BergerService.encode(lblTask_Practice.Content.ToString()) :
-                    BergerService.decode(lblTask_Practice.Content.ToString())));
-            }
-        }
-        #endregion
-
         #region Shennon-Fano
 
         List<ShennonFanoDto> ShennonMessages = new List<ShennonFanoDto>();
@@ -898,5 +788,6 @@ namespace XTest
         }
 
         #endregion
+        
     }
 }

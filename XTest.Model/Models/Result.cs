@@ -115,7 +115,7 @@ namespace XTest.Model.Models
         {
             correctTests = 0;
             currentTestNumber = 1;
-            _startTime = DateTime.Now;
+            _startTime = new DateTime();
             _endTime = new DateTime();
             attempts += 1;
         }
