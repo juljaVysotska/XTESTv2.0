@@ -1282,11 +1282,7 @@
                         <TabItem Header="Тест"  Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid DataContext="{Binding Source={StaticResource ellaesVM}}">
                                 <Button Content="Далее" Command="{Binding Next}"  Height="30" Width="90" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                <Label Content="Правильных ответов:" Margin="0,535,494,14.667"/>
-                                <Label Content="Тест:" Margin="0,505,494,45.667"/>
-                                <Label Content="{Binding Mark}" Margin="150,535,472,15"/>
-                                <Label Content="/ 8" Margin="60,505,565,47"/>
-                                <Label Content="{Binding Check}" Margin="42,505,583,45"/>
+                                <Label Content="{Binding result.summary}" Height="Auto" Width="Auto" Margin="10,502,140,20"/>
                                 <Label  Content="Код Эллаеса"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <TabControl  Margin="0,70,10,80"  SelectedIndex="{Binding SelectedIndex}">
@@ -1586,7 +1582,7 @@
                             </Grid>
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
-                                <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ridMallerVM}}">
+                            <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource ridMallerVM}}">
                                 <Label  Content="Код Рида-Маллера"  Margin="30,30,417,506"  FontSize="24"/>
                                 <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="307,10,10,539"  FontSize="14" Foreground="#4F91FB" />
                                 <Label Content="Правильных ответов:" Margin="0,535,494,14.667"/>
@@ -1595,8 +1591,8 @@
                                 <Label Content="/ 6" Margin="60,505,571,47"/>
                                 <Label Content="{Binding Check}" Margin="42,505,599,45"/>
                                 <Button Content="Далее"  Height="30" Width="90" Command="{Binding Next}" HorizontalAlignment="Left" Margin="516,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}"/>
-                                
-                                    <TabControl Margin="0,70,10,80"  SelectedIndex="{Binding SelectedIndex}">
+
+                                <TabControl Margin="0,70,10,80"  SelectedIndex="{Binding SelectedIndex}">
                                     <TabItem Header="1" Visibility="Collapsed">
                                         <Grid>
                                             <Label Content="Закодируйте сообщение:" Margin="35,0,441,366"/>
@@ -1674,7 +1670,7 @@
                                         </Grid>
                                     </TabItem>
                                 </TabControl>
-                                </Grid>
+                            </Grid>
                         </TabItem>
                     </TabControl>
                 </Grid>

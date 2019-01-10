@@ -199,7 +199,7 @@ namespace XTest
             if (result.currentTestNumber <= 3)
             {
                 ShennonMessages = ShennonFanoService.generateMessages();
-                Resources[TestType.ShennonFano] = ShennonMessages;
+                Resources["ShennonTask"] = ShennonMessages;
             }
             else
             {
@@ -569,6 +569,8 @@ namespace XTest
         int testnumber;
         int correctanswers;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private void GridFayr_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -852,7 +854,23 @@ namespace XTest
                     {
                         using (fsin)
                         {
-                            results = (Dictionary<TestType, Result>)bf.Deserialize(fsin);
+                            var loadedData = (Dictionary<TestType, Result>)bf.Deserialize(fsin);
+                            foreach (var test in loadedData)
+                            {
+                                if (results.ContainsKey(test.Key))
+                                {
+                                    results[test.Key].MapFrom(test.Value);
+                                }
+                                else
+                                {
+                                    results.Add(test.Key, test.Value);
+                                }
+                            }
+                            var toDel = results.Where(k => !loadedData.ContainsKey(k.Key)).ToList();
+                            foreach (var r in toDel)
+                            {
+                                results.Remove(r.Key);
+                            }
                         }
                         RefreshResults();
                         MessageBox.Show("Результаты загружены успешно!");
@@ -870,7 +888,7 @@ namespace XTest
 
         private void RefreshResults()
         {
-            CollectionViewSource.GetDefaultView(results).Refresh();
+            //CollectionViewSource.GetDefaultView(results).Refresh();
             Resources["ResultMarks"] = results;
         }
 
