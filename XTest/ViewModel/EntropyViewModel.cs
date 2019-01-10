@@ -53,6 +53,25 @@ namespace XTest.ViewModel
 		private RelayCommand setConditional;
 		private RelayCommand checkPractice;
 
+		public Result result
+		{
+			get
+			{
+				Result res;
+				if (!results.ContainsKey(TestType.Entropy))
+				{
+					res = new Result("Энтропия", 6);
+					results.Add(TestType.Entropy, res);
+				}
+				else
+				{
+					res = results[TestType.Entropy];
+				}
+				return res;
+			}
+			private set { }
+		}
+
 		public bool EnsambleVisibility
 		{
 			get { return ensambleVisibility; }
@@ -115,7 +134,7 @@ namespace XTest.ViewModel
 
 		public int TestNumber
 		{
-			get { return testNumber; }
+			get { return result.mark; }
 			set
 			{
 				testNumber = value;
@@ -125,7 +144,7 @@ namespace XTest.ViewModel
 
 		public int CorrectAnsver
 		{
-			get { return correctAnsver; }
+			get { return result.mark; }
 			set
 			{
 				correctAnsver = value;
