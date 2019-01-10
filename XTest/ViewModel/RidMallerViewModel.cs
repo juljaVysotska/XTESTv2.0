@@ -24,6 +24,7 @@ namespace XTest.ViewModel
         private int[][] OldArrayCode { get; set; }
         private int[][] OldArrayDecode { get; set; }
         private int selectedIndex;
+        
 
         public int SelectedIndex
         {
@@ -78,14 +79,41 @@ namespace XTest.ViewModel
 
         public int Mark
         {
-            get { return mark; }
-            set
+            get
             {
-                mark = value;
-                OnPropertyChanged("Mark");
+                return result.mark;
             }
+            
         }
 
+        public Result result
+        {
+            get
+            {
+                Result res;
+                if (!results.ContainsKey(TestType.RidMaller))
+                {
+                    res = new Result("Код Рида-Маллера", 6);
+                    results.Add(TestType.RidMaller, res);
+                }
+                else
+                {
+                    res = results[TestType.RidMaller];
+                }
+                return res;
+            }
+            private set { }
+        }
+
+        public int Check
+        {          
+            get
+            {
+                return result.currentTestNumber;
+            }
+            
+        }
+ 
         public RidMallerViewModel()
         {
             var ridMaller = new RidMallerService();
@@ -96,8 +124,7 @@ namespace XTest.ViewModel
             OldArrayCode = ridMaller.FuckenCSharp(ArrayCode);
             ArrayDecode = _service.RandomMessageDecode(_service.GenerateArray());
             OldArrayDecode = _service.FuckenCSharp(ArrayDecode);
-            Check = 1;
-            Mark = 0;
+            
         }
 
 
@@ -117,7 +144,9 @@ namespace XTest.ViewModel
                       {
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
-                              Mark += 1;
+                              result.CorrectAnswer();
+                          else
+                              result.WrongAnswer();
 
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
@@ -125,49 +154,41 @@ namespace XTest.ViewModel
                       }
                       else if (Check == 3)
                       {
-                         
+
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
-                              Mark += 1;
+                              result.CorrectAnswer();
+                          else
+                              result.WrongAnswer();
                           SelectedIndex = 1;
                           Array = _service.RandomMessageDecode(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                       }
-                      else
+                      else if (Check <= 6)
                       {
                           OldArray = _service.Decode(OldArray);
                           if (_service.Equals(OldArray, Array))
-                              Mark += 1;
+                              if (_service.Equals(OldArray, Array))
+                                  result.CorrectAnswer();
+                              else
+                                  result.WrongAnswer();
                           Array = _service.RandomMessageDecode(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                       }
-                      Check += 1;
-                      if (Check == 7)
+
+                      if (Check >= 7)
                       {
-                          MessageBox.Show("Правильных ответов "+ Mark.ToString() + " из 6");
+                          if (MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 6. Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                          result.Reset();
                           Array = _service.RandomMessage(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
-                          Check = 1;
-                          SelectedIndex = 0;
-                          if (!results.ContainsKey(TestType.RidMaller))
-                              MainWindow.results.Add(TestType.RidMaller, new Result("Код Рида Маллера ", 6));
-                          results[TestType.RidMaller].correctTests = Mark;
-                          Mark = 0;
+                         
                       }
-                  }));
-            }
-
-        }
-
-        public int Check
-        {
-            get { return check; }
-            set
-            {
-                check = value;
-                OnPropertyChanged("Check");
+                  }
+                  ));
             }
         }
+
 
         public RelayCommand NextCode
         {
