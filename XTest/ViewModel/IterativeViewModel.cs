@@ -36,6 +36,25 @@ namespace XTest.ViewModel
 		private RelayCommand setDecoding;
 		private RelayCommand checkPractice;
 
+		public Result result
+		{
+			get
+			{
+				Result res;
+				if (!results.ContainsKey(TestType.Iterative))
+				{
+					res = new Result("Итеративный Код", 10);
+					results.Add(TestType.Iterative, res);
+				}
+				else
+				{
+					res = results[TestType.Iterative];
+				}
+				return res;
+			}
+			private set { }
+		}
+
 		public bool MainArrReadOnlyPractice
 		{
 			get { return mainArrReadOnlyPractice; }
@@ -79,21 +98,19 @@ namespace XTest.ViewModel
 
 		public int TestNumber
 		{
-			get { return testNumber; }
+			get { return result.currentTestNumber; }
 			set
 			{
-				testNumber = value;
-				OnPropertyChanged("TestNumber");
+
 			}
 		}
 
 		public int CorrectAnsver
 		{
-			get { return correctAnsver; }
+			get { return result.correctTests; }
 			set
 			{
-				correctAnsver = value;
-				OnPropertyChanged("CorrectAnsver");
+
 			}
 		}
 
@@ -145,10 +162,10 @@ namespace XTest.ViewModel
 			}
 			set
 			{
-				TestNumber = 1;
-				CorrectAnsver = 0;
-				testMode = TestMode.Encoding;
-				TestTask = "Закодируйте сообщение";
+				//TestNumber = 1;
+				//CorrectAnsver = 0;
+				//testMode = TestMode.Encoding;
+				//TestTask = "Закодируйте сообщение";
 				IterativeCodeTest.Q = codeService.getRandomQ();
 				IterativeCodeTest.IntArray = codeService.GenerateArray();
 				IterativeCodeTest.ArrayCode = setArray(IterativeCodeTest.IntArray);
@@ -178,14 +195,22 @@ namespace XTest.ViewModel
 						if (testMode == TestMode.Encoding)
 						{
 							int[][] encode = codeService.encodeArr(IterativeCodeTest.IntArray, IterativeCodeTest.Q);
-							CorrectAnsver += equalsArr(codearr, encode) ? 1 : 0;
+							if (equalsArr(codearr, encode))
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsver += equalsArr(codearr, encode) ? 1 : 0;
 						}
 						else if (testMode == TestMode.Decoding)
 						{
 							//string decode = codeService.decode(GreyaCodeTest.Message);
-							CorrectAnsver += equalsArr(codearr, codeService.encodeArr(IterativeCodeTest.IntArray, IterativeCodeTest.Q)) ? 1 : 0;
+							if (equalsArr(codearr, codeService.encodeArr(IterativeCodeTest.IntArray, IterativeCodeTest.Q)))
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsver += equalsArr(codearr, codeService.encodeArr(IterativeCodeTest.IntArray, IterativeCodeTest.Q)) ? 1 : 0;
 						}
-						if (testNumber >= 5)
+						if (TestNumber >= 6)
 						{
 							testMode = TestMode.Decoding;
 							TestTask = "Исправить ошибки";
@@ -201,23 +226,19 @@ namespace XTest.ViewModel
 							IterativeCodeTest.IntArray = codeService.GenerateArray();
 							IterativeCodeTest.ArrayCode = setArray(IterativeCodeTest.IntArray);
 						}
-						TestNumber++;
-						if (testNumber >= 11)
+						if (TestNumber >= 11)
 						{
-							IterativeCodeTest.IntArray = codeService.GenerateArray();
-							IterativeCodeTest.ArrayCode = setArray(IterativeCodeTest.IntArray);
-							TestNumber = 1;
-							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 10");
-							if (!MainWindow.results.ContainsKey(TestType.Iterative))
+							if (MessageBox.Show("Правильных ответов " + result.correctTests + " из " + result.testsTotal + ". Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
 							{
-								MainWindow.results.Add(TestType.Iterative, new Result("Итеративный Код", 10));
+								result.Reset();
+								IterativeCodeTest.IntArray = codeService.GenerateArray();
+								IterativeCodeTest.ArrayCode = setArray(IterativeCodeTest.IntArray);
+								testMode = TestMode.Encoding;
+								TestTask = "Закодируйте сообщение";
+								MainArrReadOnlyTest = true;
+								AdditionalArrReadOnlyTest = false;
 							}
-							MainWindow.results[TestType.Iterative].correctTests = correctAnsver;
-							CorrectAnsver = 0;
-							testMode = TestMode.Encoding;
-							TestTask = "Закодируйте сообщение";
-							MainArrReadOnlyTest = true;
-							AdditionalArrReadOnlyTest = false;
+							
 						}
 					}));
 			}
