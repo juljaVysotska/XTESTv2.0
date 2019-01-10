@@ -154,20 +154,19 @@ namespace XTest.ViewModel
                       }
                       else if (Check == 3)
                       {
-
+                        SelectedIndex = 1;
                           OldArray = _service.Code(OldArray);
                           if (_service.Equals(OldArray, Array))
                               result.CorrectAnswer();
                           else
                               result.WrongAnswer();
-                          SelectedIndex = 1;
+                          
                           Array = _service.RandomMessageDecode(_service.GenerateArray());
                           OldArray = _service.FuckenCSharp(Array);
                       }
                       else if (Check <= 6)
                       {
                           OldArray = _service.Decode(OldArray);
-                          if (_service.Equals(OldArray, Array))
                               if (_service.Equals(OldArray, Array))
                                   result.CorrectAnswer();
                               else
