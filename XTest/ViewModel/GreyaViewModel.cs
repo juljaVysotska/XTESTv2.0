@@ -32,27 +32,44 @@ namespace XTest.ViewModel
         private RelayCommand setDecoding;
         private RelayCommand checkPractice;
 
-        public int TestNumber
-        {
-            get { return testNumber; }
-            set
-            {
-                testNumber = value;
-                OnPropertyChanged("TestNumber");
-            }
-        }
+		public Result result
+		{
+			get
+			{
+				Result res;
+				if (!results.ContainsKey(TestType.Greya))
+				{
+					res = new Result("Код Грея", 10);
+					results.Add(TestType.Greya, res);
+				}
+				else
+				{
+					res = results[TestType.Greya];
+				}
+				return res;
+			}
+			private set { }
+		}
 
-        public int CorrectAnsver
-        {
-            get { return correctAnsver; }
-            set
-            {
-                correctAnsver = value;
-                OnPropertyChanged("CorrectAnsver");
-            }
-        }
+		public int TestNumber
+		{
+			get { return result.currentTestNumber; }
+			set
+			{
 
-        public string TestTask
+			}
+		}
+
+		public int CorrectAnsver
+		{
+			get { return result.correctTests; }
+			set
+			{
+
+			}
+		}
+
+		public string TestTask
         {
             get { return testTask; }
             set
@@ -100,10 +117,10 @@ namespace XTest.ViewModel
             }
             set
             {
-                TestNumber = 1;
-                CorrectAnsver = 0;
-                testMode = TestMode.Encoding;
-                TestTask = "Закодируйте сообщение";
+                //TestNumber = 1;
+                //CorrectAnsver = 0;
+                //testMode = TestMode.Encoding;
+                //TestTask = "Закодируйте сообщение";
                 OnPropertyChanged("GreyaSelectedTabIndex");
 				GreyaCodeTest.Message = codeService.generateLine(11);
 				selectedIndex = value;
@@ -120,15 +137,23 @@ namespace XTest.ViewModel
                         if (testMode == TestMode.Encoding)
                         {
                             string encode = codeService.encode(GreyaCodeTest.Message);
-                            CorrectAnsver += GreyaCodeTest.Result.Equals(encode) ? 1 : 0;
+							if (GreyaCodeTest.Result.Equals(encode))
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsver += GreyaCodeTest.Result.Equals(encode) ? 1 : 0;
                         }
                         else if (testMode == TestMode.Decoding)
                         {
                             string decode = codeService.decode(GreyaCodeTest.Message);
-                            CorrectAnsver += GreyaCodeTest.Result.Equals(decode) ? 1 : 0;
+							if (GreyaCodeTest.Result.Equals(decode))
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsver += GreyaCodeTest.Result.Equals(decode) ? 1 : 0;
                         }
                         GreyaCodeTest.Result = "";
-                        if (testNumber >= 5)
+                        if (TestNumber >= 6)
                         {
                             testMode = TestMode.Decoding;
                             TestTask = "Декодируйте сообщение";
@@ -136,20 +161,16 @@ namespace XTest.ViewModel
                         }
                         else
                             GreyaCodeTest.Message = codeService.generateLine(11);
-                        TestNumber++;
-                        if (testNumber >= 11)
+                        if (TestNumber >= 11)
                         {
-							TestNumber = 1;
-							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 10");
-							if (!MainWindow.results.ContainsKey(TestType.Greya))
+							if (MessageBox.Show("Правильных ответов " + result.correctTests + " из " + result.testsTotal + ". Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
 							{
-								MainWindow.results.Add(TestType.Greya, new Result("Код Грея", 10));
-							}
-							MainWindow.results[TestType.Greya].correctTests = correctAnsver;
-							GreyaCodeTest.Message = codeService.generateLine(11);
-                            CorrectAnsver = 0;
-                            testMode = TestMode.Encoding;
-                            TestTask = "Закодируйте сообщение";
+								result.Reset();
+								GreyaCodeTest.Message = codeService.generateLine(11);
+								testMode = TestMode.Encoding;
+								TestTask = "Закодируйте сообщение";
+							}							
+							
                         }
                     }));
             }

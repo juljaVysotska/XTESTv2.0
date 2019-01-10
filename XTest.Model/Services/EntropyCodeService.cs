@@ -57,9 +57,9 @@ namespace XTest.Model.Services
 					d = r.Next(100) / 100.0;
 				}
 				if (i == count-1)
-					result[i][1] = rest.ToString();
+					result[i][1] = Math.Round(rest, 2).ToString();
 				else
-					result[i][1] = d.ToString();
+					result[i][1] = Math.Round(d, 2).ToString();
 				rest = rest - d;
 			}
 			return result;
@@ -72,7 +72,7 @@ namespace XTest.Model.Services
 			{
 				if (Unconditional[i] != null)
 				{
-					result += double.Parse(Unconditional[i][1]) * Math.Log(double.Parse(Unconditional[i][1]), 2);
+					result += Math.Round(double.Parse(Unconditional[i][1]) * Math.Log(double.Parse(Unconditional[i][1]), 2),3);
 				}
 			}
 			return Math.Round( result, 3);
@@ -83,6 +83,47 @@ namespace XTest.Model.Services
 			return Math.Round( Math.Log(Unconditional.Length, 2), 3);
 		}
 
+		public string[][] generateConditional()
+		{
+			Random r = new Random();
+			string[][] result = new string[4][];
+			for (int k = 0; k < 4; k++)
+			{
+				result[k] = new string[4];
+			}
+			for (int i = 0; i < 4; i++)
+			{
+				double rest = 1;
+				for (int j = 0; j < 4; j++)
+				{
+					double d = r.Next(1, 50) / 100.0;
+					while (rest - d <= 0 && rest != 0)
+					{
+						d = r.Next(100) / 100.0;
+					}
+					if (j == 3)
+						result[j][i] = Math.Round(rest, 2).ToString();
+					else
+						result[j][i] = Math.Round(d, 2).ToString();
+					rest = rest - d;
+				}
+			}
+			return result;
+		}
+
+		public double getHYX(string[][] Conditional)
+		{
+			double result = 0.0;
+			for (int i = 0; i < Conditional.Length; i++)
+			{
+				for (int j = 0; j < Conditional.Length; j++)
+				{
+					result += Math.Round(double.Parse(Conditional[i][j]) * Math.Log(double.Parse(Conditional[i][j]), 2), 3);
+					
+				}
+			}
+			return Math.Round(result, 3);
+		}
 
 	}
 }

@@ -32,25 +32,42 @@ namespace XTest.ViewModel
 		private RelayCommand setDecoding;
 		private RelayCommand checkPractice;
 
+		public Result result
+		{
+			get
+			{
+				Result res;
+				if (!results.ContainsKey(TestType.BinaryDecimal))
+				{
+					res = new Result("Двоично-Десятичный Код", 10);
+					results.Add(TestType.BinaryDecimal, res);
+				}
+				else
+				{
+					res = results[TestType.BinaryDecimal];
+				}
+				return res;
+			}
+			private set { }
+		}
+
 		public int TestNumberBinaryDecimal
         {
-            get { return testNumber; }
-            set
-            {
-                testNumber = value;
-                OnPropertyChanged("TestNumberBinaryDecimal");
-            }
-        }
+			get { return result.currentTestNumber; }
+			set
+			{
+
+			}
+		}
 
         public int CorrectAnsverBinaryDecimal
         {
-            get { return correctAnsver; }
-            set
-            {
-                correctAnsver = value;
-                OnPropertyChanged("CorrectAnsverBinaryDecimal");
-            }
-        }
+			get { return result.correctTests; }
+			set
+			{
+
+			}
+		}
 
         public string TestTaskBinaryDecimal
         {
@@ -101,10 +118,10 @@ namespace XTest.ViewModel
             set
             {
 				Random random = new Random();
-				TestNumberBinaryDecimal = 1;
-                CorrectAnsverBinaryDecimal = 0;
-                testMode = TestMode.Encoding;
-                TestTaskBinaryDecimal = "Закодируйте сообщение";
+				//TestNumberBinaryDecimal = 1;
+    //            CorrectAnsverBinaryDecimal = 0;
+    //            testMode = TestMode.Encoding;
+                //TestTaskBinaryDecimal = "Закодируйте сообщение";
 				BinaryDecimalCodeTest.Code = codeService.generateCode();
 				int r1 = random.Next(100, 10000);
 				OnPropertyChanged("BinaryDecimalSelectedTabIndex");
@@ -123,15 +140,23 @@ namespace XTest.ViewModel
                         if (testMode == TestMode.Encoding)
                         {
                             string encode = codeService.enncodeNumber(Convert.ToInt32(BinaryDecimalCodeTest.Message), BinaryDecimalCodeTest.Code);
-                            CorrectAnsverBinaryDecimal += BinaryDecimalCodeTest.Result.Equals(encode) ? 1 : 0;
+							if (BinaryDecimalCodeTest.Result.Equals(encode))
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsverBinaryDecimal += BinaryDecimalCodeTest.Result.Equals(encode) ? 1 : 0;
                         }
                         else if (testMode == TestMode.Decoding)
                         {
                             string decode = Convert.ToString(codeService.decodeNumber(BinaryDecimalCodeTest.Message, BinaryDecimalCodeTest.Code));
-                            CorrectAnsverBinaryDecimal += BinaryDecimalCodeTest.Result.Equals(decode) ? 1 : 0;
+							if (BinaryDecimalCodeTest.Result.Equals(decode))
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsverBinaryDecimal += BinaryDecimalCodeTest.Result.Equals(decode) ? 1 : 0;
                         }
                         BinaryDecimalCodeTest.Result = "";
-						if (testNumber >= 5)
+						if (TestNumberBinaryDecimal >= 6)
 						{
 							testMode = TestMode.Decoding;
 							TestTaskBinaryDecimal = "Декодируйте сообщение";
@@ -143,21 +168,18 @@ namespace XTest.ViewModel
 							BinaryDecimalCodeTest.Message = random.Next(100, 10000).ToString();
 							BinaryDecimalCodeTest.Code = codeService.generateCode();
 						}
-						TestNumberBinaryDecimal++;
-                        if (testNumber >= 11)
+                        if (TestNumberBinaryDecimal >= 11)
                         {
-							TestNumberBinaryDecimal = 1;
-							MessageBox.Show("Правильных ответов " + CorrectAnsverBinaryDecimal.ToString() + " из 10");
-							if (!MainWindow.results.ContainsKey(TestType.BinaryDecimal))
+							if (MessageBox.Show("Правильных ответов " + result.correctTests + " из " + result.testsTotal + ". Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
 							{
-								MainWindow.results.Add(TestType.BinaryDecimal, new Result("Двоично-Десятичный Код", 10));
+								result.Reset();
+								BinaryDecimalCodeTest.Message = codeService.enncodeNumber(random.Next(100, 10000), BinaryDecimalCodeTest.Code);
+								testMode = TestMode.Encoding;
+								TestTaskBinaryDecimal = "Закодируйте сообщение";
+								BinaryDecimalCodeTest.Message = random.Next(100, 10000).ToString();
+
 							}
-							MainWindow.results[TestType.BinaryDecimal].correctTests = correctAnsver;
-							BinaryDecimalCodeTest.Message = codeService.enncodeNumber(random.Next(100, 10000), BinaryDecimalCodeTest.Code);
-                            CorrectAnsverBinaryDecimal = 0;
-                            testMode = TestMode.Encoding;
-                            TestTaskBinaryDecimal = "Закодируйте сообщение";
-							BinaryDecimalCodeTest.Message = random.Next(100, 10000).ToString();
+							
 
 						}
                     }));
