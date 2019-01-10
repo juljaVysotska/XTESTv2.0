@@ -135,9 +135,7 @@ namespace XTest
         {
             codeVAR_control.SelectedIndex = 1;
         }
-
-
-
+               
 
         private void codeRM_btn_Click(object sender, RoutedEventArgs e)
         {
