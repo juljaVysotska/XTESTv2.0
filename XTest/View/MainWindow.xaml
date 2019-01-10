@@ -11,6 +11,7 @@
         <local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
         <local:EllaesCodeViewModel x:Key="ellaesVM"></local:EllaesCodeViewModel>
         <local:BergerViewModel x:Key="bergerVM"></local:BergerViewModel>
+        <local:ResultViewModel x:Key="resultVM"></local:ResultViewModel>
         <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
@@ -128,7 +129,7 @@
     <Grid>
 
 
-        <TabControl x:Name="MainTabControl" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="950" TabStripPlacement="Right" Margin="2,0,0,0" SelectionChanged="MainTabControl_SelectionChanged" >
+        <TabControl x:Name="MainTabControl" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="950" TabStripPlacement="Right" Margin="2,0,0,0" >
             <TabControl.Template>
                 <ControlTemplate TargetType="TabControl">
                     <StackPanel>
@@ -163,7 +164,7 @@
             </TabItem>
             <TabItem  Header="Отчеты" Height="35" Width="260"   Padding="30,0,0,0"
                       Background="#B2CAF2" BorderBrush="#B2CAF2" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
-                <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource ellaesVM}}">
+                <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource resultVM}}">
                     <Grid.Background>
                         <ImageBrush/>
                     </Grid.Background>
@@ -177,7 +178,7 @@
                         <RowDefinition Height="599*"/>
                     </Grid.RowDefinitions>
                     <Label Content="Пройденные тесты: " Margin="30,24,279,541"  FontSize="16" Grid.Row="1" Grid.ColumnSpan="2"/>
-                    <ListView x:Name="ResultListView" ItemsSource="{DynamicResource ResultMarks}" HorizontalAlignment="Left" Height="508" Margin="30,62,0,0" VerticalAlignment="Top" Width="609" Grid.Row="1" Grid.ColumnSpan="3" SelectionMode="Single">
+                    <ListView x:Name="ResultListView" ItemsSource="{Binding Results}" HorizontalAlignment="Left" Height="508" Margin="30,62,0,0" VerticalAlignment="Top" Width="609" Grid.Row="1" Grid.ColumnSpan="3" SelectionMode="Single">
                         <ListView.Background>
                             <ImageBrush TileMode="FlipX" ImageSource="/XTest;component/Resources/watermark.jpg" Opacity="0.75" />
                         </ListView.Background>

@@ -23,7 +23,7 @@ namespace XTest.Model.Models
         private DateTime _endTime;
         public int correctTests {
             get => _correctTests;
-            set
+            private set
             {
                 _correctTests = value;
                 UpdateProperties();
