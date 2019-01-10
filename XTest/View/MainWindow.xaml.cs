@@ -26,9 +26,7 @@ namespace XTest
 
     public partial class MainWindow : Window
     {
-        int Qstage = 0;
         int Pstage = 0;
-        int Astage = 0;
         public static string FILE_FILTER = "XTest Results(*.xtst)| *.xtst";
         public static Dictionary<TestType, Result> results = new Dictionary<TestType, Result>();
 
@@ -470,16 +468,6 @@ namespace XTest
 
         private void NextQ_btn_Click(object sender, RoutedEventArgs e)
         {
-            Qstage++;
-            if (Qstage == 4)
-            {
-                TestQ_control.SelectedIndex++;
-            }
-            else if (Qstage == 8)
-            {
-                TestQ_control.SelectedIndex--;
-                Qstage = 0;
-            }
 
         }
 
@@ -547,16 +535,7 @@ namespace XTest
         }
         private void NextA_btn_Click(object sender, RoutedEventArgs e)
         {
-            Astage++;
-            if (Astage == 4)
-            {
-                TestA_control.SelectedIndex++;
-            }
-            else if (Astage == 8)
-            {
-                TestA_control.SelectedIndex--;
-                Astage = 0;
-            }
+            
         }
 
 

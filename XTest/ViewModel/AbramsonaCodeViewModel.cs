@@ -20,6 +20,17 @@ namespace XTest.ViewModel
         string code;
         string coded;
         string answer;
+        int selectedIndex;
+
+        public int Mark
+        {
+            get { return mark; }
+            set
+            {
+                mark = value;
+                OnPropertyChanged("Mark");    // ОЦенка
+            }
+        }
 
         public string Code
         {
@@ -60,6 +71,17 @@ namespace XTest.ViewModel
             abramsonaCode = new AbramsonaCode();
             Code = abramsonaCode.Code();
             Coded = abramsonaCode.coded;
+            SelectedIndex = 0;
+        }
+
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged("SelectedIndex");
+            }
         }
 
         public RelayCommand Next
@@ -108,6 +130,7 @@ namespace XTest.ViewModel
                                   MessageBox.Show("Wrong!");
                               }
                               Upload();
+                              SelectedIndex = 1;
                           }
                           check++;
                           if (check == 9)
@@ -117,6 +140,7 @@ namespace XTest.ViewModel
                               Upload();
                               check = 1;
                               mark = 0;
+                              SelectedIndex = 0;
                           }
                       }));
             }

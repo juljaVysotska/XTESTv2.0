@@ -5387,7 +5387,7 @@
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource abramsonaCodeVM}}">
                                 <Button Command="{Binding Next}" Name ="nextA_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextA_btn_Click"  />
-                                <TabControl Margin="0,10,10,80" Name="TestA_control"  >
+                                <TabControl Margin="0,10,10,80" Name="TestA_control"  SelectedIndex="{Binding SelectedIndex}">
                                     <TabItem Header="1" Visibility="Collapsed" >
                                         <Grid>
                                             <Label  Content="Код Абрамсона"  Margin="30,30,0,0"  FontSize="24"/>
@@ -6495,7 +6495,7 @@
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
                                 <Button Command="{Binding Next}" Name ="nextQ_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextQ_btn_Click"  />
-                                <TabControl Margin="0,10,10,80" Name="TestQ_control"  >
+                                <TabControl Margin="0,10,10,80" Name="TestQ_control"  SelectedIndex="{Binding SelectedIndex}">
                                     <TabItem Header="1" Visibility="Collapsed" >
                                         <Grid>
                                             <Label  Content="Для кодовой комбинации при q = " Margin="30"  FontSize="14"/>
