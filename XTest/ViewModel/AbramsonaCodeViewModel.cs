@@ -20,6 +20,36 @@ namespace XTest.ViewModel
         string code;
         string coded;
         string answer;
+        int selectedIndex;
+
+        public Result result
+        {
+            get
+            {
+                Result res;
+                if (!results.ContainsKey(TestType.Abramsona))
+                {
+                    res = new Result("Код Абрамсона", 8);
+                    results.Add(TestType.Abramsona, res);
+                }
+                else
+                {
+                    res = results[TestType.Abramsona];
+                }
+                return res;
+            }
+            private set { }
+        }
+
+        public int Mark
+        {
+            get { return result.mark; }
+            set
+            {
+                mark = value;
+                OnPropertyChanged("Mark");    // ОЦенка
+            }
+        }
 
         public string Code
         {
@@ -60,6 +90,17 @@ namespace XTest.ViewModel
             abramsonaCode = new AbramsonaCode();
             Code = abramsonaCode.Code();
             Coded = abramsonaCode.coded;
+            SelectedIndex = 0;
+        }
+
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged("SelectedIndex");
+            }
         }
 
         public RelayCommand Next
@@ -73,12 +114,11 @@ namespace XTest.ViewModel
                           {
                               if (abramsonaCode.CorrectCode(coded, answer))
                               {
-                                  MessageBox.Show("Correct!");
-                                  mark++;
+                                  result.CorrectAnswer();
                               }
                               else
                               {
-                                  MessageBox.Show("Wrong!");
+                                  result.WrongAnswer();
                               }
                               Upload();
                           }
@@ -86,12 +126,11 @@ namespace XTest.ViewModel
                           {
                               if (abramsonaCode.CorrectCode(coded, answer))
                               {
-                                  MessageBox.Show("Correct!");
-                                  mark++;
+                                  result.CorrectAnswer();
                               }
                               else
                               {
-                                  MessageBox.Show("Wrong!");
+                                  result.WrongAnswer();
                               }
                               Upload();
                               //MainWindow.TestQ_control.SelectedIndex++;
@@ -100,20 +139,23 @@ namespace XTest.ViewModel
                           {
                               if (abramsonaCode.CorrectCode(code, answer))
                               {
-                                  MessageBox.Show("Correct!");
-                                  mark++;
+                                  result.CorrectAnswer();
                               }
                               else
                               {
-                                  MessageBox.Show("Wrong!");
+                                  result.WrongAnswer();
                               }
                               Upload();
+                              SelectedIndex = 1;
                           }
                           check++;
                           if (check == 9)
                           {
-                              MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8");
-                              MainWindow.results.Add(TestType.Abramsona, new Result("Кодирование простым повторением ", mark));
+                              if (MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8. Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                              {
+                                  result.Reset();
+                              }
+                              SelectedIndex = 0;
                               Upload();
                               check = 1;
                               mark = 0;
