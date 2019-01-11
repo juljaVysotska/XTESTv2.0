@@ -25,7 +25,25 @@ namespace XTest.ViewModel
         int mark = 0;
         int check = 1;
         int selectedIndex;
-        
+
+        public Result result
+        {
+            get
+            {
+                Result res;
+                if (!results.ContainsKey(TestType.CheckByQ))
+                {
+                    res = new Result("Код с проверкой по q", 8);
+                    results.Add(TestType.CheckByQ, res);
+                }
+                else
+                {
+                    res = results[TestType.CheckByQ];
+                }
+                return res;
+            }
+            private set { }
+        }
 
         int[] decode;
         bool yes;
@@ -33,7 +51,7 @@ namespace XTest.ViewModel
 
         public int Mark
         {
-            get { return mark; }
+            get { return result.mark; }
             set
             {
                 mark = value;
@@ -111,11 +129,13 @@ namespace XTest.ViewModel
                           if (checkByQ.CheckCoding(code, q, IntToArr(coded)))
                           {
                               MessageBox.Show("Correct!");
-                              mark++;
+                                  result.CorrectAnswer();
+                                  mark++;
                           }
                           else
                           {
                               MessageBox.Show("Wrong!");
+                                  result.WrongAnswer();
                           }
                           Upload();
                       }
@@ -124,12 +144,14 @@ namespace XTest.ViewModel
                           if (checkByQ.CheckCoding(code, q, IntToArr(coded)))
                           {
                               MessageBox.Show("Correct!");
-                              mark++;
-                          }
+                                  result.CorrectAnswer();
+                                  mark++;
+                              }
                           else
                           {
                               MessageBox.Show("Wrong!");
-                          }
+                                  result.WrongAnswer();
+                              }
                           SelectedIndex = 1;
                           Upload();
                       }
@@ -138,24 +160,29 @@ namespace XTest.ViewModel
                           if (correct == yes)
                           {
                               MessageBox.Show("Correct!");
-                              mark++;
-                          }
+                                  result.CorrectAnswer();
+                                  mark++;
+                              }
                           else
                           {
                               MessageBox.Show("Wrong!");
-                          }
+                                  result.WrongAnswer();
+                              }
                           Upload();
                       }
                       check++;
                       if (check == 9)
                       {
-                          MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 8. Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo);
-                              MainWindow.results.Add(TestType.CheckByQ, new Result("Проверка по мoдулю q ", mark));                                                              
-                              SelectedIndex = 0;
-                              Upload();
-                              check = 1;
-                              mark = 0;
+                          if (MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8. Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                          {
+                                  result.Reset();
                           }
+                              //MainWindow.results.Add(TestType.CheckByQ, new Result("Проверка по мoдулю q ", mark));
+                          SelectedIndex = 0;
+                          Upload();
+                          check = 1;
+                          mark = 0;
+                      }
                       }));
             }
         }

@@ -5386,6 +5386,7 @@
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource abramsonaCodeVM}}">
+                                <Label Content="{Binding result.summary}" Height="Auto" Width="Auto" Margin="10,502,140,20"/>
                                 <Button Command="{Binding Next}" Name ="nextA_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextA_btn_Click"  />
                                 <TabControl Margin="0,10,10,80" Name="TestA_control"  SelectedIndex="{Binding SelectedIndex}">
                                     <TabItem Header="1" Visibility="Collapsed" >
@@ -6369,9 +6370,11 @@
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
                                 <Button Command="{Binding Next}" Name ="nextPN_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextPN_btn_Click"  />
+                                <Label Content="{Binding result.summary}" Height="Auto" Width="Auto" Margin="10,502,140,20"/>
                                 <TabControl Margin="0,10,10,80" Name="TestPN_control"  >
                                     <TabItem Header="1" Visibility="Collapsed" >
                                         <Grid>
+                                            <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="280 30 0 0"  FontSize="14" Foreground="#4F91FB" />
                                             <Label  Content="Составьте кодовые комбинации для кода с параметрами: "   FontSize="14"/>
                                             <Label Content="q=" Margin="30"/>
 
@@ -6495,16 +6498,18 @@
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource checkByQVM}}">
                                 <Button Command="{Binding Next}" Name ="nextQ_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextQ_btn_Click"  />
-                                <TabControl Margin="0,10,10,80" Name="TestQ_control"  SelectedIndex="{Binding SelectedIndex}">
+                                <Label Content="{Binding result.summary}" Height="Auto" Width="Auto" Margin="10,502,140,20"/>
+                                <TabControl Margin="10,10,10,80" Name="TestQ_control"  SelectedIndex="{Binding SelectedIndex}">
                                     <TabItem Header="1" Visibility="Collapsed" >
                                         <Grid>
+                                            <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="280 0 0 0"  FontSize="14" Foreground="#4F91FB" />
                                             <Label  Content="Для кодовой комбинации при q = " Margin="30"  FontSize="14"/>
 
-                                            <Label  Content="{Binding Path=Q}"  Margin="260 30 30 30"  FontSize="14"  />
+                                            <Label  Content="{Binding Path=Q}"  Margin="255 30 30 30"  FontSize="14"  />
                                             <Label  Content="постройте код" HorizontalAlignment="Right" Margin="30 30 270 30"  FontSize="14"  />
                                             <Label  Content="{Binding Path=Code}"  Margin="30,150,287,136"  FontSize="14"  />
-
-                                            <TextBox Text="{Binding Coded}"   Height="30" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
+                                            
+                                            <TextBox Text="{Binding Coded}"   Height="50" Width="200" Margin="20 0 0 0" HorizontalAlignment="Left" BorderBrush="#4F91FB" Style="{DynamicResource RoundConer}"/>
 
 
 
@@ -6619,10 +6624,12 @@
                         </TabItem>
                         <TabItem Header="Тест" Width="100" Height="30" Background="White" BorderBrush="#4F91FB">
                             <Grid Background="White" Margin="0,0,-15,0" DataContext="{Binding Source={StaticResource repeatCodeVM}}">
+                                <Label Content="{Binding result.summary}" Height="Auto" Width="Auto" Margin="10,502,140,20"/>
                                 <Button Command="{Binding Next}" Name ="nextP_btn" Content="Далее"  Height="30" Width="120" HorizontalAlignment="Left" Margin="502,525,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Click="NextP_btn_Click"  />
-                                <TabControl Margin="0,10,10,80" Name="TestP_control"  >
+                                <TabControl Margin="0,10,10,80" Name="TestP_control"  SelectedIndex="{Binding SelectedIndex}">
                                     <TabItem Header="1" Visibility="Collapsed" >
                                         <Grid>
+                                            <Label  Content="Результаты прохождения будут добавлены в отчет!"  Margin="280 0 0 0"  FontSize="14" Foreground="#4F91FB" />
                                             <Label  Content="Закодируйте сообщение: "   FontSize="14"/>
 
                                             <Label  Content="{Binding Path=Code}" Name="PTest"  Margin="30,60,287,136"  FontSize="14"  />

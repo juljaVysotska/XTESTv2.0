@@ -22,9 +22,28 @@ namespace XTest.ViewModel
         string answer;
         int selectedIndex;
 
+        public Result result
+        {
+            get
+            {
+                Result res;
+                if (!results.ContainsKey(TestType.Abramsona))
+                {
+                    res = new Result("Код Абрамсона", 8);
+                    results.Add(TestType.Abramsona, res);
+                }
+                else
+                {
+                    res = results[TestType.Abramsona];
+                }
+                return res;
+            }
+            private set { }
+        }
+
         public int Mark
         {
-            get { return mark; }
+            get { return result.mark; }
             set
             {
                 mark = value;
@@ -96,11 +115,12 @@ namespace XTest.ViewModel
                               if (abramsonaCode.CorrectCode(coded, answer))
                               {
                                   MessageBox.Show("Correct!");
-                                  mark++;
+                                  result.CorrectAnswer();
                               }
                               else
                               {
                                   MessageBox.Show("Wrong!");
+                                  result.WrongAnswer();
                               }
                               Upload();
                           }
@@ -109,11 +129,12 @@ namespace XTest.ViewModel
                               if (abramsonaCode.CorrectCode(coded, answer))
                               {
                                   MessageBox.Show("Correct!");
-                                  mark++;
+                                  result.CorrectAnswer();
                               }
                               else
                               {
                                   MessageBox.Show("Wrong!");
+                                  result.WrongAnswer();
                               }
                               Upload();
                               //MainWindow.TestQ_control.SelectedIndex++;
@@ -123,11 +144,12 @@ namespace XTest.ViewModel
                               if (abramsonaCode.CorrectCode(code, answer))
                               {
                                   MessageBox.Show("Correct!");
-                                  mark++;
+                                  result.CorrectAnswer();
                               }
                               else
                               {
                                   MessageBox.Show("Wrong!");
+                                  result.WrongAnswer();
                               }
                               Upload();
                               SelectedIndex = 1;
@@ -135,12 +157,14 @@ namespace XTest.ViewModel
                           check++;
                           if (check == 9)
                           {
-                              MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8");
-                              MainWindow.results.Add(TestType.Abramsona, new Result("Кодирование простым повторением ", mark));
+                              if (MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8. Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                              {
+                                  result.Reset();
+                              }
+                              SelectedIndex = 0;
                               Upload();
                               check = 1;
                               mark = 0;
-                              SelectedIndex = 0;
                           }
                       }));
             }

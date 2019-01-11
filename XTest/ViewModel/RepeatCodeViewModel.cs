@@ -20,6 +20,46 @@ namespace XTest.ViewModel
         string code;
         string coded;
         string answer;
+        int selectedIndex;
+
+        public Result result
+        {
+            get
+            {
+                Result res;
+                if (!results.ContainsKey(TestType.RepeatCode))
+                {
+                    res = new Result("Код с простым повторением", 8);
+                    results.Add(TestType.RepeatCode, res);
+                }
+                else
+                {
+                    res = results[TestType.RepeatCode];
+                }
+                return res;
+            }
+            private set { }
+        }
+
+        public int Mark
+        {
+            get { return result.mark; }
+            set
+            {
+                mark = value;
+                OnPropertyChanged("Mark");    // ОЦенка
+            }
+        }
+
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged("SelectedIndex");
+            }
+        }
 
         public string Code
         {
@@ -73,12 +113,14 @@ namespace XTest.ViewModel
                           {
                               if (repeatCode.CorrectCode(coded, answer))
                               {
-                                  MessageBox.Show("Correct!");
+                                  //MessageBox.Show("Correct!");
+                                  result.CorrectAnswer();
                                   mark++;
                               }
                               else
                               {
-                                  MessageBox.Show("Wrong!");
+                                  //MessageBox.Show("Wrong!");
+                                  result.WrongAnswer();
                               }
                               Upload();
                           }
@@ -86,13 +128,16 @@ namespace XTest.ViewModel
                           {
                               if (repeatCode.CorrectCode(coded, answer))
                               {
-                                  MessageBox.Show("Correct!");
+                                  //MessageBox.Show("Correct!");
+                                  result.CorrectAnswer();
                                   mark++;
                               }
                               else
                               {
-                                  MessageBox.Show("Wrong!");
+                                  //MessageBox.Show("Wrong!");
+                                  result.WrongAnswer();
                               }
+                              SelectedIndex = 1;
                               Upload();
                               //MainWindow.TestQ_control.SelectedIndex++;
                           }
@@ -100,23 +145,28 @@ namespace XTest.ViewModel
                           {
                               if (repeatCode.CorrectCode(code, answer))
                               {
-                                  MessageBox.Show("Correct!");
+                                  //MessageBox.Show("Correct!");
+                                  result.CorrectAnswer();
                                   mark++;
                               }
                               else
                               {
-                                  MessageBox.Show("Wrong!");
+                                  //MessageBox.Show("Wrong!");
+                                  result.WrongAnswer();
                               }
                               Upload();
                           }
                           check++;
                           if (check == 9)
                           {
-                              MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8");
-                              MainWindow.results.Add(TestType.RepeatCode, new Result("Кодирование простым повторением ", mark));
+                              if (MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8. Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                              {
+                                  result.Reset();
+                              }
                               Upload();
                               check = 1;
                               mark = 0;
+                              SelectedIndex = 0;
                           }
                       }));
             }
