@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using XTest.Model.Models;
-using static XTest.ViewModel.ResultViewModel;
 using XTest.Model.Services;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -21,6 +20,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Microsoft.Win32;
 using XTest.ViewModel;
+using static XTest.Model.Models.Result;
 
 namespace XTest
 {
@@ -31,8 +31,6 @@ namespace XTest
         int Pstage = 0;
         int Astage = 0;
         public static string FILE_FILTER = "XTest Results(*.xtst)| *.xtst";
-
-        public Dictionary<TestType, Result> Results { get => results; set => results = value; }
 
         public MainWindow()
         {

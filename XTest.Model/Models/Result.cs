@@ -11,9 +11,38 @@ namespace XTest.Model.Models
     [Serializable]
     public class Result : INotifyPropertyChanged
     {
+        public enum TestType
+        {
+            Berger,
+            ShennonFano,
+            BinaryDecimal,
+            Ellaes,
+            Greya,
+            CheckByQ,
+            Entropy,
+            Iterative,
+            Recurent,
+            RepeatCode,
+            RidMaller,
+            Varshamov,
+            Abramsona
+        }
+
+        public static Dictionary<TestType, Result> results = new Dictionary<TestType, Result>();
+
+        public Dictionary<TestType, Result> Results
+        {
+            get => results.Where(r => r.Value.currentTestNumber > 1 || r.Value.attempts > 1).ToDictionary(r => r.Key, r => r.Value);
+            set
+            {
+                results = value;
+                UpdateProperties();
+            }
+        }
+
         private const string DATE_TIME_FORMAT = "dd.MM.yy HH:mm";
 
-        private static List<string> toUpdateProperties = new List<string>() { "correctTests", "currentTestNumber", "attempts", "startTime", "endTime", "testStat", "mark", "summary" };
+        private static List<string> toUpdateProperties = new List<string>() { "correctTests", "currentTestNumber", "attempts", "startTime", "endTime", "testStat", "mark", "summary", "Results" };
         public string testName { get; private set; }
         public int testsTotal { get; private set; }
         private int _correctTests;
@@ -21,7 +50,8 @@ namespace XTest.Model.Models
         private int _attempts;
         private DateTime _startTime;
         private DateTime _endTime;
-        public int correctTests {
+        public int correctTests
+        {
             get => _correctTests;
             private set
             {
@@ -29,13 +59,16 @@ namespace XTest.Model.Models
                 UpdateProperties();
             }
         }
-        public int currentTestNumber {
+        public int currentTestNumber
+        {
             get => _currentTestNumber;
-            private set {
+            private set
+            {
                 if (value > testsTotal)
                 {
                     _endTime = DateTime.Now;
-                } else if (value == 2)
+                }
+                else if (value == 2)
                 {
                     this._startTime = DateTime.Now;
                 }
@@ -43,7 +76,8 @@ namespace XTest.Model.Models
                 UpdateProperties();
             }
         }
-        public int attempts {
+        public int attempts
+        {
             get => _attempts;
             private set
             {
@@ -51,7 +85,8 @@ namespace XTest.Model.Models
                 UpdateProperties();
             }
         }
-        public string startTime{
+        public string startTime
+        {
             get => _startTime.Equals(new DateTime()) ? "---" : _startTime.ToString(DATE_TIME_FORMAT);
             private set
             {
@@ -59,7 +94,8 @@ namespace XTest.Model.Models
                 UpdateProperties();
             }
         }
-        public string endTime {
+        public string endTime
+        {
             get => _endTime.Equals(new DateTime()) ? "---" : _endTime.ToString(DATE_TIME_FORMAT);
             private set
             {
@@ -70,10 +106,11 @@ namespace XTest.Model.Models
 
         public string testStat
         {
-            get => correctTests + "/" + (currentTestNumber-1);
+            get => correctTests + "/" + (currentTestNumber - 1);
             private set => testStat = value;
         }
-        public int mark {
+        public int mark
+        {
             get => Convert.ToInt32(Math.Floor(correctTests / ((double)testsTotal) * 5));
             private set => mark = value;
         }
@@ -89,6 +126,11 @@ namespace XTest.Model.Models
             {
                 OnPropertyChanged(s);
             }
+        }
+
+        public Result()
+        {
+
         }
 
         public Result(string testName, int testsTotal)

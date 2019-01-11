@@ -10,8 +10,8 @@
     <Window.Resources>
         <local:RidMallerViewModel x:Key="ridMallerVM"></local:RidMallerViewModel>
         <local:EllaesCodeViewModel x:Key="ellaesVM"></local:EllaesCodeViewModel>
+        <models:Result x:Key="resultModel"></models:Result>
         <local:BergerViewModel x:Key="bergerVM"></local:BergerViewModel>
-        <local:ResultViewModel x:Key="resultVM"></local:ResultViewModel>
         <local:GreyaViewModel x:Key="greyaVM"></local:GreyaViewModel>
         <local:BinaryDecimalViewModel x:Key="binarydecimalVM"></local:BinaryDecimalViewModel>
         <local:CheckByQViewModel x:Key="checkByQVM"></local:CheckByQViewModel>
@@ -164,7 +164,7 @@
             </TabItem>
             <TabItem  Header="Отчеты" Height="35" Width="260"   Padding="30,0,0,0"
                       Background="#B2CAF2" BorderBrush="#B2CAF2" TextOptions.TextHintingMode="Fixed" FontSize="14" Foreground="Black">
-                <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource resultVM}}">
+                <Grid Margin="275,-620,0,130" DataContext="{Binding Source={StaticResource resultModel}}">
                     <Grid.Background>
                         <ImageBrush/>
                     </Grid.Background>

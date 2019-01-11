@@ -64,7 +64,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\AbramsonaCodeViewModel.cs" />
-    <Compile Include="ViewModel\ResultViewModel.cs" />
     <Compile Include="ViewModel\BinaryDecimalViewModel.cs" />
     <Compile Include="ViewModel\BergerViewModel.cs" />
     <Compile Include="ViewModel\EntropyViewModel.cs" />
