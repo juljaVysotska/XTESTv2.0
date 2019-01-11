@@ -114,12 +114,10 @@ namespace XTest.ViewModel
                           {
                               if (abramsonaCode.CorrectCode(coded, answer))
                               {
-                                  MessageBox.Show("Correct!");
                                   result.CorrectAnswer();
                               }
                               else
                               {
-                                  MessageBox.Show("Wrong!");
                                   result.WrongAnswer();
                               }
                               Upload();
@@ -128,12 +126,10 @@ namespace XTest.ViewModel
                           {
                               if (abramsonaCode.CorrectCode(coded, answer))
                               {
-                                  MessageBox.Show("Correct!");
                                   result.CorrectAnswer();
                               }
                               else
                               {
-                                  MessageBox.Show("Wrong!");
                                   result.WrongAnswer();
                               }
                               Upload();
@@ -143,12 +139,10 @@ namespace XTest.ViewModel
                           {
                               if (abramsonaCode.CorrectCode(code, answer))
                               {
-                                  MessageBox.Show("Correct!");
                                   result.CorrectAnswer();
                               }
                               else
                               {
-                                  MessageBox.Show("Wrong!");
                                   result.WrongAnswer();
                               }
                               Upload();

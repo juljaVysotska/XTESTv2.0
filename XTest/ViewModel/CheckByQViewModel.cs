@@ -128,13 +128,11 @@ namespace XTest.ViewModel
                       {
                           if (checkByQ.CheckCoding(code, q, IntToArr(coded)))
                           {
-                              MessageBox.Show("Correct!");
                                   result.CorrectAnswer();
                                   mark++;
                           }
                           else
                           {
-                              MessageBox.Show("Wrong!");
                                   result.WrongAnswer();
                           }
                           Upload();
@@ -143,13 +141,11 @@ namespace XTest.ViewModel
                       {
                           if (checkByQ.CheckCoding(code, q, IntToArr(coded)))
                           {
-                              MessageBox.Show("Correct!");
                                   result.CorrectAnswer();
                                   mark++;
                               }
                           else
                           {
-                              MessageBox.Show("Wrong!");
                                   result.WrongAnswer();
                               }
                           SelectedIndex = 1;
@@ -159,13 +155,11 @@ namespace XTest.ViewModel
                       {
                           if (correct == yes)
                           {
-                              MessageBox.Show("Correct!");
                                   result.CorrectAnswer();
                                   mark++;
                               }
                           else
                           {
-                              MessageBox.Show("Wrong!");
                                   result.WrongAnswer();
                               }
                           Upload();
