@@ -178,7 +178,7 @@
                         <RowDefinition Height="599*"/>
                     </Grid.RowDefinitions>
                     <Label Content="Пройденные тесты: " Margin="30,24,279,541"  FontSize="16" Grid.Row="1" Grid.ColumnSpan="2"/>
-                    <ListView x:Name="ResultListView" ItemsSource="{Binding Results}" HorizontalAlignment="Left" Height="508" Margin="30,62,0,0" VerticalAlignment="Top" Width="609" Grid.Row="1" Grid.ColumnSpan="3" SelectionMode="Single">
+                    <ListView x:Name="ResultListView" ItemsSource="{DynamicResource ResultMarks}" HorizontalAlignment="Left" Height="508" Margin="30,62,0,0" VerticalAlignment="Top" Width="609" Grid.Row="1" Grid.ColumnSpan="3" SelectionMode="Single">
                         <ListView.Background>
                             <ImageBrush TileMode="FlipX" ImageSource="/XTest;component/Resources/watermark.jpg" Opacity="0.75" />
                         </ListView.Background>

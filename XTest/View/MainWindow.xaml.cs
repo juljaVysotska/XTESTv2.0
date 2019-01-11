@@ -13,14 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using XTest.Model.Models;
-using static XTest.ViewModel.ResultViewModel;
+using XTest.ViewModel;
 using XTest.Model.Services;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Microsoft.Win32;
-using XTest.ViewModel;
 
 namespace XTest
 {
@@ -28,12 +27,29 @@ namespace XTest
     public partial class MainWindow : Window
     {
         public static string FILE_FILTER = "XTest Results(*.xtst)| *.xtst";
+        public static Dictionary<TestType, Result> results = new Dictionary<TestType, Result>();
 
-        public Dictionary<TestType, Result> Results { get => results; set => results = value; }
+        public enum TestType
+        {
+            Berger,
+            ShennonFano,
+            BinaryDecimal,
+            Ellaes,
+            Greya,
+            CheckByQ,
+            Entropy,
+            Iterative,
+            Recurent,
+            RepeatCode,
+            RidMaller,
+            Varshamov,
+            Abramsona
+        }
 
         public MainWindow()
         {
             InitializeComponent();
+            RefreshResults();
         }
 
         #region Shennon-Fano
@@ -116,7 +132,9 @@ namespace XTest
         {
             codeVAR_control.SelectedIndex = 1;
         }
-               
+
+
+
 
         private void codeRM_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -396,7 +414,7 @@ namespace XTest
         }
         private void NextA_btn_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
 
@@ -637,16 +655,6 @@ namespace XTest
 
         #region Results
 
-        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateResults();
-        }
-
-        private void UpdateResults()
-        {
-            CollectionViewSource.GetDefaultView(results).Refresh();
-        }
-
         private void Button_Open_Results_Click(object sender, RoutedEventArgs e)
         {
             LoadResults();
@@ -676,7 +684,7 @@ namespace XTest
                     {
                         bf.Serialize(fsout, results);
                     }
-                    UpdateResults();
+                    RefreshResults();
                     MessageBox.Show("Результаты сохранены успешно!");
                 }
                 catch (Exception e)
@@ -722,18 +730,30 @@ namespace XTest
                                 results.Remove(r.Key);
                             }
                         }
-                        UpdateResults();
+                        RefreshResults();
                         MessageBox.Show("Результаты загружены успешно!");
                     }
                     catch (Exception e)
                     {
                         MessageBox.Show("Произошла ошибка при чтении результатов: " + e.Message, "Ошибка");
                     }
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Указанный файл не существует!", "Ошибка");
                 }
             }
+        }
+
+        private void RefreshResults()
+        {
+            //CollectionViewSource.GetDefaultView(results).Refresh();
+            Resources["ResultMarks"] = results;
+        }
+
+        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            RefreshResults();
         }
 
         #endregion

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
-using static XTest.ViewModel.ResultViewModel;
+using static XTest.MainWindow;
 
 namespace XTest.ViewModel
 {
