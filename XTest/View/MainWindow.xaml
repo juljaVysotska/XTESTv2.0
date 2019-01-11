@@ -6245,7 +6245,7 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-            <TabItem Header="Первичные недвоичные коды" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
+            <!--<TabItem Header="Первичные недвоичные коды" Height="35" Width="260"  Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
 
                     <TabControl HorizontalAlignment="Left" Height="619" VerticalAlignment="Top" Width="656">
@@ -6411,7 +6411,7 @@
                         </TabItem>
                     </TabControl>
                 </Grid>
-            </TabItem>
+            </TabItem>-->
             <TabItem Header="Код с проверкой по |q|" Height="35" Width="260" Padding="30,0,0,0"  Background="#FFF5F7F9" BorderBrush="#FFF5F7F9">
                 <Grid Margin="275,-620,0,130">
 

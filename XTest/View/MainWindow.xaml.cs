@@ -408,14 +408,14 @@ namespace XTest
 
         }
 
-        private void codePN_btn_Click(object sender, RoutedEventArgs e)
-        {
-            codePN_control.SelectedIndex = 0;
-        }
-        private void decodePN_btn_Click(object sender, RoutedEventArgs e)
-        {
-            codePN_control.SelectedIndex = 1;
-        }
+        //private void codePN_btn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    codePN_control.SelectedIndex = 0;
+        //}
+        //private void decodePN_btn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    codePN_control.SelectedIndex = 1;
+        //}
 
         private void NextPN_btn_Click(object sender, RoutedEventArgs e)
         {
