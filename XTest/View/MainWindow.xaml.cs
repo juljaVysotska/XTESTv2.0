@@ -776,7 +776,7 @@ namespace XTest
 
         private void RefreshResults()
         {
-            //CollectionViewSource.GetDefaultView(results).Refresh();
+            CollectionViewSource.GetDefaultView(results).Refresh();
             Resources["ResultMarks"] = results;
         }
 
