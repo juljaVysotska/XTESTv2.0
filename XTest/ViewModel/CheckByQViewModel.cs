@@ -25,25 +25,7 @@ namespace XTest.ViewModel
         int mark = 0;
         int check = 1;
         int selectedIndex;
-
-        public Result result
-        {
-            get
-            {
-                Result res;
-                if (!results.ContainsKey(TestType.CheckByQ))
-                {
-                    res = new Result("Код с проверкой по q", 8);
-                    results.Add(TestType.CheckByQ, res);
-                }
-                else
-                {
-                    res = results[TestType.CheckByQ];
-                }
-                return res;
-            }
-            private set { }
-        }
+        
 
         int[] decode;
         bool yes;
@@ -51,7 +33,7 @@ namespace XTest.ViewModel
 
         public int Mark
         {
-            get { return result.mark; }
+            get { return mark; }
             set
             {
                 mark = value;
@@ -124,59 +106,55 @@ namespace XTest.ViewModel
                 return next ??
                       (next = new RelayCommand(obj =>
                       {
-                      if (check < 4)
-                      {
-                          if (checkByQ.CheckCoding(code, q, IntToArr(coded)))
+                          if (check < 4)
                           {
-                                  result.CorrectAnswer();
-                                  mark++;
-                          }
-                          else
-                          {
-                                  result.WrongAnswer();
-                          }
-                          Upload();
-                      }
-                      else if (check == 4)
-                      {
-                          if (checkByQ.CheckCoding(code, q, IntToArr(coded)))
-                          {
-                                  result.CorrectAnswer();
+                              if (checkByQ.CheckCoding(code, q, IntToArr(coded)))
+                              {
+                                  MessageBox.Show("Correct!");
                                   mark++;
                               }
-                          else
-                          {
-                                  result.WrongAnswer();
+                              else
+                              {
+                                  MessageBox.Show("Wrong!");
                               }
-                          SelectedIndex = 1;
-                          Upload();
-                      }
-                      else if (check >= 4)
-                      {
-                          if (correct == yes)
+                              Upload();
+                          }
+                          else if(check == 4)
                           {
-                                  result.CorrectAnswer();
+                              if (checkByQ.CheckCoding(code, q, IntToArr(coded)))
+                              {
+                                  MessageBox.Show("Correct!");
                                   mark++;
                               }
-                          else
-                          {
-                                  result.WrongAnswer();
+                              else
+                              {
+                                  MessageBox.Show("Wrong!");
                               }
-                          Upload();
-                      }
-                      check++;
-                      if (check == 9)
-                      {
-                          if (MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8. Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                          {
-                                  result.Reset();
+                              Upload();
+                              //MainWindow.TestQ_control.SelectedIndex++;
                           }
-                              //MainWindow.results.Add(TestType.CheckByQ, new Result("Проверка по мoдулю q ", mark));
-                          SelectedIndex = 0;
-                          Upload();
-                          check = 1;
-                          mark = 0;
-                      }
+                          else if (check >= 4)
+                          {
+                              if (correct == yes)
+                              {
+                                  MessageBox.Show("Correct!");
+                                  mark++;
+                              }
+                              else
+                              {
+                                  MessageBox.Show("Wrong!");
+                              }
+                              Upload();
+                          }
+                          check++;
+                          if (check == 9)
+                          {
+                              MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8");
+                              results.Add(TestType.CheckByQ, new Result("Проверка по мoдулю q ", mark));
+                              Upload();
+                              check = 1;
+                              mark = 0;
+                          }
                       }));
             }
         }
