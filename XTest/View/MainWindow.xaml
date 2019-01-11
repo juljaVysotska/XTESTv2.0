@@ -129,7 +129,7 @@
     <Grid>
 
 
-        <TabControl x:Name="MainTabControl" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="950" TabStripPlacement="Right" Margin="2,0,0,0" >
+        <TabControl x:Name="MainTabControl" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="950" TabStripPlacement="Right" Margin="2,0,0,0" SelectionChanged="MainTabControl_SelectionChanged" >
             <TabControl.Template>
                 <ControlTemplate TargetType="TabControl">
                     <StackPanel>
@@ -7470,7 +7470,7 @@
                                     <ColumnDefinition Width="277*"/>
                                     <ColumnDefinition Width="385*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label  Content="Код Шеннона-Фано"  Margin="30,30,32.5,506"  FontSize="24"/>
+                                <Label  Content="Код Шеннона-Фано"  Margin="30,30,10,506"  FontSize="24"/>
                                 <Button Content="Далее"  Height="30" Width="90" HorizontalAlignment="Left" Margin="239.5,511,0,0" VerticalAlignment="Top" Background="White" BorderBrush="#4F91FB" Style="{DynamicResource CornerRound_btn}" Grid.Column="1" Click="Button_Shennon_Practice_Next_Click"/>
                                 <Label x:Name="lblShennonTaskExplanation_Copy"  Content="Составьте кодовые комбинации"  Margin="30,80,287,469"  FontSize="14" Grid.ColumnSpan="2"  />
                                 <ListBox ItemsSource="{DynamicResource ShennonTask}" Margin="74,141,81,99" BorderBrush="{x:Null}" Grid.ColumnSpan="2">

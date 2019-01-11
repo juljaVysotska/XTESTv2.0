@@ -20,6 +20,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Microsoft.Win32;
+using XTest.ViewModel;
 
 namespace XTest
 {
@@ -30,6 +31,8 @@ namespace XTest
         int Pstage = 0;
         int Astage = 0;
         public static string FILE_FILTER = "XTest Results(*.xtst)| *.xtst";
+
+        public Dictionary<TestType, Result> Results { get => results; set => results = value; }
 
         public MainWindow()
         {
@@ -666,6 +669,16 @@ namespace XTest
 
         #region Results
 
+        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateResults();
+        }
+
+        private void UpdateResults()
+        {
+            CollectionViewSource.GetDefaultView(results).Refresh();
+        }
+
         private void Button_Open_Results_Click(object sender, RoutedEventArgs e)
         {
             LoadResults();
@@ -695,6 +708,7 @@ namespace XTest
                     {
                         bf.Serialize(fsout, results);
                     }
+                    UpdateResults();
                     MessageBox.Show("Результаты сохранены успешно!");
                 }
                 catch (Exception e)
@@ -740,6 +754,7 @@ namespace XTest
                                 results.Remove(r.Key);
                             }
                         }
+                        UpdateResults();
                         MessageBox.Show("Результаты загружены успешно!");
                     }
                     catch (Exception e)
@@ -752,8 +767,7 @@ namespace XTest
                 }
             }
         }
-        
+
         #endregion
-        
     }
 }

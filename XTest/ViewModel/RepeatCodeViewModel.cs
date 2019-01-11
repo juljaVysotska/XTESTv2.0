@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
-using static XTest.MainWindow;
+using static XTest.ViewModel.ResultViewModel;
 
 namespace XTest.ViewModel
 {
@@ -113,7 +113,7 @@ namespace XTest.ViewModel
                           if (check == 9)
                           {
                               MessageBox.Show("Правильных ответов " + mark.ToString() + " из 8");
-                              MainWindow.results.Add(TestType.RepeatCode, new Result("Кодирование простым повторением ", mark));
+                              results.Add(TestType.RepeatCode, new Result("Кодирование простым повторением ", mark));
                               Upload();
                               check = 1;
                               mark = 0;
