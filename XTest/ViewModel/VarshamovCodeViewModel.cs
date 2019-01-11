@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
-using static XTest.MainWindow;
+using static XTest.ViewModel.ResultViewModel;
 
 namespace XTest.ViewModel
 {
@@ -46,15 +46,29 @@ namespace XTest.ViewModel
                 OnPropertyChanged("N");
             }
         }
+        public Result result
+        {
+            get
+            {
+                Result res;
+                if (!results.ContainsKey(TestType.Varshamov))
+                {
+                    res = new Result("Код Варшамова", 7);
+                    results.Add(TestType.Varshamov, res);
+                }
+                else
+                {
+                    res = results[TestType.Varshamov];
+                }
+                return res;
+            }
+            private set { }
+        }
 
         public int Check
         {
-            get { return check; }
-            set
-            {
-                check = value;
-                OnPropertyChanged("Check");
-            }
+            get { return result.currentTestNumber; }
+           
         }
 
         public string[] Syndrom
@@ -180,12 +194,8 @@ namespace XTest.ViewModel
 
         public int Mark
         {
-            get { return mark; }
-            set
-            {
-                mark = value;
-                OnPropertyChanged("Mark");
-            }
+            get { return result.mark; }
+           
         }
 
         public int CountOfRaws
@@ -212,13 +222,13 @@ namespace XTest.ViewModel
         {
             _service = new Varshamov();
             Initializer();
-            Check = 1;
+            
         }
 
         private void Initializer()
         {
 
-            Mark = 0;
+            
             N = random.Next(8, 20);
             D = random.Next(3, 8);
             B = 3;
@@ -250,19 +260,25 @@ namespace XTest.ViewModel
                               var r = _service.CountOfTestDigits(columns);
                               if (countOfColumns == columns && countOfExceptions == _service.CountOfFixedExceptions(d)
                               && countOfRaws == _service.CountOfRaws(n, r) && countOfDigits == r)
-                                  Mark += 1;
+                                  result.CorrectAnswer();
+                              else
+                                  result.WrongAnswer();
                               SelectedIndex = 1;        
                               break;
                           case 2:
                               if (_service.Equals(_service.GenerateSimpleMatrix(6), SimpleArray) && _service.CheckProdMatrix(B, Array))
-                                  Mark += 1;
+                                  result.CorrectAnswer();
+                              else
+                                  result.WrongAnswer();
                               SelectedIndex = 2;
                               Array = _service.GenerateArr(3);
                               SimpleArray = _service.GenerateSimpleMatrix(6);
                               break;
                           case 3:
                               if (_service.Equals(_service.CodeNum(Array, generateArray), ResultArr))
-                                  Mark += 1;
+                                  result.CorrectAnswer();
+                              else
+                                  result.WrongAnswer();
                               Array = _service.GenerateArr(3);
                               SimpleArray = _service.GenerateSimpleMatrix(6);
                               generateArray = _service.GenerateArray(6);
@@ -271,7 +287,9 @@ namespace XTest.ViewModel
                               break;
                           case 4:
                               if (_service.Equals(_service.CodeNum(Array, generateArray), ResultArr))
-                                  Mark += 1;
+                                  result.CorrectAnswer();
+                              else
+                                  result.WrongAnswer();
                               Array = _service.GenerateArr(3);
                               SimpleArray = _service.GenerateSimpleMatrix(6);
                               generateArray = _service.GenerateArray(6);
@@ -280,7 +298,9 @@ namespace XTest.ViewModel
                               break;
                           case 5:
                               if (_service.Equals(_service.CodeNum(Array, generateArray), ResultArr))
-                                  Mark += 1;
+                                  result.CorrectAnswer();
+                              else
+                                  result.WrongAnswer();
                               SelectedIndex = 3;
                               Array = _service.GenerateArr(3);
                               SimpleArray = _service.GenerateSimpleMatrix(6);
@@ -288,7 +308,9 @@ namespace XTest.ViewModel
                           case 6:
                               if (_service.Equals(_service.GenerateSimpleMatrix(4), OneSimpleMatrix) &&
                               _service.Equals(_service.HMAtrix(Array), HMatrix))
-                                  Mark += 1;
+                                  result.CorrectAnswer();
+                              else
+                                  result.WrongAnswer();
                               SelectedIndex = 4;
                               var generateArr = _service.GenerateArr(3);
                               Array = _service.HMAtrix(generateArr);
@@ -301,16 +323,18 @@ namespace XTest.ViewModel
                               break;
                           case 7:
                               if (_service.Equals(oldArray, ResultArr))
-                                  Mark += 1;
-                              Check = 0;
-                              MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 7.");
-                              if (!results.ContainsKey(TestType.Varshamov))
-                                  MainWindow.results.Add(TestType.Varshamov, new Result("Код Варшамова ", 7));
-                              results[TestType.Varshamov].correctTests = Mark;
-                              Initializer();
+                                  result.CorrectAnswer();
+                              else
+                                  result.WrongAnswer();
+                              if (MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 7. Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                              {
+                                  result.Reset();
+                                  Initializer();
+                              }
+                                                          
                               break;
                       }
-                      Check += 1;
+                      
                   }));
             }
 

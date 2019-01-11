@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
-using static XTest.MainWindow;
+using static XTest.ViewModel.ResultViewModel;
 
 namespace XTest.ViewModel
 {
@@ -17,7 +17,6 @@ namespace XTest.ViewModel
         private RelayCommand next;
         private RelayCommand nextCode;
         private RelayCommand nextDecode;
-        //private Result result;
         private int selectedIndex;
         private int check { get; set; }
         private int mark { get; set; }
@@ -60,11 +59,7 @@ namespace XTest.ViewModel
             get
             {
                 return result.mark; }
-            set
-            {
-                //mark = value;
-                //OnPropertyChanged("Mark");
-            }
+            set {}
         }
 
         public int SelectedIndex
@@ -103,10 +98,6 @@ namespace XTest.ViewModel
         {
             EllaesCodeService ellaesCodeService = new EllaesCodeService();
             selectedIndex = 0;
-            //Check = 1;
-            //Mark = 0;
-            //просто вызов делаю, чтобы сгенерить его
-            //result.ToString();
             this._service = ellaesCodeService;
             OldArray = _service.GenerateArray(4, 4);
             Array = _service.ResizeArray(OldArray);
@@ -118,14 +109,8 @@ namespace XTest.ViewModel
 
         public int Check
         {
-            get
-            {
-                return result.currentTestNumber; }
-            private set
-            {
-                //check = value;
-                //OnPropertyChanged("Check");
-            }
+            get => result.currentTestNumber;
+            private set {}
         }
 
 
@@ -143,7 +128,6 @@ namespace XTest.ViewModel
                               result.CorrectAnswer();
                           else
                               result.WrongAnswer();
-                          //Mark += 1;
 
                           OldArray = _service.GenerateArray(4, 4);
                           Array = _service.ResizeArray(OldArray);
@@ -157,7 +141,6 @@ namespace XTest.ViewModel
                               result.CorrectAnswer();
                           else
                               result.WrongAnswer();
-                          //Mark += 1;
 
                           SelectedIndex = 1;
                           Array = _service.GenerateArrayWithException(4, 4);
@@ -171,11 +154,9 @@ namespace XTest.ViewModel
                               result.CorrectAnswer();
                           else
                               result.WrongAnswer();
-                          //Mark += 1;
                           Array = _service.GenerateArrayWithException(4, 4);
                           OldArray = _service.FuckingCSharp(Array);
                       }
-                      //Check += 1;
                       if (Check >= 9) 
                       {
                           if (MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 8. Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -184,10 +165,6 @@ namespace XTest.ViewModel
                               OldArray = _service.GenerateArray(4, 4);
                               Array = _service.ResizeArray(OldArray);
                           }
-                          //SelectedIndex = 0;
-                          //asdfasefasef
-                          //Check = 1;
-                          //Mark = 0;
                       }
                   }));
             }

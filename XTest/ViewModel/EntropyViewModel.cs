@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
-using static XTest.MainWindow;
+using static XTest.ViewModel.ResultViewModel;
 
 namespace XTest.ViewModel
 {
@@ -18,11 +18,19 @@ namespace XTest.ViewModel
 
 		private string[] ensembleTest;
 		private string[][] unconditionalTest;
+		private string[][] conditionalTest;
 		private string[] ensemblePractice;
+		private string[][] unconditionalPractice;
+		private string[][] conditionalPractice;
 
 		private string ensembleResult;
+		private string ensembleResultPractice;
 		private string unconditionalResultHX;
+		private string unconditionalResultHXPractice;
 		private string unconditionalResultHMaxX;
+		private string unconditionalResultHMaxXPractice;
+		private string conditionalResultHYX;
+		private string conditionalResultHYXPractice;
 
 
 		private int selectedIndex;
@@ -32,14 +40,37 @@ namespace XTest.ViewModel
 		private bool ensambleVisibility;
 		private bool unconditionalVisibility;
 		private bool conditionalVisibility;
+		private bool ensambleVisibilityPractice;
+		private bool unconditionalVisibilityPractice;
+		private bool conditionalVisibilityPractice;
 
 		private TestMode testMode;
 		private TestMode practiceMode;
 
 		private RelayCommand nextTest;
-		private RelayCommand setEncoding;
-		private RelayCommand setDecoding;
+		private RelayCommand setEnsemble;
+		private RelayCommand setUnconditional;
+		private RelayCommand setConditional;
 		private RelayCommand checkPractice;
+
+		public Result result
+		{
+			get
+			{
+				Result res;
+				if (!results.ContainsKey(TestType.Entropy))
+				{
+					res = new Result("Энтропия", 6);
+					results.Add(TestType.Entropy, res);
+				}
+				else
+				{
+					res = results[TestType.Entropy];
+				}
+				return res;
+			}
+			private set { }
+		}
 
 		public bool EnsambleVisibility
 		{
@@ -71,23 +102,51 @@ namespace XTest.ViewModel
 			}
 		}
 
-		public int TestNumber
+		public bool EnsambleVisibilityPractice
 		{
-			get { return testNumber; }
+			get { return ensambleVisibilityPractice; }
 			set
 			{
-				testNumber = value;
-				OnPropertyChanged("TestNumber");
+				ensambleVisibilityPractice = value;
+				OnPropertyChanged("EnsambleVisibilityPractice");
+			}
+		}	
+
+		public bool UnconditionalVisibilityPractice
+		{
+			get { return unconditionalVisibilityPractice; }
+			set
+			{
+				unconditionalVisibilityPractice = value;
+				OnPropertyChanged("UnconditionalVisibilityPractice");
+			}
+		}
+
+		public bool ConditionalVisibilityPractice
+		{
+			get { return conditionalVisibilityPractice; }
+			set
+			{
+				conditionalVisibilityPractice = value;
+				OnPropertyChanged("ConditionalVisibilityPractice");
+			}
+		}
+
+		public int TestNumber
+		{
+			get { return result.currentTestNumber; }
+			set
+			{
+				
 			}
 		}
 
 		public int CorrectAnsver
 		{
-			get { return correctAnsver; }
+			get { return result.correctTests; }
 			set
 			{
-				correctAnsver = value;
-				OnPropertyChanged("CorrectAnsver");
+
 			}
 		}
 
@@ -99,12 +158,11 @@ namespace XTest.ViewModel
 			}
 			set
 			{
-				//TestNumber = 1;
-				//CorrectAnsver = 0;
-				//testMode = TestMode.Encoding;
-				//TestTask = "Закодируйте сообщение";
+
+				EnsembleTest = codeService.generateEnsemble();
+				UnconditionalTest = codeService.generateUnconditional();
+				ConditionalTest = codeService.generateConditional();
 				OnPropertyChanged("GreyaSelectedTabIndex");
-				//GreyaCodeTest.Message = codeService.generateLine(11);
 				selectedIndex = value;
 			}
 		}
@@ -119,6 +177,36 @@ namespace XTest.ViewModel
 			}
 		}
 
+		public string[] EnsemblePractice
+		{
+			get { return ensemblePractice; }
+			set
+			{
+				ensemblePractice = value;
+				OnPropertyChanged("EnsemblePractice");
+			}
+		}
+
+		public string[][] UnconditionalPractice
+		{
+			get { return unconditionalPractice; }
+			set
+			{
+				unconditionalPractice = value;
+				OnPropertyChanged("UnconditionalPractice");
+			}
+		}
+
+		public string[][] ConditionalPractice
+		{
+			get { return conditionalPractice; }
+			set
+			{
+				conditionalPractice = value;
+				OnPropertyChanged("ConditionalPractice");
+			}
+		}
+
 		public string[][] UnconditionalTest
 		{
 			get { return unconditionalTest; }
@@ -126,6 +214,16 @@ namespace XTest.ViewModel
 			{
 				unconditionalTest = value;
 				OnPropertyChanged("UnconditionalTest");
+			}
+		}
+
+		public string[][] ConditionalTest
+		{
+			get { return conditionalTest; }
+			set
+			{
+				conditionalTest = value;
+				OnPropertyChanged("ConditionalTest");
 			}
 		}
 
@@ -139,6 +237,16 @@ namespace XTest.ViewModel
 			}
 		}
 
+		public string EnsembleResultPractice
+		{
+			get { return ensembleResultPractice; }
+			set
+			{
+				ensembleResultPractice = value;
+				OnPropertyChanged("EnsembleResultPractice");
+			}
+		}
+
 		public string UnconditionalResultHX
 		{
 			get { return unconditionalResultHX; }
@@ -146,6 +254,16 @@ namespace XTest.ViewModel
 			{
 				unconditionalResultHX = value;
 				OnPropertyChanged("UnconditionalResultHX");
+			}
+		}
+
+		public string UnconditionalResultHXPractice
+		{
+			get { return unconditionalResultHXPractice; }
+			set
+			{
+				unconditionalResultHXPractice = value;
+				OnPropertyChanged("UnconditionalResultHXPractice");
 			}
 		}
 
@@ -159,6 +277,36 @@ namespace XTest.ViewModel
 			}
 		}
 
+		public string UnconditionalResultHMaxXPractice
+		{
+			get { return unconditionalResultHMaxXPractice; }
+			set
+			{
+				unconditionalResultHMaxXPractice = value;
+				OnPropertyChanged("UnconditionalResultHMaxXPractice");
+			}
+		}
+
+		public string ConditionalResultHYX
+		{
+			get { return conditionalResultHYX; }
+			set
+			{
+				conditionalResultHYX = value;
+				OnPropertyChanged("ConditionalResultHYX");
+			}
+		}
+
+		public string ConditionalResultHYXPractice
+		{
+			get { return conditionalResultHYXPractice; }
+			set
+			{
+				conditionalResultHYXPractice = value;
+				OnPropertyChanged("ConditionalResultHYXPractice");
+			}
+		}
+
 		public RelayCommand NextTest
 		{
 			get
@@ -169,28 +317,43 @@ namespace XTest.ViewModel
 						if (testMode == TestMode.Encoding)
 						{
 							int encode = codeService.getInformationCount(EnsembleTest);
-							int result;
-							int.TryParse(EnsembleResult, out result);
-							CorrectAnsver += result == encode ? 1 : 0;
+							int resultt;
+							int.TryParse(EnsembleResult, out resultt);
+							if (resultt == encode)
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsver += result == encode ? 1 : 0;
 						}
 						else if (testMode == TestMode.Decoding)
 						{
 							double encode = codeService.getHX(UnconditionalTest);
 							double encodeMax = codeService.getMaxHX(UnconditionalTest);
-							double result;
+							double resultt;
 							double resultMax;
-							double.TryParse(UnconditionalResultHX, out result);
+							double.TryParse(UnconditionalResultHX, out resultt);
 							double.TryParse(UnconditionalResultHMaxX, out resultMax);
-							CorrectAnsver += (encode == result && encodeMax == resultMax) ? 1 : 0;
+							if (resultt == encode && encodeMax == resultMax)
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsver += (encode == result && encodeMax == resultMax) ? 1 : 0;
 						}
 						else if (testMode == TestMode.Default)
 						{
-
+							double encode = codeService.getHYX(ConditionalTest);
+							double resultt;
+							double.TryParse(ConditionalResultHYX, out resultt);
+							if (encode == resultt)
+								result.CorrectAnswer();
+							else
+								result.WrongAnswer();
+							//CorrectAnsver += encode == result ? 1 : 0;
 						}
 						EnsembleResult = "";
 						UnconditionalResultHX = "";
 						UnconditionalResultHMaxX = "";
-						if (testNumber >= 3 && testNumber < 5)
+						if (TestNumber >= 4 && TestNumber < 6)
 						{
 							testMode = TestMode.Decoding;
 							EnsambleVisibility = false;
@@ -198,7 +361,7 @@ namespace XTest.ViewModel
 						}
 						else
 							EnsembleTest = codeService.generateEnsemble();
-						if (testNumber >= 5)
+						if (TestNumber >= 6)
 						{
 							testMode = TestMode.Default;
 							UnconditionalVisibility = false;
@@ -209,22 +372,123 @@ namespace XTest.ViewModel
 							UnconditionalTest = codeService.generateUnconditional();
 						//else
 						//	GreyaCodeTest.Message = codeService.generateLine(11);
-						TestNumber++;
-						if (testNumber >= 7)
+						if (TestNumber >= 7)
 						{
-							TestNumber = 1;
-							MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 6");
-							if (!MainWindow.results.ContainsKey(TestType.Entropy))
+							//TestNumber = 1;
+							if (MessageBox.Show("Правильных ответов " + result.correctTests + " из " + result.testsTotal + ". Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
 							{
-								MainWindow.results.Add(TestType.Entropy, new Result("Энтропия", 10));
+								result.Reset();
+								EnsambleVisibility = true;
+								UnconditionalVisibility = false;
+								ConditionalVisibility = false;
+								testMode = TestMode.Encoding;
+								EnsembleTest = codeService.generateEnsemble();
+								UnconditionalTest = codeService.generateUnconditional();
+								ConditionalTest = codeService.generateConditional();
 							}
-							MainWindow.results[TestType.Entropy].correctTests = correctAnsver;
-							CorrectAnsver = 0;
-							EnsambleVisibility = true;
-							UnconditionalVisibility = false;
-							ConditionalVisibility = false;
-							testMode = TestMode.Encoding;
+							//	MessageBox.Show("Правильных ответов " + CorrectAnsver.ToString() + " из 6");
+							//if (!MainWindow.results.ContainsKey(TestType.Entropy))
+							//{
+							//	MainWindow.results.Add(TestType.Entropy, new Result("Энтропия", 10));
+							//}
+							//MainWindow.results[TestType.Entropy].correctTests = correctAnsver;
+							//CorrectAnsver = 0;
+							//EnsambleVisibility = true;
+							//UnconditionalVisibility = false;
+							//ConditionalVisibility = false;
+							//testMode = TestMode.Encoding;
 						}
+					}));
+			}
+		}
+
+		public RelayCommand CheckPractice
+		{
+			get
+			{
+				return checkPractice ??
+					(checkPractice = new RelayCommand(obj =>
+					{
+						string ansver;
+						if (practiceMode == TestMode.Encoding)
+						{
+							int encode = codeService.getInformationCount(EnsemblePractice);
+							int result;
+							int.TryParse(EnsembleResultPractice, out result);
+							ansver = result == encode ? "Правильно!" : "Неправильно!";
+							MessageBox.Show(ansver);
+						}
+						else if (practiceMode == TestMode.Decoding)
+						{
+							double encode = codeService.getHX(UnconditionalPractice);
+							double encodeMax = codeService.getMaxHX(UnconditionalPractice);
+							double result;
+							double resultMax;
+							double.TryParse(unconditionalResultHXPractice, out result);
+							double.TryParse(UnconditionalResultHMaxXPractice, out resultMax);
+							ansver = (encode == result && encodeMax == resultMax) ? "Правильно!" : "Неправильно!";
+							MessageBox.Show(ansver);
+						}
+						else if (practiceMode == TestMode.Default)
+						{
+							double encode = codeService.getHYX(ConditionalPractice);
+							double result;
+							double.TryParse(ConditionalResultHYXPractice, out result);
+							ansver = encode == result ? "Правильно!" : "Неправильно!";
+							MessageBox.Show(ansver);
+						}
+						EnsembleResult = "";
+						UnconditionalResultHX = "";
+						UnconditionalResultHMaxX = "";
+						
+					}));
+			}
+		}
+
+		public RelayCommand SetEnsemble
+		{
+			get
+			{
+				return setEnsemble ??
+					(setEnsemble = new RelayCommand(obj =>
+					{
+						EnsambleVisibilityPractice = true;
+						UnconditionalVisibilityPractice = false;
+						ConditionalVisibilityPractice = false;
+						practiceMode = TestMode.Encoding;
+						EnsemblePractice = codeService.generateEnsemble();
+					}));
+			}
+		}
+
+		public RelayCommand SetUnconditional
+		{
+			get
+			{
+				return setUnconditional ??
+					(setUnconditional = new RelayCommand(obj =>
+					{
+						EnsambleVisibilityPractice = false;
+						UnconditionalVisibilityPractice = true;
+						ConditionalVisibilityPractice = false;
+						practiceMode = TestMode.Decoding;
+						UnconditionalPractice = codeService.generateUnconditional();
+					}));
+			}
+		}
+
+		public RelayCommand SetConditional
+		{
+			get
+			{
+				return setConditional ??
+					(setConditional = new RelayCommand(obj =>
+					{
+						EnsambleVisibilityPractice = false;
+						UnconditionalVisibilityPractice = false;
+						ConditionalVisibilityPractice = true;
+						practiceMode = TestMode.Default;
+						ConditionalPractice = codeService.generateConditional();
 					}));
 			}
 		}
@@ -234,8 +498,15 @@ namespace XTest.ViewModel
 			EnsambleVisibility = true;
 			UnconditionalVisibility = false;
 			ConditionalVisibility = false;
+			EnsambleVisibilityPractice = true;
+			UnconditionalVisibilityPractice = false;
+			ConditionalVisibilityPractice = false;
 			EnsembleTest = codeService.generateEnsemble();
+			EnsemblePractice = codeService.generateEnsemble();
 			UnconditionalTest = codeService.generateUnconditional();
+			UnconditionalPractice = codeService.generateUnconditional();
+			ConditionalTest = codeService.generateConditional();
+			ConditionalPractice = codeService.generateConditional();
 			TestNumber = 1;
 			CorrectAnsver = 0;
 			testMode = TestMode.Encoding;

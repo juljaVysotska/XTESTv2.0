@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using XTest.Model.Models;
 using XTest.Model.Services;
-using static XTest.MainWindow;
+using static XTest.ViewModel.ResultViewModel;
 
 namespace XTest.ViewModel
 {
@@ -147,24 +147,34 @@ namespace XTest.ViewModel
                 OnPropertyChanged("KDecode");
             }
         }
+        public Result result
+        {
+            get
+            {
+                Result res;
+                if (!results.ContainsKey(TestType.Recurent))
+                {
+                    res = new Result("Рекурентный код", 6);
+                    results.Add(TestType.Recurent, res);
+                }
+                else
+                {
+                    res = results[TestType.Recurent];
+                }
+                return res;
+            }
+            private set { }
+        }
         public int Mark
         {
-            get { return mark; }
-            set
-            {
-                mark = value;
-                OnPropertyChanged("Mark");
-            }
+            get { return result.mark; }
+           
         }
 
         public int Check
         {
-            get { return check; }
-            set
-            {
-                check = value;
-                OnPropertyChanged("Check");
-            }
+            get { return result.currentTestNumber; }
+            
         }
 
         public int SelectedIndex
@@ -177,12 +187,13 @@ namespace XTest.ViewModel
             }
         }
 
+        
+
+
         public RecurentCodeViewModel()
         {
             _service = new RecurentCode();
             SelectedIndex = 0;
-            Check = 1;
-            Mark = 0;
             k = rand.Next(1, 5);
             kCode = rand.Next(1, 5);
             kDecode = rand.Next(1, 5);
@@ -249,8 +260,10 @@ namespace XTest.ViewModel
                       {
                           var a = _service.Code(arr, k);
                           if (array == _service.Output(a))
-                              Mark += 1;
-                         K = rand.Next(1, 5);
+                              result.CorrectAnswer();
+                          else
+                              result.WrongAnswer();
+                          K = rand.Next(1, 5);
                           arr = _service.GenerateArray(k);
                           OldArray = _service.Output(arr);
                           Array = "";
@@ -261,7 +274,9 @@ namespace XTest.ViewModel
                           
                           var a = _service.Code(arr, k);
                           if (array == _service.Output(a))
-                              Mark += 1;
+                              result.CorrectAnswer();
+                          else
+                              result.WrongAnswer();
                           K = rand.Next(1, 5);
                          
                           decodeArr = _service.GenerateForDecode(k);
@@ -271,31 +286,32 @@ namespace XTest.ViewModel
                           SelectedIndex = 1;
 
                       }
-                      else
+                      else if (Check <= 6)
                       {
                           var a = _service.Decode(decodeArr, k);
                           if (array == _service.Output(a))
-                              Mark += 1;
+                              result.CorrectAnswer();
+                          else
+                              result.WrongAnswer();
                           K = rand.Next(1, 5);
                           decodeArr = _service.GenerateForDecode(k);
                           DecodeArray = _service.Output(decodeArr[1]);
                           OldArray = _service.Output(decodeArr[0]);
                           Array = "";
                       }
-                      Check += 1;
-                      if (Check == 7)
+
+                      
+                      if (Check >= 7)
                       {
-                          MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 6.");
-                          Check = 1;
-                          if (!results.ContainsKey(TestType.Recurent))
-                              MainWindow.results.Add(TestType.Recurent, new Result("Рекурентний код ", 6));
-                          results[TestType.Recurent].correctTests = Mark;
-                          Mark = 0;
-                          K = rand.Next(1, 5);
-                          arr = _service.GenerateArray(k);
-                          OldArray = _service.Output(arr);
-                          Array = "";
-                          SelectedIndex = 0;
+
+                          if (MessageBox.Show("Правильных ответов " + Mark.ToString() + " из 6. Хотите попробовать ещё ? ", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                          {
+                              result.Reset();
+                              K = rand.Next(1, 5);
+                              arr = _service.GenerateArray(k);
+                              OldArray = _service.Output(arr);
+                              Array = "";
+                          }
                       }
                   }));
             }

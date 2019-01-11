@@ -13,13 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using XTest.Model.Models;
-using XTest.ViewModel;
+using static XTest.ViewModel.ResultViewModel;
 using XTest.Model.Services;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Microsoft.Win32;
+using XTest.ViewModel;
 
 namespace XTest
 {
@@ -27,140 +28,13 @@ namespace XTest
     public partial class MainWindow : Window
     {
         public static string FILE_FILTER = "XTest Results(*.xtst)| *.xtst";
-        public static Dictionary<TestType, Result> results = new Dictionary<TestType, Result>();
 
-        public enum TestType
-        {
-            Berger,
-            ShennonFano,
-            BinaryDecimal,
-            Ellaes,
-            Greya,
-            CheckByQ,
-            Entropy,
-            Iterative,
-            Recurent,
-            RepeatCode,
-            RidMaller,
-            Varshamov,
-            Abramsona
-        }
+        public Dictionary<TestType, Result> Results { get => results; set => results = value; }
 
         public MainWindow()
         {
             InitializeComponent();
-            RefreshResults();
         }
-
-        #region Berger
-        bool bergerPracticeEncode = true;
-        private void TabControl_Berger_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (!results.ContainsKey(TestType.Berger))
-            {
-                results.Add(TestType.Berger, new Result("Код Бергера", 6));
-            }
-            TabControl tabControl = (TabControl)sender;
-            if (tabControl.SelectedIndex == 2)
-            {
-                GenerateBergerTest();
-            }
-            else if (tabControl.SelectedIndex == 1)
-            {
-                GenerateBergerPractice();
-            }
-        }
-
-        private void GenerateBergerPractice()
-        {
-            if (bergerPracticeEncode)
-            {
-                lblBergerTaskExplanation_Practice.Content = "Зашифруйте:";
-                lblTask_Practice.Content = BergerService.generateEncode();
-            }
-            else
-            {
-                lblBergerTaskExplanation_Practice.Content = "Расшифруйте:";
-                lblTask_Practice.Content = BergerService.generateDecode();
-            }
-        }
-
-        private void GenerateBergerTest()
-        {
-            Result result = results[TestType.Berger];
-            if (result.currentTestNumber <= 3)
-            {
-                lblBergerTaskExplanation.Content = "Зашифруйте:";
-                lblBergerTask.Content = BergerService.generateEncode();
-            }
-            else if (result.currentTestNumber > 3 && result.currentTestNumber < 7)
-            {
-                lblBergerTaskExplanation.Content = "Расшифруйте:";
-                lblBergerTask.Content = BergerService.generateDecode();
-            }
-            else
-            {
-                if (MessageBox.Show("Вы закончили этот тест! Ваш балл: " + result.mark + ". Хотите попробовать ещё?", "Тест окончен", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    result.Reset();
-                    GenerateBergerTest();
-                }
-            }
-        }
-
-        private void Button_Berger_Next_Click(object sender, RoutedEventArgs e)
-        {
-            Result result = results[TestType.Berger];
-            if (result.currentTestNumber <= 6)
-            {
-                if (result.currentTestNumber <= 3 ?
-                    BergerService.isEncodedCorrectly(lblBergerTask.Content.ToString(), txbBergerResult.Text) :
-                    BergerService.isDecodedCorrectly(lblBergerTask.Content.ToString(), txbBergerResult.Text))
-                {
-                    MessageBox.Show("Правильно!");
-                    txbBergerResult.Text = "";
-                    result.CorrectAnswer();
-                }
-                else
-                {
-                    MessageBox.Show("Не правильно! Ответ: " + (result.currentTestNumber <= 3 ?
-                        BergerService.encode(lblBergerTask.Content.ToString()) :
-                        BergerService.decode(lblBergerTask.Content.ToString())));
-                    txbBergerResult.Text = "";
-                    result.WrongAnswer();
-                }
-                GenerateBergerTest();
-            }
-        }
-
-        private void code_Berger_btn_Click(object sender, RoutedEventArgs e)
-        {
-            bergerPracticeEncode = true;
-            GenerateBergerPractice();
-        }
-
-        private void decode_Berger_btn_Click(object sender, RoutedEventArgs e)
-        {
-            bergerPracticeEncode = false;
-            GenerateBergerPractice();
-        }
-
-        private void ButtonBergerNext_Practice_Click(object sender, RoutedEventArgs e)
-        {
-            if (bergerPracticeEncode ?
-                    BergerService.isEncodedCorrectly(lblTask_Practice.Content.ToString(), txbBergerResult_Practice.Text) :
-                    BergerService.isDecodedCorrectly(lblTask_Practice.Content.ToString(), txbBergerResult_Practice.Text))
-            {
-                MessageBox.Show("Правильно!");
-            }
-            else
-            {
-                MessageBox.Show("Не правильно! Ответ: " + (bergerPracticeEncode ?
-                    BergerService.encode(lblTask_Practice.Content.ToString()) :
-                    BergerService.decode(lblTask_Practice.Content.ToString())));
-            }
-        }
-        #endregion
 
         #region Shennon-Fano
 
@@ -242,9 +116,7 @@ namespace XTest
         {
             codeVAR_control.SelectedIndex = 1;
         }
-
-
-
+               
 
         private void codeRM_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -765,6 +637,16 @@ namespace XTest
 
         #region Results
 
+        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateResults();
+        }
+
+        private void UpdateResults()
+        {
+            CollectionViewSource.GetDefaultView(results).Refresh();
+        }
+
         private void Button_Open_Results_Click(object sender, RoutedEventArgs e)
         {
             LoadResults();
@@ -794,7 +676,7 @@ namespace XTest
                     {
                         bf.Serialize(fsout, results);
                     }
-                    RefreshResults();
+                    UpdateResults();
                     MessageBox.Show("Результаты сохранены успешно!");
                 }
                 catch (Exception e)
@@ -840,7 +722,7 @@ namespace XTest
                                 results.Remove(r.Key);
                             }
                         }
-                        RefreshResults();
+                        UpdateResults();
                         MessageBox.Show("Результаты загружены успешно!");
                     }
                     catch (Exception e)
@@ -852,17 +734,6 @@ namespace XTest
                     MessageBox.Show("Указанный файл не существует!", "Ошибка");
                 }
             }
-        }
-
-        private void RefreshResults()
-        {
-            //CollectionViewSource.GetDefaultView(results).Refresh();
-            Resources["ResultMarks"] = results;
-        }
-
-        private void MainTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            RefreshResults();
         }
 
         #endregion
